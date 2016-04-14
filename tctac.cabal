@@ -1,0 +1,47 @@
+name:                tctac
+version:             0.0.0.0
+synopsis:            Experiments
+description:         Please see README.md
+homepage:            http://github.com/ComputationWithBoundedResources/tctac#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Michael Schaper
+maintainer:          michael.schaper@uibk.ac.at
+copyright:           2015, Michael Schaper
+category:            Utils
+build-type:          Simple
+extra-source-files:
+  README.md
+cabal-version:       >=1.8
+
+source-repository head
+  type:     git
+  location: https://github.com/ComputationWithBoundedResources/tctac/
+
+library
+  hs-source-dirs:
+    src
+  exposed-modules:
+    Runner
+    Summer
+    Util
+  build-depends:
+    aeson,
+    async, 
+    base >= 4.7 && < 5,
+    blaze-html,
+    bytestring,
+    containers,
+    csv,
+    directory,
+    filepath,
+    mtl,
+    old-time,
+    process,
+    shakespeare,
+    timeout,
+    turtle
+  ghc-options:
+    -Wall -rtsopts -with-rtsopts=-N
+
+
