@@ -1,12 +1,12 @@
 ##tct-utils
 
-This package provides a library to run experiments.
+This package provides a library to run and sumarise experiments.
 
 ### Example Usage
 
 ```haskell
 #!/usr/bin/env stack
--- stack --stack-yaml /home/c7031025/software/tctac/stack.yaml runghc --package tctac
+-- stack --stack-yaml $TCTAC/stack.yaml runghc --package tctac
 
 import Runner
 import Summer
