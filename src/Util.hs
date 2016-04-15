@@ -2,10 +2,11 @@
 module Util where
 
 
+import Data.Maybe (fromMaybe)
 import           Control.Exception        (bracket)
 import           Control.Monad.Except     (unless)
 import qualified Data.Aeson               as A
-import qualified Data.ByteString.Lazy     as BS (writeFile)
+import qualified Data.ByteString.Lazy     as BS (readFile,writeFile)
 import qualified System.Directory         as Dir
 import qualified System.FilePath.Posix    as FP
 import           System.IO                (hPutStr, stderr)
@@ -18,6 +19,10 @@ import           Text.Printf              (printf)
 
 serialise :: A.ToJSON a => FilePath -> a -> IO ()
 serialise fp = BS.writeFile fp . A.encode
+
+deserialise :: A.FromJSON a => FilePath -> IO a
+deserialise fp = (fromMaybe err . A.decode) <$> BS.readFile fp
+  where err = error "oh no: an error occured in deserialise"
 
 showDouble :: Double -> String
 showDouble = printf "%.2f"

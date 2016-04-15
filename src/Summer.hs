@@ -1,89 +1,67 @@
 {-# LANGUAGE QuasiQuotes #-}
 module Summer where
 
-import qualified Data.Map.Strict    as M
-import qualified Data.Set           as S
-import Data.Monoid
+import           Control.Monad                   (filterM)
+import qualified Data.Map.Strict                 as M
+import           Data.Monoid
+import qualified Data.Set                        as S
+import qualified System.Directory                as Dir
 import           System.Process
-import           Control.Exception  (bracket)
-import           System.Directory
 -- import           System.Environment (getArgs)
-import           System.FilePath
-import           Text.CSV           (parseCSVFromFile)
 
-import Text.Hamlet
-import Text.Blaze.Html.Renderer.String (renderHtml)
+import           Text.Blaze.Html.Renderer.String (renderHtml)
+import           Text.Hamlet
 
--- import Debug.Trace
+import           Runner
+import           Util
 
--- import Turtle
+import Debug.Trace
+
 
 synopsis :: String
-synopsis = "sumex [--dir Filepath] [--tools tool1 tool2 ...]"
+synopsis = "sumex [--tools tool1 tool2 ...]"
 
+summarise :: [TId] -> IO ()
+summarise [] = Dir.getCurrentDirectory >>= Dir.getDirectoryContents >>= summarise
+summarise xs = filterM Dir.doesDirectoryExist xs >>= gather >>= writeTable "table.html"
 
+type PId = String
+type TId = String
 
-dostuff :: IO()
-dostuff = gather "mat1"
-  
+data Column = Column { cHead :: TId, cRows :: M.Map PId (Maybe Result)}
+type DB     = [Column]
 
-gather :: String -> IO ()
-gather s = callCommand $
-  "for f in $(find " <> s <> " -type f -name '*.result'); do (cat \"${f}\"; echo) >> " <> s <> ".summary.csv; done"
+gather :: [FilePath] -> IO DB
+gather ts = normalise <$> traverse gatherOne ts
+  where
+    gatherOne t = do
+      fs <- lines <$> readCreateProcess (shell $ "find " <> t <> " -type f -name '*.result'") mempty
+      rs <- (M.fromList . fmap (\r -> (rProblem r, Just r))) <$> traverse deserialise fs
+      return $ Column{cHead = t, cRows = rs}
+    normalise cs = fillMissing  `fmap` cs
+      where
+        allps = S.unions $ (M.keysSet . cRows) `fmap` cs
+        dummy = M.fromList $ zip (S.toList allps) (repeat Nothing)
+        fillMissing c = c{cRows = M.union (cRows c) dummy}
 
--- main :: IO ()
--- main = do
---   (fp:ts) <- getArgs
---   readAndWrite fp ts
+mkTable :: DB -> ([TId], [(PId, [Maybe Result])])
+mkTable db              = M.assocs `fmap` foldr merge ([],M.empty) db
+  where
+    merge c (ts,ms) = (cHead c:ts, merge' (cRows c) ms)
+    merge'          = M.mergeWithKey (\_ a b -> traceShow (a,b) $ Just (a:b)) (fmap (:[])) id
 
-type Problem = FilePath
-type Tool    = FilePath
-type Answer  = String
-type Time    = String
+-- mkSummary :: DB -> Html
+-- mkSummary = undefined
 
-data Result = Result Tool (M.Map Problem (Maybe (Problem,Answer,Time)))
-  deriving Show
+-- writeResults :: [Result] -> IO ()
+-- writeResults = writeTable
 
-readAndWrite :: FilePath -> [Tool] -> IO ()
-readAndWrite fp ts = withDir fp $ readResults ts >>= \rs -> writeResults (prepareResults rs)
-  where withDir dir io = bracket getCurrentDirectory setCurrentDirectory $ \ _ -> setCurrentDirectory dir >> io
-
-readResults :: [Tool] -> IO [Result]
-readResults ts = readResult `mapM` ts
-
-readResult :: Tool -> IO Result
-readResult t = do
+writeTable :: FilePath -> DB -> IO()
+writeTable fp db = do
   let
-    fp = t<>".summary.csv"
-    fromCSV [tool,prob, res, time] es = (dropExtension prob, Just (t</>prob,res,time)):es
-    fromCSV [""] es              = es
-    fromCSV rs es                = error $ "An error occured when processing the csv file:" ++ fp ++ ":" ++ show rs
-
-  csvE <- parseCSVFromFile fp
-  case csvE of
-    Left  err -> error $ "An error occured when parsing the csv file:" ++ fp ++ ":" ++ show err
-    Right csv -> return (Result t (M.fromList $ foldr fromCSV [] csv))
-
-prepareResults :: [Result] -> [Result]
-prepareResults rs = fillMissing  `fmap` rs
-  where
-    allps = S.unions $ (\(Result _ m) -> M.keysSet m) `fmap` rs
-    dummy = M.fromList $ zip (S.toList allps) (repeat Nothing)
-    fillMissing (Result t m) = Result t (M.union m dummy)
-
-mkTable :: [Result] -> ([Tool],[(Problem,[Maybe(Problem,Answer,Time)])])
-mkTable rs = M.assocs `fmap` foldr merge ([],M.empty) rs
-  where
-    merge (Result t m) (ts,ms) = (t:ts, merge' m ms)
-    merge'                     = M.mergeWithKey (\k a b -> Just (a:b)) (fmap (:[])) id
-
-writeResults :: [Result] -> IO ()
-writeResults = writeTable
-
-writeTable :: [Result] -> IO()
-writeTable rs = do
-  let (ts,es) = mkTable rs
-  putStrLn $ renderHtml $
+    fmap5 = fmap . fmap . fmap . fmap . fmap
+  let (ts,ps) = fmap5 (show . rOutcome) $ mkTable db
+  writeFile fp $ renderHtml
     [shamlet|
 $doctype 5
 <html>
@@ -95,12 +73,12 @@ $doctype 5
         <td>
         $forall t <- ts
           <td>#{t}
-      $forall (p,rs) <- es
+      $forall (p,rs) <- ps
         <tr>
           $forall mr <- rs
             <td>#{p}
-              $maybe (a,b,c) <- mr
-                <td>#{b}
+              $maybe r <- mr
+                <td>#{r}
               $nothing
                 <td> missing
     |]

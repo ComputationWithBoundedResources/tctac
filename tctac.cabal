@@ -25,6 +25,7 @@ library
     Runner
     Summer
     Util
+    RunAndSum
   build-depends:
     aeson,
     async, 

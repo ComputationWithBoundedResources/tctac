@@ -3,7 +3,7 @@
 -- | This module provides a tool for running experiments.
 module Runner
   ( Experiment (..), Tool (..), Outcome (..) , Result (..)
-  , runExperiment
+  , run
   ) where
 
 
@@ -69,11 +69,14 @@ instance A.ToJSON a => A.ToJSON (Tool a) where
 instance A.ToJSON Result where
 instance A.ToJSON a => A.ToJSON (Outcome a) where
 
+instance A.FromJSON a => A.FromJSON (Tool a) where
+instance A.FromJSON Result where
+instance A.FromJSON a => A.FromJSON (Outcome a) where
 
 --- * go -------------------------------------------------------------------------------------------------------------
 
-runExperiment :: Experiment -> IO ()
-runExperiment e = do
+run :: Experiment -> IO ()
+run e = do
   ps <- findProblems << shoutLn ">>>START" << shoutLn "find ..."
   ts <- initTests ps << shoutLn "init ..."
   runTests e ts      << shoutLn "run ..." <* shoutLn "<<<END"
@@ -117,7 +120,8 @@ runTest e (p,t) = unlessM done $ eval e (p,t) >>= \f -> writeProof f >> (process
 eval :: Experiment -> Test -> IO Result
 eval e (p,t) = do
   (z,r) <- timeItT $ spawn e (p,t)
-  return Result{ rProblem = p, rTool = void t, rOutcome = r , rTime = z }
+  return Result{ rProblem = p', rTool = void t, rOutcome = r , rTime = z }
+  where p' = FP.makeRelative (tName t) (FP.dropExtension p)
 
 spawn :: Experiment -> Test -> IO (Outcome Out)
 spawn e (p,t) = do
