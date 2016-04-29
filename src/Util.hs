@@ -2,16 +2,17 @@
 module Util where
 
 
-import Data.Maybe (fromMaybe)
-import           Control.Exception        (bracket)
-import           Control.Monad.Except     (unless)
-import qualified Data.Aeson               as A
-import qualified Data.ByteString.Lazy     as BS (readFile,writeFile)
-import qualified System.Directory         as Dir
-import qualified System.FilePath.Posix    as FP
-import           System.IO                (hPutStr, stderr)
-import           System.Time              (ClockTime (TOD), getClockTime)
-import           Text.Printf              (printf)
+import           Control.Exception     (bracket)
+import           Control.Monad         (when)
+import           Control.Monad.Except  (unless)
+import qualified Data.Aeson            as A
+import qualified Data.ByteString.Lazy  as BS (readFile, writeFile)
+import           Data.Maybe            (fromMaybe)
+import qualified System.Directory      as Dir
+import qualified System.FilePath.Posix as FP
+import           System.IO             (hPutStr, stderr)
+import           System.Time           (ClockTime (TOD), getClockTime)
+import           Text.Printf           (printf)
 
 
 (<<) :: IO b -> IO a -> IO b
@@ -35,6 +36,9 @@ unlessM b m = b >>= flip unless m
 hasExtension :: String -> FilePath -> Bool
 hasExtension s fp = s == ex || s == tail ex
   where ex = FP.takeExtension fp
+
+removeDirectoryForcefully :: FilePath -> IO ()
+removeDirectoryForcefully fp = Dir.doesDirectoryExist fp >>= \b -> when b (Dir.removeDirectoryRecursive fp)
 
 withCurrentDirectory :: FilePath -> IO a -> IO a
 withCurrentDirectory dir action =

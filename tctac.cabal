@@ -38,10 +38,11 @@ library
     filepath,
     mtl,
     old-time,
+    optparse-applicative,
     process,
     shakespeare,
-    timeout,
-    turtle
+    timeout
+    -- turtle
   ghc-options:
     -Wall -rtsopts -with-rtsopts=-N
 
