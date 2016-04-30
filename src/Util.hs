@@ -23,7 +23,7 @@ serialise fp = BS.writeFile fp . A.encode
 
 deserialise :: A.FromJSON a => FilePath -> IO a
 deserialise fp = (fromMaybe err . A.decode) <$> BS.readFile fp
-  where err = error "oh no: an error occured in deserialise"
+  where err = error $ "oh no: an error occured in deserialise: " ++ fp
 
 showDouble :: Double -> String
 showDouble = printf "%.2f"

@@ -38,7 +38,7 @@ gather :: [FilePath] -> IO DB
 gather ts = normalise <$> traverse gatherOne ts
   where
     gatherOne t = do
-      fs <- lines <$> readCreateProcess (shell $ "find " <> t <> " -type f -name '*.result' -o -name '*.err'") mempty
+      fs <- lines <$> readCreateProcess (shell $ "find " <> t <> " -type f -name '*.result'") mempty
       rs <- (M.fromList . fmap (\r -> (rProblem r, Just r))) <$> traverse deserialise fs
       return $ Column{cHead = t, cRows = rs}
     normalise cs = fillMissing  `fmap` cs
