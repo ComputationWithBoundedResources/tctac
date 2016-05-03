@@ -31,7 +31,6 @@ library
     async, 
     base >= 4.7 && < 5,
     blaze-html,
-    bytestring,
     containers,
     csv,
     directory,
@@ -41,6 +40,7 @@ library
     optparse-applicative,
     process,
     shakespeare,
+    text,
     timeout
     -- turtle
   ghc-options:
