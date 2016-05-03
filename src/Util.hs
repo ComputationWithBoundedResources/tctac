@@ -7,7 +7,8 @@ import           Control.Monad         (when)
 import           Control.Monad.Except  (unless)
 import qualified Data.Aeson            as A
 import           Data.Maybe            (fromMaybe)
-import qualified Data.Text as T
+import qualified Data.ByteString       as BS (readFile, writeFile)
+import qualified Data.ByteString.Lazy  as BS (fromStrict, toStrict)
 import qualified System.Directory      as Dir
 import qualified System.FilePath.Posix as FP
 import           System.IO             (hPutStr, stderr)
@@ -19,10 +20,10 @@ import           Text.Printf           (printf)
 (<<) = flip (>>)
 
 serialise :: A.ToJSON a => FilePath -> a -> IO ()
-serialise fp = T.writeFile fp . A.encode
+serialise fp = BS.writeFile fp . BS.toStrict . A.encode
 
 deserialise :: A.FromJSON a => FilePath -> IO a
-deserialise fp = (fromMaybe err . A.decode) <$> T.readFile fp
+deserialise fp = (fromMaybe err . A.decode . BS.fromStrict) <$> BS.readFile fp
   where err = error $ "oh no: an error occured in deserialise: " ++ fp
 
 showDouble :: Double -> String
