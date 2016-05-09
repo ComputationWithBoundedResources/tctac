@@ -36,21 +36,24 @@ data Experiment = Experiment
   }
 
 -- | (Post-)processor for tool output.
-type Process = String -> String
+type Process = Outcome String -> Outcome String
 
 -- | Some useful post processors.
 allLines, firstLine, termcomp, tttac  :: Process
 allLines out  = out
-firstLine out = let ls = lines out in if null ls then "MAYBE" else head ls
-termcomp out  = case firstLine out of
-  'W':'O':'R':'S':'T':'_':'C':'A':'S':'E':'(':xs -> init . tail $ dropWhile (( /= ) ',') xs
-  _                                              -> "MAYBE"
-tttac out     = case firstLine out of
-  'Y':'E':'S':'(': xs -> init . tail $ dropWhile ((/=) ',') xs
-  _                   -> "MAYBE"
+firstLine (Success out) = let ls = lines out in if null ls then Maybe else Success (head ls)
+firstLine out           = out
+termcomp out = case firstLine out of
+  Success ('W':'O':'R':'S':'T':'_':'C':'A':'S':'E':'(':xs) -> Success . init . tail $ dropWhile (( /= ) ',') xs
+  Success _                                                -> Maybe
+  _                                                        -> out
+tttac out = case firstLine out of
+  Success ('Y':'E':'S':'(': xs) -> Success . init . tail $ dropWhile ((/=) ',') xs
+  Success _                     -> Maybe
+  _                             -> out
 
 process :: Tool Process -> Result -> Result
-process t r = r{rOutcome = tProcessor t `fmap` (rOutcome r)}
+process t r = r{rOutcome = tProcessor t (rOutcome r)}
 
 
 -- TODO: handle arguments properly
@@ -69,7 +72,7 @@ type Out     = String
 type Err     = String
 
 -- | The outcome of applying a tool on a problem.
-data Outcome a = Success a | Failure Err | Timeout
+data Outcome a = Success a | Maybe | Failure Err | Timeout
   deriving (Eq, Ord, Show, Functor, Generic, A.ToJSON, A.FromJSON)
 
 -- TODO we don't need result; create serialisable value immediatelly
@@ -94,6 +97,7 @@ run e = do
   `catchError` handler
   where
     deleteTests = forM_ (eTools e) $ \t -> removeDirectoryForcefully (tName t)
+    -- FIXME: url encode? files with # make anchors
     findProblems = lines <$> readCreateProcess (shell $ "find " <> eTestbed e <> " -type f") mempty -- TODO: built in function
     initTests ps =
       sequence
@@ -125,6 +129,7 @@ runTest e (p,t) = unlessM done $ eval e (p,t) >>= \f -> writeProof f >> (process
       Success out -> writeFile' outfile out
       Failure err -> writeFile' errfile err
       Timeout     -> writeFile' outfile "TIMEOUT"
+      Maybe       -> error "Runner.runTest: an unexpected outcome"
 
 
 eval :: Experiment -> Test -> IO Result

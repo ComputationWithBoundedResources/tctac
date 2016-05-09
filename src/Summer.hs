@@ -2,18 +2,20 @@
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 module Summer where
 
-import Data.Maybe (catMaybes)
-import           Control.Monad                   (filterM)
-import qualified Data.Map.Strict                 as M
+import           Control.Monad                 (filterM)
+import qualified Data.Map.Strict               as M
+import           Data.Maybe                    (catMaybes)
 import           Data.Monoid
-import qualified Data.Set                        as S
-import qualified System.Directory                as Dir
-import           System.FilePath.Posix           ((<.>), (</>))
+import qualified Data.Set                      as S
+import qualified System.Directory              as Dir
+import           System.FilePath.Posix         ((<.>), (</>))
 import           System.Process
 -- import           System.Environment (getArgs)
 
-import           Text.Blaze.Html.Renderer.String (renderHtml)
+import qualified Data.Text.Lazy.IO             as T (writeFile)
+import           Text.Blaze.Html.Renderer.Text (renderHtml)
 import           Text.Hamlet
+-- import           Text.Lucius
 
 import           Runner
 import           Util
@@ -26,7 +28,7 @@ synopsis = "sumex [--tools tool1 tool2 ...]"
 
 summarise :: [TId] -> IO ()
 summarise [] = Dir.getCurrentDirectory >>= Dir.getDirectoryContents >>= summarise
-summarise xs = filterM Dir.doesDirectoryExist xs >>= gather >>= \db -> (writeTable "table.html" db >> writeSummary "summary.html" db)
+summarise xs = filterM Dir.doesDirectoryExist xs >>= gather >>= writeTable "table.html"
 
 type PId = String
 type TId = String
@@ -69,7 +71,7 @@ writeTable fp db = do
   let
     fmap5 = fmap . fmap . fmap . fmap . fmap
   let (ts,ps) = fmap5 toEntry $ mkTable db
-  writeFile fp $ renderHtml
+  T.writeFile fp $ renderHtml
     [shamlet|
 $doctype 5
 <html>
@@ -79,43 +81,302 @@ $doctype 5
     <title> experiment
   <body>
     <h1> Details
-    <table class="table-autofilter table-autosort table-filtered-rowcount:cnt">
-      <thead>
-        <tr>
-          <th>
-          $forall t <- ts
-            <th colspan="3">
-              <div class="toolname">#{t}
-        <tr>
-          <th class="table-sortable:default table-sortable">
-            <div class="lhd">Problem (<span id="cnt">all</span> selected)
-          $forall t <- ts
-            <th> *
-            <th class="table-filterable">answer
-            <th class="table-sortable:numeric table-sortable">time
-      <tbody>
-        $forall (p,rs) <- ps
+    <div class="experiments">
+      <table class="table-autofilter table-autosort table-filtered-rowcount:cnt">
+        <thead>
           <tr>
-            <td>
-              <div class="lhd">#{p}
-            $forall mr <- rs
-              $maybe (l,o,z) <- mr
-                <td>
-                  <a href="#{l}">*
-                <td>
-                  $case o
-                    $of Success out
-                      <a href="#{l}.proof">#{out}
-                    $of Failure err
-                      <a href="#{l}.err">ERROR
-                    $of Timeout
-                      TIMEOUT
-                <td>#{z}
-              $nothing
-                <td>
-                <td> missing
-                <td> -
+            <th>
+            $forall t <- ts
+              <th colspan="3">
+                <div class="toolname">#{t}
+          <tr>
+            <th class="table-sortable:default table-sortable">
+              <div class="lhd">Problem (<span id="cnt">all</span> selected)
+            $forall t <- ts
+              <th> *
+              <th class="table-filterable">answer
+              <th class="table-sortable:numeric table-sortable">
+        <tbody>
+          $forall (p,rs) <- ps
+            <tr>
+              <td>
+                <div class="lhd">#{p}
+              $forall mr <- rs
+                $maybe (l,o,z) <- mr
+                  <td>
+                    <a href="#{l}">*
+                  <td>
+                    $case o
+                      $of Success out
+                        <a href="#{l}.proof">
+                          <div class="yes">#{out}
+                      $of Maybe
+                        <a href="#{l}.proof">
+                          <div class="maybe">MAYBE
+                      $of Failure err
+                        <a href="#{l}.err">
+                          <div class="error">ERROR
+                      $of Timeout
+                        <div class="timeout">TIMEOUT
+                  <td>#{z}
+                $nothing
+                  <td>
+                  <td> missing
+                  <td> -
     |]
+
+-- TODO: MS:
+-- writeCss :: FilePath -> IO ()
+-- writeCss fp =
+--   T.writeFile fp $ renderCss $
+--     [lucius|
+-- /* general */
+-- .experiments th.table-sortable {
+--     background-image:url("http://cl-informatik.uibk.ac.at/software/tct/includes/sort_ascending.png");
+--     background-repeat:no-repeat;
+--     background-position:bottom left
+-- }
+
+-- .experiments th.table-sorted-asc {
+--     background-image:url("http://cl-informatik.uibk.ac.at/software/tct/includes/sort_ascending.png");
+--     background-repeat:no-repeat;
+--     background-position:bottom left
+-- }
+-- .experiments th.table-sorted-desc {
+--     background-image:url("http://cl-informatik.uibk.ac.at/software/tct/includes/sort_descending.png");
+--     background-repeat:no-repeat;
+--     background-position:bottom left
+-- }
+
+-- .experiments .toolname {
+--  color: #2b5573;
+--  vertical-align:middle;
+-- }
+
+-- .experiments .lhd {
+--  text-align: right;
+--  /* width:        200px; */
+--  padding-right: 20px;
+--  color: #2b5573;
+-- }
+
+-- .experiments .fileref {
+--  color: #2b5573;
+-- }
+
+-- .experiments .rowsep {
+--  height:        20px;
+-- }
+
+-- .experiments table {
+--    border-collapse: separate;
+-- }
+
+-- .experiments th {
+--  text-align: center;
+--  color: #2b5573;
+--  font-weight: normal;
+--  vertical-align:bottom;
+-- }
+
+-- .summary th {
+--  text-align: center;
+--  color: #2b5573;
+--  font-weight: normal;
+--  vertical-align:bottom;
+-- }
+
+-- .experiments option {
+--     padding-right: 0px;
+--     font-size: 10px;
+-- }
+
+
+-- .experiments select {
+--     padding-right: 0px;
+--     font-size: 10px;
+-- }
+
+
+-- /* entries */
+
+-- .experiments .missing {
+--  color: #DDDDDD;
+--  font-style: italic;
+--  background-color: white;
+-- }
+
+-- .experiments .yes {
+--  color: #009900;
+--  font-style: italic;
+--  background-color: white;
+-- }
+
+-- .experiments .no {
+--  color: #990000;
+--  font-style: italic;
+--  background-color: white;
+-- }
+
+-- .experiments .maybe {
+--  color: #FF9900;
+--  font-style: italic;
+--  background-color: white;
+-- }
+
+-- .experiments .timeout {
+--  color: #FFBB00;
+--  font-style: italic;
+--  background-color: white;
+-- }
+
+-- .experiments .error {
+--  color: #FF0000;
+--  font-style: italic;
+--  background-color: white;
+-- }
+
+-- .experiments .win {
+--  color: #00FF00;
+--  font-weight: bold;
+--  border: 0.5mm solid #DDDDDD
+-- }
+
+-- .experiments .tooloutput {
+--  font-family: monospace;
+--  line-height: normal;
+--  border: 2px dashed #333333;
+--  padding-top: 10px;
+--  padding-bottom: 10px;
+--  padding-left: 10px;
+--  padding-right: 10px;
+--  background:   #DDDDDD;
+-- }
+
+
+-- /* exec times page */
+-- .experiments .exectime {
+--  color:   #666666;
+-- }
+
+-- .experiments .exectimes td {
+--  text-align: center;
+--  padding-left: 5px;
+--  width:        60px;
+--  padding-right: 5px;
+-- }
+
+-- .experiments .exectimes td {
+--  color:   #666666;
+--  text-align: center
+-- }
+
+-- /* comparison */
+-- .comparison th {
+--  text-align: center;
+--  color: #2b5573;
+--  font-weight: normal;
+--  vertical-align:bottom;
+-- }
+
+-- .comparison .toolA {
+--  color: #009900;
+-- }
+
+-- .comparison .toolB {
+--  color: #990000;
+-- }
+
+-- .comparison .toolAB {
+--  color: #FF9900;
+-- }
+
+
+-- .experiments .comparison td {
+--  text-align: center;
+--  padding-left: 5px;
+--  width:        50px;
+--  padding-right: 5px;
+--  height:auto;
+-- }
+
+
+-- /* summary page */
+
+-- .experiments .summary td {
+--  text-align: center;
+--  padding-left: 5px;
+--  color:   #666666;
+--  width:        60px;
+--  padding-right: 5px;
+-- }
+
+-- /* results page */
+
+-- .experiments .results a {
+--  color:   #666666;
+--  text-decoration: none;
+-- }
+
+-- .experiments .results .lhd {
+--  text-align: right;
+--  padding-right: 5px;
+-- }
+
+
+-- .experiments .results td {
+--  text-align: center;
+--  padding-left: 5px;
+--  width:        60px;
+--  padding-right: 5px;
+--  height:auto;
+-- }
+
+
+-- /* result page */
+
+
+-- .experiments .result td {
+--  text-align: left;
+--  padding-left: 5px;
+-- }
+
+-- .experiments .result h1 {
+-- 	font-family: Arial, Helvetica, sans-serif;
+-- 	color: #2b5573;
+-- 	font-size: 14pt;
+-- }
+-- .experiments .result h2 {
+-- 	font-family: Arial, Helvetica, sans-serif;
+-- 	color: #2b5573;
+-- 	font-size: 13pt;
+-- }
+-- .experiments .result h3 {
+-- 	font-family: Arial, Helvetica, sans-serif;
+-- 	color: #2b5573;
+-- 	font-size: 12pt;
+-- }
+-- .experiments .result h4 {
+-- 	font-family: Arial, Helvetica, sans-serif;
+-- 	color: #2b5573;
+-- 	font-size: 11pt;
+-- }
+-- .experiments .result h5 {
+--         font-family: Arial, Helvetica, sans-serif;
+-- 	color: #2b5573;
+-- 	font-size: 10pt;
+-- }
+
+-- .horizontal {
+--     behavior:url(-ms-transform.htc);
+--     -moz-transform:rotate(-90deg) translateX(-20mm);
+--     -webkit-transform:rotate(-90deg);
+--     -o-transform:rotate(-90deg);
+--     -ms-transform:rotate(-90deg);
+--     text-align:right;
+-- }
+--     |]
+--     undefined
 
 
 --- *  summary -------------------------------------------------------------------------------------------------------
@@ -137,7 +398,7 @@ mkSummary db = let (a,b) = foldr mkColumn ([],[]) db in (a,zip (show `fmap` rs) 
 writeSummary :: FilePath -> DB -> IO()
 writeSummary fp db = do
   let (ts,ps) = mkSummary db
-  writeFile fp $ renderHtml
+  T.writeFile fp $ renderHtml
     [shamlet|
 $doctype 5
 <html>

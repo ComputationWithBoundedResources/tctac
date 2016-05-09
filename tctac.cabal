@@ -41,6 +41,7 @@ library
     optparse-applicative,
     process,
     shakespeare,
+    text,
     timeout
     -- turtle
   ghc-options:
