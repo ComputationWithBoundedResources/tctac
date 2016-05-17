@@ -9,7 +9,7 @@ module Runner
 
 import           Control.Concurrent       (threadDelay)
 import           Control.Concurrent.Async (mapConcurrently)
-import           Control.Monad            (void, forM_, when)
+import           Control.Monad            (forM_, void, when)
 import           Control.Monad.Except     (catchError, unless)
 import qualified Data.Aeson               as A
 import           Data.Function            ((&))
@@ -90,7 +90,7 @@ data Result = Result
 run :: Experiment -> IO ()
 run e = do
   when (eRepeat e) deleteTests
-  ps <- findProblems << shoutLn "find ..." << shoutLn ">>>START" 
+  ps <- findProblems << shoutLn "find ..." << shoutLn ">>>START"
   ts <- initTests ps << shoutLn "init ..."
   runTests e ts      << shoutLn "run ..." <* shoutLn "<<<END"
 
@@ -107,7 +107,7 @@ run e = do
           , hasExtension (tExtension t) p
           , let fp = tName t </> FP.makeRelative (eIgnore e) p ]
     handler err = printError ("An error occured: " ++ show err ++ "\n") >> exitFailure
-    
+
 
 runTests :: Experiment -> [Test] -> IO ()
 runTests _ [] = return ()

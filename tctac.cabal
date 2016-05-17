@@ -7,11 +7,14 @@ license:             BSD3
 license-file:        LICENSE
 author:              Michael Schaper
 maintainer:          michael.schaper@uibk.ac.at
-copyright:           2015, Michael Schaper
+copyright:           2016, Michael Schaper
 category:            Utils
 build-type:          Simple
 extra-source-files:
   README.md
+data-files:
+  etc/experiments.css
+  etc/table.js
 cabal-version:       >=1.8
 
 source-repository head
@@ -26,6 +29,8 @@ library
     Summer
     Util
     RunAndSum
+  other-modules:
+    Paths_tctac
   build-depends:
     aeson,
     async, 
