@@ -2,7 +2,7 @@
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 module Summer where
 
-import           Control.Monad                 (filterM)
+import           Control.Monad                 (filterM, forM_)
 import qualified Data.Map.Strict               as M
 -- import           Data.Maybe                    (catMaybes)
 import           Data.Monoid
@@ -68,11 +68,11 @@ toEntry Result{rTool=t,rProblem=p,rTime=z,rOutcome=out} = (fp,out, showDouble z)
 
 writeTable :: FilePath -> DB -> IO()
 writeTable fp db = do
-  getDataFileName "etc/experiments.css" >>= flip copyFileIfMissing "experiments.css"
-  getDataFileName "etc/table.js" >>= flip copyFileIfMissing "table.js"
+  forM_ ["experiments.css", "table.js", "sort_ascending.png", "sort_descending.png"] $
+    \fn -> getDataFileName ("etc" </> fn) >>= flip copyFileIfMissing fn
   let
     fmap5 = fmap . fmap . fmap . fmap . fmap
-  let (ts,ps) = fmap5 toEntry $ mkTable db
+    (ts,ps) = fmap5 toEntry $ mkTable db
   T.writeFile fp $ renderHtml
     [shamlet|
 $doctype 5

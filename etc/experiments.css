@@ -1,17 +1,17 @@
 /* general */
 .experiments th.table-sortable { 
-    background-image:url("http://cl-informatik.uibk.ac.at/software/tct/includes/sort_ascending.png"); 
+    background-image:url("sort_ascending.png"); 
     background-repeat:no-repeat; 
     background-position:bottom left
 }
 
 .experiments th.table-sorted-asc { 
-    background-image:url("http://cl-informatik.uibk.ac.at/software/tct/includes/sort_ascending.png"); 
+    background-image:url("sort_ascending.png"); 
     background-repeat:no-repeat; 
     background-position:bottom left
 }
 .experiments th.table-sorted-desc { 
-    background-image:url("http://cl-informatik.uibk.ac.at/software/tct/includes/sort_descending.png"); 
+    background-image:url("sort_descending.png"); 
     background-repeat:no-repeat; 
     background-position:bottom left
 }
