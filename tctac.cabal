@@ -33,7 +33,6 @@ library
     Paths_tctac
   build-depends:
     aeson,
-    async, 
     base >= 4.7 && < 5,
     blaze-html,
     bytestring,
@@ -44,6 +43,7 @@ library
     mtl,
     old-time,
     optparse-applicative,
+    pooled-io,
     process,
     shakespeare,
     text,

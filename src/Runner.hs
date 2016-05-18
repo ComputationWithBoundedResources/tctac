@@ -8,7 +8,8 @@ module Runner
 
 
 import           Control.Concurrent       (threadDelay)
-import           Control.Concurrent.Async (mapConcurrently)
+-- import           Control.Concurrent.Async (mapConcurrently)
+import           Control.Concurrent.PooledIO.Independent (runLimited)
 import           Control.Monad            (forM_, void, when)
 import           Control.Monad.Except     (catchError, unless)
 import qualified Data.Aeson               as A
@@ -108,11 +109,13 @@ run e = do
           , let fp = tName t </> FP.makeRelative (eIgnore e) p ]
     handler err = printError ("An error occured: " ++ show err ++ "\n") >> exitFailure
 
-
 runTests :: Experiment -> [Test] -> IO ()
-runTests _ [] = return ()
-runTests e mx = mapConcurrently (runTest e) mx1 >> threadDelay 2000 >> runTests e mx2
-  where (mx1,mx2) = splitAt (eProcesses e) mx
+runTests e mx = runLimited (eProcesses e) (runTest e `fmap` mx)
+
+-- runTests :: Experiment -> [Test] -> IO ()
+-- runTests _ [] = return ()
+-- runTests e mx = mapConcurrently (runTest e) mx1 >> threadDelay 2000 >> runTests e mx2
+--   where (mx1,mx2) = splitAt (eProcesses e) mx
 
 runTest :: Experiment -> Test -> IO ()
 runTest e (p,t) = unlessM done $ eval e (p,t) >>= \f -> writeProof f >> (process t f & (\g -> shoutLn (show g) >> serialise resfile g))

@@ -1,6 +1,9 @@
-resolver: lts-5.12
-packages:
-  - '.'
-extra-deps:
-  - timeout-0.1.1
 flags: {}
+packages:
+- '.'
+extra-deps:
+- concurrent-split-0.0.0.1
+- pooled-io-0.0.2.1
+- timeout-0.1.1
+- unsafe-0.0
+resolver: lts-5.12
