@@ -7,21 +7,21 @@ module Runner
   ) where
 
 
-import           Control.Concurrent       (threadDelay)
+-- import           Control.Concurrent       (threadDelay)
 -- import           Control.Concurrent.Async (mapConcurrently)
 import           Control.Concurrent.PooledIO.Independent (runLimited)
-import           Control.Monad            (forM_, void, when)
-import           Control.Monad.Except     (catchError, unless)
-import qualified Data.Aeson               as A
-import           Data.Function            ((&))
-import           Data.Monoid              ((<>))
-import           GHC.Generics             (Generic)
-import qualified System.Directory         as Dir
-import           System.Exit              (ExitCode (..), exitFailure)
-import           System.FilePath.Posix    ((<.>), (</>))
-import qualified System.FilePath.Posix    as FP
-import           System.Process           (readCreateProcess, readProcessWithExitCode, shell)
-import qualified System.Timeout           as T (timeout)
+import           Control.Monad                           (forM_, void, when)
+import           Control.Monad.Except                    (catchError, unless)
+import qualified Data.Aeson                              as A
+import           Data.Function                           ((&))
+import           Data.Monoid                             ((<>))
+import           GHC.Generics                            (Generic)
+import qualified System.Directory                        as Dir
+import           System.Exit                             (ExitCode (..), exitFailure)
+import           System.FilePath.Posix                   ((<.>), (</>))
+import qualified System.FilePath.Posix                   as FP
+import           System.Process                          (readCreateProcess, readProcessWithExitCode, shell)
+import qualified System.Timeout                          as T (timeout)
 
 import           Util
 
@@ -85,6 +85,13 @@ data Result = Result
   , rTime    :: Double   -- ^ time needed
   } deriving (Eq, Ord, Show, Generic, A.ToJSON, A.FromJSON)
 
+ppResult :: Result -> String
+ppResult Result{rTool=t, rProblem=p, rOutcome=o, rTime=z } =
+  fillSep 20 (tName t)
+  <> fillSep 15 (FP.takeBaseName p)
+  <> fillSep 18 (show o)
+  <> showDouble z
+  where fillSep i s = take i (s <> repeat ' ') <> "  "
 
 --- * go -------------------------------------------------------------------------------------------------------------
 
@@ -118,7 +125,7 @@ runTests e mx = runLimited (eProcesses e) (runTest e `fmap` mx)
 --   where (mx1,mx2) = splitAt (eProcesses e) mx
 
 runTest :: Experiment -> Test -> IO ()
-runTest e (p,t) = unlessM done $ eval e (p,t) >>= \f -> writeProof f >> (process t f & (\g -> shoutLn (show g) >> serialise resfile g))
+runTest e (p,t) = unlessM done $ eval e (p,t) >>= \f -> writeProof f >> (process t f & (\g -> shoutLn (ppResult g) >> serialise resfile g)) -- FIXME: thread safe shoutLn
   where
     resfile = p <.> "result"
     errfile = p <.> "err"
