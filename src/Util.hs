@@ -19,6 +19,9 @@ import           Text.Printf           (printf)
 (<<) :: IO b -> IO a -> IO b
 (<<) = flip (>>)
 
+for :: [a] -> (a -> b) -> [b]
+for = flip map
+
 serialise :: A.ToJSON a => FilePath -> a -> IO ()
 serialise fp = BS.writeFile fp . BS.toStrict . A.encode
 

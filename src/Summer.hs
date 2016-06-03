@@ -2,15 +2,16 @@
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
 module Summer where
 
-import           Control.Monad                 (filterM, forM_)
+import           Control.Arrow                 ((&&&))
+import           Control.Monad                 (filterM, forM_, join)
+import qualified Data.List                     as L (find)
 import qualified Data.Map.Strict               as M
--- import           Data.Maybe                    (catMaybes)
+import           Data.Maybe                    (catMaybes)
 import           Data.Monoid
 import qualified Data.Set                      as S
 import qualified System.Directory              as Dir
 import           System.FilePath.Posix         ((<.>), (</>))
 import           System.Process
--- import           System.Environment (getArgs)
 
 import qualified Data.Text.Lazy.IO             as T (writeFile)
 import           Text.Blaze.Html.Renderer.Text (renderHtml)
@@ -24,12 +25,9 @@ import           Util
 -- import           Debug.Trace
 
 
-synopsis :: String
-synopsis = "sumex [--tools tool1 tool2 ...]"
-
 summarise :: [TId] -> IO ()
 summarise [] = Dir.getCurrentDirectory >>= Dir.getDirectoryContents >>= summarise
-summarise xs = filterM Dir.doesDirectoryExist xs >>= gather >>= writeTable "table.html"
+summarise xs = filterM Dir.doesDirectoryExist xs >>= gather >>= writeExperiments "table.html"
 
 type PId = String
 type TId = String
@@ -38,43 +36,41 @@ data Column = Column { cHead :: TId, cRows :: M.Map PId (Maybe Result)}
 type DB     = [Column]
 
 gather :: [FilePath] -> IO DB
-gather ts = normalise <$> traverse gatherOne ts
-  where
-    gatherOne t = do
-      fs <- lines <$> readCreateProcess (shell $ "find " <> t <> " -type f -name '*.result'") mempty
-      rs <- (M.fromList . fmap (\r -> (rProblem r, Just r))) <$> traverse deserialise fs
-      return $ Column{cHead = t, cRows = rs}
-    normalise cs = fillMissing  `fmap` cs
-      where
-        allps = S.unions $ (M.keysSet . cRows) `fmap` cs
-        dummy = M.fromList $ zip (S.toList allps) (repeat Nothing)
-        fillMissing c = c{cRows = M.union (cRows c) dummy}
+gather = traverse gatherOne where
+  gatherOne t = do
+    fs <- lines <$> readCreateProcess (shell $ "find " <> t <> " -type f -name '*.result'") mempty
+    rs <- (M.fromList . fmap (rProblem &&& Just)) <$> traverse deserialise fs
+    return Column{cHead = t, cRows = rs}
 
-mkTable :: DB -> ([TId], [(PId, [Maybe Result])])
-mkTable db          = M.assocs `fmap` foldr merge ([],M.empty) db
-  where
-    merge c (ts,ms) = (cHead c:ts, merge' (cRows c) ms)
-    merge'          = M.mergeWithKey (\_ a b -> Just (a:b)) (fmap (:[])) id
+queryTools :: DB -> [TId]
+queryTools = fmap cHead
 
--- mkSummary :: DB -> Html
--- mkSummary = undefined
+queryProblems :: DB -> [PId]
+queryProblems = S.toList . S.unions . fmap (M.keysSet . cRows)
 
--- writeResults :: [Result] -> IO ()
--- writeResults = writeTable
+queryOutcomes :: DB -> [Outcome String]
+queryOutcomes = S.toList . S.unions . fmap k
+  where k = S.fromList . fmap rOutcome . catMaybes . M.elems . cRows
 
 toEntry :: Result -> (String, Outcome String, String)
 toEntry Result{rTool=t,rProblem=p,rTime=z,rOutcome=out} = (fp,out, showDouble z)
   where fp = tName t </> p <.> tExtension t
 
-writeTable :: FilePath -> DB -> IO()
-writeTable fp db = do
-  forM_ ["experiments.css", "table.js", "sort_ascending.png", "sort_descending.png"] $
-    \fn -> getDataFileName ("etc" </> fn) >>= flip copyFileIfMissing fn
-  let
-    fmap5 = fmap . fmap . fmap . fmap . fmap
-    (ts,ps) = fmap5 toEntry $ mkTable db
-  T.writeFile fp $ renderHtml
-    [shamlet|
+queryResult :: DB -> TId -> PId -> Maybe Result
+queryResult db t p = do
+  es <- cRows <$> L.find ((==t) . cHead) db
+  join (M.lookup p es)
+
+queryEntry :: DB -> TId -> PId ->  Maybe (String, Outcome String, String)
+queryEntry db t p = fmap toEntry (queryResult db t p)
+
+queryNum :: DB -> TId -> Outcome String -> Int
+queryNum db t o = length $ filter ((==Just o) . fmap rOutcome) es
+  where es = maybe [] (M.elems . cRows) $ L.find ((==t) . cHead) db
+
+header :: Html
+header =
+  [shamlet|
 $doctype 5
 <html>
   <link rel="stylesheet" type="text/css" href="experiments.css">
@@ -82,97 +78,89 @@ $doctype 5
   <head>
     <title> experiment
   <body>
-    <h1> Details
-    <div class="experiments">
-      <table class="table-autofilter table-autosort table-filtered-rowcount:cnt">
-        <thead>
-          <tr>
-            <th>
-            $forall t <- ts
-              <th colspan="3">
-                <div class="toolname">#{t}
-          <tr>
-            <th class="table-sortable:default table-sortable">
-              <div class="lhd">Problem (<span id="cnt">all</span> selected)
-            $forall t <- ts
-              <th> *
-              <th class="table-filterable">answer
-              <th class="table-sortable:numeric table-sortable">
-        <tbody>
-          $forall (p,rs) <- ps
-            <tr>
+  |]
+
+table :: DB -> [TId] -> [PId] -> Html
+table db ts ps =
+    [shamlet|
+<div class="experiments">
+  <table class="table-autofilter table-autosort table-filtered-rowcount:cnt">
+    <thead>
+      <tr>
+        <th>
+        $forall t <- ts
+          <th colspan="3">
+            <div class="toolname">#{t}
+      <tr>
+        <th class="table-sortable:default table-sortable">
+          <div class="lhd">Problem (<span id="cnt">all</span> selected)
+        $forall t <- ts
+          <th> *
+          <th class="table-filterable">answer
+          <th class="table-sortable:numeric table-sortable">
+    <tbody>
+      $forall p <- ps
+        <tr>
+          <td>
+            <div class="lhd">#{p}
+          $forall t <- ts
+            $maybe (l,o,z) <- queryEntry db t p
               <td>
-                <div class="lhd">#{p}
-              $forall mr <- rs
-                $maybe (l,o,z) <- mr
-                  <td>
-                    <a href="#{l}">*
-                  <td>
-                    $case o
-                      $of Success out
-                        <a href="#{l}.proof">
-                          <div class="yes">#{out}
-                      $of Maybe
-                        <a href="#{l}.proof">
-                          <div class="maybe">MAYBE
-                      $of Failure err
-                        <a href="#{l}.err">
-                          <div class="error">ERROR
-                      $of Timeout
-                        <div class="timeout">TIMEOUT
-                  <td>#{z}
-                $nothing
-                  <td>
-                  <td> missing
-                  <td> -
+                <a href="#{l}">*
+              <td>
+                $case o
+                  $of Success out
+                    <a href="#{l}.proof">
+                      <div class="yes">#{out}
+                  $of Maybe
+                    <a href="#{l}.proof">
+                      <div class="maybe">MAYBE
+                  $of Failure err
+                    <a href="#{l}.err">
+                      <div class="error">ERROR
+                  $of Timeout
+                    <div class="timeout">TIMEOUT
+              <td>#{z}
+            $nothing
+              <td>
+              <td> missing
+              <td> -
     |]
 
+summary :: DB -> [TId] -> [Outcome String] -> Html
+summary db ts os =
+  [shamlet|
+$doctype 5
+<table>
+  <theadd>
+    <tr>
+      <th>
+      $forall t <- ts
+        <th><div class="toolname">#{t}
+  <tbody>
+    $forall o <- os
+      <tr>
+        <td><div class="lhd">#{show o}
+        $forall t <- ts
+          <td>#{queryNum db t o}
+  |]
 
---- *  summary -------------------------------------------------------------------------------------------------------
--- TODO
+renderExperiments :: DB -> Html
+renderExperiments db =
+  let
+    ts = queryTools db
+    ps = queryProblems db
+    os = queryOutcomes db
+  in
+  [shamlet|
+^{header}
+  ^{table db ts ps}
+  ^{summary db ts os}
+  |]
 
--- gatherPossibleAnswers :: DB -> [Outcome String]
--- gatherPossibleAnswers = S.toAscList . S.fromList . concatMap gatherOne
---   where gatherOne Column{cRows=rows} = catMaybes . M.elems $ M.map (fmap rOutcome) rows
-
--- mkSummary :: DB -> ([TId],[(String,[Int])])
--- -- mkSummary :: DB -> ([TId],[(Outcome String,[Int])])
--- mkSummary db = let (a,b) = foldr mkColumn ([],[]) db in (a,zip (show `fmap` rs) b)
---   where
---     rs                 = gatherPossibleAnswers db
---     mkColumn c (ts,zs) = (cHead c:ts, foldr (mkEntry $ fmap rOutcome $ catMaybes $ M.elems $ cRows c) [] rs : zs)
---     mkEntry es r acc   = length (filter (r ==) es) : acc
-
---   -- <link rel="stylesheet" type="text/css" href="http://cl-informatik.uibk.ac.at/software/tct/includes/experiments.css">
---   -- <script type="text/javascript" src="http://cl-informatik.uibk.ac.at/software/tct/includes/table.js">
-
--- writeSummary :: FilePath -> DB -> IO()
--- writeSummary fp db = do
---   let (ts,ps) = mkSummary db
---   T.writeFile fp $ renderHtml
---     [shamlet|
--- $doctype 5
--- <html>
---   <link rel="stylesheet" type="text/css" href="experiments.css">
---   <script type="text/javascript" src="table.js">
---   <head>
---     <title> experiment
---   <body>
---     <h1> summary
---     <table class="table-autofilter table-autosort table-filtered-rowcount:cnt">
---       <thead>
---         <tr>
---           <th>
---           $forall t <- ts
---             <th colspan="1">
---               <div class="toolname">#{t}
---       <tbody>
---         $forall (p,zs) <- ps
---           <tr>
---             <td>
---               <div class="lhd">#{p}
---             $forall z <- zs
---                 <td>
---                   #{z}
---     |]
+writeExperiments :: FilePath -> DB -> IO ()
+writeExperiments fp db = do
+  forM_ ["experiments.css", "table.js", "sort_ascending.png", "sort_descending.png"] $
+    \fn -> getDataFileName ("etc" </> fn) >>= flip copyFileIfMissing fn
+  T.writeFile fp $ renderHtml $ renderExperiments db
 
