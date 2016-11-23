@@ -3,7 +3,7 @@
 module Runner
   ( Experiment (..), Tool (..), Outcome (..) , Result (..), Process
   , run
-  , allLines, firstLine, termcomp, tttac
+  , allLines, firstLine, termcomp, tttac, termcomp'
   ) where
 
 
@@ -40,7 +40,7 @@ data Experiment = Experiment
 type Process = Outcome String -> Outcome String
 
 -- | Some useful post processors.
-allLines, firstLine, termcomp, tttac  :: Process
+allLines, firstLine, termcomp, termcomp', tttac  :: Process
 allLines out  = out
 firstLine (Success out) = let ls = lines out in if null ls then Maybe else Success (head ls)
 firstLine out           = out
@@ -52,6 +52,11 @@ tttac out = case firstLine out of
   Success ('Y':'E':'S':'(': xs) -> Success . init . tail $ dropWhile ((/=) ',') xs
   Success _                     -> Maybe
   _                             -> out
+
+termcomp' out = case firstLine out of
+  Success ('W':'O':'R':'S':'T':'_':'C':'A':'S':'E':'(':xs) -> Success . init . tail $ takeWhile (( /= ) ',') xs
+  Success _                                                -> Maybe
+  _                                                        -> out
 
 process :: Tool Process -> Result -> Result
 process t r = r{rOutcome = tProcessor t (rOutcome r)}
