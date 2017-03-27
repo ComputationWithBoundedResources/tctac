@@ -11,12 +11,12 @@ copyright:           2016, Michael Schaper
 category:            Utils
 build-type:          Simple
 extra-source-files:
-  README.md
+                   README.md
 data-files:
-  etc/experiments.css
-  etc/sort_ascending.png
-  etc/sort_descending.png
-  etc/table.js
+           etc/experiments.css
+           etc/sort_ascending.png
+           etc/sort_descending.png
+           etc/table.js
 cabal-version:       >=1.10
 
 source-repository head
@@ -25,33 +25,63 @@ source-repository head
 
 library
   hs-source-dirs:
-    src
+                 src
   exposed-modules:
-    Runner
-    Summer
-    Util
-    RunAndSum
+                  Runner
+                  Summer
+                  Util
+                  RunAndSum
   other-modules:
-    Paths_tctac
+                Paths_tctac
   build-depends:
-    aeson,
-    base >= 4.7 && < 5,
-    blaze-html,
-    bytestring,
-    containers,
-    csv,
-    directory,
-    filepath,
-    mtl,
-    old-time,
-    optparse-applicative,
-    pooled-io,
-    process,
-    shakespeare,
-    text,
-    timeout
+                aeson,
+                base >= 4.7 && < 5,
+                blaze-html,
+                bytestring,
+                containers,
+                csv,
+                directory,
+                filepath,
+                mtl,
+                old-time,
+                optparse-applicative,
+                pooled-io,
+                process,
+                shakespeare,
+                text,
+                unix,
+                timeout
     -- turtle
   ghc-options:
-    -Wall
+              -Wall
   default-language: Haskell2010
 
+executable tctac-exe
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  other-modules:       Runner
+                     , Summer
+                     , Util
+
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base >=4.8
+                     , tctac
+                     , aeson
+                     , base >= 4.7 && < 5
+                     , blaze-html
+                     , bytestring
+                     , containers
+                     , csv
+                     , directory
+                     , filepath
+                     , mtl
+                     , old-time
+                     , optparse-applicative
+                     , pooled-io
+                     , process
+                     , shakespeare
+                     , text
+                     , unix
+                     , timeout
+
+  default-language:    Haskell2010

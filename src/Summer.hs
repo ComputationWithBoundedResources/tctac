@@ -1,17 +1,19 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
-module Summer where
+module Summer
+  (summarise) where
 
 import           Control.Arrow                 ((&&&))
 import           Control.Monad                 (filterM, forM_, join)
 import qualified Data.List                     as L (find)
 import qualified Data.Map.Strict               as M
-import           Data.Maybe                    (catMaybes)
+import           Data.Maybe                    (catMaybes, fromJust, isJust)
 import           Data.Monoid
 import qualified Data.Set                      as S
 import qualified System.Directory              as Dir
 import           System.FilePath.Posix         ((<.>), (</>))
 import           System.Process
+import           Text.Printf
 
 import qualified Data.Text.Lazy.IO             as T (writeFile)
 import           Text.Blaze.Html.Renderer.Text (renderHtml)
@@ -91,6 +93,16 @@ queryNum :: DB -> TId -> Outcome String -> Int
 queryNum db t o = length $ filter ((==Just o) . fmap rOutcome) es
   where es = maybe [] (M.elems . cRows) $ L.find ((==t) . cHead) db
 
+queryTime :: DB -> TId -> Maybe (Outcome String) -> String
+queryTime db t mOutcome = printf "%.2f\n" $ avg $ map getTime $ filter filt es
+  where es = maybe [] (M.elems . cRows) $ L.find ((==t) . cHead) db
+        avg xs | null xs = 0
+               | otherwise = sum xs / fromIntegral (length xs)
+        getTime (Just x) = rTime x
+        getTime _        = 0
+        filt | isJust mOutcome = (==mOutcome) . fmap rOutcome
+             | otherwise = const True
+
 header :: Html
 header =
   [shamlet|
@@ -154,6 +166,7 @@ summary :: DB -> [TId] -> [Outcome String] -> Html
 summary db ts os =
   [shamlet|
 $doctype 5
+<br /><h3>Result Summary</h3><br />
 <div class="summary">
   <table>
     <theadd>
@@ -167,6 +180,26 @@ $doctype 5
           <td><div class="lhd">#{show o}
           $forall t <- ts
             <td>#{queryNum db t o}
+<br />
+<h3>Average Times</h3><br />
+<div class="summary">
+  <table>
+    <theadd>
+      <tr>
+        <th>
+        $forall t <- ts
+          <th><div class="toolname">#{t}
+    <tbody>
+      $forall o <- os
+        <tr>
+          <td><div class="lhd">#{show o}
+          $forall t <- ts
+            <td>#{queryTime db t (Just o)}
+      <tr>
+        <td><div class="lhd">Overall
+        $forall t <- ts
+          <td>#{queryTime db t Nothing}
+
   |]
 
 renderExperiments :: DB -> Html
