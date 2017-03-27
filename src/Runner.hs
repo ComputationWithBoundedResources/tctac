@@ -159,7 +159,9 @@ spawn e (p,t) = do
   return $! case resM of
     Nothing             -> Timeout
     Just (ex, out, err) -> case ex of
-      ExitFailure i -> Failure ("An error occured:" ++ show i ++ ':':err)
+      ExitFailure i -> Failure $ unlines 
+       [ "Spawn: " ++ unwords (cmd:args)
+       , "An error occured: " ++ show i ++ ':':err ]
       ExitSuccess
         | null out  -> Failure "empty output"
         | otherwise -> Success out
