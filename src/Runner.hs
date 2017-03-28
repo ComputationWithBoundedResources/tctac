@@ -9,13 +9,9 @@ module Runner
   ) where
 
 
--- import           Control.Concurrent       (threadDelay)
--- import           Control.Concurrent.Async (mapConcurrently)
-import           Control.Concurrent
-import           Control.Concurrent.MVar
 import           Control.Concurrent.PooledIO.Independent (runLimited)
 import           Control.Monad                           (forM_, void, when)
-import           Control.Monad.Except                    (catchError, unless)
+import           Control.Monad.Except                    (catchError)
 import qualified Data.Aeson                              as A
 import           Data.Function                           ((&))
 import           Data.Maybe
@@ -27,7 +23,6 @@ import           System.Exit                             (ExitCode (..),
                                                           exitFailure)
 import           System.FilePath.Posix                   ((<.>), (</>))
 import qualified System.FilePath.Posix                   as FP
-import           System.Posix.Signals
 import           System.Process
 -- import qualified System.Timeout                          as T (timeout)
 
@@ -55,16 +50,16 @@ firstLine (Success out) = let ls = lines out in if null ls then Maybe else Succe
 firstLine out           = out
 
 termcomp out = case firstLine out of
-  Success ('W':'O':'R':'S':'T':'_':'C':'A':'S':'E':'(':xs) -> Success . init . tail $ dropWhile (( /= ) ',') xs
+  Success ('W':'O':'R':'S':'T':'_':'C':'A':'S':'E':'(':xs) -> Success . init . tail $ dropWhile (/= ',') xs
   Success _                                                -> Maybe
   _                                                        -> out
 tttac out = case firstLine out of
-  Success ('Y':'E':'S':'(': xs) -> Success . init . tail $ dropWhile ((/=) ',') xs
+  Success ('Y':'E':'S':'(': xs) -> Success . init . tail $ dropWhile (/= ',') xs
   Success _                     -> Maybe
   _                             -> out
 
 termcomp' out = case firstLine out of
-  Success ('W':'O':'R':'S':'T':'_':'C':'A':'S':'E':'(':xs) -> Success . init . tail $ takeWhile (( /= ) ',') xs
+  Success ('W':'O':'R':'S':'T':'_':'C':'A':'S':'E':'(':xs) -> Success . init . tail $ takeWhile (/=  ',') xs
   Success _                                                -> Maybe
   _                                                        -> out
 
@@ -175,13 +170,10 @@ runTest e (p,t) =
 
     done = Dir.doesFileExist resfile
 
-    writeFile' fp s = -- unless (null s)
-      (writeFile fp s)
-
     writeProof r = case rOutcome r of
-      Success out -> writeFile' outfile out
-      Failure err -> writeFile' errfile err
-      Timeout     -> writeFile' outfile "TIMEOUT"
+      Success out -> writeFile outfile out
+      Failure err -> writeFile errfile err
+      Timeout     -> writeFile outfile "TIMEOUT"
       Maybe       -> error "Runner.runTest: an unexpected outcome"
 
 
@@ -191,6 +183,7 @@ eval e (p,t) = do
   return Result{ rProblem = p', rTool = void t, rOutcome = r , rTime = z }
   where p' = FP.makeRelative (tName t) (FP.dropExtension p)
 
+-- use bash 'timeout' command; behaves nices
 spawn :: Experiment -> Test -> IO (Outcome Out)
 spawn e (p,t) = do
   -- putStrLn $ "CMD: " ++ cmd

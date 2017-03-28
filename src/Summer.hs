@@ -1,13 +1,12 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
-module Summer
-  (summarise) where
+module Summer (summarise) where
 
 import           Control.Arrow                 ((&&&))
 import           Control.Monad                 (filterM, forM_, join)
 import qualified Data.List                     as L (find)
 import qualified Data.Map.Strict               as M
-import           Data.Maybe                    (catMaybes, fromJust, isJust)
+import           Data.Maybe                    (catMaybes, isJust)
 import           Data.Monoid
 import qualified Data.Set                      as S
 import qualified System.Directory              as Dir
@@ -26,29 +25,29 @@ import           Util
 
 -- import           Debug.Trace
 
-data Summary = Summary
-  { sFilePath :: FilePath
-  , sTIds     :: [TId]
-  , sCount    :: [Count] }
+-- data Summary = Summary
+--   { sFilePath :: FilePath
+--   , sTIds     :: [TId]
+--   , sCount    :: [Count] }
 
-data Count = Count
-  { cName :: String
-  , cPred :: Outcome String -> Bool }
+-- data Count = Count
+--   { cName :: String
+--   , cPred :: Outcome String -> Bool }
 
-bigO :: [Count]
-bigO = def <> const <> polys <> exp where
-  def =
-    [ Count{cName="MAYBE"   ,cPred=(== Maybe)}
-    , Count{cName="TIMEOUT" ,cPred=(== Timeout)}
-    , Count{cName="ERROR"   ,cPred = \o -> case o of {(Failure _) -> True; _ -> False}}]
-  const = [ Count{cName="O(1)", cPred = (==Success "O(1)")} ]
-  polys = [ Count{cName="O("++show i++")", cPred = isO i} | i <- [1..5] ]
-  poly  = [ Count{cName="Poly", cPred = isPoly} ]
-  exp   = [ Count{cName="Exp" , cPred = (==Success "EXP")} ]
-  isO n o = o `elem` [Success ("O(" ++ show i ++ ")") | i <- [1..n]]
-  isPoly (Success "Poly")      = True
-  isPoly (Success ('O':'(':_)) = True
-  isPoly _                     = False
+-- bigO :: [Count]
+-- bigO = def <> const <> polys <> exp where
+--   def =
+--     [ Count{cName="MAYBE"   ,cPred=(== Maybe)}
+--     , Count{cName="TIMEOUT" ,cPred=(== Timeout)}
+--     , Count{cName="ERROR"   ,cPred = \o -> case o of {(Failure _) -> True; _ -> False}}]
+--   const = [ Count{cName="O(1)", cPred = (==Success "O(1)")} ]
+--   polys = [ Count{cName="O("++show i++")", cPred = isO i} | i <- [1..5] ]
+--   poly  = [ Count{cName="Poly", cPred = isPoly} ]
+--   exp   = [ Count{cName="Exp" , cPred = (==Success "EXP")} ]
+--   isO n o = o `elem` [Success ("O(" ++ show i ++ ")") | i <- [1..n]]
+--   isPoly (Success "Poly")      = True
+--   isPoly (Success ('O':'(':_)) = True
+--   isPoly _                     = False
 
 summarise :: [TId] -> IO ()
 summarise [] = Dir.getCurrentDirectory >>= Dir.getDirectoryContents >>= summarise
