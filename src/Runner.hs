@@ -184,28 +184,42 @@ eval e (p,t) = do
   where p' = FP.makeRelative (tName t) (FP.dropExtension p)
 
 -- use bash 'timeout' command; behaves nices
+-- spawn :: Experiment -> Test -> IO (Outcome Out)
+-- spawn e (p,t) = do
+--   -- putStrLn $ "CMD: " ++ cmd
+--   let procs = proc cmd args
+--   (_, mOutH, mErrH, handle) <- createProcess procs { -- std_in = NoStream
+--                                                    -- ,
+--                                                      std_err = CreatePipe
+--                                                    , std_out = CreatePipe }
+--   fin <- waitForProcess handle
+--   case fin of
+--     ExitFailure i -> do
+--       err <- hGetContents (fromJust mErrH)
+--       if i == 124
+--         then return Timeout
+--         else return $ Failure ("An error occured:" ++ show i ++ ':' : err)
+--     ExitSuccess -> do
+--         out <- hGetContents (fromJust mOutH)
+--         if null out
+--           then return $ Failure "empty output"
+--           else return $ Success out
+
+--   where
+--     cmd  = "timeout"
+--     args = [show (eTimeout e), tCommand t] ++ tArguments t ++ [p]
+
 spawn :: Experiment -> Test -> IO (Outcome Out)
 spawn e (p,t) = do
-  -- putStrLn $ "CMD: " ++ cmd
-  let procs = proc cmd args
-  (_, mOutH, mErrH, handle) <- createProcess procs { -- std_in = NoStream
-                                                   -- ,
-                                                     std_err = CreatePipe
-                                                   , std_out = CreatePipe }
-  fin <- waitForProcess handle
-  case fin of
-    ExitFailure i -> do
-      err <- hGetContents (fromJust mErrH)
-      if i == 124
-        then return Timeout
-        else return $ Failure ("An error occured:" ++ show i ++ ':' : err)
-    ExitSuccess -> do
-        out <- hGetContents (fromJust mOutH)
-        if null out
-          then return $ Failure "empty output"
-          else return $ Success out
-
+  resM <- T.timeout (eTimeout e * e6) (readProcessWithExitCode cmd args mempty)
+  return $! case resM of
+    Nothing             -> Timeout
+    Just (ex, out, err) -> case ex of
+      ExitFailure i -> Failure ("An error occured:" ++ show i ++ ':':err)
+      ExitSuccess
+        | null out  -> Failure "empty output"
+        | otherwise -> Success out
   where
-    cmd  = "timeout"
-    args = [show (eTimeout e), tCommand t] ++ tArguments t ++ [p]
+    cmd  = tCommand t
+    args = tArguments t ++ [p]
 
