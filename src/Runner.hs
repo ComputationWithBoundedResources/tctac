@@ -24,7 +24,7 @@ import           System.Exit                             (ExitCode (..),
 import           System.FilePath.Posix                   ((<.>), (</>))
 import qualified System.FilePath.Posix                   as FP
 import           System.Process
--- import qualified System.Timeout                          as T (timeout)
+import qualified System.Timeout                          as T (timeout)
 
 import           Util
 
