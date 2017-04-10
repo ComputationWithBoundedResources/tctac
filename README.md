@@ -4,7 +4,7 @@ This package provides a library to run and summarise experiments.
 
 ### Example Usage
 
-# ```haskell
+```haskell
 #!/usr/bin/env stack
   -- stack --stack-yaml $TCTAC/stack.yaml runghc --package tctac
 
@@ -49,5 +49,4 @@ main = do
   -- wether a single experiment is performed only depends on wether $problem.result exists
   -- so we can easily extend the experiment by adding additional tools; or rerun the experiments for a single tool by deleting its folder
   -- behaviour is undefined when `tName t` is not unique or similar shenanigans
-
-# ```
+```
