@@ -14,8 +14,8 @@ e =  Experiment
   {
   --   eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_full/"
   -- , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_full/"
-    eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_constrtrs/"
-  , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_constrtrs/"
+    eTestbed   = "../ara-inference/doc/tpdb_constrtrs/"
+  , eIgnore    = "../ara-inference/doc/tpdb_constrtrs/"
   --   eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
   -- , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
   , eProcesses = 4
@@ -23,8 +23,8 @@ e =  Experiment
   , eTools     = [ mkToolTct "Mat" "Cmatrices"
                  , mkToolTct "Poly" "Cpolys"
                  , mkToolTct "Ints" "Cints"
-                 , mkToolTct "Comp" "competition"
-                 , mkToolAra "Ara" ["-v3"]
+                 -- , mkToolTct "Comp" "competition"
+                 , mkToolTct "Ara" "Cara"
                  , mkToolAra "AraHeur" ["-b", "-v3"]
                  -- , mkToolAra "AraSCC" ["-c", "-v 3"]
                  -- , mkToolAra "AraSCCHeur" ["-c", "-b", "-v 3"]
@@ -37,7 +37,7 @@ mkToolTct t s = Tool
   { tName          = t
   , tExtension     = "trs"
   , tCommand       = "tct-trs"
-  , tArguments     = ["--complexity", "rci","-s", s, "-t", show timeout]
+  , tArguments     = ["--complexity", "rci","-s", s, "-t", show (timeout + 3)]
   , tProcessor     = firstLine
   }
 
@@ -45,7 +45,7 @@ mkToolAra :: String -> [String] -> Tool Process
 mkToolAra t s = Tool
   { tName          = t
   , tExtension     = "trs"
-  , tCommand       = "inference-exe"
+  , tCommand       = "ara-inference-exe"
   , tArguments     = s
   , tProcessor     = firstLine
   }
@@ -56,7 +56,7 @@ main = do
   summarise [ "Mat"
             , "Poly"
             , "Ints"
-            , "Comp"
+            -- , "Comp"
             , "Ara"
             , "AraHeur"
             -- , "AraSCC"
