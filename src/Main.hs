@@ -49,7 +49,7 @@ mkToolAra t s = Tool
   { tName          = t
   , tExtension     = "trs"
   , tCommand       = "ara-inference-exe"
-  , tArguments     = s
+  , tArguments     = "-t60" : s
   , tProcessor     = firstLine
   }
 
