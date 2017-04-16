@@ -18,14 +18,17 @@ e =  Experiment
   , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_constrtrs/"
   --   eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
   -- , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
-  , eProcesses = 4
+  , eProcesses = 2
   , eTimeout   = timeout
-  , eTools     = [ mkToolTct "Mat" "Cmatrices"
-                 , mkToolTct "Poly" "Cpolys"
-                 , mkToolTct "Ints" "Cints"
-                 , mkToolTct "Comp" "competition"
-                 , mkToolAra "Ara" ["-v3"]
-                 , mkToolAra "AraHeur" ["-b", "-v3"]
+  , eTools     = [--  mkToolTct "Mat" "Cmatrices"
+                 -- , mkToolTct "Poly" "Cpolys"
+                 -- , mkToolTct "Ints" "Cints"
+                 -- , mkToolTct "Comp" "competition"
+                  -- mkToolTct "TctAraZ3" "ara"
+                   mkToolAra "AraZ3" ["-v3", "-s z3"]
+                 , mkToolAra "AraMinismt" ["-v3", "-s minismt"]
+                 , mkToolAra "AraHeurZ3" ["-b", "-v3"]
+                 , mkToolAra "AraHeurMinismt" ["-b", "-v3", "-s minismt"]
                  -- , mkToolAra "AraSCC" ["-c", "-v 3"]
                  -- , mkToolAra "AraSCCHeur" ["-c", "-b", "-v 3"]
                  ]
@@ -53,12 +56,18 @@ mkToolAra t s = Tool
 main :: IO ()
 main = do
   run e
-  summarise [ "Mat"
-            , "Poly"
-            , "Ints"
-            , "Comp"
-            , "Ara"
-            , "AraHeur"
+  summarise [ -- "Mat"
+            -- , "Poly"
+            -- , "Ints"
+            -- , "Comp"
+            -- , "Ara"
+            -- , "AraHeur"
+               -- "TctAraZ3"
+            "AraZ3"
+          , "AraMinismt"
+          , "AraHeurZ3"
+          , "AraHeurMinismt"
+
             -- , "AraSCC"
             -- , "AraSCCHeur"
             ]
