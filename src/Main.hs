@@ -14,8 +14,8 @@ e =  Experiment
   {
   --   eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_full/"
   -- , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_full/"
-    eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_constrtrs/"
-  , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_constrtrs/"
+    eTestbed   = "../ara-inference/doc/tpdb_full/"
+  , eIgnore    = "../ara-inference/doc/tpdb_full/"
   --   eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
   -- , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
   , eProcesses = 2
@@ -40,7 +40,7 @@ mkToolTct t s = Tool
   { tName          = t
   , tExtension     = "trs"
   , tCommand       = "tct-trs"
-  , tArguments     = ["--complexity", "rci","-s", s, "-t", show timeout]
+  , tArguments     = ["--complexity", "rci","-s", s, "-t", show (timeout + 3)]
   , tProcessor     = firstLine
   }
 
@@ -48,7 +48,7 @@ mkToolAra :: String -> [String] -> Tool Process
 mkToolAra t s = Tool
   { tName          = t
   , tExtension     = "trs"
-  , tCommand       = "inference-exe"
+  , tCommand       = "ara-inference-exe"
   , tArguments     = s
   , tProcessor     = firstLine
   }
