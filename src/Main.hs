@@ -40,7 +40,7 @@ mkToolTct t s = Tool
   { tName          = t
   , tExtension     = "trs"
   , tCommand       = "tct-trs"
-  , tArguments     = ["--complexity", "rci","-s", s, "-t", show (timeout + 3)]
+  , tArguments     = ["--complexity", "rci","-s", s, "-t", show timeout]
   , tProcessor     = firstLine
   }
 
