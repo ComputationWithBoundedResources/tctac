@@ -23,12 +23,14 @@ e =  Experiment
   , eTools     = [--  mkToolTct "Mat" "Cmatrices"
                  -- , mkToolTct "Poly" "Cpolys"
                  -- , mkToolTct "Ints" "Cints"
-                 -- , mkToolTct "Comp" "competition"
+                  mkToolTct "CompAraParallel" "competition"
+                 -- mkToolTct "CompAra" "competition"
+                  -- mkToolTct "Comp" "competition"
                   -- mkToolTct "TctAraZ3" "ara"
-                   mkToolAra "AraZ3" ["-v3", "-s z3"]
-                 , mkToolAra "AraMinismt" ["-v3", "-s minismt"]
-                 , mkToolAra "AraHeurZ3" ["-b", "-v3", "-s z3"]
-                 , mkToolAra "AraHeurMinismt" ["-b", "-v3", "-s minismt"]
+                 --   mkToolAra "AraZ3" ["-v3", "-s z3"]
+                 -- , mkToolAra "AraMinismt" ["-v3", "-s minismt"]
+                 -- , mkToolAra "AraHeurZ3" ["-b", "-v3", "-s z3"]
+                 -- , mkToolAra "AraHeurMinismt" ["-b", "-v3", "-s minismt"]
                  -- , mkToolAra "AraSCC" ["-c", "-v 3"]
                  -- , mkToolAra "AraSCCHeur" ["-c", "-b", "-v 3"]
                  ]
@@ -59,14 +61,16 @@ main = do
   summarise [ -- "Mat"
             -- , "Poly"
             -- , "Ints"
-            -- , "Comp"
+    "CompAraParallel"
+    -- "Comp"
+    -- "CompAra"
             -- , "Ara"
             -- , "AraHeur"
                -- "TctAraZ3"
-            "AraZ3"
-          , "AraMinismt"
-          , "AraHeurZ3"
-          , "AraHeurMinismt"
+          --   "AraZ3"
+          -- , "AraMinismt"
+          -- , "AraHeurZ3"
+          -- , "AraHeurMinismt"
 
             -- , "AraSCC"
             -- , "AraSCCHeur"
