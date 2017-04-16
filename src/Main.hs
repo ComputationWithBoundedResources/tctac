@@ -27,7 +27,7 @@ e =  Experiment
                   -- mkToolTct "TctAraZ3" "ara"
                    mkToolAra "AraZ3" ["-v3", "-s z3"]
                  , mkToolAra "AraMinismt" ["-v3", "-s minismt"]
-                 , mkToolAra "AraHeurZ3" ["-b", "-v3"]
+                 , mkToolAra "AraHeurZ3" ["-b", "-v3", "-s z3"]
                  , mkToolAra "AraHeurMinismt" ["-b", "-v3", "-s minismt"]
                  -- , mkToolAra "AraSCC" ["-c", "-v 3"]
                  -- , mkToolAra "AraSCCHeur" ["-c", "-b", "-v 3"]
