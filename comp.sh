@@ -23,7 +23,7 @@ stack build
 stack exec tctac-exe
 
 
-Comp only
+# Comp only
 cd ../tct-trs/src/Tct/Trs/Strategy/
 sed -i "s/-- tew (px 2) .>>> tew (px 3) .>>> empty/tew (px 2) .>>> tew (px 3) .>>> empty/g" Runtime.hs
 sed -i "s/tew (ax 1 1) .>>> tew (ax 2 2) .>>> tew (ax 3 3) .>>> empty/-- , tew (ax 1 1) .>>> tew (ax 2 2) .>>> tew (ax 3 3) .>>> empty/g" Runtime.hs
