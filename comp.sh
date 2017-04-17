@@ -23,7 +23,7 @@ stack build
 stack exec tctac-exe
 
 
-# Comp only
+Comp only
 cd ../tct-trs/src/Tct/Trs/Strategy/
 sed -i "s/-- tew (px 2) .>>> tew (px 3) .>>> empty/tew (px 2) .>>> tew (px 3) .>>> empty/g" Runtime.hs
 sed -i "s/tew (ax 1 1) .>>> tew (ax 2 2) .>>> tew (ax 3 3) .>>> empty/-- , tew (ax 1 1) .>>> tew (ax 2 2) .>>> tew (ax 3 3) .>>> empty/g" Runtime.hs
@@ -37,8 +37,9 @@ sed -i 's/-- mkToolTct "Comp" "competition"/mkToolTct "Comp" "competition"/g' sr
 sed -i 's/"CompAra"/, "CompAra"/g' src/Main.hs
 sed -i 's/-- "Comp"/"Comp"/g' src/Main.hs
 stack build
-# # stack exec tctac-exe
+stack exec tctac-exe
 
+# save stuff
 FOLDER=exp_`cat /etc/hostname`
 mkdir -p ../paper/$FOLDER
 cp -r * ../paper/$FOLDER/
