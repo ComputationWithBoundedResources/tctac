@@ -23,10 +23,12 @@ e =  Experiment
   , eTools     = [--  mkToolTct "Mat" "Cmatrices"
                  -- , mkToolTct "Poly" "Cpolys"
                  -- , mkToolTct "Ints" "Cints"
+
                   mkToolTct "CompAraParallel" "competition"
-                 -- mkToolTct -- "CompAra" "competition"
-                  -- mkToolTct "Comp" "competition"
-                  -- mkToolTct "TctAraZ3" "ara"
+                 -- mkToolTct "CompAra" "competition"
+                 -- mkToolTct "Comp" "competition"
+
+                 -- mkToolTct "TctAraZ3" "ara"
                  --   mkToolAra "AraZ3" ["-v3", "-s z3"]
                  -- , mkToolAra "AraMinismt" ["-v3", "-s minismt"]
                  -- , mkToolAra "AraHeurZ3" ["-b", "-v3", "-s z3"]

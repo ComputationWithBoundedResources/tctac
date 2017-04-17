@@ -16,7 +16,6 @@ stack install
 cd ../tctac/
 sed -i 's/mkToolTct "CompAraParallel" "competition"/-- mkToolTct "CompAraParallel" "competition"/g' src/Main.hs
 sed -i 's/-- mkToolTct "CompAra" "competition"/mkToolTct "CompAra" "competition"/g' src/Main.hs
-
 sed -i 's/"CompAraParallel"/, "CompAraParallel"/g' src/Main.hs
 sed -i 's/-- "CompAra"/"CompAra"/g' src/Main.hs
 
@@ -38,3 +37,13 @@ stack build
 # sed -i 's/-- "Comp"/"Comp"/g' src/Main.hs
 # stack build
 # # stack exec tctac-exe
+
+FOLDER=exp_`cat /etc/hostname`
+mkdir ../paper/$FOLDER
+cp -r * ../paper/$FOLDER/
+
+cd ../paper/
+git pull
+git add .
+# git commit -m "new experiments $FOLDER"
+# git push
