@@ -24,7 +24,7 @@ e =  Experiment
                  -- , mkToolTct "Poly" "Cpolys"
                  -- , mkToolTct "Ints" "Cints"
 
-                  mkToolTct "CompAraParallel" "competition"
+                 mkToolTct , , "CompAraParallel" "competition"
                  -- mkToolTct "CompAra" "competition"
                  -- mkToolTct "Comp" "competition"
 
