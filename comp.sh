@@ -1,4 +1,10 @@
 
+# build and install stuff
+cd ../ara-inference/
+stack install
+cd ../tct-trc/
+stack install
+cd ../tctac/
 
 # first run is parallel run, CompAraParallel
 stack build
@@ -7,10 +13,11 @@ stack exec tctac-exe
 # second run is non-parallel, CompAra
 cd ../tct-trs/src/Tct/Trs/Strategy/
 sed -i "s/tew (px 2) .>>> tew (px 3) .>>> empty/-- tew (px 2) .>>> tew (px 3) .>>> empty/g" Runtime.hs
-sed -i "s/, tew (ax 1 1) .>>> tew (ax 2 2) .>>> tew (ax 3 3) .>>> empty/tew (ax 1 1) .>>> tew (ax 2 2) .>>> tew (ax 3 3) .>>> empty/g" Runtime.hs
+# sed -i "s/, tew (ax 1 1) .>>> tew (ax 2 2) .>>> tew (ax 3 3) .>>> empty/tew (ax 1 1) .>>> tew (ax 2 2) .>>> tew (ax 3 3) .>>> empty/g" Runtime.hs
+sed -i "s/, tew (ax 1 3) .>>> empty/tew (ax 1 3) .>>> empty/g" Runtime.hs
 
-sed -i "s/where shift = mx 2 2 .<||> mx 3 3 .<||> px 3 .<||>  ax 2 2 .<||> ax 3 3 .<||> mx 4 4/-- where shift = mx 2 2 .<||> mx 3 3 .<||> px 3 .<||>  ax 2 2 .<||> ax 3 3 .<||> mx 4 4/g" Runtime.hs
-sed -i "s/-- where shift = mx 2 2 .<||> mx 3 3 .<||> ax 2 2 .<||> ax 3 3 .<||> mx 4 4/where shift = mx 2 2 .<||> mx 3 3 .<||> ax 2 2 .<||> ax 3 3 .<||> mx 4 4/g" Runtime.hs
+sed -i "s/where shift = mx 2 2 .<||> mx 3 3 .<||> px 3 .<||> ax 1 3 .<||> mx 4 4/-- where shift = mx 2 2 .<||> mx 3 3 .<||> px 3 .<||>  ax 2 2 .<||> ax 3 3 .<||> mx 4 4/g" Runtime.hs
+sed -i "s/-- where shift = mx 2 2 .<||> mx 3 3 .<||> ax 1 3 .<||> mx 4 4/where shift = mx 2 2 .<||> mx 3 3 .<||> ax 1 3 .<||> mx 4 4/g" Runtime.hs
 cd ../../../../
 stack install
 cd ../tctac/
@@ -26,9 +33,9 @@ stack exec tctac-exe
 # Comp only
 cd ../tct-trs/src/Tct/Trs/Strategy/
 sed -i "s/-- tew (px 2) .>>> tew (px 3) .>>> empty/tew (px 2) .>>> tew (px 3) .>>> empty/g" Runtime.hs
-sed -i "s/tew (ax 1 1) .>>> tew (ax 2 2) .>>> tew (ax 3 3) .>>> empty/-- , tew (ax 1 1) .>>> tew (ax 2 2) .>>> tew (ax 3 3) .>>> empty/g" Runtime.hs
+sed -i "s/tew (ax 1 3) .>>> empty/-- , tew (ax 1 3) .>>> empty/g" Runtime.hs
 sed -i "s/-- where shift = mx 2 2 .<||> mx 3 3 .<||> px 3 .<||>  mx 4 4/where shift = mx 2 2 .<||> mx 3 3 .<||> px 3 .<||>  mx 4 4/g" Runtime.hs
-sed -i "s/where shift = mx 2 2 .<||> mx 3 3 .<||> ax 2 2 .<||> ax 3 3 .<||> mx 4 4/-- where shift = mx 2 2 .<||> mx 3 3 .<||> ax 2 2 .<||> ax 3 3 .<||> mx 4 4/g" Runtime.hs
+sed -i "s/where shift = mx 2 2 .<||> mx 3 3 .<||> ax 1 3 .<||> mx 4 4/-- where shift = mx 2 2 .<||> mx 3 3 .<||> ax 1 3 .<||> mx 4 4/g" Runtime.hs
 cd ../../../../
 stack install
 cd ../tctac/
