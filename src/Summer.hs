@@ -17,37 +17,11 @@ import           Text.Printf
 import qualified Data.Text.Lazy.IO             as T (writeFile)
 import           Text.Blaze.Html.Renderer.Text (renderHtml)
 import           Text.Hamlet
--- import           Text.Lucius
 
 import           Paths_tctac
 import           Runner
 import           Util
 
--- import           Debug.Trace
-
--- data Summary = Summary
---   { sFilePath :: FilePath
---   , sTIds     :: [TId]
---   , sCount    :: [Count] }
-
--- data Count = Count
---   { cName :: String
---   , cPred :: Outcome String -> Bool }
-
--- bigO :: [Count]
--- bigO = def <> const <> polys <> exp where
---   def =
---     [ Count{cName="MAYBE"   ,cPred=(== Maybe)}
---     , Count{cName="TIMEOUT" ,cPred=(== Timeout)}
---     , Count{cName="ERROR"   ,cPred = \o -> case o of {(Failure _) -> True; _ -> False}}]
---   const = [ Count{cName="O(1)", cPred = (==Success "O(1)")} ]
---   polys = [ Count{cName="O("++show i++")", cPred = isO i} | i <- [1..5] ]
---   poly  = [ Count{cName="Poly", cPred = isPoly} ]
---   exp   = [ Count{cName="Exp" , cPred = (==Success "EXP")} ]
---   isO n o = o `elem` [Success ("O(" ++ show i ++ ")") | i <- [1..n]]
---   isPoly (Success "Poly")      = True
---   isPoly (Success ('O':'(':_)) = True
---   isPoly _                     = False
 
 summarise :: [TId] -> IO ()
 summarise [] = Dir.getCurrentDirectory >>= Dir.getDirectoryContents >>= summarise
