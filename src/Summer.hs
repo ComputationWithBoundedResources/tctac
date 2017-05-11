@@ -138,7 +138,6 @@ table db ts ps =
 summary :: DB -> [TId] -> [Outcome String] -> Html
 summary db ts os =
   [shamlet|
-$doctype 5
 <br /><h3>Result Summary</h3><br />
 <div class="summary">
   <table>
@@ -184,8 +183,8 @@ renderExperiments db =
   in
   [shamlet|
 ^{header}
-  ^{table db ts ps}
   ^{summary db ts os}
+  ^{table db ts ps}
   |]
 
 writeExperiments :: FilePath -> DB -> IO ()
