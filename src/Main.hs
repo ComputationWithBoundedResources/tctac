@@ -24,7 +24,7 @@ e =  Experiment
                  -- , mkToolTct "Poly" "Cpolys"
                  -- , mkToolTct "Ints" "Cints"
 
-                 mkToolTct , , "CompAraParallel" "competition"
+                 mkToolTct "CompAraParallel" "competition"
                  -- mkToolTct "CompAra" "competition"
                  -- mkToolTct "Comp" "competition"
 
@@ -60,21 +60,20 @@ mkToolAra t s = Tool
 main :: IO ()
 main = do
   run e
-  summarise [ -- "Mat"
-            -- , "Poly"
-            -- , "Ints"
-    -- "Comp"
-    -- "CompAra"
-    "CompAraParallel"
-            -- , "Ara"
-            -- , "AraHeur"
-               -- "TctAraZ3"
-          --   "AraZ3"
-          -- , "AraMinismt"
-          -- , "AraHeurZ3"
-          -- , "AraHeurMinismt"
-
-            -- , "AraSCC"
-            -- , "AraSCCHeur"
+  summarise [ -- "Mat" -- sum
+            -- , "Poly" -- sum
+            -- , "Ints" -- sum
+    -- "Comp" -- sum
+    -- "CompAra" -- sum
+    "CompAraParallel" -- sum
+            -- , "Ara" -- sum
+            -- , "AraHeur" -- sum
+               -- "TctAraZ3" -- sum
+          --   "AraZ3" -- sum
+          -- , "AraMinismt" -- sum
+          -- , "AraHeurZ3" -- sum
+          -- , "AraHeurMinismt" -- sum
+            -- , "AraSCC" -- sum
+            -- , "AraSCCHeur" -- sum
             ]
   return ()
