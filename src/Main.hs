@@ -7,7 +7,7 @@ import           Runner
 import           Summer
 
 timeout :: Int
-timeout = 60
+timeout = 300
 
 e :: Experiment
 e =  Experiment
