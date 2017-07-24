@@ -14,8 +14,8 @@ e =  Experiment
   {
   --   eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_full/"
   -- , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_full/"
-    eTestbed   = "../ara-inference/doc/tpdb_full/"
-  , eIgnore    = "../ara-inference/doc/tpdb_full/"
+    eTestbed   = "../ara-inference/doc/testbed/"
+  , eIgnore    = "../ara-inference/doc/testbed/"
   --   eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
   -- , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
   , eProcesses = 2
