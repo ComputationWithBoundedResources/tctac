@@ -18,7 +18,7 @@ stack exec tctac-exe
 cd ../tct-trs/src/Tct/Trs/Strategy/
 sed -i "s/tew (px 2) .>>> tew (px 3) .>>> empty/-- tew (px 2) .>>> tew (px 3) .>>> empty/g" Runtime.hs
 sed -i "s/, tew (ax 1 3) .>>> empty/tew (ax 1 3) .>>> empty/g" Runtime.hs
-sed -i "s/where shift = mx 2 2 .<||> mx 3 3 .<||> px 3 .<||> ax 1 3 .<||> mx 4 4/-- where shift = mx 2 2 .<||> mx 3 3 .<||> px 3 .<||> ax 2 2 .<||> ax 3 3 .<||> mx 4 4/g" Runtime.hs
+sed -i "s/where shift = mx 2 2 .<||> mx 3 3 .<||> px 3 .<||> ax 2 2 .<||> ax 3 3 .<||> mx 4 4/-- where shift = mx 2 2 .<||> mx 3 3 .<||> px 3 .<||> ax 2 2 .<||> ax 3 3 .<||> mx 4 4/g" Runtime.hs
 sed -i "s/-- where shift = mx 2 2 .<||> mx 3 3 .<||> ax 1 3 .<||> mx 4 4/where shift = mx 2 2 .<||> mx 3 3 .<||> ax 1 3 .<||> mx 4 4/g" Runtime.hs
 cd ../../../../
 stack install
