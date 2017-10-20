@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"YES"},"rProblem":"mult1","rTime":5.1596e-2,"rTool":{"tProcessor":[],"tName":"CompletelyDefined","tArguments":["-t 60","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

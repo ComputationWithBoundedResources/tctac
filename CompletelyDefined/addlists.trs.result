@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"NO"},"rProblem":"addlists","rTime":4.0798e-2,"rTool":{"tProcessor":[],"tName":"CompletelyDefined","tArguments":["-t 60","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

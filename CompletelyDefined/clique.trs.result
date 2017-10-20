@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"TRS is not left-linear"},"rProblem":"clique","rTime":4.5491e-2,"rTool":{"tProcessor":[],"tName":"CompletelyDefined","tArguments":["-t 60","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

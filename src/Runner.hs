@@ -19,8 +19,7 @@ import           Data.Monoid                             ((<>))
 import           GHC.Generics                            (Generic)
 import           GHC.IO.Handle
 import qualified System.Directory                        as Dir
-import           System.Exit                             (ExitCode (..),
-                                                          exitFailure)
+import           System.Exit                             (ExitCode (..), exitFailure)
 import           System.FilePath.Posix                   ((<.>), (</>))
 import qualified System.FilePath.Posix                   as FP
 import           System.Process
@@ -55,6 +54,8 @@ termcomp out = case firstLine out of
   _                                                        -> out
 tttac out = case firstLine out of
   Success ('Y':'E':'S':'(': xs) -> Success . init . tail $ dropWhile (/= ',') xs
+  Success ("YES")               -> Success "YES"
+  Success ("NO")                -> Success "NO"
   Success _                     -> Maybe
   _                             -> out
 
