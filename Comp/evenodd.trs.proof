@@ -1,0 +1,54 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            even(Cons(x,xs)) -> odd(xs)
+            even(Nil()) -> True()
+            evenodd(x) -> even(x)
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+            odd(Cons(x,xs)) -> even(xs)
+            odd(Nil()) -> False()
+        - Signature:
+            {even/1,evenodd/1,notEmpty/1,odd/1} / {Cons/2,False/0,Nil/0,True/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {even,evenodd,notEmpty,odd} and constructors {Cons,False
+            ,Nil,True}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 1.
+        The enriched problem is compatible with follwoing automaton.
+          Cons_0(2,2) -> 2
+          False_0() -> 2
+          False_1() -> 1
+          Nil_0() -> 2
+          True_0() -> 2
+          True_1() -> 1
+          even_0(2) -> 1
+          even_1(2) -> 1
+          evenodd_0(2) -> 1
+          notEmpty_0(2) -> 1
+          odd_0(2) -> 1
+          odd_1(2) -> 1
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            even(Cons(x,xs)) -> odd(xs)
+            even(Nil()) -> True()
+            evenodd(x) -> even(x)
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+            odd(Cons(x,xs)) -> even(xs)
+            odd(Nil()) -> False()
+        - Signature:
+            {even/1,evenodd/1,notEmpty/1,odd/1} / {Cons/2,False/0,Nil/0,True/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {even,evenodd,notEmpty,odd} and constructors {Cons,False
+            ,Nil,True}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

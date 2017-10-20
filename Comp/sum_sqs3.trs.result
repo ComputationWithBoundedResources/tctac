@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"MAYBE"},"rProblem":"sum_sqs3","rTime":59.107061,"rTool":{"tProcessor":[],"tName":"Comp","tArguments":["--complexity","rci","-s","competition","-t","60"],"tExtension":"trs","tCommand":"tct-trs"}}

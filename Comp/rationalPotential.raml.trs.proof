@@ -1,0 +1,86 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            group3(l) -> group3#1(l)
+            group3#1(cons(x,xs)) -> group3#2(xs,x)
+            group3#1(nil()) -> nil()
+            group3#2(cons(y,ys),x) -> group3#3(ys,x,y)
+            group3#2(nil(),x) -> nil()
+            group3#3(cons(z,zs),x,y) -> cons(tuple#3(x,y,z),group3(zs))
+            group3#3(nil(),x,y) -> nil()
+            zip3(l1,l2,l3) -> zip3#1(l1,l2,l3)
+            zip3#1(cons(x,xs),l2,l3) -> zip3#2(l2,l3,x,xs)
+            zip3#1(nil(),l2,l3) -> nil()
+            zip3#2(cons(y,ys),l3,x,xs) -> zip3#3(l3,x,xs,y,ys)
+            zip3#2(nil(),l3,x,xs) -> nil()
+            zip3#3(cons(z,zs),x,xs,y,ys) -> cons(tuple#3(x,y,z),zip3(xs,ys,zs))
+            zip3#3(nil(),x,xs,y,ys) -> nil()
+        - Signature:
+            {group3/1,group3#1/1,group3#2/2,group3#3/3,zip3/3,zip3#1/3,zip3#2/4,zip3#3/5} / {cons/2,nil/0,tuple#3/3}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {group3,group3#1,group3#2,group3#3,zip3,zip3#1,zip3#2
+            ,zip3#3} and constructors {cons,nil,tuple#3}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 2.
+        The enriched problem is compatible with follwoing automaton.
+          cons_0(2,2) -> 2
+          cons_1(3,4) -> 1
+          cons_1(3,4) -> 4
+          group3_0(2) -> 1
+          group3_1(2) -> 4
+          group3#1_0(2) -> 1
+          group3#1_1(2) -> 1
+          group3#1_2(2) -> 4
+          group3#2_0(2,2) -> 1
+          group3#2_1(2,2) -> 1
+          group3#2_1(2,2) -> 4
+          group3#3_0(2,2,2) -> 1
+          group3#3_1(2,2,2) -> 1
+          group3#3_1(2,2,2) -> 4
+          nil_0() -> 2
+          nil_1() -> 1
+          nil_1() -> 4
+          tuple#3_0(2,2,2) -> 2
+          tuple#3_1(2,2,2) -> 3
+          zip3_0(2,2,2) -> 1
+          zip3_1(2,2,2) -> 4
+          zip3#1_0(2,2,2) -> 1
+          zip3#1_1(2,2,2) -> 1
+          zip3#1_2(2,2,2) -> 4
+          zip3#2_0(2,2,2,2) -> 1
+          zip3#2_1(2,2,2,2) -> 1
+          zip3#2_1(2,2,2,2) -> 4
+          zip3#3_0(2,2,2,2,2) -> 1
+          zip3#3_1(2,2,2,2,2) -> 1
+          zip3#3_1(2,2,2,2,2) -> 4
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            group3(l) -> group3#1(l)
+            group3#1(cons(x,xs)) -> group3#2(xs,x)
+            group3#1(nil()) -> nil()
+            group3#2(cons(y,ys),x) -> group3#3(ys,x,y)
+            group3#2(nil(),x) -> nil()
+            group3#3(cons(z,zs),x,y) -> cons(tuple#3(x,y,z),group3(zs))
+            group3#3(nil(),x,y) -> nil()
+            zip3(l1,l2,l3) -> zip3#1(l1,l2,l3)
+            zip3#1(cons(x,xs),l2,l3) -> zip3#2(l2,l3,x,xs)
+            zip3#1(nil(),l2,l3) -> nil()
+            zip3#2(cons(y,ys),l3,x,xs) -> zip3#3(l3,x,xs,y,ys)
+            zip3#2(nil(),l3,x,xs) -> nil()
+            zip3#3(cons(z,zs),x,xs,y,ys) -> cons(tuple#3(x,y,z),zip3(xs,ys,zs))
+            zip3#3(nil(),x,xs,y,ys) -> nil()
+        - Signature:
+            {group3/1,group3#1/1,group3#2/2,group3#3/3,zip3/3,zip3#1/3,zip3#2/4,zip3#3/5} / {cons/2,nil/0,tuple#3/3}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {group3,group3#1,group3#2,group3#3,zip3,zip3#1,zip3#2
+            ,zip3#3} and constructors {cons,nil,tuple#3}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

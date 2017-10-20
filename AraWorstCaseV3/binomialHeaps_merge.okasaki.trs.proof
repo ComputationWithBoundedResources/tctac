@@ -1,0 +1,4 @@
+MAYBE
+UNSAT
+user error ("/tmp/SMTS17686400941959168920" (line 1, column 6):
+The smt problem could not be solved (was unsat).)

@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"bft_mmult.raml","rTime":60.042815,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV1","tArguments":["-t 60","-v1","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

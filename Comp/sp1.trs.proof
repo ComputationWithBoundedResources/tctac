@@ -1,0 +1,315 @@
+MAYBE
+* Step 1: DependencyPairs MAYBE
+    + Considered Problem:
+        - Strict TRS:
+            f(Cons(x,xs),y) -> h(Cons(x,xs),y)
+            f(Nil(),y) -> g(Nil(),y)
+            g(Cons(x,xs),y) -> Cons(x,xs)
+            g(Nil(),y) -> h(Nil(),y)
+            h(Cons(x,xs),y) -> f(Cons(x,xs),y)
+            h(Nil(),y) -> h(Nil(),y)
+            r(x,y) -> x
+            sp1(x,y) -> f(x,y)
+        - Signature:
+            {f/2,g/2,h/2,r/2,sp1/2} / {Cons/2,Nil/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {f,g,h,r,sp1} and constructors {Cons,Nil}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = DT}
+    + Details:
+        We add the following dependency tuples:
+        
+        Strict DPs
+          f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+          f#(Nil(),y) -> c_2(g#(Nil(),y))
+          g#(Cons(x,xs),y) -> c_3()
+          g#(Nil(),y) -> c_4(h#(Nil(),y))
+          h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+          h#(Nil(),y) -> c_6(h#(Nil(),y))
+          r#(x,y) -> c_7()
+          sp1#(x,y) -> c_8(f#(x,y))
+        Weak DPs
+          
+        
+        and mark the set of starting terms.
+* Step 2: PredecessorEstimation MAYBE
+    + Considered Problem:
+        - Strict DPs:
+            f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+            f#(Nil(),y) -> c_2(g#(Nil(),y))
+            g#(Cons(x,xs),y) -> c_3()
+            g#(Nil(),y) -> c_4(h#(Nil(),y))
+            h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+            h#(Nil(),y) -> c_6(h#(Nil(),y))
+            r#(x,y) -> c_7()
+            sp1#(x,y) -> c_8(f#(x,y))
+        - Weak TRS:
+            f(Cons(x,xs),y) -> h(Cons(x,xs),y)
+            f(Nil(),y) -> g(Nil(),y)
+            g(Cons(x,xs),y) -> Cons(x,xs)
+            g(Nil(),y) -> h(Nil(),y)
+            h(Cons(x,xs),y) -> f(Cons(x,xs),y)
+            h(Nil(),y) -> h(Nil(),y)
+            r(x,y) -> x
+            sp1(x,y) -> f(x,y)
+        - Signature:
+            {f/2,g/2,h/2,r/2,sp1/2,f#/2,g#/2,h#/2,r#/2,sp1#/2} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/0,c_4/1,c_5/1,c_6/1,c_7/0
+            ,c_8/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {f#,g#,h#,r#,sp1#} and constructors {Cons,Nil}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {3,7}
+        by application of
+          Pre({3,7}) = {}.
+        Here rules are labelled as follows:
+          1: f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+          2: f#(Nil(),y) -> c_2(g#(Nil(),y))
+          3: g#(Cons(x,xs),y) -> c_3()
+          4: g#(Nil(),y) -> c_4(h#(Nil(),y))
+          5: h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+          6: h#(Nil(),y) -> c_6(h#(Nil(),y))
+          7: r#(x,y) -> c_7()
+          8: sp1#(x,y) -> c_8(f#(x,y))
+* Step 3: RemoveWeakSuffixes MAYBE
+    + Considered Problem:
+        - Strict DPs:
+            f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+            f#(Nil(),y) -> c_2(g#(Nil(),y))
+            g#(Nil(),y) -> c_4(h#(Nil(),y))
+            h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+            h#(Nil(),y) -> c_6(h#(Nil(),y))
+            sp1#(x,y) -> c_8(f#(x,y))
+        - Weak DPs:
+            g#(Cons(x,xs),y) -> c_3()
+            r#(x,y) -> c_7()
+        - Weak TRS:
+            f(Cons(x,xs),y) -> h(Cons(x,xs),y)
+            f(Nil(),y) -> g(Nil(),y)
+            g(Cons(x,xs),y) -> Cons(x,xs)
+            g(Nil(),y) -> h(Nil(),y)
+            h(Cons(x,xs),y) -> f(Cons(x,xs),y)
+            h(Nil(),y) -> h(Nil(),y)
+            r(x,y) -> x
+            sp1(x,y) -> f(x,y)
+        - Signature:
+            {f/2,g/2,h/2,r/2,sp1/2,f#/2,g#/2,h#/2,r#/2,sp1#/2} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/0,c_4/1,c_5/1,c_6/1,c_7/0
+            ,c_8/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {f#,g#,h#,r#,sp1#} and constructors {Cons,Nil}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+             -->_1 h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y)):4
+          
+          2:S:f#(Nil(),y) -> c_2(g#(Nil(),y))
+             -->_1 g#(Nil(),y) -> c_4(h#(Nil(),y)):3
+          
+          3:S:g#(Nil(),y) -> c_4(h#(Nil(),y))
+             -->_1 h#(Nil(),y) -> c_6(h#(Nil(),y)):5
+          
+          4:S:h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+             -->_1 f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y)):1
+          
+          5:S:h#(Nil(),y) -> c_6(h#(Nil(),y))
+             -->_1 h#(Nil(),y) -> c_6(h#(Nil(),y)):5
+          
+          6:S:sp1#(x,y) -> c_8(f#(x,y))
+             -->_1 f#(Nil(),y) -> c_2(g#(Nil(),y)):2
+             -->_1 f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y)):1
+          
+          7:W:g#(Cons(x,xs),y) -> c_3()
+             
+          
+          8:W:r#(x,y) -> c_7()
+             
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          8: r#(x,y) -> c_7()
+          7: g#(Cons(x,xs),y) -> c_3()
+* Step 4: RemoveHeads MAYBE
+    + Considered Problem:
+        - Strict DPs:
+            f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+            f#(Nil(),y) -> c_2(g#(Nil(),y))
+            g#(Nil(),y) -> c_4(h#(Nil(),y))
+            h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+            h#(Nil(),y) -> c_6(h#(Nil(),y))
+            sp1#(x,y) -> c_8(f#(x,y))
+        - Weak TRS:
+            f(Cons(x,xs),y) -> h(Cons(x,xs),y)
+            f(Nil(),y) -> g(Nil(),y)
+            g(Cons(x,xs),y) -> Cons(x,xs)
+            g(Nil(),y) -> h(Nil(),y)
+            h(Cons(x,xs),y) -> f(Cons(x,xs),y)
+            h(Nil(),y) -> h(Nil(),y)
+            r(x,y) -> x
+            sp1(x,y) -> f(x,y)
+        - Signature:
+            {f/2,g/2,h/2,r/2,sp1/2,f#/2,g#/2,h#/2,r#/2,sp1#/2} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/0,c_4/1,c_5/1,c_6/1,c_7/0
+            ,c_8/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {f#,g#,h#,r#,sp1#} and constructors {Cons,Nil}
+    + Applied Processor:
+        RemoveHeads
+    + Details:
+        Consider the dependency graph
+        
+        1:S:f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+           -->_1 h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y)):4
+        
+        2:S:f#(Nil(),y) -> c_2(g#(Nil(),y))
+           -->_1 g#(Nil(),y) -> c_4(h#(Nil(),y)):3
+        
+        3:S:g#(Nil(),y) -> c_4(h#(Nil(),y))
+           -->_1 h#(Nil(),y) -> c_6(h#(Nil(),y)):5
+        
+        4:S:h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+           -->_1 f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y)):1
+        
+        5:S:h#(Nil(),y) -> c_6(h#(Nil(),y))
+           -->_1 h#(Nil(),y) -> c_6(h#(Nil(),y)):5
+        
+        6:S:sp1#(x,y) -> c_8(f#(x,y))
+           -->_1 f#(Nil(),y) -> c_2(g#(Nil(),y)):2
+           -->_1 f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y)):1
+        
+        
+        Following roots of the dependency graph are removed, as the considered set of starting terms is closed under reduction with respect to these rules (modulo compound contexts).
+        
+        [(6,sp1#(x,y) -> c_8(f#(x,y)))]
+* Step 5: RemoveHeads MAYBE
+    + Considered Problem:
+        - Strict DPs:
+            f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+            f#(Nil(),y) -> c_2(g#(Nil(),y))
+            g#(Nil(),y) -> c_4(h#(Nil(),y))
+            h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+            h#(Nil(),y) -> c_6(h#(Nil(),y))
+        - Weak TRS:
+            f(Cons(x,xs),y) -> h(Cons(x,xs),y)
+            f(Nil(),y) -> g(Nil(),y)
+            g(Cons(x,xs),y) -> Cons(x,xs)
+            g(Nil(),y) -> h(Nil(),y)
+            h(Cons(x,xs),y) -> f(Cons(x,xs),y)
+            h(Nil(),y) -> h(Nil(),y)
+            r(x,y) -> x
+            sp1(x,y) -> f(x,y)
+        - Signature:
+            {f/2,g/2,h/2,r/2,sp1/2,f#/2,g#/2,h#/2,r#/2,sp1#/2} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/0,c_4/1,c_5/1,c_6/1,c_7/0
+            ,c_8/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {f#,g#,h#,r#,sp1#} and constructors {Cons,Nil}
+    + Applied Processor:
+        RemoveHeads
+    + Details:
+        Consider the dependency graph
+        
+        1:S:f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+           -->_1 h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y)):4
+        
+        2:S:f#(Nil(),y) -> c_2(g#(Nil(),y))
+           -->_1 g#(Nil(),y) -> c_4(h#(Nil(),y)):3
+        
+        3:S:g#(Nil(),y) -> c_4(h#(Nil(),y))
+           -->_1 h#(Nil(),y) -> c_6(h#(Nil(),y)):5
+        
+        4:S:h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+           -->_1 f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y)):1
+        
+        5:S:h#(Nil(),y) -> c_6(h#(Nil(),y))
+           -->_1 h#(Nil(),y) -> c_6(h#(Nil(),y)):5
+        
+        
+        Following roots of the dependency graph are removed, as the considered set of starting terms is closed under reduction with respect to these rules (modulo compound contexts).
+        
+        [(2,f#(Nil(),y) -> c_2(g#(Nil(),y)))]
+* Step 6: RemoveHeads MAYBE
+    + Considered Problem:
+        - Strict DPs:
+            f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+            g#(Nil(),y) -> c_4(h#(Nil(),y))
+            h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+            h#(Nil(),y) -> c_6(h#(Nil(),y))
+        - Weak TRS:
+            f(Cons(x,xs),y) -> h(Cons(x,xs),y)
+            f(Nil(),y) -> g(Nil(),y)
+            g(Cons(x,xs),y) -> Cons(x,xs)
+            g(Nil(),y) -> h(Nil(),y)
+            h(Cons(x,xs),y) -> f(Cons(x,xs),y)
+            h(Nil(),y) -> h(Nil(),y)
+            r(x,y) -> x
+            sp1(x,y) -> f(x,y)
+        - Signature:
+            {f/2,g/2,h/2,r/2,sp1/2,f#/2,g#/2,h#/2,r#/2,sp1#/2} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/0,c_4/1,c_5/1,c_6/1,c_7/0
+            ,c_8/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {f#,g#,h#,r#,sp1#} and constructors {Cons,Nil}
+    + Applied Processor:
+        RemoveHeads
+    + Details:
+        Consider the dependency graph
+        
+        1:S:f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+           -->_1 h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y)):4
+        
+        3:S:g#(Nil(),y) -> c_4(h#(Nil(),y))
+           -->_1 h#(Nil(),y) -> c_6(h#(Nil(),y)):5
+        
+        4:S:h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+           -->_1 f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y)):1
+        
+        5:S:h#(Nil(),y) -> c_6(h#(Nil(),y))
+           -->_1 h#(Nil(),y) -> c_6(h#(Nil(),y)):5
+        
+        
+        Following roots of the dependency graph are removed, as the considered set of starting terms is closed under reduction with respect to these rules (modulo compound contexts).
+        
+        [(3,g#(Nil(),y) -> c_4(h#(Nil(),y)))]
+* Step 7: UsableRules MAYBE
+    + Considered Problem:
+        - Strict DPs:
+            f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+            h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+            h#(Nil(),y) -> c_6(h#(Nil(),y))
+        - Weak TRS:
+            f(Cons(x,xs),y) -> h(Cons(x,xs),y)
+            f(Nil(),y) -> g(Nil(),y)
+            g(Cons(x,xs),y) -> Cons(x,xs)
+            g(Nil(),y) -> h(Nil(),y)
+            h(Cons(x,xs),y) -> f(Cons(x,xs),y)
+            h(Nil(),y) -> h(Nil(),y)
+            r(x,y) -> x
+            sp1(x,y) -> f(x,y)
+        - Signature:
+            {f/2,g/2,h/2,r/2,sp1/2,f#/2,g#/2,h#/2,r#/2,sp1#/2} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/0,c_4/1,c_5/1,c_6/1,c_7/0
+            ,c_8/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {f#,g#,h#,r#,sp1#} and constructors {Cons,Nil}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+          h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+          h#(Nil(),y) -> c_6(h#(Nil(),y))
+* Step 8: Failure MAYBE
+  + Considered Problem:
+      - Strict DPs:
+          f#(Cons(x,xs),y) -> c_1(h#(Cons(x,xs),y))
+          h#(Cons(x,xs),y) -> c_5(f#(Cons(x,xs),y))
+          h#(Nil(),y) -> c_6(h#(Nil(),y))
+      - Signature:
+          {f/2,g/2,h/2,r/2,sp1/2,f#/2,g#/2,h#/2,r#/2,sp1#/2} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/0,c_4/1,c_5/1,c_6/1,c_7/0
+          ,c_8/1}
+      - Obligation:
+          innermost runtime complexity wrt. defined symbols {f#,g#,h#,r#,sp1#} and constructors {Cons,Nil}
+  + Applied Processor:
+      EmptyProcessor
+  + Details:
+      The problem is still open.
+MAYBE

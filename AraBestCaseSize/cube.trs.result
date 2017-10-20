@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(n^1),?)"},"rProblem":"cube","rTime":0.540165,"rTool":{"tProcessor":[],"tName":"AraBestCaseSize","tArguments":["-t 60","-v1","--lowerbound"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

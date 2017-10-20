@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"assrewrite","rTime":1.759415,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV1CFHeur","tArguments":["-t 60","-v1","-l","-b","-a"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

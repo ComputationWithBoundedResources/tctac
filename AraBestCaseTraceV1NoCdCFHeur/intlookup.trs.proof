@@ -1,0 +1,19 @@
+BEST_CASE(Omega(n^1),?)
+
+Solution:
+---------
+
+  "Cons" :: ["A"(0) x "A"(0)] -(0)-> "A"(0)
+  "Nil" :: [] -(0)-> "A"(0)
+  "intlookup" :: ["A"(0) x "A"(1)] -(1)-> "A"(0)
+  "lookup" :: ["A"(0) x "A"(0)] -(1)-> "A"(0)
+  "run" :: ["A"(0) x "A"(1)] -(1)-> "A"(0)
+
+
+Cost Free Signatures:
+---------------------
+
+  "Cons" :: ["A"_cf(0) x "A"_cf(0)] -(0)-> "A"_cf(0)
+  "Nil" :: [] -(0)-> "A"_cf(0)
+  "intlookup" :: ["A"_cf(0) x "A"_cf(0)] -(0)-> "A"_cf(0)
+  "lookup" :: ["A"_cf(0) x "A"_cf(0)] -(0)-> "A"_cf(0)

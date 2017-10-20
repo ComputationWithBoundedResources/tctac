@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"WORST_CASE(?,O(n^2))"},"rProblem":"tadd","rTime":0.936233,"rTool":{"tProcessor":[],"tName":"Comp","tArguments":["--complexity","rci","-s","competition","-t","60"],"tExtension":"trs","tCommand":"tct-trs"}}

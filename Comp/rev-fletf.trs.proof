@@ -1,0 +1,71 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            foldr#3(Cons(x16,x6)) -> step_x_f(rev_l(),x16,foldr#3(x6))
+            foldr#3(Nil()) -> fleft_op_e_xs_1()
+            main(Cons(x8,x9)) -> step_x_f#1(rev_l(),x8,foldr#3(x9),Nil())
+            main(Nil()) -> Nil()
+            rev_l#2(x8,x10) -> Cons(x10,x8)
+            step_x_f#1(rev_l(),x5,fleft_op_e_xs_1(),x3) -> rev_l#2(x3,x5)
+            step_x_f#1(rev_l(),x5,step_x_f(x2,x3,x4),x1) -> step_x_f#1(x2,x3,x4,rev_l#2(x1,x5))
+        - Signature:
+            {foldr#3/1,main/1,rev_l#2/2,step_x_f#1/4} / {Cons/2,Nil/0,fleft_op_e_xs_1/0,rev_l/0,step_x_f/3}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {foldr#3,main,rev_l#2,step_x_f#1} and constructors {Cons
+            ,Nil,fleft_op_e_xs_1,rev_l,step_x_f}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 3.
+        The enriched problem is compatible with follwoing automaton.
+          Cons_0(2,2) -> 2
+          Cons_1(2,2) -> 1
+          Cons_2(2,1) -> 1
+          Cons_2(2,2) -> 1
+          Cons_3(2,1) -> 1
+          Cons_3(2,5) -> 1
+          Nil_0() -> 2
+          Nil_1() -> 1
+          Nil_1() -> 5
+          fleft_op_e_xs_1_0() -> 2
+          fleft_op_e_xs_1_1() -> 1
+          fleft_op_e_xs_1_1() -> 4
+          foldr#3_0(2) -> 1
+          foldr#3_1(2) -> 4
+          main_0(2) -> 1
+          rev_l_0() -> 2
+          rev_l_1() -> 3
+          rev_l#2_0(2,2) -> 1
+          rev_l#2_1(1,2) -> 1
+          rev_l#2_1(2,2) -> 1
+          rev_l#2_2(1,2) -> 1
+          rev_l#2_2(5,2) -> 1
+          step_x_f_0(2,2,2) -> 2
+          step_x_f_1(3,2,4) -> 1
+          step_x_f_1(3,2,4) -> 4
+          step_x_f#1_0(2,2,2,2) -> 1
+          step_x_f#1_1(2,2,2,1) -> 1
+          step_x_f#1_1(3,2,4,5) -> 1
+          step_x_f#1_2(3,2,4,1) -> 1
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            foldr#3(Cons(x16,x6)) -> step_x_f(rev_l(),x16,foldr#3(x6))
+            foldr#3(Nil()) -> fleft_op_e_xs_1()
+            main(Cons(x8,x9)) -> step_x_f#1(rev_l(),x8,foldr#3(x9),Nil())
+            main(Nil()) -> Nil()
+            rev_l#2(x8,x10) -> Cons(x10,x8)
+            step_x_f#1(rev_l(),x5,fleft_op_e_xs_1(),x3) -> rev_l#2(x3,x5)
+            step_x_f#1(rev_l(),x5,step_x_f(x2,x3,x4),x1) -> step_x_f#1(x2,x3,x4,rev_l#2(x1,x5))
+        - Signature:
+            {foldr#3/1,main/1,rev_l#2/2,step_x_f#1/4} / {Cons/2,Nil/0,fleft_op_e_xs_1/0,rev_l/0,step_x_f/3}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {foldr#3,main,rev_l#2,step_x_f#1} and constructors {Cons
+            ,Nil,fleft_op_e_xs_1,rev_l,step_x_f}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

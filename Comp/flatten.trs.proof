@@ -1,0 +1,57 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            @(dd(x,xs),ys) -> dd(x,@(xs,ys))
+            @(nil(),xs) -> xs
+            flatten(dd(x,xs)) -> @(x,flatten(xs))
+            flatten(nil()) -> nil()
+        - Signature:
+            {@/2,flatten/1} / {dd/2,nil/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {@,flatten} and constructors {dd,nil}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 1.
+        The enriched problem is compatible with follwoing automaton.
+          @_0(2,2) -> 1
+          @_1(2,2) -> 3
+          @_1(2,4) -> 1
+          @_1(2,4) -> 4
+          dd_0(2,2) -> 1
+          dd_0(2,2) -> 2
+          dd_0(2,2) -> 3
+          dd_1(2,1) -> 1
+          dd_1(2,3) -> 1
+          dd_1(2,3) -> 3
+          dd_1(2,4) -> 1
+          dd_1(2,4) -> 4
+          flatten_0(2) -> 1
+          flatten_1(2) -> 1
+          flatten_1(2) -> 4
+          nil_0() -> 1
+          nil_0() -> 2
+          nil_0() -> 3
+          nil_1() -> 1
+          nil_1() -> 4
+          2 -> 1
+          2 -> 3
+          4 -> 1
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            @(dd(x,xs),ys) -> dd(x,@(xs,ys))
+            @(nil(),xs) -> xs
+            flatten(dd(x,xs)) -> @(x,flatten(xs))
+            flatten(nil()) -> nil()
+        - Signature:
+            {@/2,flatten/1} / {dd/2,nil/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {@,flatten} and constructors {dd,nil}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

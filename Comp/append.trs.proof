@@ -1,0 +1,50 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            append(cons(x,xs),ys) -> cons(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            main(xs) -> append(xs,nil())
+        - Signature:
+            {append/2,main/1} / {cons/2,nil/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append,main} and constructors {cons,nil}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 1.
+        The enriched problem is compatible with follwoing automaton.
+          append_0(2,2) -> 1
+          append_1(2,2) -> 3
+          append_1(2,4) -> 1
+          cons_0(2,2) -> 1
+          cons_0(2,2) -> 2
+          cons_0(2,2) -> 3
+          cons_1(2,1) -> 1
+          cons_1(2,3) -> 1
+          cons_1(2,3) -> 3
+          main_0(2) -> 1
+          nil_0() -> 1
+          nil_0() -> 2
+          nil_0() -> 3
+          nil_1() -> 1
+          nil_1() -> 4
+          2 -> 1
+          2 -> 3
+          4 -> 1
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            append(cons(x,xs),ys) -> cons(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            main(xs) -> append(xs,nil())
+        - Signature:
+            {append/2,main/1} / {cons/2,nil/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append,main} and constructors {cons,nil}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

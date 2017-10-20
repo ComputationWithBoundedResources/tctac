@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(n^1),?)"},"rProblem":"mergesort.raml","rTime":0.850549,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV1NoCdHeur","tArguments":["-t 60","-v1","-l","-b","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

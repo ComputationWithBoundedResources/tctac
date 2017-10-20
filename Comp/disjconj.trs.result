@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"MAYBE"},"rProblem":"disjconj","rTime":59.106027,"rTool":{"tProcessor":[],"tName":"Comp","tArguments":["--complexity","rci","-s","competition","-t","60"],"tExtension":"trs","tCommand":"tct-trs"}}

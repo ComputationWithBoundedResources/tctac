@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"egypt","rTime":60.02266,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3","tArguments":["-t 60","-v3","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

@@ -1,0 +1,1008 @@
+WORST_CASE(?,O(n^2))
+* Step 1: DependencyPairs WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            head(queue(cons(x,f),r)) -> x
+            head(queue(nil(),r)) -> errorHead()
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+            tail(queue(cons(x,f),r)) -> checkF(queue(f,r))
+            tail(queue(nil(),r)) -> errorTail()
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0
+            ,queue/2,s/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF,empty,enq,head,rev,rev',snoc
+            ,tail} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = DT}
+    + Details:
+        We add the following dependency tuples:
+        
+        Strict DPs
+          checkF#(queue(cons(x,xs),r)) -> c_1()
+          checkF#(queue(nil(),r)) -> c_2(rev#(r))
+          empty#() -> c_3()
+          enq#(0()) -> c_4(empty#())
+          enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+          head#(queue(cons(x,f),r)) -> c_6()
+          head#(queue(nil(),r)) -> c_7()
+          rev#(xs) -> c_8(rev'#(xs,nil()))
+          rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+          rev'#(nil(),ys) -> c_10()
+          snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+          tail#(queue(cons(x,f),r)) -> c_12(checkF#(queue(f,r)))
+          tail#(queue(nil(),r)) -> c_13()
+        Weak DPs
+          
+        
+        and mark the set of starting terms.
+* Step 2: PredecessorEstimation WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            checkF#(queue(cons(x,xs),r)) -> c_1()
+            checkF#(queue(nil(),r)) -> c_2(rev#(r))
+            empty#() -> c_3()
+            enq#(0()) -> c_4(empty#())
+            enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+            head#(queue(cons(x,f),r)) -> c_6()
+            head#(queue(nil(),r)) -> c_7()
+            rev#(xs) -> c_8(rev'#(xs,nil()))
+            rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+            rev'#(nil(),ys) -> c_10()
+            snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+            tail#(queue(cons(x,f),r)) -> c_12(checkF#(queue(f,r)))
+            tail#(queue(nil(),r)) -> c_13()
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            head(queue(cons(x,f),r)) -> x
+            head(queue(nil(),r)) -> errorHead()
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+            tail(queue(cons(x,f),r)) -> checkF(queue(f,r))
+            tail(queue(nil(),r)) -> errorTail()
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/2
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {1,3,6,7,10,13}
+        by application of
+          Pre({1,3,6,7,10,13}) = {4,8,9,11,12}.
+        Here rules are labelled as follows:
+          1: checkF#(queue(cons(x,xs),r)) -> c_1()
+          2: checkF#(queue(nil(),r)) -> c_2(rev#(r))
+          3: empty#() -> c_3()
+          4: enq#(0()) -> c_4(empty#())
+          5: enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+          6: head#(queue(cons(x,f),r)) -> c_6()
+          7: head#(queue(nil(),r)) -> c_7()
+          8: rev#(xs) -> c_8(rev'#(xs,nil()))
+          9: rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+          10: rev'#(nil(),ys) -> c_10()
+          11: snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+          12: tail#(queue(cons(x,f),r)) -> c_12(checkF#(queue(f,r)))
+          13: tail#(queue(nil(),r)) -> c_13()
+* Step 3: PredecessorEstimation WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            checkF#(queue(nil(),r)) -> c_2(rev#(r))
+            enq#(0()) -> c_4(empty#())
+            enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+            rev#(xs) -> c_8(rev'#(xs,nil()))
+            rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+            snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+            tail#(queue(cons(x,f),r)) -> c_12(checkF#(queue(f,r)))
+        - Weak DPs:
+            checkF#(queue(cons(x,xs),r)) -> c_1()
+            empty#() -> c_3()
+            head#(queue(cons(x,f),r)) -> c_6()
+            head#(queue(nil(),r)) -> c_7()
+            rev'#(nil(),ys) -> c_10()
+            tail#(queue(nil(),r)) -> c_13()
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            head(queue(cons(x,f),r)) -> x
+            head(queue(nil(),r)) -> errorHead()
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+            tail(queue(cons(x,f),r)) -> checkF(queue(f,r))
+            tail(queue(nil(),r)) -> errorTail()
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/2
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {2}
+        by application of
+          Pre({2}) = {3}.
+        Here rules are labelled as follows:
+          1: checkF#(queue(nil(),r)) -> c_2(rev#(r))
+          2: enq#(0()) -> c_4(empty#())
+          3: enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+          4: rev#(xs) -> c_8(rev'#(xs,nil()))
+          5: rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+          6: snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+          7: tail#(queue(cons(x,f),r)) -> c_12(checkF#(queue(f,r)))
+          8: checkF#(queue(cons(x,xs),r)) -> c_1()
+          9: empty#() -> c_3()
+          10: head#(queue(cons(x,f),r)) -> c_6()
+          11: head#(queue(nil(),r)) -> c_7()
+          12: rev'#(nil(),ys) -> c_10()
+          13: tail#(queue(nil(),r)) -> c_13()
+* Step 4: RemoveWeakSuffixes WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            checkF#(queue(nil(),r)) -> c_2(rev#(r))
+            enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+            rev#(xs) -> c_8(rev'#(xs,nil()))
+            rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+            snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+            tail#(queue(cons(x,f),r)) -> c_12(checkF#(queue(f,r)))
+        - Weak DPs:
+            checkF#(queue(cons(x,xs),r)) -> c_1()
+            empty#() -> c_3()
+            enq#(0()) -> c_4(empty#())
+            head#(queue(cons(x,f),r)) -> c_6()
+            head#(queue(nil(),r)) -> c_7()
+            rev'#(nil(),ys) -> c_10()
+            tail#(queue(nil(),r)) -> c_13()
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            head(queue(cons(x,f),r)) -> x
+            head(queue(nil(),r)) -> errorHead()
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+            tail(queue(cons(x,f),r)) -> checkF(queue(f,r))
+            tail(queue(nil(),r)) -> errorTail()
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/2
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:checkF#(queue(nil(),r)) -> c_2(rev#(r))
+             -->_1 rev#(xs) -> c_8(rev'#(xs,nil())):3
+          
+          2:S:enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+             -->_2 enq#(0()) -> c_4(empty#()):9
+             -->_1 snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r)))):5
+             -->_2 enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n)):2
+          
+          3:S:rev#(xs) -> c_8(rev'#(xs,nil()))
+             -->_1 rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys))):4
+             -->_1 rev'#(nil(),ys) -> c_10():12
+          
+          4:S:rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+             -->_1 rev'#(nil(),ys) -> c_10():12
+             -->_1 rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys))):4
+          
+          5:S:snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+             -->_1 checkF#(queue(cons(x,xs),r)) -> c_1():7
+             -->_1 checkF#(queue(nil(),r)) -> c_2(rev#(r)):1
+          
+          6:S:tail#(queue(cons(x,f),r)) -> c_12(checkF#(queue(f,r)))
+             -->_1 checkF#(queue(cons(x,xs),r)) -> c_1():7
+             -->_1 checkF#(queue(nil(),r)) -> c_2(rev#(r)):1
+          
+          7:W:checkF#(queue(cons(x,xs),r)) -> c_1()
+             
+          
+          8:W:empty#() -> c_3()
+             
+          
+          9:W:enq#(0()) -> c_4(empty#())
+             -->_1 empty#() -> c_3():8
+          
+          10:W:head#(queue(cons(x,f),r)) -> c_6()
+             
+          
+          11:W:head#(queue(nil(),r)) -> c_7()
+             
+          
+          12:W:rev'#(nil(),ys) -> c_10()
+             
+          
+          13:W:tail#(queue(nil(),r)) -> c_13()
+             
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          13: tail#(queue(nil(),r)) -> c_13()
+          11: head#(queue(nil(),r)) -> c_7()
+          10: head#(queue(cons(x,f),r)) -> c_6()
+          7: checkF#(queue(cons(x,xs),r)) -> c_1()
+          9: enq#(0()) -> c_4(empty#())
+          8: empty#() -> c_3()
+          12: rev'#(nil(),ys) -> c_10()
+* Step 5: RemoveHeads WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            checkF#(queue(nil(),r)) -> c_2(rev#(r))
+            enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+            rev#(xs) -> c_8(rev'#(xs,nil()))
+            rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+            snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+            tail#(queue(cons(x,f),r)) -> c_12(checkF#(queue(f,r)))
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            head(queue(cons(x,f),r)) -> x
+            head(queue(nil(),r)) -> errorHead()
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+            tail(queue(cons(x,f),r)) -> checkF(queue(f,r))
+            tail(queue(nil(),r)) -> errorTail()
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/2
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        RemoveHeads
+    + Details:
+        Consider the dependency graph
+        
+        1:S:checkF#(queue(nil(),r)) -> c_2(rev#(r))
+           -->_1 rev#(xs) -> c_8(rev'#(xs,nil())):3
+        
+        2:S:enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+           -->_1 snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r)))):5
+           -->_2 enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n)):2
+        
+        3:S:rev#(xs) -> c_8(rev'#(xs,nil()))
+           -->_1 rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys))):4
+        
+        4:S:rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+           -->_1 rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys))):4
+        
+        5:S:snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+           -->_1 checkF#(queue(nil(),r)) -> c_2(rev#(r)):1
+        
+        6:S:tail#(queue(cons(x,f),r)) -> c_12(checkF#(queue(f,r)))
+           -->_1 checkF#(queue(nil(),r)) -> c_2(rev#(r)):1
+        
+        
+        Following roots of the dependency graph are removed, as the considered set of starting terms is closed under reduction with respect to these rules (modulo compound contexts).
+        
+        [(6,tail#(queue(cons(x,f),r)) -> c_12(checkF#(queue(f,r))))]
+* Step 6: UsableRules WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            checkF#(queue(nil(),r)) -> c_2(rev#(r))
+            enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+            rev#(xs) -> c_8(rev'#(xs,nil()))
+            rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+            snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            head(queue(cons(x,f),r)) -> x
+            head(queue(nil(),r)) -> errorHead()
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+            tail(queue(cons(x,f),r)) -> checkF(queue(f,r))
+            tail(queue(nil(),r)) -> errorTail()
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/2
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+          checkF(queue(nil(),r)) -> queue(rev(r),nil())
+          empty() -> queue(nil(),nil())
+          enq(0()) -> empty()
+          enq(s(n)) -> snoc(enq(n),n)
+          rev(xs) -> rev'(xs,nil())
+          rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+          rev'(nil(),ys) -> ys
+          snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+          checkF#(queue(nil(),r)) -> c_2(rev#(r))
+          enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+          rev#(xs) -> c_8(rev'#(xs,nil()))
+          rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+          snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+* Step 7: DecomposeDG WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            checkF#(queue(nil(),r)) -> c_2(rev#(r))
+            enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+            rev#(xs) -> c_8(rev'#(xs,nil()))
+            rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+            snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/2
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        DecomposeDG {onSelection = all below first cut in WDG, onUpper = Nothing, onLower = Nothing}
+    + Details:
+        We decompose the input problem according to the dependency graph into the upper component
+          enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+        and a lower component
+          checkF#(queue(nil(),r)) -> c_2(rev#(r))
+          rev#(xs) -> c_8(rev'#(xs,nil()))
+          rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+          snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+        Further, following extension rules are added to the lower component.
+          enq#(s(n)) -> enq#(n)
+          enq#(s(n)) -> snoc#(enq(n),n)
+** Step 7.a:1: SimplifyRHS WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/2
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        SimplifyRHS
+    + Details:
+        Consider the dependency graph
+          1:S:enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n))
+             -->_2 enq#(s(n)) -> c_5(snoc#(enq(n),n),enq#(n)):1
+          
+        Due to missing edges in the depndency graph, the right-hand sides of following rules could be simplified:
+          enq#(s(n)) -> c_5(enq#(n))
+** Step 7.a:2: UsableRules WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            enq#(s(n)) -> c_5(enq#(n))
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/1
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          enq#(s(n)) -> c_5(enq#(n))
+** Step 7.a:3: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            enq#(s(n)) -> c_5(enq#(n))
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/1
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(c_5) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                    p(0) = [0]                  
+               p(checkF) = [0]                  
+                 p(cons) = [1] x1 + [1] x2 + [0]
+                p(empty) = [0]                  
+                  p(enq) = [0]                  
+            p(errorHead) = [0]                  
+            p(errorTail) = [0]                  
+                 p(head) = [0]                  
+                  p(nil) = [0]                  
+                p(queue) = [1] x1 + [1] x2 + [0]
+                  p(rev) = [0]                  
+                 p(rev') = [0]                  
+                    p(s) = [1] x1 + [3]         
+                 p(snoc) = [0]                  
+                 p(tail) = [0]                  
+              p(checkF#) = [0]                  
+               p(empty#) = [0]                  
+                 p(enq#) = [9] x1 + [0]         
+                p(head#) = [0]                  
+                 p(rev#) = [0]                  
+                p(rev'#) = [0]                  
+                p(snoc#) = [0]                  
+                p(tail#) = [0]                  
+                  p(c_1) = [0]                  
+                  p(c_2) = [0]                  
+                  p(c_3) = [0]                  
+                  p(c_4) = [0]                  
+                  p(c_5) = [1] x1 + [0]         
+                  p(c_6) = [0]                  
+                  p(c_7) = [0]                  
+                  p(c_8) = [0]                  
+                  p(c_9) = [0]                  
+                 p(c_10) = [0]                  
+                 p(c_11) = [0]                  
+                 p(c_12) = [0]                  
+                 p(c_13) = [0]                  
+          
+          Following rules are strictly oriented:
+          enq#(s(n)) = [9] n + [27]
+                     > [9] n + [0] 
+                     = c_5(enq#(n))
+          
+          
+          Following rules are (at-least) weakly oriented:
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 7.a:4: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            enq#(s(n)) -> c_5(enq#(n))
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/1
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+** Step 7.b:1: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            checkF#(queue(nil(),r)) -> c_2(rev#(r))
+            rev#(xs) -> c_8(rev'#(xs,nil()))
+            rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+            snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+        - Weak DPs:
+            enq#(s(n)) -> enq#(n)
+            enq#(s(n)) -> snoc#(enq(n),n)
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/2
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(queue) = {1},
+            uargs(snoc) = {1},
+            uargs(snoc#) = {1},
+            uargs(c_2) = {1},
+            uargs(c_8) = {1},
+            uargs(c_9) = {1},
+            uargs(c_11) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                    p(0) = [4]                  
+               p(checkF) = [2]                  
+                 p(cons) = [0]                  
+                p(empty) = [2]                  
+                  p(enq) = [2] x1 + [0]         
+            p(errorHead) = [0]                  
+            p(errorTail) = [0]                  
+                 p(head) = [0]                  
+                  p(nil) = [0]                  
+                p(queue) = [1] x1 + [2]         
+                  p(rev) = [0]                  
+                 p(rev') = [4] x2 + [0]         
+                    p(s) = [1] x1 + [4]         
+                 p(snoc) = [1] x1 + [1]         
+                 p(tail) = [0]                  
+              p(checkF#) = [2]                  
+               p(empty#) = [0]                  
+                 p(enq#) = [3] x1 + [2]         
+                p(head#) = [0]                  
+                 p(rev#) = [1]                  
+                p(rev'#) = [2] x2 + [0]         
+                p(snoc#) = [1] x1 + [1]         
+                p(tail#) = [0]                  
+                  p(c_1) = [0]                  
+                  p(c_2) = [1] x1 + [0]         
+                  p(c_3) = [0]                  
+                  p(c_4) = [0]                  
+                  p(c_5) = [1] x1 + [1] x2 + [2]
+                  p(c_6) = [1]                  
+                  p(c_7) = [1]                  
+                  p(c_8) = [1] x1 + [0]         
+                  p(c_9) = [1] x1 + [1]         
+                 p(c_10) = [0]                  
+                 p(c_11) = [1] x1 + [5]         
+                 p(c_12) = [2] x1 + [1]         
+                 p(c_13) = [1]                  
+          
+          Following rules are strictly oriented:
+          checkF#(queue(nil(),r)) = [2]                 
+                                  > [1]                 
+                                  = c_2(rev#(r))        
+          
+                         rev#(xs) = [1]                 
+                                  > [0]                 
+                                  = c_8(rev'#(xs,nil()))
+          
+          
+          Following rules are (at-least) weakly oriented:
+                           enq#(s(n)) =  [3] n + [14]                     
+                                      >= [3] n + [2]                      
+                                      =  enq#(n)                          
+          
+                           enq#(s(n)) =  [3] n + [14]                     
+                                      >= [2] n + [1]                      
+                                      =  snoc#(enq(n),n)                  
+          
+                 rev'#(cons(x,xs),ys) =  [2] ys + [0]                     
+                                      >= [1]                              
+                                      =  c_9(rev'#(xs,cons(x,ys)))        
+          
+                  snoc#(queue(f,r),x) =  [1] f + [3]                      
+                                      >= [7]                              
+                                      =  c_11(checkF#(queue(f,cons(x,r))))
+          
+          checkF(queue(cons(x,xs),r)) =  [2]                              
+                                      >= [2]                              
+                                      =  queue(cons(x,xs),r)              
+          
+               checkF(queue(nil(),r)) =  [2]                              
+                                      >= [2]                              
+                                      =  queue(rev(r),nil())              
+          
+                              empty() =  [2]                              
+                                      >= [2]                              
+                                      =  queue(nil(),nil())               
+          
+                             enq(0()) =  [8]                              
+                                      >= [2]                              
+                                      =  empty()                          
+          
+                            enq(s(n)) =  [2] n + [8]                      
+                                      >= [2] n + [1]                      
+                                      =  snoc(enq(n),n)                   
+          
+                              rev(xs) =  [0]                              
+                                      >= [0]                              
+                                      =  rev'(xs,nil())                   
+          
+                  rev'(cons(x,xs),ys) =  [4] ys + [0]                     
+                                      >= [0]                              
+                                      =  rev'(xs,cons(x,ys))              
+          
+                       rev'(nil(),ys) =  [4] ys + [0]                     
+                                      >= [1] ys + [0]                     
+                                      =  ys                               
+          
+                   snoc(queue(f,r),x) =  [1] f + [3]                      
+                                      >= [2]                              
+                                      =  checkF(queue(f,cons(x,r)))       
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 7.b:2: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+            snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+        - Weak DPs:
+            checkF#(queue(nil(),r)) -> c_2(rev#(r))
+            enq#(s(n)) -> enq#(n)
+            enq#(s(n)) -> snoc#(enq(n),n)
+            rev#(xs) -> c_8(rev'#(xs,nil()))
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/2
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(queue) = {1},
+            uargs(snoc) = {1},
+            uargs(snoc#) = {1},
+            uargs(c_2) = {1},
+            uargs(c_8) = {1},
+            uargs(c_9) = {1},
+            uargs(c_11) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                    p(0) = [0]         
+               p(checkF) = [1] x1 + [0]
+                 p(cons) = [0]         
+                p(empty) = [2]         
+                  p(enq) = [4]         
+            p(errorHead) = [0]         
+            p(errorTail) = [0]         
+                 p(head) = [1] x1 + [0]
+                  p(nil) = [1]         
+                p(queue) = [1] x1 + [0]
+                  p(rev) = [1]         
+                 p(rev') = [1] x2 + [0]
+                    p(s) = [1] x1 + [1]
+                 p(snoc) = [1] x1 + [0]
+                 p(tail) = [1] x1 + [1]
+              p(checkF#) = [4]         
+               p(empty#) = [0]         
+                 p(enq#) = [2] x1 + [7]
+                p(head#) = [4] x1 + [2]
+                 p(rev#) = [2]         
+                p(rev'#) = [1]         
+                p(snoc#) = [1] x1 + [5]
+                p(tail#) = [2]         
+                  p(c_1) = [1]         
+                  p(c_2) = [1] x1 + [2]
+                  p(c_3) = [1]         
+                  p(c_4) = [1]         
+                  p(c_5) = [4] x2 + [0]
+                  p(c_6) = [1]         
+                  p(c_7) = [2]         
+                  p(c_8) = [1] x1 + [1]
+                  p(c_9) = [1] x1 + [0]
+                 p(c_10) = [2]         
+                 p(c_11) = [1] x1 + [0]
+                 p(c_12) = [0]         
+                 p(c_13) = [0]         
+          
+          Following rules are strictly oriented:
+          snoc#(queue(f,r),x) = [1] f + [5]                      
+                              > [4]                              
+                              = c_11(checkF#(queue(f,cons(x,r))))
+          
+          
+          Following rules are (at-least) weakly oriented:
+              checkF#(queue(nil(),r)) =  [4]                       
+                                      >= [4]                       
+                                      =  c_2(rev#(r))              
+          
+                           enq#(s(n)) =  [2] n + [9]               
+                                      >= [2] n + [7]               
+                                      =  enq#(n)                   
+          
+                           enq#(s(n)) =  [2] n + [9]               
+                                      >= [9]                       
+                                      =  snoc#(enq(n),n)           
+          
+                             rev#(xs) =  [2]                       
+                                      >= [2]                       
+                                      =  c_8(rev'#(xs,nil()))      
+          
+                 rev'#(cons(x,xs),ys) =  [1]                       
+                                      >= [1]                       
+                                      =  c_9(rev'#(xs,cons(x,ys))) 
+          
+          checkF(queue(cons(x,xs),r)) =  [0]                       
+                                      >= [0]                       
+                                      =  queue(cons(x,xs),r)       
+          
+               checkF(queue(nil(),r)) =  [1]                       
+                                      >= [1]                       
+                                      =  queue(rev(r),nil())       
+          
+                              empty() =  [2]                       
+                                      >= [1]                       
+                                      =  queue(nil(),nil())        
+          
+                             enq(0()) =  [4]                       
+                                      >= [2]                       
+                                      =  empty()                   
+          
+                            enq(s(n)) =  [4]                       
+                                      >= [4]                       
+                                      =  snoc(enq(n),n)            
+          
+                              rev(xs) =  [1]                       
+                                      >= [1]                       
+                                      =  rev'(xs,nil())            
+          
+                  rev'(cons(x,xs),ys) =  [1] ys + [0]              
+                                      >= [0]                       
+                                      =  rev'(xs,cons(x,ys))       
+          
+                       rev'(nil(),ys) =  [1] ys + [0]              
+                                      >= [1] ys + [0]              
+                                      =  ys                        
+          
+                   snoc(queue(f,r),x) =  [1] f + [0]               
+                                      >= [1] f + [0]               
+                                      =  checkF(queue(f,cons(x,r)))
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 7.b:3: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+        - Weak DPs:
+            checkF#(queue(nil(),r)) -> c_2(rev#(r))
+            enq#(s(n)) -> enq#(n)
+            enq#(s(n)) -> snoc#(enq(n),n)
+            rev#(xs) -> c_8(rev'#(xs,nil()))
+            snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/2
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(queue) = {1},
+            uargs(snoc) = {1},
+            uargs(snoc#) = {1},
+            uargs(c_2) = {1},
+            uargs(c_8) = {1},
+            uargs(c_9) = {1},
+            uargs(c_11) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                    p(0) = [4]                  
+               p(checkF) = [1] x1 + [1]         
+                 p(cons) = [1] x2 + [1]         
+                p(empty) = [1]                  
+                  p(enq) = [1] x1 + [0]         
+            p(errorHead) = [0]                  
+            p(errorTail) = [1]                  
+                 p(head) = [2] x1 + [1]         
+                  p(nil) = [0]                  
+                p(queue) = [1] x1 + [1] x2 + [1]
+                  p(rev) = [1] x1 + [1]         
+                 p(rev') = [1] x1 + [1] x2 + [0]
+                    p(s) = [1] x1 + [2]         
+                 p(snoc) = [1] x1 + [2]         
+                 p(tail) = [2] x1 + [4]         
+              p(checkF#) = [1] x1 + [4]         
+               p(empty#) = [0]                  
+                 p(enq#) = [4] x1 + [3]         
+                p(head#) = [0]                  
+                 p(rev#) = [1] x1 + [1]         
+                p(rev'#) = [1] x1 + [0]         
+                p(snoc#) = [1] x1 + [2] x2 + [6]
+                p(tail#) = [1] x1 + [0]         
+                  p(c_1) = [2]                  
+                  p(c_2) = [1] x1 + [0]         
+                  p(c_3) = [2]                  
+                  p(c_4) = [4] x1 + [0]         
+                  p(c_5) = [4]                  
+                  p(c_6) = [1]                  
+                  p(c_7) = [0]                  
+                  p(c_8) = [1] x1 + [1]         
+                  p(c_9) = [1] x1 + [0]         
+                 p(c_10) = [1]                  
+                 p(c_11) = [1] x1 + [1]         
+                 p(c_12) = [2] x1 + [1]         
+                 p(c_13) = [0]                  
+          
+          Following rules are strictly oriented:
+          rev'#(cons(x,xs),ys) = [1] xs + [1]             
+                               > [1] xs + [0]             
+                               = c_9(rev'#(xs,cons(x,ys)))
+          
+          
+          Following rules are (at-least) weakly oriented:
+              checkF#(queue(nil(),r)) =  [1] r + [5]                      
+                                      >= [1] r + [1]                      
+                                      =  c_2(rev#(r))                     
+          
+                           enq#(s(n)) =  [4] n + [11]                     
+                                      >= [4] n + [3]                      
+                                      =  enq#(n)                          
+          
+                           enq#(s(n)) =  [4] n + [11]                     
+                                      >= [3] n + [6]                      
+                                      =  snoc#(enq(n),n)                  
+          
+                             rev#(xs) =  [1] xs + [1]                     
+                                      >= [1] xs + [1]                     
+                                      =  c_8(rev'#(xs,nil()))             
+          
+                  snoc#(queue(f,r),x) =  [1] f + [1] r + [2] x + [7]      
+                                      >= [1] f + [1] r + [7]              
+                                      =  c_11(checkF#(queue(f,cons(x,r))))
+          
+          checkF(queue(cons(x,xs),r)) =  [1] r + [1] xs + [3]             
+                                      >= [1] r + [1] xs + [2]             
+                                      =  queue(cons(x,xs),r)              
+          
+               checkF(queue(nil(),r)) =  [1] r + [2]                      
+                                      >= [1] r + [2]                      
+                                      =  queue(rev(r),nil())              
+          
+                              empty() =  [1]                              
+                                      >= [1]                              
+                                      =  queue(nil(),nil())               
+          
+                             enq(0()) =  [4]                              
+                                      >= [1]                              
+                                      =  empty()                          
+          
+                            enq(s(n)) =  [1] n + [2]                      
+                                      >= [1] n + [2]                      
+                                      =  snoc(enq(n),n)                   
+          
+                              rev(xs) =  [1] xs + [1]                     
+                                      >= [1] xs + [0]                     
+                                      =  rev'(xs,nil())                   
+          
+                  rev'(cons(x,xs),ys) =  [1] xs + [1] ys + [1]            
+                                      >= [1] xs + [1] ys + [1]            
+                                      =  rev'(xs,cons(x,ys))              
+          
+                       rev'(nil(),ys) =  [1] ys + [0]                     
+                                      >= [1] ys + [0]                     
+                                      =  ys                               
+          
+                   snoc(queue(f,r),x) =  [1] f + [1] r + [3]              
+                                      >= [1] f + [1] r + [3]              
+                                      =  checkF(queue(f,cons(x,r)))       
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 7.b:4: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            checkF#(queue(nil(),r)) -> c_2(rev#(r))
+            enq#(s(n)) -> enq#(n)
+            enq#(s(n)) -> snoc#(enq(n),n)
+            rev#(xs) -> c_8(rev'#(xs,nil()))
+            rev'#(cons(x,xs),ys) -> c_9(rev'#(xs,cons(x,ys)))
+            snoc#(queue(f,r),x) -> c_11(checkF#(queue(f,cons(x,r))))
+        - Weak TRS:
+            checkF(queue(cons(x,xs),r)) -> queue(cons(x,xs),r)
+            checkF(queue(nil(),r)) -> queue(rev(r),nil())
+            empty() -> queue(nil(),nil())
+            enq(0()) -> empty()
+            enq(s(n)) -> snoc(enq(n),n)
+            rev(xs) -> rev'(xs,nil())
+            rev'(cons(x,xs),ys) -> rev'(xs,cons(x,ys))
+            rev'(nil(),ys) -> ys
+            snoc(queue(f,r),x) -> checkF(queue(f,cons(x,r)))
+        - Signature:
+            {checkF/1,empty/0,enq/1,head/1,rev/1,rev'/2,snoc/2,tail/1,checkF#/1,empty#/0,enq#/1,head#/1,rev#/1,rev'#/2
+            ,snoc#/2,tail#/1} / {0/0,cons/2,errorHead/0,errorTail/0,nil/0,queue/2,s/1,c_1/0,c_2/1,c_3/0,c_4/1,c_5/2
+            ,c_6/0,c_7/0,c_8/1,c_9/1,c_10/0,c_11/1,c_12/1,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {checkF#,empty#,enq#,head#,rev#,rev'#,snoc#
+            ,tail#} and constructors {0,cons,errorHead,errorTail,nil,queue,s}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^2))

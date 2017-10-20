@@ -1,0 +1,1445 @@
+WORST_CASE(?,O(n^3))
+* Step 1: DependencyPairs WORST_CASE(?,O(n^3))
+    + Considered Problem:
+        - Strict TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append,gt,quicksort,quicksort',split
+            ,split'} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = DT}
+    + Details:
+        We add the following dependency tuples:
+        
+        Strict DPs
+          append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+          append#(nil(),ys) -> c_2()
+          gt#(0(),0()) -> c_3()
+          gt#(0(),s(y)) -> c_4()
+          gt#(s(x),0()) -> c_5()
+          gt#(s(x),s(y)) -> c_6(gt#(x,y))
+          quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs))
+          quicksort#(nil()) -> c_8()
+          quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys))),quicksort#(xs),quicksort#(ys))
+          split#(pivot,dd(x,xs)) -> c_10(split'#(gt(x,pivot),x,split(pivot,xs)),gt#(x,pivot),split#(pivot,xs))
+          split#(pivot,nil()) -> c_11()
+          split'#(false(),x,pair(ls,rs)) -> c_12()
+          split'#(true(),x,pair(ls,rs)) -> c_13()
+        Weak DPs
+          
+        
+        and mark the set of starting terms.
+* Step 2: PredecessorEstimation WORST_CASE(?,O(n^3))
+    + Considered Problem:
+        - Strict DPs:
+            append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+            append#(nil(),ys) -> c_2()
+            gt#(0(),0()) -> c_3()
+            gt#(0(),s(y)) -> c_4()
+            gt#(s(x),0()) -> c_5()
+            gt#(s(x),s(y)) -> c_6(gt#(x,y))
+            quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs))
+            quicksort#(nil()) -> c_8()
+            quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys))),quicksort#(xs),quicksort#(ys))
+            split#(pivot,dd(x,xs)) -> c_10(split'#(gt(x,pivot),x,split(pivot,xs)),gt#(x,pivot),split#(pivot,xs))
+            split#(pivot,nil()) -> c_11()
+            split'#(false(),x,pair(ls,rs)) -> c_12()
+            split'#(true(),x,pair(ls,rs)) -> c_13()
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/3,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {2,3,4,5,8,11,12,13}
+        by application of
+          Pre({2,3,4,5,8,11,12,13}) = {1,6,7,9,10}.
+        Here rules are labelled as follows:
+          1: append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+          2: append#(nil(),ys) -> c_2()
+          3: gt#(0(),0()) -> c_3()
+          4: gt#(0(),s(y)) -> c_4()
+          5: gt#(s(x),0()) -> c_5()
+          6: gt#(s(x),s(y)) -> c_6(gt#(x,y))
+          7: quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs))
+          8: quicksort#(nil()) -> c_8()
+          9: quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys)))
+                                              ,quicksort#(xs)
+                                              ,quicksort#(ys))
+          10: split#(pivot,dd(x,xs)) -> c_10(split'#(gt(x,pivot),x,split(pivot,xs)),gt#(x,pivot),split#(pivot,xs))
+          11: split#(pivot,nil()) -> c_11()
+          12: split'#(false(),x,pair(ls,rs)) -> c_12()
+          13: split'#(true(),x,pair(ls,rs)) -> c_13()
+* Step 3: RemoveWeakSuffixes WORST_CASE(?,O(n^3))
+    + Considered Problem:
+        - Strict DPs:
+            append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+            gt#(s(x),s(y)) -> c_6(gt#(x,y))
+            quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs))
+            quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys))),quicksort#(xs),quicksort#(ys))
+            split#(pivot,dd(x,xs)) -> c_10(split'#(gt(x,pivot),x,split(pivot,xs)),gt#(x,pivot),split#(pivot,xs))
+        - Weak DPs:
+            append#(nil(),ys) -> c_2()
+            gt#(0(),0()) -> c_3()
+            gt#(0(),s(y)) -> c_4()
+            gt#(s(x),0()) -> c_5()
+            quicksort#(nil()) -> c_8()
+            split#(pivot,nil()) -> c_11()
+            split'#(false(),x,pair(ls,rs)) -> c_12()
+            split'#(true(),x,pair(ls,rs)) -> c_13()
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/3,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+             -->_1 append#(nil(),ys) -> c_2():6
+             -->_1 append#(dd(x,xs),ys) -> c_1(append#(xs,ys)):1
+          
+          2:S:gt#(s(x),s(y)) -> c_6(gt#(x,y))
+             -->_1 gt#(s(x),0()) -> c_5():9
+             -->_1 gt#(0(),s(y)) -> c_4():8
+             -->_1 gt#(0(),0()) -> c_3():7
+             -->_1 gt#(s(x),s(y)) -> c_6(gt#(x,y)):2
+          
+          3:S:quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs))
+             -->_2 split#(pivot,dd(x,xs)) -> c_10(split'#(gt(x,pivot),x,split(pivot,xs))
+                                                 ,gt#(x,pivot)
+                                                 ,split#(pivot,xs)):5
+             -->_1 quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys)))
+                                                    ,quicksort#(xs)
+                                                    ,quicksort#(ys)):4
+             -->_2 split#(pivot,nil()) -> c_11():11
+          
+          4:S:quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys)))
+                                               ,quicksort#(xs)
+                                               ,quicksort#(ys))
+             -->_3 quicksort#(nil()) -> c_8():10
+             -->_2 quicksort#(nil()) -> c_8():10
+             -->_1 append#(nil(),ys) -> c_2():6
+             -->_3 quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs)):3
+             -->_2 quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs)):3
+             -->_1 append#(dd(x,xs),ys) -> c_1(append#(xs,ys)):1
+          
+          5:S:split#(pivot,dd(x,xs)) -> c_10(split'#(gt(x,pivot),x,split(pivot,xs)),gt#(x,pivot),split#(pivot,xs))
+             -->_1 split'#(true(),x,pair(ls,rs)) -> c_13():13
+             -->_1 split'#(false(),x,pair(ls,rs)) -> c_12():12
+             -->_3 split#(pivot,nil()) -> c_11():11
+             -->_2 gt#(s(x),0()) -> c_5():9
+             -->_2 gt#(0(),s(y)) -> c_4():8
+             -->_2 gt#(0(),0()) -> c_3():7
+             -->_3 split#(pivot,dd(x,xs)) -> c_10(split'#(gt(x,pivot),x,split(pivot,xs))
+                                                 ,gt#(x,pivot)
+                                                 ,split#(pivot,xs)):5
+             -->_2 gt#(s(x),s(y)) -> c_6(gt#(x,y)):2
+          
+          6:W:append#(nil(),ys) -> c_2()
+             
+          
+          7:W:gt#(0(),0()) -> c_3()
+             
+          
+          8:W:gt#(0(),s(y)) -> c_4()
+             
+          
+          9:W:gt#(s(x),0()) -> c_5()
+             
+          
+          10:W:quicksort#(nil()) -> c_8()
+             
+          
+          11:W:split#(pivot,nil()) -> c_11()
+             
+          
+          12:W:split'#(false(),x,pair(ls,rs)) -> c_12()
+             
+          
+          13:W:split'#(true(),x,pair(ls,rs)) -> c_13()
+             
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          10: quicksort#(nil()) -> c_8()
+          11: split#(pivot,nil()) -> c_11()
+          12: split'#(false(),x,pair(ls,rs)) -> c_12()
+          13: split'#(true(),x,pair(ls,rs)) -> c_13()
+          7: gt#(0(),0()) -> c_3()
+          8: gt#(0(),s(y)) -> c_4()
+          9: gt#(s(x),0()) -> c_5()
+          6: append#(nil(),ys) -> c_2()
+* Step 4: SimplifyRHS WORST_CASE(?,O(n^3))
+    + Considered Problem:
+        - Strict DPs:
+            append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+            gt#(s(x),s(y)) -> c_6(gt#(x,y))
+            quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs))
+            quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys))),quicksort#(xs),quicksort#(ys))
+            split#(pivot,dd(x,xs)) -> c_10(split'#(gt(x,pivot),x,split(pivot,xs)),gt#(x,pivot),split#(pivot,xs))
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/3,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        SimplifyRHS
+    + Details:
+        Consider the dependency graph
+          1:S:append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+             -->_1 append#(dd(x,xs),ys) -> c_1(append#(xs,ys)):1
+          
+          2:S:gt#(s(x),s(y)) -> c_6(gt#(x,y))
+             -->_1 gt#(s(x),s(y)) -> c_6(gt#(x,y)):2
+          
+          3:S:quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs))
+             -->_2 split#(pivot,dd(x,xs)) -> c_10(split'#(gt(x,pivot),x,split(pivot,xs))
+                                                 ,gt#(x,pivot)
+                                                 ,split#(pivot,xs)):5
+             -->_1 quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys)))
+                                                    ,quicksort#(xs)
+                                                    ,quicksort#(ys)):4
+          
+          4:S:quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys)))
+                                               ,quicksort#(xs)
+                                               ,quicksort#(ys))
+             -->_3 quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs)):3
+             -->_2 quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs)):3
+             -->_1 append#(dd(x,xs),ys) -> c_1(append#(xs,ys)):1
+          
+          5:S:split#(pivot,dd(x,xs)) -> c_10(split'#(gt(x,pivot),x,split(pivot,xs)),gt#(x,pivot),split#(pivot,xs))
+             -->_3 split#(pivot,dd(x,xs)) -> c_10(split'#(gt(x,pivot),x,split(pivot,xs))
+                                                 ,gt#(x,pivot)
+                                                 ,split#(pivot,xs)):5
+             -->_2 gt#(s(x),s(y)) -> c_6(gt#(x,y)):2
+          
+        Due to missing edges in the depndency graph, the right-hand sides of following rules could be simplified:
+          split#(pivot,dd(x,xs)) -> c_10(gt#(x,pivot),split#(pivot,xs))
+* Step 5: DecomposeDG WORST_CASE(?,O(n^3))
+    + Considered Problem:
+        - Strict DPs:
+            append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+            gt#(s(x),s(y)) -> c_6(gt#(x,y))
+            quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs))
+            quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys))),quicksort#(xs),quicksort#(ys))
+            split#(pivot,dd(x,xs)) -> c_10(gt#(x,pivot),split#(pivot,xs))
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        DecomposeDG {onSelection = all below first cut in WDG, onUpper = Nothing, onLower = Nothing}
+    + Details:
+        We decompose the input problem according to the dependency graph into the upper component
+          quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs))
+          quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys))),quicksort#(xs),quicksort#(ys))
+        and a lower component
+          append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+          gt#(s(x),s(y)) -> c_6(gt#(x,y))
+          split#(pivot,dd(x,xs)) -> c_10(gt#(x,pivot),split#(pivot,xs))
+        Further, following extension rules are added to the lower component.
+          quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+          quicksort#(dd(z,zs)) -> split#(z,zs)
+          quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+          quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+          quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+** Step 5.a:1: SimplifyRHS WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs))
+            quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys))),quicksort#(xs),quicksort#(ys))
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        SimplifyRHS
+    + Details:
+        Consider the dependency graph
+          1:S:quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs))
+             -->_1 quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys)))
+                                                    ,quicksort#(xs)
+                                                    ,quicksort#(ys)):2
+          
+          2:S:quicksort'#(z,pair(xs,ys)) -> c_9(append#(quicksort(xs),dd(z,quicksort(ys)))
+                                               ,quicksort#(xs)
+                                               ,quicksort#(ys))
+             -->_3 quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs)):1
+             -->_2 quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)),split#(z,zs)):1
+          
+        Due to missing edges in the depndency graph, the right-hand sides of following rules could be simplified:
+          quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)))
+          quicksort'#(z,pair(xs,ys)) -> c_9(quicksort#(xs),quicksort#(ys))
+** Step 5.a:2: UsableRules WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)))
+            quicksort'#(z,pair(xs,ys)) -> c_9(quicksort#(xs),quicksort#(ys))
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/1,c_8/0
+            ,c_9/2,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          gt(0(),0()) -> false()
+          gt(0(),s(y)) -> false()
+          gt(s(x),0()) -> true()
+          gt(s(x),s(y)) -> gt(x,y)
+          split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+          split(pivot,nil()) -> pair(nil(),nil())
+          split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+          split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+          quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)))
+          quicksort'#(z,pair(xs,ys)) -> c_9(quicksort#(xs),quicksort#(ys))
+** Step 5.a:3: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)))
+            quicksort'#(z,pair(xs,ys)) -> c_9(quicksort#(xs),quicksort#(ys))
+        - Weak TRS:
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/1,c_8/0
+            ,c_9/2,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(split') = {1,3},
+            uargs(quicksort'#) = {2},
+            uargs(c_7) = {1},
+            uargs(c_9) = {1,2}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                      p(0) = [0]                  
+                 p(append) = [0]                  
+                     p(dd) = [1] x2 + [0]         
+                  p(false) = [0]                  
+                     p(gt) = [0]                  
+                    p(nil) = [0]                  
+                   p(pair) = [0]                  
+              p(quicksort) = [0]                  
+             p(quicksort') = [0]                  
+                      p(s) = [0]                  
+                  p(split) = [0]                  
+                 p(split') = [1] x1 + [1] x3 + [0]
+                   p(true) = [0]                  
+                p(append#) = [0]                  
+                    p(gt#) = [0]                  
+             p(quicksort#) = [0]                  
+            p(quicksort'#) = [1] x2 + [5]         
+                 p(split#) = [0]                  
+                p(split'#) = [0]                  
+                    p(c_1) = [1] x1 + [1]         
+                    p(c_2) = [1]                  
+                    p(c_3) = [0]                  
+                    p(c_4) = [1]                  
+                    p(c_5) = [1]                  
+                    p(c_6) = [0]                  
+                    p(c_7) = [1] x1 + [0]         
+                    p(c_8) = [0]                  
+                    p(c_9) = [1] x1 + [1] x2 + [1]
+                   p(c_10) = [4] x1 + [2]         
+                   p(c_11) = [2]                  
+                   p(c_12) = [2]                  
+                   p(c_13) = [0]                  
+          
+          Following rules are strictly oriented:
+          quicksort'#(z,pair(xs,ys)) = [5]                               
+                                     > [1]                               
+                                     = c_9(quicksort#(xs),quicksort#(ys))
+          
+          
+          Following rules are (at-least) weakly oriented:
+                   quicksort#(dd(z,zs)) =  [0]                                  
+                                        >= [5]                                  
+                                        =  c_7(quicksort'#(z,split(z,zs)))      
+          
+                            gt(0(),0()) =  [0]                                  
+                                        >= [0]                                  
+                                        =  false()                              
+          
+                           gt(0(),s(y)) =  [0]                                  
+                                        >= [0]                                  
+                                        =  false()                              
+          
+                           gt(s(x),0()) =  [0]                                  
+                                        >= [0]                                  
+                                        =  true()                               
+          
+                          gt(s(x),s(y)) =  [0]                                  
+                                        >= [0]                                  
+                                        =  gt(x,y)                              
+          
+                  split(pivot,dd(x,xs)) =  [0]                                  
+                                        >= [0]                                  
+                                        =  split'(gt(x,pivot),x,split(pivot,xs))
+          
+                     split(pivot,nil()) =  [0]                                  
+                                        >= [0]                                  
+                                        =  pair(nil(),nil())                    
+          
+          split'(false(),x,pair(ls,rs)) =  [0]                                  
+                                        >= [0]                                  
+                                        =  pair(dd(x,ls),rs)                    
+          
+           split'(true(),x,pair(ls,rs)) =  [0]                                  
+                                        >= [0]                                  
+                                        =  pair(ls,dd(x,rs))                    
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 5.a:4: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)))
+        - Weak DPs:
+            quicksort'#(z,pair(xs,ys)) -> c_9(quicksort#(xs),quicksort#(ys))
+        - Weak TRS:
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/1,c_8/0
+            ,c_9/2,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(split') = {1,3},
+            uargs(quicksort'#) = {2},
+            uargs(c_7) = {1},
+            uargs(c_9) = {1,2}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                      p(0) = [0]                           
+                 p(append) = [0]                           
+                     p(dd) = [1] x1 + [1] x2 + [7]         
+                  p(false) = [7]                           
+                     p(gt) = [7]                           
+                    p(nil) = [0]                           
+                   p(pair) = [1] x1 + [1] x2 + [0]         
+              p(quicksort) = [0]                           
+             p(quicksort') = [0]                           
+                      p(s) = [1] x1 + [0]                  
+                  p(split) = [1] x1 + [1] x2 + [0]         
+                 p(split') = [1] x1 + [1] x2 + [1] x3 + [0]
+                   p(true) = [7]                           
+                p(append#) = [0]                           
+                    p(gt#) = [0]                           
+             p(quicksort#) = [1] x1 + [0]                  
+            p(quicksort'#) = [1] x2 + [0]                  
+                 p(split#) = [0]                           
+                p(split'#) = [0]                           
+                    p(c_1) = [0]                           
+                    p(c_2) = [0]                           
+                    p(c_3) = [0]                           
+                    p(c_4) = [0]                           
+                    p(c_5) = [0]                           
+                    p(c_6) = [0]                           
+                    p(c_7) = [1] x1 + [0]                  
+                    p(c_8) = [0]                           
+                    p(c_9) = [1] x1 + [1] x2 + [0]         
+                   p(c_10) = [0]                           
+                   p(c_11) = [0]                           
+                   p(c_12) = [0]                           
+                   p(c_13) = [0]                           
+          
+          Following rules are strictly oriented:
+          quicksort#(dd(z,zs)) = [1] z + [1] zs + [7]           
+                               > [1] z + [1] zs + [0]           
+                               = c_7(quicksort'#(z,split(z,zs)))
+          
+          
+          Following rules are (at-least) weakly oriented:
+             quicksort'#(z,pair(xs,ys)) =  [1] xs + [1] ys + [0]                
+                                        >= [1] xs + [1] ys + [0]                
+                                        =  c_9(quicksort#(xs),quicksort#(ys))   
+          
+                            gt(0(),0()) =  [7]                                  
+                                        >= [7]                                  
+                                        =  false()                              
+          
+                           gt(0(),s(y)) =  [7]                                  
+                                        >= [7]                                  
+                                        =  false()                              
+          
+                           gt(s(x),0()) =  [7]                                  
+                                        >= [7]                                  
+                                        =  true()                               
+          
+                          gt(s(x),s(y)) =  [7]                                  
+                                        >= [7]                                  
+                                        =  gt(x,y)                              
+          
+                  split(pivot,dd(x,xs)) =  [1] pivot + [1] x + [1] xs + [7]     
+                                        >= [1] pivot + [1] x + [1] xs + [7]     
+                                        =  split'(gt(x,pivot),x,split(pivot,xs))
+          
+                     split(pivot,nil()) =  [1] pivot + [0]                      
+                                        >= [0]                                  
+                                        =  pair(nil(),nil())                    
+          
+          split'(false(),x,pair(ls,rs)) =  [1] ls + [1] rs + [1] x + [7]        
+                                        >= [1] ls + [1] rs + [1] x + [7]        
+                                        =  pair(dd(x,ls),rs)                    
+          
+           split'(true(),x,pair(ls,rs)) =  [1] ls + [1] rs + [1] x + [7]        
+                                        >= [1] ls + [1] rs + [1] x + [7]        
+                                        =  pair(ls,dd(x,rs))                    
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 5.a:5: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            quicksort#(dd(z,zs)) -> c_7(quicksort'#(z,split(z,zs)))
+            quicksort'#(z,pair(xs,ys)) -> c_9(quicksort#(xs),quicksort#(ys))
+        - Weak TRS:
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/1,c_8/0
+            ,c_9/2,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+** Step 5.b:1: DecomposeDG WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+            gt#(s(x),s(y)) -> c_6(gt#(x,y))
+            split#(pivot,dd(x,xs)) -> c_10(gt#(x,pivot),split#(pivot,xs))
+        - Weak DPs:
+            quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+            quicksort#(dd(z,zs)) -> split#(z,zs)
+            quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        DecomposeDG {onSelection = all below first cut in WDG, onUpper = Nothing, onLower = Nothing}
+    + Details:
+        We decompose the input problem according to the dependency graph into the upper component
+          append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+          quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+          quicksort#(dd(z,zs)) -> split#(z,zs)
+          quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+          quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+          quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+          split#(pivot,dd(x,xs)) -> c_10(gt#(x,pivot),split#(pivot,xs))
+        and a lower component
+          gt#(s(x),s(y)) -> c_6(gt#(x,y))
+        Further, following extension rules are added to the lower component.
+          append#(dd(x,xs),ys) -> append#(xs,ys)
+          quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+          quicksort#(dd(z,zs)) -> split#(z,zs)
+          quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+          quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+          quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+          split#(pivot,dd(x,xs)) -> gt#(x,pivot)
+          split#(pivot,dd(x,xs)) -> split#(pivot,xs)
+*** Step 5.b:1.a:1: SimplifyRHS WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+            split#(pivot,dd(x,xs)) -> c_10(gt#(x,pivot),split#(pivot,xs))
+        - Weak DPs:
+            quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+            quicksort#(dd(z,zs)) -> split#(z,zs)
+            quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        SimplifyRHS
+    + Details:
+        Consider the dependency graph
+          1:S:append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+             -->_1 append#(dd(x,xs),ys) -> c_1(append#(xs,ys)):1
+          
+          2:S:split#(pivot,dd(x,xs)) -> c_10(gt#(x,pivot),split#(pivot,xs))
+             -->_2 split#(pivot,dd(x,xs)) -> c_10(gt#(x,pivot),split#(pivot,xs)):2
+          
+          3:W:quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+             -->_1 quicksort'#(z,pair(xs,ys)) -> quicksort#(ys):7
+             -->_1 quicksort'#(z,pair(xs,ys)) -> quicksort#(xs):6
+             -->_1 quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys))):5
+          
+          4:W:quicksort#(dd(z,zs)) -> split#(z,zs)
+             -->_1 split#(pivot,dd(x,xs)) -> c_10(gt#(x,pivot),split#(pivot,xs)):2
+          
+          5:W:quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+             -->_1 append#(dd(x,xs),ys) -> c_1(append#(xs,ys)):1
+          
+          6:W:quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+             -->_1 quicksort#(dd(z,zs)) -> split#(z,zs):4
+             -->_1 quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs)):3
+          
+          7:W:quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+             -->_1 quicksort#(dd(z,zs)) -> split#(z,zs):4
+             -->_1 quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs)):3
+          
+        Due to missing edges in the depndency graph, the right-hand sides of following rules could be simplified:
+          split#(pivot,dd(x,xs)) -> c_10(split#(pivot,xs))
+*** Step 5.b:1.a:2: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+            split#(pivot,dd(x,xs)) -> c_10(split#(pivot,xs))
+        - Weak DPs:
+            quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+            quicksort#(dd(z,zs)) -> split#(z,zs)
+            quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/1,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(append) = {1,2},
+            uargs(dd) = {2},
+            uargs(quicksort') = {2},
+            uargs(split') = {1,3},
+            uargs(append#) = {1,2},
+            uargs(quicksort'#) = {2},
+            uargs(c_1) = {1},
+            uargs(c_10) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                      p(0) = [1]                  
+                 p(append) = [1] x1 + [1] x2 + [0]
+                     p(dd) = [1] x2 + [1]         
+                  p(false) = [1]                  
+                     p(gt) = [1]                  
+                    p(nil) = [0]                  
+                   p(pair) = [1] x1 + [1] x2 + [0]
+              p(quicksort) = [1] x1 + [0]         
+             p(quicksort') = [1] x2 + [1]         
+                      p(s) = [4]                  
+                  p(split) = [1] x2 + [0]         
+                 p(split') = [1] x1 + [1] x3 + [0]
+                   p(true) = [1]                  
+                p(append#) = [1] x1 + [1] x2 + [1]
+                    p(gt#) = [1]                  
+             p(quicksort#) = [1] x1 + [3]         
+            p(quicksort'#) = [1] x2 + [4]         
+                 p(split#) = [0]                  
+                p(split'#) = [4] x3 + [1]         
+                    p(c_1) = [1] x1 + [0]         
+                    p(c_2) = [1]                  
+                    p(c_3) = [2]                  
+                    p(c_4) = [1]                  
+                    p(c_5) = [1]                  
+                    p(c_6) = [2] x1 + [4]         
+                    p(c_7) = [1]                  
+                    p(c_8) = [1]                  
+                    p(c_9) = [1] x2 + [0]         
+                   p(c_10) = [1] x1 + [0]         
+                   p(c_11) = [2]                  
+                   p(c_12) = [2]                  
+                   p(c_13) = [0]                  
+          
+          Following rules are strictly oriented:
+          append#(dd(x,xs),ys) = [1] xs + [1] ys + [2]
+                               > [1] xs + [1] ys + [1]
+                               = c_1(append#(xs,ys))  
+          
+          
+          Following rules are (at-least) weakly oriented:
+                   quicksort#(dd(z,zs)) =  [1] zs + [4]                              
+                                        >= [1] zs + [4]                              
+                                        =  quicksort'#(z,split(z,zs))                
+          
+                   quicksort#(dd(z,zs)) =  [1] zs + [4]                              
+                                        >= [0]                                       
+                                        =  split#(z,zs)                              
+          
+             quicksort'#(z,pair(xs,ys)) =  [1] xs + [1] ys + [4]                     
+                                        >= [1] xs + [1] ys + [2]                     
+                                        =  append#(quicksort(xs),dd(z,quicksort(ys)))
+          
+             quicksort'#(z,pair(xs,ys)) =  [1] xs + [1] ys + [4]                     
+                                        >= [1] xs + [3]                              
+                                        =  quicksort#(xs)                            
+          
+             quicksort'#(z,pair(xs,ys)) =  [1] xs + [1] ys + [4]                     
+                                        >= [1] ys + [3]                              
+                                        =  quicksort#(ys)                            
+          
+                 split#(pivot,dd(x,xs)) =  [0]                                       
+                                        >= [0]                                       
+                                        =  c_10(split#(pivot,xs))                    
+          
+                    append(dd(x,xs),ys) =  [1] xs + [1] ys + [1]                     
+                                        >= [1] xs + [1] ys + [1]                     
+                                        =  dd(x,append(xs,ys))                       
+          
+                       append(nil(),ys) =  [1] ys + [0]                              
+                                        >= [1] ys + [0]                              
+                                        =  ys                                        
+          
+                            gt(0(),0()) =  [1]                                       
+                                        >= [1]                                       
+                                        =  false()                                   
+          
+                           gt(0(),s(y)) =  [1]                                       
+                                        >= [1]                                       
+                                        =  false()                                   
+          
+                           gt(s(x),0()) =  [1]                                       
+                                        >= [1]                                       
+                                        =  true()                                    
+          
+                          gt(s(x),s(y)) =  [1]                                       
+                                        >= [1]                                       
+                                        =  gt(x,y)                                   
+          
+                    quicksort(dd(z,zs)) =  [1] zs + [1]                              
+                                        >= [1] zs + [1]                              
+                                        =  quicksort'(z,split(z,zs))                 
+          
+                       quicksort(nil()) =  [0]                                       
+                                        >= [0]                                       
+                                        =  nil()                                     
+          
+              quicksort'(z,pair(xs,ys)) =  [1] xs + [1] ys + [1]                     
+                                        >= [1] xs + [1] ys + [1]                     
+                                        =  append(quicksort(xs),dd(z,quicksort(ys))) 
+          
+                  split(pivot,dd(x,xs)) =  [1] xs + [1]                              
+                                        >= [1] xs + [1]                              
+                                        =  split'(gt(x,pivot),x,split(pivot,xs))     
+          
+                     split(pivot,nil()) =  [0]                                       
+                                        >= [0]                                       
+                                        =  pair(nil(),nil())                         
+          
+          split'(false(),x,pair(ls,rs)) =  [1] ls + [1] rs + [1]                     
+                                        >= [1] ls + [1] rs + [1]                     
+                                        =  pair(dd(x,ls),rs)                         
+          
+           split'(true(),x,pair(ls,rs)) =  [1] ls + [1] rs + [1]                     
+                                        >= [1] ls + [1] rs + [1]                     
+                                        =  pair(ls,dd(x,rs))                         
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+*** Step 5.b:1.a:3: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            split#(pivot,dd(x,xs)) -> c_10(split#(pivot,xs))
+        - Weak DPs:
+            append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+            quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+            quicksort#(dd(z,zs)) -> split#(z,zs)
+            quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/1,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(append) = {1,2},
+            uargs(dd) = {2},
+            uargs(quicksort') = {2},
+            uargs(split') = {1,3},
+            uargs(append#) = {1,2},
+            uargs(quicksort'#) = {2},
+            uargs(c_1) = {1},
+            uargs(c_10) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                      p(0) = [1]                           
+                 p(append) = [1] x1 + [1] x2 + [0]         
+                     p(dd) = [1] x1 + [1] x2 + [2]         
+                  p(false) = [0]                           
+                     p(gt) = [0]                           
+                    p(nil) = [0]                           
+                   p(pair) = [1] x1 + [1] x2 + [0]         
+              p(quicksort) = [1] x1 + [0]                  
+             p(quicksort') = [1] x1 + [1] x2 + [2]         
+                      p(s) = [2]                           
+                  p(split) = [1] x2 + [0]                  
+                 p(split') = [1] x1 + [1] x2 + [1] x3 + [2]
+                   p(true) = [0]                           
+                p(append#) = [1] x1 + [1] x2 + [3]         
+                    p(gt#) = [1] x1 + [1]                  
+             p(quicksort#) = [1] x1 + [4]                  
+            p(quicksort'#) = [1] x1 + [1] x2 + [5]         
+                 p(split#) = [1] x1 + [1] x2 + [0]         
+                p(split'#) = [4] x3 + [4]                  
+                    p(c_1) = [1] x1 + [2]                  
+                    p(c_2) = [2]                           
+                    p(c_3) = [2]                           
+                    p(c_4) = [0]                           
+                    p(c_5) = [1]                           
+                    p(c_6) = [1] x1 + [4]                  
+                    p(c_7) = [4]                           
+                    p(c_8) = [0]                           
+                    p(c_9) = [2] x2 + [4]                  
+                   p(c_10) = [1] x1 + [1]                  
+                   p(c_11) = [2]                           
+                   p(c_12) = [1]                           
+                   p(c_13) = [2]                           
+          
+          Following rules are strictly oriented:
+          split#(pivot,dd(x,xs)) = [1] pivot + [1] x + [1] xs + [2]
+                                 > [1] pivot + [1] xs + [1]        
+                                 = c_10(split#(pivot,xs))          
+          
+          
+          Following rules are (at-least) weakly oriented:
+                   append#(dd(x,xs),ys) =  [1] x + [1] xs + [1] ys + [5]             
+                                        >= [1] xs + [1] ys + [5]                     
+                                        =  c_1(append#(xs,ys))                       
+          
+                   quicksort#(dd(z,zs)) =  [1] z + [1] zs + [6]                      
+                                        >= [1] z + [1] zs + [5]                      
+                                        =  quicksort'#(z,split(z,zs))                
+          
+                   quicksort#(dd(z,zs)) =  [1] z + [1] zs + [6]                      
+                                        >= [1] z + [1] zs + [0]                      
+                                        =  split#(z,zs)                              
+          
+             quicksort'#(z,pair(xs,ys)) =  [1] xs + [1] ys + [1] z + [5]             
+                                        >= [1] xs + [1] ys + [1] z + [5]             
+                                        =  append#(quicksort(xs),dd(z,quicksort(ys)))
+          
+             quicksort'#(z,pair(xs,ys)) =  [1] xs + [1] ys + [1] z + [5]             
+                                        >= [1] xs + [4]                              
+                                        =  quicksort#(xs)                            
+          
+             quicksort'#(z,pair(xs,ys)) =  [1] xs + [1] ys + [1] z + [5]             
+                                        >= [1] ys + [4]                              
+                                        =  quicksort#(ys)                            
+          
+                    append(dd(x,xs),ys) =  [1] x + [1] xs + [1] ys + [2]             
+                                        >= [1] x + [1] xs + [1] ys + [2]             
+                                        =  dd(x,append(xs,ys))                       
+          
+                       append(nil(),ys) =  [1] ys + [0]                              
+                                        >= [1] ys + [0]                              
+                                        =  ys                                        
+          
+                            gt(0(),0()) =  [0]                                       
+                                        >= [0]                                       
+                                        =  false()                                   
+          
+                           gt(0(),s(y)) =  [0]                                       
+                                        >= [0]                                       
+                                        =  false()                                   
+          
+                           gt(s(x),0()) =  [0]                                       
+                                        >= [0]                                       
+                                        =  true()                                    
+          
+                          gt(s(x),s(y)) =  [0]                                       
+                                        >= [0]                                       
+                                        =  gt(x,y)                                   
+          
+                    quicksort(dd(z,zs)) =  [1] z + [1] zs + [2]                      
+                                        >= [1] z + [1] zs + [2]                      
+                                        =  quicksort'(z,split(z,zs))                 
+          
+                       quicksort(nil()) =  [0]                                       
+                                        >= [0]                                       
+                                        =  nil()                                     
+          
+              quicksort'(z,pair(xs,ys)) =  [1] xs + [1] ys + [1] z + [2]             
+                                        >= [1] xs + [1] ys + [1] z + [2]             
+                                        =  append(quicksort(xs),dd(z,quicksort(ys))) 
+          
+                  split(pivot,dd(x,xs)) =  [1] x + [1] xs + [2]                      
+                                        >= [1] x + [1] xs + [2]                      
+                                        =  split'(gt(x,pivot),x,split(pivot,xs))     
+          
+                     split(pivot,nil()) =  [0]                                       
+                                        >= [0]                                       
+                                        =  pair(nil(),nil())                         
+          
+          split'(false(),x,pair(ls,rs)) =  [1] ls + [1] rs + [1] x + [2]             
+                                        >= [1] ls + [1] rs + [1] x + [2]             
+                                        =  pair(dd(x,ls),rs)                         
+          
+           split'(true(),x,pair(ls,rs)) =  [1] ls + [1] rs + [1] x + [2]             
+                                        >= [1] ls + [1] rs + [1] x + [2]             
+                                        =  pair(ls,dd(x,rs))                         
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+*** Step 5.b:1.a:4: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            append#(dd(x,xs),ys) -> c_1(append#(xs,ys))
+            quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+            quicksort#(dd(z,zs)) -> split#(z,zs)
+            quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+            split#(pivot,dd(x,xs)) -> c_10(split#(pivot,xs))
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/1,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+*** Step 5.b:1.b:1: RemoveWeakSuffixes WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            gt#(s(x),s(y)) -> c_6(gt#(x,y))
+        - Weak DPs:
+            append#(dd(x,xs),ys) -> append#(xs,ys)
+            quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+            quicksort#(dd(z,zs)) -> split#(z,zs)
+            quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+            split#(pivot,dd(x,xs)) -> gt#(x,pivot)
+            split#(pivot,dd(x,xs)) -> split#(pivot,xs)
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:gt#(s(x),s(y)) -> c_6(gt#(x,y))
+             -->_1 gt#(s(x),s(y)) -> c_6(gt#(x,y)):1
+          
+          2:W:append#(dd(x,xs),ys) -> append#(xs,ys)
+             -->_1 append#(dd(x,xs),ys) -> append#(xs,ys):2
+          
+          3:W:quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+             -->_1 quicksort'#(z,pair(xs,ys)) -> quicksort#(ys):7
+             -->_1 quicksort'#(z,pair(xs,ys)) -> quicksort#(xs):6
+             -->_1 quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys))):5
+          
+          4:W:quicksort#(dd(z,zs)) -> split#(z,zs)
+             -->_1 split#(pivot,dd(x,xs)) -> split#(pivot,xs):9
+             -->_1 split#(pivot,dd(x,xs)) -> gt#(x,pivot):8
+          
+          5:W:quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+             -->_1 append#(dd(x,xs),ys) -> append#(xs,ys):2
+          
+          6:W:quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+             -->_1 quicksort#(dd(z,zs)) -> split#(z,zs):4
+             -->_1 quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs)):3
+          
+          7:W:quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+             -->_1 quicksort#(dd(z,zs)) -> split#(z,zs):4
+             -->_1 quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs)):3
+          
+          8:W:split#(pivot,dd(x,xs)) -> gt#(x,pivot)
+             -->_1 gt#(s(x),s(y)) -> c_6(gt#(x,y)):1
+          
+          9:W:split#(pivot,dd(x,xs)) -> split#(pivot,xs)
+             -->_1 split#(pivot,dd(x,xs)) -> split#(pivot,xs):9
+             -->_1 split#(pivot,dd(x,xs)) -> gt#(x,pivot):8
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          5: quicksort'#(z,pair(xs,ys)) -> append#(quicksort(xs),dd(z,quicksort(ys)))
+          2: append#(dd(x,xs),ys) -> append#(xs,ys)
+*** Step 5.b:1.b:2: UsableRules WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            gt#(s(x),s(y)) -> c_6(gt#(x,y))
+        - Weak DPs:
+            quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+            quicksort#(dd(z,zs)) -> split#(z,zs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+            split#(pivot,dd(x,xs)) -> gt#(x,pivot)
+            split#(pivot,dd(x,xs)) -> split#(pivot,xs)
+        - Weak TRS:
+            append(dd(x,xs),ys) -> dd(x,append(xs,ys))
+            append(nil(),ys) -> ys
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            quicksort(dd(z,zs)) -> quicksort'(z,split(z,zs))
+            quicksort(nil()) -> nil()
+            quicksort'(z,pair(xs,ys)) -> append(quicksort(xs),dd(z,quicksort(ys)))
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          gt(0(),0()) -> false()
+          gt(0(),s(y)) -> false()
+          gt(s(x),0()) -> true()
+          gt(s(x),s(y)) -> gt(x,y)
+          split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+          split(pivot,nil()) -> pair(nil(),nil())
+          split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+          split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+          gt#(s(x),s(y)) -> c_6(gt#(x,y))
+          quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+          quicksort#(dd(z,zs)) -> split#(z,zs)
+          quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+          quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+          split#(pivot,dd(x,xs)) -> gt#(x,pivot)
+          split#(pivot,dd(x,xs)) -> split#(pivot,xs)
+*** Step 5.b:1.b:3: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            gt#(s(x),s(y)) -> c_6(gt#(x,y))
+        - Weak DPs:
+            quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+            quicksort#(dd(z,zs)) -> split#(z,zs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+            split#(pivot,dd(x,xs)) -> gt#(x,pivot)
+            split#(pivot,dd(x,xs)) -> split#(pivot,xs)
+        - Weak TRS:
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(split') = {1,3},
+            uargs(quicksort'#) = {2},
+            uargs(c_6) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                      p(0) = [0]                           
+                 p(append) = [1] x2 + [1]                  
+                     p(dd) = [1] x1 + [1] x2 + [0]         
+                  p(false) = [0]                           
+                     p(gt) = [0]                           
+                    p(nil) = [0]                           
+                   p(pair) = [1] x1 + [1] x2 + [0]         
+              p(quicksort) = [1] x1 + [0]                  
+             p(quicksort') = [2] x1 + [1]                  
+                      p(s) = [1] x1 + [1]                  
+                  p(split) = [1] x2 + [0]                  
+                 p(split') = [1] x1 + [1] x2 + [1] x3 + [0]
+                   p(true) = [0]                           
+                p(append#) = [1] x1 + [4] x2 + [0]         
+                    p(gt#) = [1] x1 + [0]                  
+             p(quicksort#) = [1] x1 + [0]                  
+            p(quicksort'#) = [1] x2 + [0]                  
+                 p(split#) = [1] x2 + [0]                  
+                p(split'#) = [4] x1 + [1] x2 + [4]         
+                    p(c_1) = [4] x1 + [0]                  
+                    p(c_2) = [2]                           
+                    p(c_3) = [1]                           
+                    p(c_4) = [1]                           
+                    p(c_5) = [1]                           
+                    p(c_6) = [1] x1 + [0]                  
+                    p(c_7) = [1]                           
+                    p(c_8) = [1]                           
+                    p(c_9) = [1] x1 + [1] x2 + [2]         
+                   p(c_10) = [1] x2 + [0]                  
+                   p(c_11) = [0]                           
+                   p(c_12) = [2]                           
+                   p(c_13) = [2]                           
+          
+          Following rules are strictly oriented:
+          gt#(s(x),s(y)) = [1] x + [1]  
+                         > [1] x + [0]  
+                         = c_6(gt#(x,y))
+          
+          
+          Following rules are (at-least) weakly oriented:
+                   quicksort#(dd(z,zs)) =  [1] z + [1] zs + [0]                 
+                                        >= [1] zs + [0]                         
+                                        =  quicksort'#(z,split(z,zs))           
+          
+                   quicksort#(dd(z,zs)) =  [1] z + [1] zs + [0]                 
+                                        >= [1] zs + [0]                         
+                                        =  split#(z,zs)                         
+          
+             quicksort'#(z,pair(xs,ys)) =  [1] xs + [1] ys + [0]                
+                                        >= [1] xs + [0]                         
+                                        =  quicksort#(xs)                       
+          
+             quicksort'#(z,pair(xs,ys)) =  [1] xs + [1] ys + [0]                
+                                        >= [1] ys + [0]                         
+                                        =  quicksort#(ys)                       
+          
+                 split#(pivot,dd(x,xs)) =  [1] x + [1] xs + [0]                 
+                                        >= [1] x + [0]                          
+                                        =  gt#(x,pivot)                         
+          
+                 split#(pivot,dd(x,xs)) =  [1] x + [1] xs + [0]                 
+                                        >= [1] xs + [0]                         
+                                        =  split#(pivot,xs)                     
+          
+                            gt(0(),0()) =  [0]                                  
+                                        >= [0]                                  
+                                        =  false()                              
+          
+                           gt(0(),s(y)) =  [0]                                  
+                                        >= [0]                                  
+                                        =  false()                              
+          
+                           gt(s(x),0()) =  [0]                                  
+                                        >= [0]                                  
+                                        =  true()                               
+          
+                          gt(s(x),s(y)) =  [0]                                  
+                                        >= [0]                                  
+                                        =  gt(x,y)                              
+          
+                  split(pivot,dd(x,xs)) =  [1] x + [1] xs + [0]                 
+                                        >= [1] x + [1] xs + [0]                 
+                                        =  split'(gt(x,pivot),x,split(pivot,xs))
+          
+                     split(pivot,nil()) =  [0]                                  
+                                        >= [0]                                  
+                                        =  pair(nil(),nil())                    
+          
+          split'(false(),x,pair(ls,rs)) =  [1] ls + [1] rs + [1] x + [0]        
+                                        >= [1] ls + [1] rs + [1] x + [0]        
+                                        =  pair(dd(x,ls),rs)                    
+          
+           split'(true(),x,pair(ls,rs)) =  [1] ls + [1] rs + [1] x + [0]        
+                                        >= [1] ls + [1] rs + [1] x + [0]        
+                                        =  pair(ls,dd(x,rs))                    
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+*** Step 5.b:1.b:4: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            gt#(s(x),s(y)) -> c_6(gt#(x,y))
+            quicksort#(dd(z,zs)) -> quicksort'#(z,split(z,zs))
+            quicksort#(dd(z,zs)) -> split#(z,zs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(xs)
+            quicksort'#(z,pair(xs,ys)) -> quicksort#(ys)
+            split#(pivot,dd(x,xs)) -> gt#(x,pivot)
+            split#(pivot,dd(x,xs)) -> split#(pivot,xs)
+        - Weak TRS:
+            gt(0(),0()) -> false()
+            gt(0(),s(y)) -> false()
+            gt(s(x),0()) -> true()
+            gt(s(x),s(y)) -> gt(x,y)
+            split(pivot,dd(x,xs)) -> split'(gt(x,pivot),x,split(pivot,xs))
+            split(pivot,nil()) -> pair(nil(),nil())
+            split'(false(),x,pair(ls,rs)) -> pair(dd(x,ls),rs)
+            split'(true(),x,pair(ls,rs)) -> pair(ls,dd(x,rs))
+        - Signature:
+            {append/2,gt/2,quicksort/1,quicksort'/2,split/2,split'/3,append#/2,gt#/2,quicksort#/1,quicksort'#/2,split#/2
+            ,split'#/3} / {0/0,dd/2,false/0,nil/0,pair/2,s/1,true/0,c_1/1,c_2/0,c_3/0,c_4/0,c_5/0,c_6/1,c_7/2,c_8/0
+            ,c_9/3,c_10/2,c_11/0,c_12/0,c_13/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append#,gt#,quicksort#,quicksort'#,split#
+            ,split'#} and constructors {0,dd,false,nil,pair,s,true}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^3))

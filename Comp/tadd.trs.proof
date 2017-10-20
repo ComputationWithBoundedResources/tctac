@@ -1,0 +1,411 @@
+WORST_CASE(?,O(n^2))
+* Step 1: DependencyPairs WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mtadd(x,cons(t,ts)) -> cons(tadd(x,t),mtadd(x,ts))
+            mtadd(x,nil()) -> nil()
+            tadd(x,leaf()) -> leaf()
+            tadd(x,node(y,ts)) -> node(add(x,y),mtadd(x,ts))
+        - Signature:
+            {add/2,mtadd/2,tadd/2} / {0/0,cons/2,leaf/0,nil/0,node/2,s/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add,mtadd,tadd} and constructors {0,cons,leaf,nil,node,s}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = DT}
+    + Details:
+        We add the following dependency tuples:
+        
+        Strict DPs
+          add#(0(),y) -> c_1()
+          add#(s(x),y) -> c_2(add#(x,y))
+          mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+          mtadd#(x,nil()) -> c_4()
+          tadd#(x,leaf()) -> c_5()
+          tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts))
+        Weak DPs
+          
+        
+        and mark the set of starting terms.
+* Step 2: PredecessorEstimation WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            add#(0(),y) -> c_1()
+            add#(s(x),y) -> c_2(add#(x,y))
+            mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+            mtadd#(x,nil()) -> c_4()
+            tadd#(x,leaf()) -> c_5()
+            tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts))
+        - Weak TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mtadd(x,cons(t,ts)) -> cons(tadd(x,t),mtadd(x,ts))
+            mtadd(x,nil()) -> nil()
+            tadd(x,leaf()) -> leaf()
+            tadd(x,node(y,ts)) -> node(add(x,y),mtadd(x,ts))
+        - Signature:
+            {add/2,mtadd/2,tadd/2,add#/2,mtadd#/2,tadd#/2} / {0/0,cons/2,leaf/0,nil/0,node/2,s/1,c_1/0,c_2/1,c_3/2,c_4/0
+            ,c_5/0,c_6/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mtadd#,tadd#} and constructors {0,cons,leaf,nil,node
+            ,s}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {1,4,5}
+        by application of
+          Pre({1,4,5}) = {2,3,6}.
+        Here rules are labelled as follows:
+          1: add#(0(),y) -> c_1()
+          2: add#(s(x),y) -> c_2(add#(x,y))
+          3: mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+          4: mtadd#(x,nil()) -> c_4()
+          5: tadd#(x,leaf()) -> c_5()
+          6: tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts))
+* Step 3: RemoveWeakSuffixes WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            add#(s(x),y) -> c_2(add#(x,y))
+            mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+            tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts))
+        - Weak DPs:
+            add#(0(),y) -> c_1()
+            mtadd#(x,nil()) -> c_4()
+            tadd#(x,leaf()) -> c_5()
+        - Weak TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mtadd(x,cons(t,ts)) -> cons(tadd(x,t),mtadd(x,ts))
+            mtadd(x,nil()) -> nil()
+            tadd(x,leaf()) -> leaf()
+            tadd(x,node(y,ts)) -> node(add(x,y),mtadd(x,ts))
+        - Signature:
+            {add/2,mtadd/2,tadd/2,add#/2,mtadd#/2,tadd#/2} / {0/0,cons/2,leaf/0,nil/0,node/2,s/1,c_1/0,c_2/1,c_3/2,c_4/0
+            ,c_5/0,c_6/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mtadd#,tadd#} and constructors {0,cons,leaf,nil,node
+            ,s}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:add#(s(x),y) -> c_2(add#(x,y))
+             -->_1 add#(0(),y) -> c_1():4
+             -->_1 add#(s(x),y) -> c_2(add#(x,y)):1
+          
+          2:S:mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+             -->_1 tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts)):3
+             -->_1 tadd#(x,leaf()) -> c_5():6
+             -->_2 mtadd#(x,nil()) -> c_4():5
+             -->_2 mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts)):2
+          
+          3:S:tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts))
+             -->_2 mtadd#(x,nil()) -> c_4():5
+             -->_1 add#(0(),y) -> c_1():4
+             -->_2 mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts)):2
+             -->_1 add#(s(x),y) -> c_2(add#(x,y)):1
+          
+          4:W:add#(0(),y) -> c_1()
+             
+          
+          5:W:mtadd#(x,nil()) -> c_4()
+             
+          
+          6:W:tadd#(x,leaf()) -> c_5()
+             
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          6: tadd#(x,leaf()) -> c_5()
+          5: mtadd#(x,nil()) -> c_4()
+          4: add#(0(),y) -> c_1()
+* Step 4: UsableRules WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            add#(s(x),y) -> c_2(add#(x,y))
+            mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+            tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts))
+        - Weak TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mtadd(x,cons(t,ts)) -> cons(tadd(x,t),mtadd(x,ts))
+            mtadd(x,nil()) -> nil()
+            tadd(x,leaf()) -> leaf()
+            tadd(x,node(y,ts)) -> node(add(x,y),mtadd(x,ts))
+        - Signature:
+            {add/2,mtadd/2,tadd/2,add#/2,mtadd#/2,tadd#/2} / {0/0,cons/2,leaf/0,nil/0,node/2,s/1,c_1/0,c_2/1,c_3/2,c_4/0
+            ,c_5/0,c_6/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mtadd#,tadd#} and constructors {0,cons,leaf,nil,node
+            ,s}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          add#(s(x),y) -> c_2(add#(x,y))
+          mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+          tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts))
+* Step 5: DecomposeDG WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            add#(s(x),y) -> c_2(add#(x,y))
+            mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+            tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts))
+        - Signature:
+            {add/2,mtadd/2,tadd/2,add#/2,mtadd#/2,tadd#/2} / {0/0,cons/2,leaf/0,nil/0,node/2,s/1,c_1/0,c_2/1,c_3/2,c_4/0
+            ,c_5/0,c_6/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mtadd#,tadd#} and constructors {0,cons,leaf,nil,node
+            ,s}
+    + Applied Processor:
+        DecomposeDG {onSelection = all below first cut in WDG, onUpper = Nothing, onLower = Nothing}
+    + Details:
+        We decompose the input problem according to the dependency graph into the upper component
+          mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+          tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts))
+        and a lower component
+          add#(s(x),y) -> c_2(add#(x,y))
+        Further, following extension rules are added to the lower component.
+          mtadd#(x,cons(t,ts)) -> mtadd#(x,ts)
+          mtadd#(x,cons(t,ts)) -> tadd#(x,t)
+          tadd#(x,node(y,ts)) -> add#(x,y)
+          tadd#(x,node(y,ts)) -> mtadd#(x,ts)
+** Step 5.a:1: SimplifyRHS WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+            tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts))
+        - Signature:
+            {add/2,mtadd/2,tadd/2,add#/2,mtadd#/2,tadd#/2} / {0/0,cons/2,leaf/0,nil/0,node/2,s/1,c_1/0,c_2/1,c_3/2,c_4/0
+            ,c_5/0,c_6/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mtadd#,tadd#} and constructors {0,cons,leaf,nil,node
+            ,s}
+    + Applied Processor:
+        SimplifyRHS
+    + Details:
+        Consider the dependency graph
+          1:S:mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+             -->_1 tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts)):2
+             -->_2 mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts)):1
+          
+          2:S:tadd#(x,node(y,ts)) -> c_6(add#(x,y),mtadd#(x,ts))
+             -->_2 mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts)):1
+          
+        Due to missing edges in the depndency graph, the right-hand sides of following rules could be simplified:
+          tadd#(x,node(y,ts)) -> c_6(mtadd#(x,ts))
+** Step 5.a:2: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+            tadd#(x,node(y,ts)) -> c_6(mtadd#(x,ts))
+        - Signature:
+            {add/2,mtadd/2,tadd/2,add#/2,mtadd#/2,tadd#/2} / {0/0,cons/2,leaf/0,nil/0,node/2,s/1,c_1/0,c_2/1,c_3/2,c_4/0
+            ,c_5/0,c_6/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mtadd#,tadd#} and constructors {0,cons,leaf,nil,node
+            ,s}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(c_3) = {1,2},
+            uargs(c_6) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                 p(0) = [0]                  
+               p(add) = [0]                  
+              p(cons) = [1] x1 + [1] x2 + [0]
+              p(leaf) = [0]                  
+             p(mtadd) = [0]                  
+               p(nil) = [1]                  
+              p(node) = [1] x1 + [1] x2 + [4]
+                 p(s) = [1]                  
+              p(tadd) = [2] x1 + [2] x2 + [0]
+              p(add#) = [4]                  
+            p(mtadd#) = [0]                  
+             p(tadd#) = [9]                  
+               p(c_1) = [0]                  
+               p(c_2) = [1] x1 + [4]         
+               p(c_3) = [1] x1 + [1] x2 + [0]
+               p(c_4) = [1]                  
+               p(c_5) = [1]                  
+               p(c_6) = [1] x1 + [0]         
+          
+          Following rules are strictly oriented:
+          tadd#(x,node(y,ts)) = [9]              
+                              > [0]              
+                              = c_6(mtadd#(x,ts))
+          
+          
+          Following rules are (at-least) weakly oriented:
+          mtadd#(x,cons(t,ts)) =  [0]                         
+                               >= [9]                         
+                               =  c_3(tadd#(x,t),mtadd#(x,ts))
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 5.a:3: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+        - Weak DPs:
+            tadd#(x,node(y,ts)) -> c_6(mtadd#(x,ts))
+        - Signature:
+            {add/2,mtadd/2,tadd/2,add#/2,mtadd#/2,tadd#/2} / {0/0,cons/2,leaf/0,nil/0,node/2,s/1,c_1/0,c_2/1,c_3/2,c_4/0
+            ,c_5/0,c_6/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mtadd#,tadd#} and constructors {0,cons,leaf,nil,node
+            ,s}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(c_3) = {1,2},
+            uargs(c_6) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                 p(0) = [8]                  
+               p(add) = [2] x2 + [2]         
+              p(cons) = [1] x1 + [1] x2 + [1]
+              p(leaf) = [0]                  
+             p(mtadd) = [2] x2 + [1]         
+               p(nil) = [1]                  
+              p(node) = [1] x2 + [0]         
+                 p(s) = [0]                  
+              p(tadd) = [1] x1 + [1] x2 + [0]
+              p(add#) = [1] x1 + [1]         
+            p(mtadd#) = [1] x2 + [0]         
+             p(tadd#) = [1] x2 + [0]         
+               p(c_1) = [4]                  
+               p(c_2) = [1] x1 + [8]         
+               p(c_3) = [1] x1 + [1] x2 + [0]
+               p(c_4) = [0]                  
+               p(c_5) = [1]                  
+               p(c_6) = [1] x1 + [0]         
+          
+          Following rules are strictly oriented:
+          mtadd#(x,cons(t,ts)) = [1] t + [1] ts + [1]        
+                               > [1] t + [1] ts + [0]        
+                               = c_3(tadd#(x,t),mtadd#(x,ts))
+          
+          
+          Following rules are (at-least) weakly oriented:
+          tadd#(x,node(y,ts)) =  [1] ts + [0]     
+                              >= [1] ts + [0]     
+                              =  c_6(mtadd#(x,ts))
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 5.a:4: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            mtadd#(x,cons(t,ts)) -> c_3(tadd#(x,t),mtadd#(x,ts))
+            tadd#(x,node(y,ts)) -> c_6(mtadd#(x,ts))
+        - Signature:
+            {add/2,mtadd/2,tadd/2,add#/2,mtadd#/2,tadd#/2} / {0/0,cons/2,leaf/0,nil/0,node/2,s/1,c_1/0,c_2/1,c_3/2,c_4/0
+            ,c_5/0,c_6/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mtadd#,tadd#} and constructors {0,cons,leaf,nil,node
+            ,s}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+** Step 5.b:1: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            add#(s(x),y) -> c_2(add#(x,y))
+        - Weak DPs:
+            mtadd#(x,cons(t,ts)) -> mtadd#(x,ts)
+            mtadd#(x,cons(t,ts)) -> tadd#(x,t)
+            tadd#(x,node(y,ts)) -> add#(x,y)
+            tadd#(x,node(y,ts)) -> mtadd#(x,ts)
+        - Signature:
+            {add/2,mtadd/2,tadd/2,add#/2,mtadd#/2,tadd#/2} / {0/0,cons/2,leaf/0,nil/0,node/2,s/1,c_1/0,c_2/1,c_3/2,c_4/0
+            ,c_5/0,c_6/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mtadd#,tadd#} and constructors {0,cons,leaf,nil,node
+            ,s}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(c_2) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                 p(0) = [0]                  
+               p(add) = [0]                  
+              p(cons) = [1] x1 + [0]         
+              p(leaf) = [0]                  
+             p(mtadd) = [0]                  
+               p(nil) = [0]                  
+              p(node) = [1] x1 + [1] x2 + [0]
+                 p(s) = [1] x1 + [5]         
+              p(tadd) = [0]                  
+              p(add#) = [3] x1 + [8]         
+            p(mtadd#) = [3] x1 + [8]         
+             p(tadd#) = [3] x1 + [8]         
+               p(c_1) = [0]                  
+               p(c_2) = [1] x1 + [1]         
+               p(c_3) = [0]                  
+               p(c_4) = [0]                  
+               p(c_5) = [0]                  
+               p(c_6) = [0]                  
+          
+          Following rules are strictly oriented:
+          add#(s(x),y) = [3] x + [23]  
+                       > [3] x + [9]   
+                       = c_2(add#(x,y))
+          
+          
+          Following rules are (at-least) weakly oriented:
+          mtadd#(x,cons(t,ts)) =  [3] x + [8] 
+                               >= [3] x + [8] 
+                               =  mtadd#(x,ts)
+          
+          mtadd#(x,cons(t,ts)) =  [3] x + [8] 
+                               >= [3] x + [8] 
+                               =  tadd#(x,t)  
+          
+           tadd#(x,node(y,ts)) =  [3] x + [8] 
+                               >= [3] x + [8] 
+                               =  add#(x,y)   
+          
+           tadd#(x,node(y,ts)) =  [3] x + [8] 
+                               >= [3] x + [8] 
+                               =  mtadd#(x,ts)
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 5.b:2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            add#(s(x),y) -> c_2(add#(x,y))
+            mtadd#(x,cons(t,ts)) -> mtadd#(x,ts)
+            mtadd#(x,cons(t,ts)) -> tadd#(x,t)
+            tadd#(x,node(y,ts)) -> add#(x,y)
+            tadd#(x,node(y,ts)) -> mtadd#(x,ts)
+        - Signature:
+            {add/2,mtadd/2,tadd/2,add#/2,mtadd#/2,tadd#/2} / {0/0,cons/2,leaf/0,nil/0,node/2,s/1,c_1/0,c_2/1,c_3/2,c_4/0
+            ,c_5/0,c_6/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mtadd#,tadd#} and constructors {0,cons,leaf,nil,node
+            ,s}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^2))

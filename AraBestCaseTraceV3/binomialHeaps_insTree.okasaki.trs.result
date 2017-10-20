@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"binomialHeaps_insTree.okasaki","rTime":60.012804,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3","tArguments":["-t 60","-v3","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

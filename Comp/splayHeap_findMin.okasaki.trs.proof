@@ -1,0 +1,47 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            findMin#1(E()) -> ErrorElem()
+            findMin#1(T(E(),x6,x17)) -> x6
+            findMin#1(T(T(x10,x12,x14),x6,x17)) -> findMin#1(T(x10,x12,x14))
+            main(x0) -> findMin#1(x0)
+        - Signature:
+            {findMin#1/1,main/1} / {E/0,ErrorElem/0,T/3}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {findMin#1,main} and constructors {E,ErrorElem,T}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 1.
+        The enriched problem is compatible with follwoing automaton.
+          E_0() -> 1
+          E_0() -> 2
+          ErrorElem_0() -> 1
+          ErrorElem_0() -> 2
+          ErrorElem_1() -> 1
+          T_0(2,2,2) -> 1
+          T_0(2,2,2) -> 2
+          T_1(2,2,2) -> 3
+          findMin#1_0(2) -> 1
+          findMin#1_1(2) -> 1
+          findMin#1_1(3) -> 1
+          main_0(2) -> 1
+          2 -> 1
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            findMin#1(E()) -> ErrorElem()
+            findMin#1(T(E(),x6,x17)) -> x6
+            findMin#1(T(T(x10,x12,x14),x6,x17)) -> findMin#1(T(x10,x12,x14))
+            main(x0) -> findMin#1(x0)
+        - Signature:
+            {findMin#1/1,main/1} / {E/0,ErrorElem/0,T/3}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {findMin#1,main} and constructors {E,ErrorElem,T}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

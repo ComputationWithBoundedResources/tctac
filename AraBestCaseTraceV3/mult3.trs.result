@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(n^2),?)"},"rProblem":"mult3","rTime":0.620007,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3","tArguments":["-t 60","-v3","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"String0_prefix.raml","rTime":0.171164,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV1NoCdCF","tArguments":["-t 60","-v1","-l","-a","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

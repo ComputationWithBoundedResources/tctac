@@ -1,0 +1,134 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            append(l1,l2) -> append#1(l1,l2)
+            append#1(cons(x,xs),l2) -> cons(x,append(xs,l2))
+            append#1(nil(),l2) -> l2
+            appendAll(l) -> appendAll#1(l)
+            appendAll#1(cons(l1,ls)) -> append(l1,appendAll(ls))
+            appendAll#1(nil()) -> nil()
+            appendAll2(l) -> appendAll2#1(l)
+            appendAll2#1(cons(l1,ls)) -> append(appendAll(l1),appendAll2(ls))
+            appendAll2#1(nil()) -> nil()
+            appendAll3(l) -> appendAll3#1(l)
+            appendAll3#1(cons(l1,ls)) -> append(appendAll2(l1),appendAll3(ls))
+            appendAll3#1(nil()) -> nil()
+        - Signature:
+            {append/2,append#1/2,appendAll/1,appendAll#1/1,appendAll2/1,appendAll2#1/1,appendAll3/1
+            ,appendAll3#1/1} / {cons/2,nil/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append,append#1,appendAll,appendAll#1,appendAll2
+            ,appendAll2#1,appendAll3,appendAll3#1} and constructors {cons,nil}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 4.
+        The enriched problem is compatible with follwoing automaton.
+          append_0(2,2) -> 1
+          append_1(2,2) -> 3
+          append_1(2,4) -> 1
+          append_1(2,4) -> 4
+          append_1(4,5) -> 1
+          append_1(4,5) -> 5
+          append_1(4,5) -> 7
+          append_1(5,6) -> 1
+          append_1(5,6) -> 6
+          append_1(5,6) -> 8
+          append_2(4,5) -> 7
+          append_3(7,6) -> 8
+          append#1_0(2,2) -> 1
+          append#1_1(2,2) -> 1
+          append#1_2(2,2) -> 3
+          append#1_2(2,4) -> 1
+          append#1_2(2,4) -> 4
+          append#1_2(4,5) -> 1
+          append#1_2(4,5) -> 5
+          append#1_2(4,5) -> 7
+          append#1_2(5,6) -> 1
+          append#1_2(5,6) -> 6
+          append#1_2(5,6) -> 8
+          append#1_3(4,5) -> 7
+          append#1_4(7,6) -> 8
+          appendAll_0(2) -> 1
+          appendAll_1(2) -> 1
+          appendAll_1(2) -> 4
+          appendAll#1_0(2) -> 1
+          appendAll#1_1(2) -> 1
+          appendAll#1_2(2) -> 1
+          appendAll#1_2(2) -> 4
+          appendAll2_0(2) -> 1
+          appendAll2_1(2) -> 1
+          appendAll2_1(2) -> 5
+          appendAll2_1(2) -> 7
+          appendAll2#1_0(2) -> 1
+          appendAll2#1_1(2) -> 1
+          appendAll2#1_2(2) -> 1
+          appendAll2#1_2(2) -> 5
+          appendAll2#1_2(2) -> 7
+          appendAll3_0(2) -> 1
+          appendAll3_1(2) -> 1
+          appendAll3_1(2) -> 6
+          appendAll3_1(2) -> 8
+          appendAll3#1_0(2) -> 1
+          appendAll3#1_1(2) -> 1
+          appendAll3#1_2(2) -> 1
+          appendAll3#1_2(2) -> 6
+          appendAll3#1_2(2) -> 8
+          cons_0(2,2) -> 1
+          cons_0(2,2) -> 2
+          cons_0(2,2) -> 3
+          cons_1(2,1) -> 1
+          cons_1(2,3) -> 1
+          cons_1(2,3) -> 3
+          cons_1(2,4) -> 1
+          cons_1(2,4) -> 4
+          cons_2(2,7) -> 1
+          cons_2(2,7) -> 5
+          cons_2(2,7) -> 7
+          cons_3(2,8) -> 1
+          cons_3(2,8) -> 6
+          cons_3(2,8) -> 8
+          nil_0() -> 1
+          nil_0() -> 2
+          nil_0() -> 3
+          nil_1() -> 1
+          nil_1() -> 4
+          nil_1() -> 5
+          nil_1() -> 6
+          nil_1() -> 7
+          nil_1() -> 8
+          2 -> 1
+          2 -> 3
+          4 -> 1
+          5 -> 1
+          5 -> 7
+          6 -> 1
+          6 -> 8
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            append(l1,l2) -> append#1(l1,l2)
+            append#1(cons(x,xs),l2) -> cons(x,append(xs,l2))
+            append#1(nil(),l2) -> l2
+            appendAll(l) -> appendAll#1(l)
+            appendAll#1(cons(l1,ls)) -> append(l1,appendAll(ls))
+            appendAll#1(nil()) -> nil()
+            appendAll2(l) -> appendAll2#1(l)
+            appendAll2#1(cons(l1,ls)) -> append(appendAll(l1),appendAll2(ls))
+            appendAll2#1(nil()) -> nil()
+            appendAll3(l) -> appendAll3#1(l)
+            appendAll3#1(cons(l1,ls)) -> append(appendAll2(l1),appendAll3(ls))
+            appendAll3#1(nil()) -> nil()
+        - Signature:
+            {append/2,append#1/2,appendAll/1,appendAll#1/1,appendAll2/1,appendAll2#1/1,appendAll3/1
+            ,appendAll3#1/1} / {cons/2,nil/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {append,append#1,appendAll,appendAll#1,appendAll2
+            ,appendAll2#1,appendAll3,appendAll3#1} and constructors {cons,nil}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

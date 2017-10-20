@@ -1,0 +1,65 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            cond_prefix_s1_s2_2(False(),x2,x1) -> False()
+            cond_prefix_s1_s2_2(True(),x2,x1) -> prefix#2(x2,x1)
+            eq#2(0(),0()) -> True()
+            eq#2(0(),S(x16)) -> False()
+            eq#2(S(x16),0()) -> False()
+            eq#2(S(x4),S(x2)) -> eq#2(x4,x2)
+            main(x2,x1) -> prefix#2(x2,x1)
+            prefix#2(Cons(x4,x2),Nil()) -> False()
+            prefix#2(Cons(x8,x6),Cons(x4,x2)) -> cond_prefix_s1_s2_2(eq#2(x8,x4),x6,x2)
+            prefix#2(Nil(),x2) -> True()
+        - Signature:
+            {cond_prefix_s1_s2_2/3,eq#2/2,main/2,prefix#2/2} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {cond_prefix_s1_s2_2,eq#2,main
+            ,prefix#2} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 2.
+        The enriched problem is compatible with follwoing automaton.
+          0_0() -> 2
+          Cons_0(2,2) -> 2
+          False_0() -> 2
+          False_1() -> 1
+          False_2() -> 1
+          Nil_0() -> 2
+          S_0(2) -> 2
+          True_0() -> 2
+          True_1() -> 1
+          cond_prefix_s1_s2_2_0(2,2,2) -> 1
+          cond_prefix_s1_s2_2_1(1,2,2) -> 1
+          eq#2_0(2,2) -> 1
+          eq#2_1(2,2) -> 1
+          main_0(2,2) -> 1
+          prefix#2_0(2,2) -> 1
+          prefix#2_1(2,2) -> 1
+          prefix#2_2(2,2) -> 1
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            cond_prefix_s1_s2_2(False(),x2,x1) -> False()
+            cond_prefix_s1_s2_2(True(),x2,x1) -> prefix#2(x2,x1)
+            eq#2(0(),0()) -> True()
+            eq#2(0(),S(x16)) -> False()
+            eq#2(S(x16),0()) -> False()
+            eq#2(S(x4),S(x2)) -> eq#2(x4,x2)
+            main(x2,x1) -> prefix#2(x2,x1)
+            prefix#2(Cons(x4,x2),Nil()) -> False()
+            prefix#2(Cons(x8,x6),Cons(x4,x2)) -> cond_prefix_s1_s2_2(eq#2(x8,x4),x6,x2)
+            prefix#2(Nil(),x2) -> True()
+        - Signature:
+            {cond_prefix_s1_s2_2/3,eq#2/2,main/2,prefix#2/2} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {cond_prefix_s1_s2_2,eq#2,main
+            ,prefix#2} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

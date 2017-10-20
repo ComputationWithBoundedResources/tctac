@@ -1,0 +1,241 @@
+/* general */
+.experiments th.table-sortable { 
+    background-image:url("sort_ascending.png"); 
+    background-repeat:no-repeat; 
+    background-position:bottom left
+}
+
+.experiments th.table-sorted-asc { 
+    background-image:url("sort_ascending.png"); 
+    background-repeat:no-repeat; 
+    background-position:bottom left
+}
+.experiments th.table-sorted-desc { 
+    background-image:url("sort_descending.png"); 
+    background-repeat:no-repeat; 
+    background-position:bottom left
+}
+
+.experiments .toolname { 
+ color: #2b5573;
+ vertical-align:middle;
+}
+
+.experiments .lhd { 
+ text-align: right;
+ width:        160px;
+ padding-right: 5px;
+ color: #2b5573;
+}
+
+.experiments .rowsep { 
+ height:        20px;
+}
+
+.experiments table {
+   border-collapse: separate;
+}
+
+.experiments th {
+ text-align: center;
+ color: #2b5573;
+ font-weight: normal;
+ vertical-align:bottom;
+}
+
+.summary th {
+ text-align: center;
+ color: #2b5573;
+ font-weight: normal;
+ vertical-align:bottom;
+}
+
+.experiments option {
+    padding-right: 0px;
+    font-size: 10px;
+}
+
+
+.experiments select {
+    padding-right: 0px;
+    font-size: 10px;
+}
+
+
+/* entries */
+
+.experiments .missing { 
+ color: #DDDDDD;
+ font-style: italic;
+ background-color: white;
+}
+
+.experiments .yes { 
+ color: #009900;        
+ font-style: italic;
+ background-color: white;
+}
+
+.experiments .no { 
+ color: #990000;
+ font-style: italic;	
+ background-color: white;
+}
+
+.experiments .maybe { 
+ color: #FF9900;
+ font-style: italic;
+ background-color: white;
+}
+
+.experiments .timeout { 
+ color: #FFBB00; 
+ font-style: italic;
+ background-color: white;
+}
+
+.experiments .error { 
+ color: #FF0000;
+ font-style: italic;
+ background-color: white;
+}
+
+.experiments .win { 
+ color: #00FF00;
+ font-weight: bold;
+ border: 0.5mm solid #DDDDDD
+}
+
+.experiments .tooloutput {
+ font-family: monospace;
+ line-height: normal;    
+ border: 2px dashed #333333;
+ padding-top: 10px;
+ padding-bottom: 10px;
+ padding-left: 10px;
+ padding-right: 10px;
+ background:   #DDDDDD; 
+}
+
+
+/* exec times page */
+.experiments .exectime {
+ color:   #666666;
+}
+
+.experiments .exectimes td { 
+ text-align: center;
+ padding-left: 5px;
+ width:        60px;
+ padding-right: 5px;
+}
+
+.experiments .exectimes td { 
+ color:   #666666; 
+ text-align: center
+}
+
+/* comparison */
+.comparison th {
+ text-align: center;
+ color: #2b5573;
+ font-weight: normal;
+ vertical-align:bottom;
+}
+
+.comparison .toolA {
+ color: #009900;        
+}
+
+.comparison .toolB {
+ color: #990000;
+}
+
+.comparison .toolAB {
+ color: #FF9900;
+}
+
+
+.experiments .comparison td {
+ text-align: center;
+ padding-left: 5px;
+ width:        50px;
+ padding-right: 5px;
+ height:auto;
+}
+
+
+/* summary page */
+
+.experiments .summary td { 
+ text-align: center;
+ padding-left: 5px;
+ color:   #666666; 
+ width:        60px;
+ padding-right: 5px;
+}
+
+/* results page */
+
+.experiments .results a {
+ color:   #666666;
+ text-decoration: none;
+}
+
+.experiments .results .lhd { 
+ text-align: right;
+ padding-right: 5px;
+}
+
+
+.experiments .results td { 
+ text-align: center;
+ padding-left: 5px;
+ width:        60px;
+ padding-right: 5px;
+ height:auto;
+}
+
+
+/* result page */
+
+
+.experiments .result td { 
+ text-align: left;
+ padding-left: 5px;
+}
+
+.experiments .result h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2b5573;
+	font-size: 14pt;
+}
+.experiments .result h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2b5573;
+	font-size: 13pt;
+}
+.experiments .result h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2b5573;
+	font-size: 12pt;
+}
+.experiments .result h4 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #2b5573;
+	font-size: 11pt;
+}
+.experiments .result h5 {
+        font-family: Arial, Helvetica, sans-serif;
+	color: #2b5573;
+	font-size: 10pt;
+}
+
+.horizontal {
+    behavior:url(-ms-transform.htc);
+    -moz-transform:rotate(-90deg) translateX(-20mm);
+    -webkit-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+    text-align:right;
+}

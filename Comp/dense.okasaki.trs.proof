@@ -1,0 +1,326 @@
+WORST_CASE(?,O(n^1))
+* Step 1: DependencyPairs WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            add#2(x2,Nil()) -> x2
+            add#2(Cons(x6,x4),Cons(Zero(),x2)) -> Cons(x6,add#2(x4,x2))
+            add#2(Cons(One(),x4),Cons(One(),x2)) -> Cons(Zero(),inc#1(add#2(x4,x2)))
+            add#2(Cons(Zero(),x4),Cons(One(),x2)) -> Cons(One(),add#2(x4,x2))
+            add#2(Nil(),Cons(x4,x2)) -> Cons(x4,x2)
+            inc#1(Cons(One(),x8)) -> Cons(Zero(),inc#1(x8))
+            inc#1(Cons(Zero(),x8)) -> Cons(One(),x8)
+            inc#1(Nil()) -> Cons(One(),Nil())
+            main(x2,x1) -> add#2(x2,x1)
+        - Signature:
+            {add#2/2,inc#1/1,main/2} / {Cons/2,Nil/0,One/0,Zero/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#2,inc#1,main} and constructors {Cons,Nil,One,Zero}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = WIDP}
+    + Details:
+        We add the following weak innermost dependency pairs:
+        
+        Strict DPs
+          add#2#(x2,Nil()) -> c_1()
+          add#2#(Cons(x6,x4),Cons(Zero(),x2)) -> c_2(add#2#(x4,x2))
+          add#2#(Cons(One(),x4),Cons(One(),x2)) -> c_3(inc#1#(add#2(x4,x2)))
+          add#2#(Cons(Zero(),x4),Cons(One(),x2)) -> c_4(add#2#(x4,x2))
+          add#2#(Nil(),Cons(x4,x2)) -> c_5()
+          inc#1#(Cons(One(),x8)) -> c_6(inc#1#(x8))
+          inc#1#(Cons(Zero(),x8)) -> c_7()
+          inc#1#(Nil()) -> c_8()
+          main#(x2,x1) -> c_9(add#2#(x2,x1))
+        Weak DPs
+          
+        
+        and mark the set of starting terms.
+* Step 2: UsableRules WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            add#2#(x2,Nil()) -> c_1()
+            add#2#(Cons(x6,x4),Cons(Zero(),x2)) -> c_2(add#2#(x4,x2))
+            add#2#(Cons(One(),x4),Cons(One(),x2)) -> c_3(inc#1#(add#2(x4,x2)))
+            add#2#(Cons(Zero(),x4),Cons(One(),x2)) -> c_4(add#2#(x4,x2))
+            add#2#(Nil(),Cons(x4,x2)) -> c_5()
+            inc#1#(Cons(One(),x8)) -> c_6(inc#1#(x8))
+            inc#1#(Cons(Zero(),x8)) -> c_7()
+            inc#1#(Nil()) -> c_8()
+            main#(x2,x1) -> c_9(add#2#(x2,x1))
+        - Strict TRS:
+            add#2(x2,Nil()) -> x2
+            add#2(Cons(x6,x4),Cons(Zero(),x2)) -> Cons(x6,add#2(x4,x2))
+            add#2(Cons(One(),x4),Cons(One(),x2)) -> Cons(Zero(),inc#1(add#2(x4,x2)))
+            add#2(Cons(Zero(),x4),Cons(One(),x2)) -> Cons(One(),add#2(x4,x2))
+            add#2(Nil(),Cons(x4,x2)) -> Cons(x4,x2)
+            inc#1(Cons(One(),x8)) -> Cons(Zero(),inc#1(x8))
+            inc#1(Cons(Zero(),x8)) -> Cons(One(),x8)
+            inc#1(Nil()) -> Cons(One(),Nil())
+            main(x2,x1) -> add#2(x2,x1)
+        - Signature:
+            {add#2/2,inc#1/1,main/2,add#2#/2,inc#1#/1,main#/2} / {Cons/2,Nil/0,One/0,Zero/0,c_1/0,c_2/1,c_3/1,c_4/1
+            ,c_5/0,c_6/1,c_7/0,c_8/0,c_9/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#2#,inc#1#,main#} and constructors {Cons,Nil,One,Zero}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          add#2(x2,Nil()) -> x2
+          add#2(Cons(x6,x4),Cons(Zero(),x2)) -> Cons(x6,add#2(x4,x2))
+          add#2(Cons(One(),x4),Cons(One(),x2)) -> Cons(Zero(),inc#1(add#2(x4,x2)))
+          add#2(Cons(Zero(),x4),Cons(One(),x2)) -> Cons(One(),add#2(x4,x2))
+          add#2(Nil(),Cons(x4,x2)) -> Cons(x4,x2)
+          inc#1(Cons(One(),x8)) -> Cons(Zero(),inc#1(x8))
+          inc#1(Cons(Zero(),x8)) -> Cons(One(),x8)
+          inc#1(Nil()) -> Cons(One(),Nil())
+          add#2#(x2,Nil()) -> c_1()
+          add#2#(Cons(x6,x4),Cons(Zero(),x2)) -> c_2(add#2#(x4,x2))
+          add#2#(Cons(One(),x4),Cons(One(),x2)) -> c_3(inc#1#(add#2(x4,x2)))
+          add#2#(Cons(Zero(),x4),Cons(One(),x2)) -> c_4(add#2#(x4,x2))
+          add#2#(Nil(),Cons(x4,x2)) -> c_5()
+          inc#1#(Cons(One(),x8)) -> c_6(inc#1#(x8))
+          inc#1#(Cons(Zero(),x8)) -> c_7()
+          inc#1#(Nil()) -> c_8()
+          main#(x2,x1) -> c_9(add#2#(x2,x1))
+* Step 3: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            add#2#(x2,Nil()) -> c_1()
+            add#2#(Cons(x6,x4),Cons(Zero(),x2)) -> c_2(add#2#(x4,x2))
+            add#2#(Cons(One(),x4),Cons(One(),x2)) -> c_3(inc#1#(add#2(x4,x2)))
+            add#2#(Cons(Zero(),x4),Cons(One(),x2)) -> c_4(add#2#(x4,x2))
+            add#2#(Nil(),Cons(x4,x2)) -> c_5()
+            inc#1#(Cons(One(),x8)) -> c_6(inc#1#(x8))
+            inc#1#(Cons(Zero(),x8)) -> c_7()
+            inc#1#(Nil()) -> c_8()
+            main#(x2,x1) -> c_9(add#2#(x2,x1))
+        - Strict TRS:
+            add#2(x2,Nil()) -> x2
+            add#2(Cons(x6,x4),Cons(Zero(),x2)) -> Cons(x6,add#2(x4,x2))
+            add#2(Cons(One(),x4),Cons(One(),x2)) -> Cons(Zero(),inc#1(add#2(x4,x2)))
+            add#2(Cons(Zero(),x4),Cons(One(),x2)) -> Cons(One(),add#2(x4,x2))
+            add#2(Nil(),Cons(x4,x2)) -> Cons(x4,x2)
+            inc#1(Cons(One(),x8)) -> Cons(Zero(),inc#1(x8))
+            inc#1(Cons(Zero(),x8)) -> Cons(One(),x8)
+            inc#1(Nil()) -> Cons(One(),Nil())
+        - Signature:
+            {add#2/2,inc#1/1,main/2,add#2#/2,inc#1#/1,main#/2} / {Cons/2,Nil/0,One/0,Zero/0,c_1/0,c_2/1,c_3/1,c_4/1
+            ,c_5/0,c_6/1,c_7/0,c_8/0,c_9/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#2#,inc#1#,main#} and constructors {Cons,Nil,One,Zero}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnTrs}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(Cons) = {2},
+            uargs(inc#1) = {1},
+            uargs(inc#1#) = {1},
+            uargs(c_2) = {1},
+            uargs(c_3) = {1},
+            uargs(c_4) = {1},
+            uargs(c_6) = {1},
+            uargs(c_9) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+              p(Cons) = [1] x1 + [1] x2 + [2]
+               p(Nil) = [2]                  
+               p(One) = [1]                  
+              p(Zero) = [0]                  
+             p(add#2) = [1] x1 + [4] x2 + [0]
+             p(inc#1) = [1] x1 + [4]         
+              p(main) = [4] x1 + [1] x2 + [4]
+            p(add#2#) = [1] x1 + [4] x2 + [0]
+            p(inc#1#) = [1] x1 + [5]         
+             p(main#) = [4] x1 + [4] x2 + [1]
+               p(c_1) = [0]                  
+               p(c_2) = [1] x1 + [2]         
+               p(c_3) = [1] x1 + [4]         
+               p(c_4) = [1] x1 + [1]         
+               p(c_5) = [1]                  
+               p(c_6) = [1] x1 + [0]         
+               p(c_7) = [1]                  
+               p(c_8) = [2]                  
+               p(c_9) = [1] x1 + [0]         
+          
+          Following rules are strictly oriented:
+                                add#2#(x2,Nil()) = [1] x2 + [8]                    
+                                                 > [0]                             
+                                                 = c_1()                           
+          
+             add#2#(Cons(x6,x4),Cons(Zero(),x2)) = [4] x2 + [1] x4 + [1] x6 + [10] 
+                                                 > [4] x2 + [1] x4 + [2]           
+                                                 = c_2(add#2#(x4,x2))              
+          
+           add#2#(Cons(One(),x4),Cons(One(),x2)) = [4] x2 + [1] x4 + [15]          
+                                                 > [4] x2 + [1] x4 + [9]           
+                                                 = c_3(inc#1#(add#2(x4,x2)))       
+          
+          add#2#(Cons(Zero(),x4),Cons(One(),x2)) = [4] x2 + [1] x4 + [14]          
+                                                 > [4] x2 + [1] x4 + [1]           
+                                                 = c_4(add#2#(x4,x2))              
+          
+                       add#2#(Nil(),Cons(x4,x2)) = [4] x2 + [4] x4 + [10]          
+                                                 > [1]                             
+                                                 = c_5()                           
+          
+                          inc#1#(Cons(One(),x8)) = [1] x8 + [8]                    
+                                                 > [1] x8 + [5]                    
+                                                 = c_6(inc#1#(x8))                 
+          
+                         inc#1#(Cons(Zero(),x8)) = [1] x8 + [7]                    
+                                                 > [1]                             
+                                                 = c_7()                           
+          
+                                   inc#1#(Nil()) = [7]                             
+                                                 > [2]                             
+                                                 = c_8()                           
+          
+                                    main#(x2,x1) = [4] x1 + [4] x2 + [1]           
+                                                 > [4] x1 + [1] x2 + [0]           
+                                                 = c_9(add#2#(x2,x1))              
+          
+                                 add#2(x2,Nil()) = [1] x2 + [8]                    
+                                                 > [1] x2 + [0]                    
+                                                 = x2                              
+          
+              add#2(Cons(x6,x4),Cons(Zero(),x2)) = [4] x2 + [1] x4 + [1] x6 + [10] 
+                                                 > [4] x2 + [1] x4 + [1] x6 + [2]  
+                                                 = Cons(x6,add#2(x4,x2))           
+          
+            add#2(Cons(One(),x4),Cons(One(),x2)) = [4] x2 + [1] x4 + [15]          
+                                                 > [4] x2 + [1] x4 + [6]           
+                                                 = Cons(Zero(),inc#1(add#2(x4,x2)))
+          
+           add#2(Cons(Zero(),x4),Cons(One(),x2)) = [4] x2 + [1] x4 + [14]          
+                                                 > [4] x2 + [1] x4 + [3]           
+                                                 = Cons(One(),add#2(x4,x2))        
+          
+                        add#2(Nil(),Cons(x4,x2)) = [4] x2 + [4] x4 + [10]          
+                                                 > [1] x2 + [1] x4 + [2]           
+                                                 = Cons(x4,x2)                     
+          
+                           inc#1(Cons(One(),x8)) = [1] x8 + [7]                    
+                                                 > [1] x8 + [6]                    
+                                                 = Cons(Zero(),inc#1(x8))          
+          
+                          inc#1(Cons(Zero(),x8)) = [1] x8 + [6]                    
+                                                 > [1] x8 + [3]                    
+                                                 = Cons(One(),x8)                  
+          
+                                    inc#1(Nil()) = [6]                             
+                                                 > [5]                             
+                                                 = Cons(One(),Nil())               
+          
+          
+          Following rules are (at-least) weakly oriented:
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+* Step 4: RemoveWeakSuffixes WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            add#2#(x2,Nil()) -> c_1()
+            add#2#(Cons(x6,x4),Cons(Zero(),x2)) -> c_2(add#2#(x4,x2))
+            add#2#(Cons(One(),x4),Cons(One(),x2)) -> c_3(inc#1#(add#2(x4,x2)))
+            add#2#(Cons(Zero(),x4),Cons(One(),x2)) -> c_4(add#2#(x4,x2))
+            add#2#(Nil(),Cons(x4,x2)) -> c_5()
+            inc#1#(Cons(One(),x8)) -> c_6(inc#1#(x8))
+            inc#1#(Cons(Zero(),x8)) -> c_7()
+            inc#1#(Nil()) -> c_8()
+            main#(x2,x1) -> c_9(add#2#(x2,x1))
+        - Weak TRS:
+            add#2(x2,Nil()) -> x2
+            add#2(Cons(x6,x4),Cons(Zero(),x2)) -> Cons(x6,add#2(x4,x2))
+            add#2(Cons(One(),x4),Cons(One(),x2)) -> Cons(Zero(),inc#1(add#2(x4,x2)))
+            add#2(Cons(Zero(),x4),Cons(One(),x2)) -> Cons(One(),add#2(x4,x2))
+            add#2(Nil(),Cons(x4,x2)) -> Cons(x4,x2)
+            inc#1(Cons(One(),x8)) -> Cons(Zero(),inc#1(x8))
+            inc#1(Cons(Zero(),x8)) -> Cons(One(),x8)
+            inc#1(Nil()) -> Cons(One(),Nil())
+        - Signature:
+            {add#2/2,inc#1/1,main/2,add#2#/2,inc#1#/1,main#/2} / {Cons/2,Nil/0,One/0,Zero/0,c_1/0,c_2/1,c_3/1,c_4/1
+            ,c_5/0,c_6/1,c_7/0,c_8/0,c_9/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#2#,inc#1#,main#} and constructors {Cons,Nil,One,Zero}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:W:add#2#(x2,Nil()) -> c_1()
+             
+          
+          2:W:add#2#(Cons(x6,x4),Cons(Zero(),x2)) -> c_2(add#2#(x4,x2))
+             -->_1 add#2#(Cons(Zero(),x4),Cons(One(),x2)) -> c_4(add#2#(x4,x2)):4
+             -->_1 add#2#(Cons(One(),x4),Cons(One(),x2)) -> c_3(inc#1#(add#2(x4,x2))):3
+             -->_1 add#2#(Nil(),Cons(x4,x2)) -> c_5():5
+             -->_1 add#2#(Cons(x6,x4),Cons(Zero(),x2)) -> c_2(add#2#(x4,x2)):2
+             -->_1 add#2#(x2,Nil()) -> c_1():1
+          
+          3:W:add#2#(Cons(One(),x4),Cons(One(),x2)) -> c_3(inc#1#(add#2(x4,x2)))
+             -->_1 inc#1#(Cons(One(),x8)) -> c_6(inc#1#(x8)):6
+             -->_1 inc#1#(Nil()) -> c_8():8
+             -->_1 inc#1#(Cons(Zero(),x8)) -> c_7():7
+          
+          4:W:add#2#(Cons(Zero(),x4),Cons(One(),x2)) -> c_4(add#2#(x4,x2))
+             -->_1 add#2#(Nil(),Cons(x4,x2)) -> c_5():5
+             -->_1 add#2#(Cons(Zero(),x4),Cons(One(),x2)) -> c_4(add#2#(x4,x2)):4
+             -->_1 add#2#(Cons(One(),x4),Cons(One(),x2)) -> c_3(inc#1#(add#2(x4,x2))):3
+             -->_1 add#2#(Cons(x6,x4),Cons(Zero(),x2)) -> c_2(add#2#(x4,x2)):2
+             -->_1 add#2#(x2,Nil()) -> c_1():1
+          
+          5:W:add#2#(Nil(),Cons(x4,x2)) -> c_5()
+             
+          
+          6:W:inc#1#(Cons(One(),x8)) -> c_6(inc#1#(x8))
+             -->_1 inc#1#(Nil()) -> c_8():8
+             -->_1 inc#1#(Cons(Zero(),x8)) -> c_7():7
+             -->_1 inc#1#(Cons(One(),x8)) -> c_6(inc#1#(x8)):6
+          
+          7:W:inc#1#(Cons(Zero(),x8)) -> c_7()
+             
+          
+          8:W:inc#1#(Nil()) -> c_8()
+             
+          
+          9:W:main#(x2,x1) -> c_9(add#2#(x2,x1))
+             -->_1 add#2#(Nil(),Cons(x4,x2)) -> c_5():5
+             -->_1 add#2#(Cons(Zero(),x4),Cons(One(),x2)) -> c_4(add#2#(x4,x2)):4
+             -->_1 add#2#(Cons(One(),x4),Cons(One(),x2)) -> c_3(inc#1#(add#2(x4,x2))):3
+             -->_1 add#2#(Cons(x6,x4),Cons(Zero(),x2)) -> c_2(add#2#(x4,x2)):2
+             -->_1 add#2#(x2,Nil()) -> c_1():1
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          9: main#(x2,x1) -> c_9(add#2#(x2,x1))
+          2: add#2#(Cons(x6,x4),Cons(Zero(),x2)) -> c_2(add#2#(x4,x2))
+          4: add#2#(Cons(Zero(),x4),Cons(One(),x2)) -> c_4(add#2#(x4,x2))
+          3: add#2#(Cons(One(),x4),Cons(One(),x2)) -> c_3(inc#1#(add#2(x4,x2)))
+          6: inc#1#(Cons(One(),x8)) -> c_6(inc#1#(x8))
+          7: inc#1#(Cons(Zero(),x8)) -> c_7()
+          8: inc#1#(Nil()) -> c_8()
+          5: add#2#(Nil(),Cons(x4,x2)) -> c_5()
+          1: add#2#(x2,Nil()) -> c_1()
+* Step 5: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            add#2(x2,Nil()) -> x2
+            add#2(Cons(x6,x4),Cons(Zero(),x2)) -> Cons(x6,add#2(x4,x2))
+            add#2(Cons(One(),x4),Cons(One(),x2)) -> Cons(Zero(),inc#1(add#2(x4,x2)))
+            add#2(Cons(Zero(),x4),Cons(One(),x2)) -> Cons(One(),add#2(x4,x2))
+            add#2(Nil(),Cons(x4,x2)) -> Cons(x4,x2)
+            inc#1(Cons(One(),x8)) -> Cons(Zero(),inc#1(x8))
+            inc#1(Cons(Zero(),x8)) -> Cons(One(),x8)
+            inc#1(Nil()) -> Cons(One(),Nil())
+        - Signature:
+            {add#2/2,inc#1/1,main/2,add#2#/2,inc#1#/1,main#/2} / {Cons/2,Nil/0,One/0,Zero/0,c_1/0,c_2/1,c_3/1,c_4/1
+            ,c_5/0,c_6/1,c_7/0,c_8/0,c_9/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#2#,inc#1#,main#} and constructors {Cons,Nil,One,Zero}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

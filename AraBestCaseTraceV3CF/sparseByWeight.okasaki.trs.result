@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"sparseByWeight.okasaki","rTime":8.854409,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3CF","tArguments":["-t 60","-v3","-l","-a"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

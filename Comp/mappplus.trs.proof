@@ -1,0 +1,343 @@
+WORST_CASE(?,O(n^2))
+* Step 1: DependencyPairs WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict TRS:
+            main(x5,x12) -> map#2(plus_x(x12),x5)
+            map#2(plus_x(x2),Nil()) -> Nil()
+            map#2(plus_x(x6),Cons(x4,x2)) -> Cons(plus_x#1(x6,x4),map#2(plus_x(x6),x2))
+            plus_x#1(0(),x8) -> x8
+            plus_x#1(S(x12),x14) -> S(plus_x#1(x12,x14))
+        - Signature:
+            {main/2,map#2/2,plus_x#1/2} / {0/0,Cons/2,Nil/0,S/1,plus_x/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main,map#2,plus_x#1} and constructors {0,Cons,Nil,S
+            ,plus_x}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = DT}
+    + Details:
+        We add the following dependency tuples:
+        
+        Strict DPs
+          main#(x5,x12) -> c_1(map#2#(plus_x(x12),x5))
+          map#2#(plus_x(x2),Nil()) -> c_2()
+          map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+          plus_x#1#(0(),x8) -> c_4()
+          plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+        Weak DPs
+          
+        
+        and mark the set of starting terms.
+* Step 2: PredecessorEstimation WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            main#(x5,x12) -> c_1(map#2#(plus_x(x12),x5))
+            map#2#(plus_x(x2),Nil()) -> c_2()
+            map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+            plus_x#1#(0(),x8) -> c_4()
+            plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+        - Weak TRS:
+            main(x5,x12) -> map#2(plus_x(x12),x5)
+            map#2(plus_x(x2),Nil()) -> Nil()
+            map#2(plus_x(x6),Cons(x4,x2)) -> Cons(plus_x#1(x6,x4),map#2(plus_x(x6),x2))
+            plus_x#1(0(),x8) -> x8
+            plus_x#1(S(x12),x14) -> S(plus_x#1(x12,x14))
+        - Signature:
+            {main/2,map#2/2,plus_x#1/2,main#/2,map#2#/2,plus_x#1#/2} / {0/0,Cons/2,Nil/0,S/1,plus_x/1,c_1/1,c_2/0,c_3/2
+            ,c_4/0,c_5/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main#,map#2#,plus_x#1#} and constructors {0,Cons,Nil,S
+            ,plus_x}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {2,4}
+        by application of
+          Pre({2,4}) = {1,3,5}.
+        Here rules are labelled as follows:
+          1: main#(x5,x12) -> c_1(map#2#(plus_x(x12),x5))
+          2: map#2#(plus_x(x2),Nil()) -> c_2()
+          3: map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+          4: plus_x#1#(0(),x8) -> c_4()
+          5: plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+* Step 3: RemoveWeakSuffixes WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            main#(x5,x12) -> c_1(map#2#(plus_x(x12),x5))
+            map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+            plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+        - Weak DPs:
+            map#2#(plus_x(x2),Nil()) -> c_2()
+            plus_x#1#(0(),x8) -> c_4()
+        - Weak TRS:
+            main(x5,x12) -> map#2(plus_x(x12),x5)
+            map#2(plus_x(x2),Nil()) -> Nil()
+            map#2(plus_x(x6),Cons(x4,x2)) -> Cons(plus_x#1(x6,x4),map#2(plus_x(x6),x2))
+            plus_x#1(0(),x8) -> x8
+            plus_x#1(S(x12),x14) -> S(plus_x#1(x12,x14))
+        - Signature:
+            {main/2,map#2/2,plus_x#1/2,main#/2,map#2#/2,plus_x#1#/2} / {0/0,Cons/2,Nil/0,S/1,plus_x/1,c_1/1,c_2/0,c_3/2
+            ,c_4/0,c_5/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main#,map#2#,plus_x#1#} and constructors {0,Cons,Nil,S
+            ,plus_x}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:main#(x5,x12) -> c_1(map#2#(plus_x(x12),x5))
+             -->_1 map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2)):2
+             -->_1 map#2#(plus_x(x2),Nil()) -> c_2():4
+          
+          2:S:map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+             -->_1 plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14)):3
+             -->_1 plus_x#1#(0(),x8) -> c_4():5
+             -->_2 map#2#(plus_x(x2),Nil()) -> c_2():4
+             -->_2 map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2)):2
+          
+          3:S:plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+             -->_1 plus_x#1#(0(),x8) -> c_4():5
+             -->_1 plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14)):3
+          
+          4:W:map#2#(plus_x(x2),Nil()) -> c_2()
+             
+          
+          5:W:plus_x#1#(0(),x8) -> c_4()
+             
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          4: map#2#(plus_x(x2),Nil()) -> c_2()
+          5: plus_x#1#(0(),x8) -> c_4()
+* Step 4: RemoveHeads WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            main#(x5,x12) -> c_1(map#2#(plus_x(x12),x5))
+            map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+            plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+        - Weak TRS:
+            main(x5,x12) -> map#2(plus_x(x12),x5)
+            map#2(plus_x(x2),Nil()) -> Nil()
+            map#2(plus_x(x6),Cons(x4,x2)) -> Cons(plus_x#1(x6,x4),map#2(plus_x(x6),x2))
+            plus_x#1(0(),x8) -> x8
+            plus_x#1(S(x12),x14) -> S(plus_x#1(x12,x14))
+        - Signature:
+            {main/2,map#2/2,plus_x#1/2,main#/2,map#2#/2,plus_x#1#/2} / {0/0,Cons/2,Nil/0,S/1,plus_x/1,c_1/1,c_2/0,c_3/2
+            ,c_4/0,c_5/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main#,map#2#,plus_x#1#} and constructors {0,Cons,Nil,S
+            ,plus_x}
+    + Applied Processor:
+        RemoveHeads
+    + Details:
+        Consider the dependency graph
+        
+        1:S:main#(x5,x12) -> c_1(map#2#(plus_x(x12),x5))
+           -->_1 map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2)):2
+        
+        2:S:map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+           -->_1 plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14)):3
+           -->_2 map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2)):2
+        
+        3:S:plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+           -->_1 plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14)):3
+        
+        
+        Following roots of the dependency graph are removed, as the considered set of starting terms is closed under reduction with respect to these rules (modulo compound contexts).
+        
+        [(1,main#(x5,x12) -> c_1(map#2#(plus_x(x12),x5)))]
+* Step 5: UsableRules WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+            plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+        - Weak TRS:
+            main(x5,x12) -> map#2(plus_x(x12),x5)
+            map#2(plus_x(x2),Nil()) -> Nil()
+            map#2(plus_x(x6),Cons(x4,x2)) -> Cons(plus_x#1(x6,x4),map#2(plus_x(x6),x2))
+            plus_x#1(0(),x8) -> x8
+            plus_x#1(S(x12),x14) -> S(plus_x#1(x12,x14))
+        - Signature:
+            {main/2,map#2/2,plus_x#1/2,main#/2,map#2#/2,plus_x#1#/2} / {0/0,Cons/2,Nil/0,S/1,plus_x/1,c_1/1,c_2/0,c_3/2
+            ,c_4/0,c_5/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main#,map#2#,plus_x#1#} and constructors {0,Cons,Nil,S
+            ,plus_x}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+          plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+* Step 6: DecomposeDG WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+            plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+        - Signature:
+            {main/2,map#2/2,plus_x#1/2,main#/2,map#2#/2,plus_x#1#/2} / {0/0,Cons/2,Nil/0,S/1,plus_x/1,c_1/1,c_2/0,c_3/2
+            ,c_4/0,c_5/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main#,map#2#,plus_x#1#} and constructors {0,Cons,Nil,S
+            ,plus_x}
+    + Applied Processor:
+        DecomposeDG {onSelection = all below first cut in WDG, onUpper = Nothing, onLower = Nothing}
+    + Details:
+        We decompose the input problem according to the dependency graph into the upper component
+          map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+        and a lower component
+          plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+        Further, following extension rules are added to the lower component.
+          map#2#(plus_x(x6),Cons(x4,x2)) -> map#2#(plus_x(x6),x2)
+          map#2#(plus_x(x6),Cons(x4,x2)) -> plus_x#1#(x6,x4)
+** Step 6.a:1: SimplifyRHS WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+        - Signature:
+            {main/2,map#2/2,plus_x#1/2,main#/2,map#2#/2,plus_x#1#/2} / {0/0,Cons/2,Nil/0,S/1,plus_x/1,c_1/1,c_2/0,c_3/2
+            ,c_4/0,c_5/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main#,map#2#,plus_x#1#} and constructors {0,Cons,Nil,S
+            ,plus_x}
+    + Applied Processor:
+        SimplifyRHS
+    + Details:
+        Consider the dependency graph
+          1:S:map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2))
+             -->_2 map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(plus_x#1#(x6,x4),map#2#(plus_x(x6),x2)):1
+          
+        Due to missing edges in the depndency graph, the right-hand sides of following rules could be simplified:
+          map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(map#2#(plus_x(x6),x2))
+** Step 6.a:2: NaturalMI WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(map#2#(plus_x(x6),x2))
+        - Signature:
+            {main/2,map#2/2,plus_x#1/2,main#/2,map#2#/2,plus_x#1#/2} / {0/0,Cons/2,Nil/0,S/1,plus_x/1,c_1/1,c_2/0,c_3/1
+            ,c_4/0,c_5/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main#,map#2#,plus_x#1#} and constructors {0,Cons,Nil,S
+            ,plus_x}
+    + Applied Processor:
+        NaturalMI {miDimension = 1, miDegree = 1, miKind = Algebraic, uargs = UArgs, urules = URules, selector = Just any strict-rules}
+    + Details:
+        We apply a matrix interpretation of kind constructor based matrix interpretation:
+        The following argument positions are considered usable:
+          uargs(c_3) = {1}
+        
+        Following symbols are considered usable:
+          {main#,map#2#,plus_x#1#}
+        TcT has computed the following interpretation:
+                  p(0) = [0]                  
+               p(Cons) = [1] x1 + [1] x2 + [3]
+                p(Nil) = [0]                  
+                  p(S) = [0]                  
+               p(main) = [0]                  
+              p(map#2) = [0]                  
+             p(plus_x) = [0]                  
+           p(plus_x#1) = [0]                  
+              p(main#) = [4]                  
+             p(map#2#) = [6] x2 + [8]         
+          p(plus_x#1#) = [1] x2 + [8]         
+                p(c_1) = [2] x1 + [0]         
+                p(c_2) = [1]                  
+                p(c_3) = [1] x1 + [14]        
+                p(c_4) = [1]                  
+                p(c_5) = [2] x1 + [0]         
+        
+        Following rules are strictly oriented:
+        map#2#(plus_x(x6),Cons(x4,x2)) = [6] x2 + [6] x4 + [26]    
+                                       > [6] x2 + [22]             
+                                       = c_3(map#2#(plus_x(x6),x2))
+        
+        
+        Following rules are (at-least) weakly oriented:
+        
+** Step 6.a:3: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            map#2#(plus_x(x6),Cons(x4,x2)) -> c_3(map#2#(plus_x(x6),x2))
+        - Signature:
+            {main/2,map#2/2,plus_x#1/2,main#/2,map#2#/2,plus_x#1#/2} / {0/0,Cons/2,Nil/0,S/1,plus_x/1,c_1/1,c_2/0,c_3/1
+            ,c_4/0,c_5/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main#,map#2#,plus_x#1#} and constructors {0,Cons,Nil,S
+            ,plus_x}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+** Step 6.b:1: NaturalMI WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+        - Weak DPs:
+            map#2#(plus_x(x6),Cons(x4,x2)) -> map#2#(plus_x(x6),x2)
+            map#2#(plus_x(x6),Cons(x4,x2)) -> plus_x#1#(x6,x4)
+        - Signature:
+            {main/2,map#2/2,plus_x#1/2,main#/2,map#2#/2,plus_x#1#/2} / {0/0,Cons/2,Nil/0,S/1,plus_x/1,c_1/1,c_2/0,c_3/2
+            ,c_4/0,c_5/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main#,map#2#,plus_x#1#} and constructors {0,Cons,Nil,S
+            ,plus_x}
+    + Applied Processor:
+        NaturalMI {miDimension = 1, miDegree = 1, miKind = Algebraic, uargs = UArgs, urules = URules, selector = Just any strict-rules}
+    + Details:
+        We apply a matrix interpretation of kind constructor based matrix interpretation:
+        The following argument positions are considered usable:
+          uargs(c_5) = {1}
+        
+        Following symbols are considered usable:
+          {main#,map#2#,plus_x#1#}
+        TcT has computed the following interpretation:
+                  p(0) = [0]                  
+               p(Cons) = [1] x2 + [0]         
+                p(Nil) = [0]                  
+                  p(S) = [1] x1 + [8]         
+               p(main) = [1] x2 + [1]         
+              p(map#2) = [2] x1 + [2] x2 + [0]
+             p(plus_x) = [1] x1 + [3]         
+           p(plus_x#1) = [1] x1 + [1]         
+              p(main#) = [1]                  
+             p(map#2#) = [3] x1 + [7]         
+          p(plus_x#1#) = [2] x1 + [0]         
+                p(c_1) = [4] x1 + [1]         
+                p(c_2) = [0]                  
+                p(c_3) = [1] x1 + [2] x2 + [0]
+                p(c_4) = [1]                  
+                p(c_5) = [1] x1 + [8]         
+        
+        Following rules are strictly oriented:
+        plus_x#1#(S(x12),x14) = [2] x12 + [16]         
+                              > [2] x12 + [8]          
+                              = c_5(plus_x#1#(x12,x14))
+        
+        
+        Following rules are (at-least) weakly oriented:
+        map#2#(plus_x(x6),Cons(x4,x2)) =  [3] x6 + [16]        
+                                       >= [3] x6 + [16]        
+                                       =  map#2#(plus_x(x6),x2)
+        
+        map#2#(plus_x(x6),Cons(x4,x2)) =  [3] x6 + [16]        
+                                       >= [2] x6 + [0]         
+                                       =  plus_x#1#(x6,x4)     
+        
+** Step 6.b:2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            map#2#(plus_x(x6),Cons(x4,x2)) -> map#2#(plus_x(x6),x2)
+            map#2#(plus_x(x6),Cons(x4,x2)) -> plus_x#1#(x6,x4)
+            plus_x#1#(S(x12),x14) -> c_5(plus_x#1#(x12,x14))
+        - Signature:
+            {main/2,map#2/2,plus_x#1/2,main#/2,map#2#/2,plus_x#1#/2} / {0/0,Cons/2,Nil/0,S/1,plus_x/1,c_1/1,c_2/0,c_3/2
+            ,c_4/0,c_5/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main#,map#2#,plus_x#1#} and constructors {0,Cons,Nil,S
+            ,plus_x}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^2))

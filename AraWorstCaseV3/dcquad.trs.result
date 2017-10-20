@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"dcquad","rTime":60.048781,"rTool":{"tProcessor":[],"tName":"AraWorstCaseV3","tArguments":["-t 60","-v3","-s z3"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"splayHeap_merge.okasaki","rTime":5.115012,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV1NoCd","tArguments":["-t 60","-v1","-l","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

@@ -1,0 +1,75 @@
+WORST_CASE(?,O(n^1))
+* Step 1: NaturalMI WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            add0(x,Nil()) -> x
+            add0(x',Cons(x,xs)) -> add0(Cons(Cons(Nil(),Nil()),x'),xs)
+            goal(x,y) -> add0(x,y)
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {add0/2,goal/2,notEmpty/1} / {Cons/2,False/0,Nil/0,True/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add0,goal,notEmpty} and constructors {Cons,False,Nil
+            ,True}
+    + Applied Processor:
+        NaturalMI {miDimension = 1, miDegree = 1, miKind = Algebraic, uargs = UArgs, urules = URules, selector = Just any strict-rules}
+    + Details:
+        We apply a matrix interpretation of kind constructor based matrix interpretation:
+        The following argument positions are considered usable:
+          none
+        
+        Following symbols are considered usable:
+          {add0,goal,notEmpty}
+        TcT has computed the following interpretation:
+              p(Cons) = [1] x2 + [3]         
+             p(False) = [1]                  
+               p(Nil) = [3]                  
+              p(True) = [4]                  
+              p(add0) = [2] x1 + [9] x2 + [4]
+              p(goal) = [8] x1 + [9] x2 + [5]
+          p(notEmpty) = [10] x1 + [1]        
+        
+        Following rules are strictly oriented:
+               add0(x,Nil()) = [2] x + [31]                       
+                             > [1] x + [0]                        
+                             = x                                  
+        
+         add0(x',Cons(x,xs)) = [2] x' + [9] xs + [31]             
+                             > [2] x' + [9] xs + [10]             
+                             = add0(Cons(Cons(Nil(),Nil()),x'),xs)
+        
+                   goal(x,y) = [8] x + [9] y + [5]                
+                             > [2] x + [9] y + [4]                
+                             = add0(x,y)                          
+        
+        notEmpty(Cons(x,xs)) = [10] xs + [31]                     
+                             > [4]                                
+                             = True()                             
+        
+             notEmpty(Nil()) = [31]                               
+                             > [1]                                
+                             = False()                            
+        
+        
+        Following rules are (at-least) weakly oriented:
+        
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            add0(x,Nil()) -> x
+            add0(x',Cons(x,xs)) -> add0(Cons(Cons(Nil(),Nil()),x'),xs)
+            goal(x,y) -> add0(x,y)
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {add0/2,goal/2,notEmpty/1} / {Cons/2,False/0,Nil/0,True/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add0,goal,notEmpty} and constructors {Cons,False,Nil
+            ,True}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

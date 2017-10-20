@@ -1,0 +1,58 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            addlist(Cons(x,xs'),Cons(S(0()),xs)) -> Cons(S(x),addlist(xs',xs))
+            addlist(Cons(S(0()),xs'),Cons(x,xs)) -> Cons(S(x),addlist(xs',xs))
+            addlist(Nil(),ys) -> Nil()
+            goal(xs,ys) -> addlist(xs,ys)
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {addlist/2,goal/2,notEmpty/1} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {addlist,goal,notEmpty} and constructors {0,Cons,False,Nil
+            ,S,True}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 1.
+        The enriched problem is compatible with follwoing automaton.
+          0_0() -> 2
+          Cons_0(2,2) -> 2
+          Cons_1(3,4) -> 1
+          Cons_1(3,4) -> 4
+          False_0() -> 2
+          False_1() -> 1
+          Nil_0() -> 2
+          Nil_1() -> 1
+          Nil_1() -> 4
+          S_0(2) -> 2
+          S_1(2) -> 3
+          True_0() -> 2
+          True_1() -> 1
+          addlist_0(2,2) -> 1
+          addlist_1(2,2) -> 1
+          addlist_1(2,2) -> 4
+          goal_0(2,2) -> 1
+          notEmpty_0(2) -> 1
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            addlist(Cons(x,xs'),Cons(S(0()),xs)) -> Cons(S(x),addlist(xs',xs))
+            addlist(Cons(S(0()),xs'),Cons(x,xs)) -> Cons(S(x),addlist(xs',xs))
+            addlist(Nil(),ys) -> Nil()
+            goal(xs,ys) -> addlist(xs,ys)
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {addlist/2,goal/2,notEmpty/1} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {addlist,goal,notEmpty} and constructors {0,Cons,False,Nil
+            ,S,True}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

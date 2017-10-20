@@ -1,0 +1,440 @@
+WORST_CASE(?,O(n^2))
+* Step 1: DependencyPairs WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict TRS:
+            app(Cons(x,xs),ys) -> Cons(x,app(xs,ys))
+            app(Nil(),ys) -> ys
+            goal(xs) -> naiverev(xs)
+            naiverev(Cons(x,xs)) -> app(naiverev(xs),Cons(x,Nil()))
+            naiverev(Nil()) -> Nil()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1} / {Cons/2,False/0,Nil/0,True/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app,goal,naiverev,notEmpty} and constructors {Cons,False
+            ,Nil,True}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = DT}
+    + Details:
+        We add the following dependency tuples:
+        
+        Strict DPs
+          app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+          app#(Nil(),ys) -> c_2()
+          goal#(xs) -> c_3(naiverev#(xs))
+          naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+          naiverev#(Nil()) -> c_5()
+          notEmpty#(Cons(x,xs)) -> c_6()
+          notEmpty#(Nil()) -> c_7()
+        Weak DPs
+          
+        
+        and mark the set of starting terms.
+* Step 2: PredecessorEstimation WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+            app#(Nil(),ys) -> c_2()
+            goal#(xs) -> c_3(naiverev#(xs))
+            naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+            naiverev#(Nil()) -> c_5()
+            notEmpty#(Cons(x,xs)) -> c_6()
+            notEmpty#(Nil()) -> c_7()
+        - Weak TRS:
+            app(Cons(x,xs),ys) -> Cons(x,app(xs,ys))
+            app(Nil(),ys) -> ys
+            goal(xs) -> naiverev(xs)
+            naiverev(Cons(x,xs)) -> app(naiverev(xs),Cons(x,Nil()))
+            naiverev(Nil()) -> Nil()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1,app#/2,goal#/1,naiverev#/1,notEmpty#/1} / {Cons/2,False/0,Nil/0,True/0
+            ,c_1/1,c_2/0,c_3/1,c_4/2,c_5/0,c_6/0,c_7/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app#,goal#,naiverev#,notEmpty#} and constructors {Cons
+            ,False,Nil,True}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {2,5,6,7}
+        by application of
+          Pre({2,5,6,7}) = {1,3,4}.
+        Here rules are labelled as follows:
+          1: app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+          2: app#(Nil(),ys) -> c_2()
+          3: goal#(xs) -> c_3(naiverev#(xs))
+          4: naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+          5: naiverev#(Nil()) -> c_5()
+          6: notEmpty#(Cons(x,xs)) -> c_6()
+          7: notEmpty#(Nil()) -> c_7()
+* Step 3: RemoveWeakSuffixes WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+            goal#(xs) -> c_3(naiverev#(xs))
+            naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+        - Weak DPs:
+            app#(Nil(),ys) -> c_2()
+            naiverev#(Nil()) -> c_5()
+            notEmpty#(Cons(x,xs)) -> c_6()
+            notEmpty#(Nil()) -> c_7()
+        - Weak TRS:
+            app(Cons(x,xs),ys) -> Cons(x,app(xs,ys))
+            app(Nil(),ys) -> ys
+            goal(xs) -> naiverev(xs)
+            naiverev(Cons(x,xs)) -> app(naiverev(xs),Cons(x,Nil()))
+            naiverev(Nil()) -> Nil()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1,app#/2,goal#/1,naiverev#/1,notEmpty#/1} / {Cons/2,False/0,Nil/0,True/0
+            ,c_1/1,c_2/0,c_3/1,c_4/2,c_5/0,c_6/0,c_7/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app#,goal#,naiverev#,notEmpty#} and constructors {Cons
+            ,False,Nil,True}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+             -->_1 app#(Nil(),ys) -> c_2():4
+             -->_1 app#(Cons(x,xs),ys) -> c_1(app#(xs,ys)):1
+          
+          2:S:goal#(xs) -> c_3(naiverev#(xs))
+             -->_1 naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs)):3
+             -->_1 naiverev#(Nil()) -> c_5():5
+          
+          3:S:naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+             -->_2 naiverev#(Nil()) -> c_5():5
+             -->_1 app#(Nil(),ys) -> c_2():4
+             -->_2 naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs)):3
+             -->_1 app#(Cons(x,xs),ys) -> c_1(app#(xs,ys)):1
+          
+          4:W:app#(Nil(),ys) -> c_2()
+             
+          
+          5:W:naiverev#(Nil()) -> c_5()
+             
+          
+          6:W:notEmpty#(Cons(x,xs)) -> c_6()
+             
+          
+          7:W:notEmpty#(Nil()) -> c_7()
+             
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          7: notEmpty#(Nil()) -> c_7()
+          6: notEmpty#(Cons(x,xs)) -> c_6()
+          5: naiverev#(Nil()) -> c_5()
+          4: app#(Nil(),ys) -> c_2()
+* Step 4: RemoveHeads WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+            goal#(xs) -> c_3(naiverev#(xs))
+            naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+        - Weak TRS:
+            app(Cons(x,xs),ys) -> Cons(x,app(xs,ys))
+            app(Nil(),ys) -> ys
+            goal(xs) -> naiverev(xs)
+            naiverev(Cons(x,xs)) -> app(naiverev(xs),Cons(x,Nil()))
+            naiverev(Nil()) -> Nil()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1,app#/2,goal#/1,naiverev#/1,notEmpty#/1} / {Cons/2,False/0,Nil/0,True/0
+            ,c_1/1,c_2/0,c_3/1,c_4/2,c_5/0,c_6/0,c_7/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app#,goal#,naiverev#,notEmpty#} and constructors {Cons
+            ,False,Nil,True}
+    + Applied Processor:
+        RemoveHeads
+    + Details:
+        Consider the dependency graph
+        
+        1:S:app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+           -->_1 app#(Cons(x,xs),ys) -> c_1(app#(xs,ys)):1
+        
+        2:S:goal#(xs) -> c_3(naiverev#(xs))
+           -->_1 naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs)):3
+        
+        3:S:naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+           -->_2 naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs)):3
+           -->_1 app#(Cons(x,xs),ys) -> c_1(app#(xs,ys)):1
+        
+        
+        Following roots of the dependency graph are removed, as the considered set of starting terms is closed under reduction with respect to these rules (modulo compound contexts).
+        
+        [(2,goal#(xs) -> c_3(naiverev#(xs)))]
+* Step 5: UsableRules WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+            naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+        - Weak TRS:
+            app(Cons(x,xs),ys) -> Cons(x,app(xs,ys))
+            app(Nil(),ys) -> ys
+            goal(xs) -> naiverev(xs)
+            naiverev(Cons(x,xs)) -> app(naiverev(xs),Cons(x,Nil()))
+            naiverev(Nil()) -> Nil()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1,app#/2,goal#/1,naiverev#/1,notEmpty#/1} / {Cons/2,False/0,Nil/0,True/0
+            ,c_1/1,c_2/0,c_3/1,c_4/2,c_5/0,c_6/0,c_7/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app#,goal#,naiverev#,notEmpty#} and constructors {Cons
+            ,False,Nil,True}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          app(Cons(x,xs),ys) -> Cons(x,app(xs,ys))
+          app(Nil(),ys) -> ys
+          naiverev(Cons(x,xs)) -> app(naiverev(xs),Cons(x,Nil()))
+          naiverev(Nil()) -> Nil()
+          app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+          naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+* Step 6: DecomposeDG WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+            naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+        - Weak TRS:
+            app(Cons(x,xs),ys) -> Cons(x,app(xs,ys))
+            app(Nil(),ys) -> ys
+            naiverev(Cons(x,xs)) -> app(naiverev(xs),Cons(x,Nil()))
+            naiverev(Nil()) -> Nil()
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1,app#/2,goal#/1,naiverev#/1,notEmpty#/1} / {Cons/2,False/0,Nil/0,True/0
+            ,c_1/1,c_2/0,c_3/1,c_4/2,c_5/0,c_6/0,c_7/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app#,goal#,naiverev#,notEmpty#} and constructors {Cons
+            ,False,Nil,True}
+    + Applied Processor:
+        DecomposeDG {onSelection = all below first cut in WDG, onUpper = Nothing, onLower = Nothing}
+    + Details:
+        We decompose the input problem according to the dependency graph into the upper component
+          naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+        and a lower component
+          app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+        Further, following extension rules are added to the lower component.
+          naiverev#(Cons(x,xs)) -> app#(naiverev(xs),Cons(x,Nil()))
+          naiverev#(Cons(x,xs)) -> naiverev#(xs)
+** Step 6.a:1: SimplifyRHS WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+        - Weak TRS:
+            app(Cons(x,xs),ys) -> Cons(x,app(xs,ys))
+            app(Nil(),ys) -> ys
+            naiverev(Cons(x,xs)) -> app(naiverev(xs),Cons(x,Nil()))
+            naiverev(Nil()) -> Nil()
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1,app#/2,goal#/1,naiverev#/1,notEmpty#/1} / {Cons/2,False/0,Nil/0,True/0
+            ,c_1/1,c_2/0,c_3/1,c_4/2,c_5/0,c_6/0,c_7/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app#,goal#,naiverev#,notEmpty#} and constructors {Cons
+            ,False,Nil,True}
+    + Applied Processor:
+        SimplifyRHS
+    + Details:
+        Consider the dependency graph
+          1:S:naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs))
+             -->_2 naiverev#(Cons(x,xs)) -> c_4(app#(naiverev(xs),Cons(x,Nil())),naiverev#(xs)):1
+          
+        Due to missing edges in the depndency graph, the right-hand sides of following rules could be simplified:
+          naiverev#(Cons(x,xs)) -> c_4(naiverev#(xs))
+** Step 6.a:2: UsableRules WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            naiverev#(Cons(x,xs)) -> c_4(naiverev#(xs))
+        - Weak TRS:
+            app(Cons(x,xs),ys) -> Cons(x,app(xs,ys))
+            app(Nil(),ys) -> ys
+            naiverev(Cons(x,xs)) -> app(naiverev(xs),Cons(x,Nil()))
+            naiverev(Nil()) -> Nil()
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1,app#/2,goal#/1,naiverev#/1,notEmpty#/1} / {Cons/2,False/0,Nil/0,True/0
+            ,c_1/1,c_2/0,c_3/1,c_4/1,c_5/0,c_6/0,c_7/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app#,goal#,naiverev#,notEmpty#} and constructors {Cons
+            ,False,Nil,True}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          naiverev#(Cons(x,xs)) -> c_4(naiverev#(xs))
+** Step 6.a:3: NaturalMI WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            naiverev#(Cons(x,xs)) -> c_4(naiverev#(xs))
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1,app#/2,goal#/1,naiverev#/1,notEmpty#/1} / {Cons/2,False/0,Nil/0,True/0
+            ,c_1/1,c_2/0,c_3/1,c_4/1,c_5/0,c_6/0,c_7/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app#,goal#,naiverev#,notEmpty#} and constructors {Cons
+            ,False,Nil,True}
+    + Applied Processor:
+        NaturalMI {miDimension = 1, miDegree = 1, miKind = Algebraic, uargs = UArgs, urules = URules, selector = Just any strict-rules}
+    + Details:
+        We apply a matrix interpretation of kind constructor based matrix interpretation:
+        The following argument positions are considered usable:
+          uargs(c_4) = {1}
+        
+        Following symbols are considered usable:
+          {app#,goal#,naiverev#,notEmpty#}
+        TcT has computed the following interpretation:
+               p(Cons) = [1] x1 + [1] x2 + [13]
+              p(False) = [0]                   
+                p(Nil) = [0]                   
+               p(True) = [0]                   
+                p(app) = [0]                   
+               p(goal) = [0]                   
+           p(naiverev) = [8] x1 + [0]          
+           p(notEmpty) = [8]                   
+               p(app#) = [2] x1 + [2] x2 + [1] 
+              p(goal#) = [1] x1 + [8]          
+          p(naiverev#) = [2] x1 + [5]          
+          p(notEmpty#) = [1] x1 + [0]          
+                p(c_1) = [4] x1 + [0]          
+                p(c_2) = [0]                   
+                p(c_3) = [1] x1 + [1]          
+                p(c_4) = [1] x1 + [15]         
+                p(c_5) = [0]                   
+                p(c_6) = [2]                   
+                p(c_7) = [0]                   
+        
+        Following rules are strictly oriented:
+        naiverev#(Cons(x,xs)) = [2] x + [2] xs + [31]
+                              > [2] xs + [20]        
+                              = c_4(naiverev#(xs))   
+        
+        
+        Following rules are (at-least) weakly oriented:
+        
+** Step 6.a:4: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            naiverev#(Cons(x,xs)) -> c_4(naiverev#(xs))
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1,app#/2,goal#/1,naiverev#/1,notEmpty#/1} / {Cons/2,False/0,Nil/0,True/0
+            ,c_1/1,c_2/0,c_3/1,c_4/1,c_5/0,c_6/0,c_7/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app#,goal#,naiverev#,notEmpty#} and constructors {Cons
+            ,False,Nil,True}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+** Step 6.b:1: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+        - Weak DPs:
+            naiverev#(Cons(x,xs)) -> app#(naiverev(xs),Cons(x,Nil()))
+            naiverev#(Cons(x,xs)) -> naiverev#(xs)
+        - Weak TRS:
+            app(Cons(x,xs),ys) -> Cons(x,app(xs,ys))
+            app(Nil(),ys) -> ys
+            naiverev(Cons(x,xs)) -> app(naiverev(xs),Cons(x,Nil()))
+            naiverev(Nil()) -> Nil()
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1,app#/2,goal#/1,naiverev#/1,notEmpty#/1} / {Cons/2,False/0,Nil/0,True/0
+            ,c_1/1,c_2/0,c_3/1,c_4/2,c_5/0,c_6/0,c_7/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app#,goal#,naiverev#,notEmpty#} and constructors {Cons
+            ,False,Nil,True}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(Cons) = {2},
+            uargs(app) = {1},
+            uargs(app#) = {1},
+            uargs(c_1) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                 p(Cons) = [1] x1 + [1] x2 + [3]
+                p(False) = [0]                  
+                  p(Nil) = [0]                  
+                 p(True) = [0]                  
+                  p(app) = [1] x1 + [1] x2 + [0]
+                 p(goal) = [0]                  
+             p(naiverev) = [4] x1 + [6]         
+             p(notEmpty) = [0]                  
+                 p(app#) = [1] x1 + [8] x2 + [0]
+                p(goal#) = [0]                  
+            p(naiverev#) = [8] x1 + [6]         
+            p(notEmpty#) = [0]                  
+                  p(c_1) = [1] x1 + [0]         
+                  p(c_2) = [0]                  
+                  p(c_3) = [0]                  
+                  p(c_4) = [0]                  
+                  p(c_5) = [0]                  
+                  p(c_6) = [0]                  
+                  p(c_7) = [0]                  
+          
+          Following rules are strictly oriented:
+          app#(Cons(x,xs),ys) = [1] x + [1] xs + [8] ys + [3]
+                              > [1] xs + [8] ys + [0]        
+                              = c_1(app#(xs,ys))             
+          
+          
+          Following rules are (at-least) weakly oriented:
+          naiverev#(Cons(x,xs)) =  [8] x + [8] xs + [30]           
+                                >= [8] x + [4] xs + [30]           
+                                =  app#(naiverev(xs),Cons(x,Nil()))
+          
+          naiverev#(Cons(x,xs)) =  [8] x + [8] xs + [30]           
+                                >= [8] xs + [6]                    
+                                =  naiverev#(xs)                   
+          
+             app(Cons(x,xs),ys) =  [1] x + [1] xs + [1] ys + [3]   
+                                >= [1] x + [1] xs + [1] ys + [3]   
+                                =  Cons(x,app(xs,ys))              
+          
+                  app(Nil(),ys) =  [1] ys + [0]                    
+                                >= [1] ys + [0]                    
+                                =  ys                              
+          
+           naiverev(Cons(x,xs)) =  [4] x + [4] xs + [18]           
+                                >= [1] x + [4] xs + [9]            
+                                =  app(naiverev(xs),Cons(x,Nil())) 
+          
+                naiverev(Nil()) =  [6]                             
+                                >= [0]                             
+                                =  Nil()                           
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 6.b:2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            app#(Cons(x,xs),ys) -> c_1(app#(xs,ys))
+            naiverev#(Cons(x,xs)) -> app#(naiverev(xs),Cons(x,Nil()))
+            naiverev#(Cons(x,xs)) -> naiverev#(xs)
+        - Weak TRS:
+            app(Cons(x,xs),ys) -> Cons(x,app(xs,ys))
+            app(Nil(),ys) -> ys
+            naiverev(Cons(x,xs)) -> app(naiverev(xs),Cons(x,Nil()))
+            naiverev(Nil()) -> Nil()
+        - Signature:
+            {app/2,goal/1,naiverev/1,notEmpty/1,app#/2,goal#/1,naiverev#/1,notEmpty#/1} / {Cons/2,False/0,Nil/0,True/0
+            ,c_1/1,c_2/0,c_3/1,c_4/2,c_5/0,c_6/0,c_7/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {app#,goal#,naiverev#,notEmpty#} and constructors {Cons
+            ,False,Nil,True}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^2))

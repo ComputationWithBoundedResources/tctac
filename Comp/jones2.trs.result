@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"WORST_CASE(?,O(n^1))"},"rProblem":"jones2","rTime":0.657938,"rTool":{"tProcessor":[],"tName":"Comp","tArguments":["--complexity","rci","-s","competition","-t","60"],"tExtension":"trs","tCommand":"tct-trs"}}

@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"fib_llist","rTime":60.056163,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV1Heur","tArguments":["-t 60","-v1","-l","-b"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

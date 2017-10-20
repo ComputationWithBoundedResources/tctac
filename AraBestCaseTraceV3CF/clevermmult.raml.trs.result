@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"clevermmult.raml","rTime":60.052929,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3CF","tArguments":["-t 60","-v3","-l","-a"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

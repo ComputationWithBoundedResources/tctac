@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Failure","contents":"An error occured:1:ara-inference-exe: user error (mzero)\n"},"rProblem":"fib_memo","rTime":1.2925e-2,"rTool":{"tProcessor":[],"tName":"CompletelyDefined","tArguments":["-t 60","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

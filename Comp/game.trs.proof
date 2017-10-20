@@ -1,0 +1,74 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            @(Cons(x,xs),ys) -> Cons(x,@(xs,ys))
+            @(Nil(),ys) -> ys
+            game(p1,p2,Cons(Swap(),xs)) -> game(p2,p1,xs)
+            game(p1,p2,Nil()) -> @(p1,p2)
+            game(p1,Cons(x',xs'),Cons(Capture(),xs)) -> game(Cons(x',p1),xs',xs)
+            goal(p1,p2,moves) -> game(p1,p2,moves)
+        - Signature:
+            {@/2,game/3,goal/3} / {Capture/0,Cons/2,Nil/0,Swap/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {@,game,goal} and constructors {Capture,Cons,Nil,Swap}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 2.
+        The enriched problem is compatible with follwoing automaton.
+          @_0(2,2) -> 1
+          @_1(2,2) -> 1
+          @_1(2,2) -> 3
+          @_2(2,2) -> 4
+          Capture_0() -> 1
+          Capture_0() -> 2
+          Capture_0() -> 3
+          Capture_0() -> 4
+          Cons_0(2,2) -> 1
+          Cons_0(2,2) -> 2
+          Cons_0(2,2) -> 3
+          Cons_0(2,2) -> 4
+          Cons_1(2,2) -> 1
+          Cons_1(2,2) -> 2
+          Cons_1(2,2) -> 3
+          Cons_1(2,2) -> 4
+          Cons_1(2,3) -> 1
+          Cons_1(2,3) -> 3
+          Cons_1(2,3) -> 4
+          Cons_2(2,4) -> 1
+          Cons_2(2,4) -> 3
+          Cons_2(2,4) -> 4
+          Nil_0() -> 1
+          Nil_0() -> 2
+          Nil_0() -> 3
+          Nil_0() -> 4
+          Swap_0() -> 1
+          Swap_0() -> 2
+          Swap_0() -> 3
+          Swap_0() -> 4
+          game_0(2,2,2) -> 1
+          game_1(2,2,2) -> 1
+          goal_0(2,2,2) -> 1
+          2 -> 1
+          2 -> 3
+          2 -> 4
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            @(Cons(x,xs),ys) -> Cons(x,@(xs,ys))
+            @(Nil(),ys) -> ys
+            game(p1,p2,Cons(Swap(),xs)) -> game(p2,p1,xs)
+            game(p1,p2,Nil()) -> @(p1,p2)
+            game(p1,Cons(x',xs'),Cons(Capture(),xs)) -> game(Cons(x',p1),xs',xs)
+            goal(p1,p2,moves) -> game(p1,p2,moves)
+        - Signature:
+            {@/2,game/3,goal/3} / {Capture/0,Cons/2,Nil/0,Swap/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {@,game,goal} and constructors {Capture,Cons,Nil,Swap}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

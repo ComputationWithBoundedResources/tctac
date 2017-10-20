@@ -1,0 +1,4 @@
+BEST_CASE(Omega(1),?)
+UNSAT
+user error ("/tmp/SMTS8078691451190497565" (line 1, column 6):
+The smt problem could not be solved (was unsat).)

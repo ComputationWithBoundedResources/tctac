@@ -1,0 +1,41 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            main(x1) -> take_l#2(x1)
+            take_l#2(0()) -> Nil()
+            take_l#2(S(x2)) -> Cons(take_l#2(x2))
+        - Signature:
+            {main/1,take_l#2/1} / {0/0,Cons/1,Nil/0,S/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main,take_l#2} and constructors {0,Cons,Nil,S}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 1.
+        The enriched problem is compatible with follwoing automaton.
+          0_0() -> 2
+          Cons_0(2) -> 2
+          Cons_1(1) -> 1
+          Nil_0() -> 2
+          Nil_1() -> 1
+          S_0(2) -> 2
+          main_0(2) -> 1
+          take_l#2_0(2) -> 1
+          take_l#2_1(2) -> 1
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            main(x1) -> take_l#2(x1)
+            take_l#2(0()) -> Nil()
+            take_l#2(S(x2)) -> Cons(take_l#2(x2))
+        - Signature:
+            {main/1,take_l#2/1} / {0/0,Cons/1,Nil/0,S/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {main,take_l#2} and constructors {0,Cons,Nil,S}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

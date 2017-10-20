@@ -1,0 +1,1074 @@
+WORST_CASE(?,O(n^2))
+* Step 1: DependencyPairs WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict TRS:
+            goal(xs,ys) -> overlap(xs,ys)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+            overlap(Cons(x,xs),ys) -> overlap[Ite][True][Ite](member(x,ys),Cons(x,xs),ys)
+            overlap(Nil(),ys) -> False()
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+            overlap[Ite][True][Ite](False(),Cons(x,xs),ys) -> overlap(xs,ys)
+            overlap[Ite][True][Ite](True(),xs,ys) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ,goal,member,member[Ite][True][Ite],notEmpty,overlap
+            ,overlap[Ite][True][Ite]} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = DT}
+    + Details:
+        We add the following dependency tuples:
+        
+        Strict DPs
+          goal#(xs,ys) -> c_1(overlap#(xs,ys))
+          member#(x,Nil()) -> c_2()
+          member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)),!EQ#(x,x'))
+          notEmpty#(Cons(x,xs)) -> c_4()
+          notEmpty#(Nil()) -> c_5()
+          overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+          overlap#(Nil(),ys) -> c_7()
+        Weak DPs
+          !EQ#(0(),0()) -> c_8()
+          !EQ#(0(),S(y)) -> c_9()
+          !EQ#(S(x),0()) -> c_10()
+          !EQ#(S(x),S(y)) -> c_11(!EQ#(x,y))
+          member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+          member[Ite][True][Ite]#(True(),x,xs) -> c_13()
+          overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+          overlap[Ite][True][Ite]#(True(),xs,ys) -> c_15()
+        
+        and mark the set of starting terms.
+* Step 2: PredecessorEstimation WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            goal#(xs,ys) -> c_1(overlap#(xs,ys))
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)),!EQ#(x,x'))
+            notEmpty#(Cons(x,xs)) -> c_4()
+            notEmpty#(Nil()) -> c_5()
+            overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+            overlap#(Nil(),ys) -> c_7()
+        - Weak DPs:
+            !EQ#(0(),0()) -> c_8()
+            !EQ#(0(),S(y)) -> c_9()
+            !EQ#(S(x),0()) -> c_10()
+            !EQ#(S(x),S(y)) -> c_11(!EQ#(x,y))
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+            member[Ite][True][Ite]#(True(),x,xs) -> c_13()
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+            overlap[Ite][True][Ite]#(True(),xs,ys) -> c_15()
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            goal(xs,ys) -> overlap(xs,ys)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+            overlap(Cons(x,xs),ys) -> overlap[Ite][True][Ite](member(x,ys),Cons(x,xs),ys)
+            overlap(Nil(),ys) -> False()
+            overlap[Ite][True][Ite](False(),Cons(x,xs),ys) -> overlap(xs,ys)
+            overlap[Ite][True][Ite](True(),xs,ys) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/2,c_4/0,c_5/0,c_6/2,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {4,5}
+        by application of
+          Pre({4,5}) = {}.
+        Here rules are labelled as follows:
+          1: goal#(xs,ys) -> c_1(overlap#(xs,ys))
+          2: member#(x,Nil()) -> c_2()
+          3: member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)),!EQ#(x,x'))
+          4: notEmpty#(Cons(x,xs)) -> c_4()
+          5: notEmpty#(Nil()) -> c_5()
+          6: overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+          7: overlap#(Nil(),ys) -> c_7()
+          8: !EQ#(0(),0()) -> c_8()
+          9: !EQ#(0(),S(y)) -> c_9()
+          10: !EQ#(S(x),0()) -> c_10()
+          11: !EQ#(S(x),S(y)) -> c_11(!EQ#(x,y))
+          12: member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+          13: member[Ite][True][Ite]#(True(),x,xs) -> c_13()
+          14: overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+          15: overlap[Ite][True][Ite]#(True(),xs,ys) -> c_15()
+* Step 3: RemoveWeakSuffixes WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            goal#(xs,ys) -> c_1(overlap#(xs,ys))
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)),!EQ#(x,x'))
+            overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+            overlap#(Nil(),ys) -> c_7()
+        - Weak DPs:
+            !EQ#(0(),0()) -> c_8()
+            !EQ#(0(),S(y)) -> c_9()
+            !EQ#(S(x),0()) -> c_10()
+            !EQ#(S(x),S(y)) -> c_11(!EQ#(x,y))
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+            member[Ite][True][Ite]#(True(),x,xs) -> c_13()
+            notEmpty#(Cons(x,xs)) -> c_4()
+            notEmpty#(Nil()) -> c_5()
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+            overlap[Ite][True][Ite]#(True(),xs,ys) -> c_15()
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            goal(xs,ys) -> overlap(xs,ys)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+            overlap(Cons(x,xs),ys) -> overlap[Ite][True][Ite](member(x,ys),Cons(x,xs),ys)
+            overlap(Nil(),ys) -> False()
+            overlap[Ite][True][Ite](False(),Cons(x,xs),ys) -> overlap(xs,ys)
+            overlap[Ite][True][Ite](True(),xs,ys) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/2,c_4/0,c_5/0,c_6/2,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:goal#(xs,ys) -> c_1(overlap#(xs,ys))
+             -->_1 overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys)
+                                                 ,member#(x,ys)):4
+             -->_1 overlap#(Nil(),ys) -> c_7():5
+          
+          2:S:member#(x,Nil()) -> c_2()
+             
+          
+          3:S:member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)),!EQ#(x,x'))
+             -->_1 member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs)):10
+             -->_2 !EQ#(S(x),S(y)) -> c_11(!EQ#(x,y)):9
+             -->_1 member[Ite][True][Ite]#(True(),x,xs) -> c_13():11
+             -->_2 !EQ#(S(x),0()) -> c_10():8
+             -->_2 !EQ#(0(),S(y)) -> c_9():7
+             -->_2 !EQ#(0(),0()) -> c_8():6
+          
+          4:S:overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+             -->_1 overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys)):14
+             -->_1 overlap[Ite][True][Ite]#(True(),xs,ys) -> c_15():15
+             -->_2 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)),!EQ#(x,x')):3
+             -->_2 member#(x,Nil()) -> c_2():2
+          
+          5:S:overlap#(Nil(),ys) -> c_7()
+             
+          
+          6:W:!EQ#(0(),0()) -> c_8()
+             
+          
+          7:W:!EQ#(0(),S(y)) -> c_9()
+             
+          
+          8:W:!EQ#(S(x),0()) -> c_10()
+             
+          
+          9:W:!EQ#(S(x),S(y)) -> c_11(!EQ#(x,y))
+             -->_1 !EQ#(S(x),S(y)) -> c_11(!EQ#(x,y)):9
+             -->_1 !EQ#(S(x),0()) -> c_10():8
+             -->_1 !EQ#(0(),S(y)) -> c_9():7
+             -->_1 !EQ#(0(),0()) -> c_8():6
+          
+          10:W:member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+             -->_1 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)),!EQ#(x,x')):3
+             -->_1 member#(x,Nil()) -> c_2():2
+          
+          11:W:member[Ite][True][Ite]#(True(),x,xs) -> c_13()
+             
+          
+          12:W:notEmpty#(Cons(x,xs)) -> c_4()
+             
+          
+          13:W:notEmpty#(Nil()) -> c_5()
+             
+          
+          14:W:overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+             -->_1 overlap#(Nil(),ys) -> c_7():5
+             -->_1 overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys)):4
+          
+          15:W:overlap[Ite][True][Ite]#(True(),xs,ys) -> c_15()
+             
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          13: notEmpty#(Nil()) -> c_5()
+          12: notEmpty#(Cons(x,xs)) -> c_4()
+          11: member[Ite][True][Ite]#(True(),x,xs) -> c_13()
+          9: !EQ#(S(x),S(y)) -> c_11(!EQ#(x,y))
+          6: !EQ#(0(),0()) -> c_8()
+          7: !EQ#(0(),S(y)) -> c_9()
+          8: !EQ#(S(x),0()) -> c_10()
+          15: overlap[Ite][True][Ite]#(True(),xs,ys) -> c_15()
+* Step 4: SimplifyRHS WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            goal#(xs,ys) -> c_1(overlap#(xs,ys))
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)),!EQ#(x,x'))
+            overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+            overlap#(Nil(),ys) -> c_7()
+        - Weak DPs:
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            goal(xs,ys) -> overlap(xs,ys)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+            overlap(Cons(x,xs),ys) -> overlap[Ite][True][Ite](member(x,ys),Cons(x,xs),ys)
+            overlap(Nil(),ys) -> False()
+            overlap[Ite][True][Ite](False(),Cons(x,xs),ys) -> overlap(xs,ys)
+            overlap[Ite][True][Ite](True(),xs,ys) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/2,c_4/0,c_5/0,c_6/2,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        SimplifyRHS
+    + Details:
+        Consider the dependency graph
+          1:S:goal#(xs,ys) -> c_1(overlap#(xs,ys))
+             -->_1 overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys)
+                                                 ,member#(x,ys)):4
+             -->_1 overlap#(Nil(),ys) -> c_7():5
+          
+          2:S:member#(x,Nil()) -> c_2()
+             
+          
+          3:S:member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)),!EQ#(x,x'))
+             -->_1 member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs)):10
+          
+          4:S:overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+             -->_1 overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys)):14
+             -->_2 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)),!EQ#(x,x')):3
+             -->_2 member#(x,Nil()) -> c_2():2
+          
+          5:S:overlap#(Nil(),ys) -> c_7()
+             
+          
+          10:W:member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+             -->_1 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)),!EQ#(x,x')):3
+             -->_1 member#(x,Nil()) -> c_2():2
+          
+          14:W:overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+             -->_1 overlap#(Nil(),ys) -> c_7():5
+             -->_1 overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys)):4
+          
+        Due to missing edges in the depndency graph, the right-hand sides of following rules could be simplified:
+          member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+* Step 5: UsableRules WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            goal#(xs,ys) -> c_1(overlap#(xs,ys))
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+            overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+            overlap#(Nil(),ys) -> c_7()
+        - Weak DPs:
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            goal(xs,ys) -> overlap(xs,ys)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+            overlap(Cons(x,xs),ys) -> overlap[Ite][True][Ite](member(x,ys),Cons(x,xs),ys)
+            overlap(Nil(),ys) -> False()
+            overlap[Ite][True][Ite](False(),Cons(x,xs),ys) -> overlap(xs,ys)
+            overlap[Ite][True][Ite](True(),xs,ys) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0,c_6/2,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          !EQ(0(),0()) -> True()
+          !EQ(0(),S(y)) -> False()
+          !EQ(S(x),0()) -> False()
+          !EQ(S(x),S(y)) -> !EQ(x,y)
+          member(x,Nil()) -> False()
+          member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+          member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+          member[Ite][True][Ite](True(),x,xs) -> True()
+          goal#(xs,ys) -> c_1(overlap#(xs,ys))
+          member#(x,Nil()) -> c_2()
+          member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+          member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+          overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+          overlap#(Nil(),ys) -> c_7()
+          overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+* Step 6: RemoveHeads WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            goal#(xs,ys) -> c_1(overlap#(xs,ys))
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+            overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+            overlap#(Nil(),ys) -> c_7()
+        - Weak DPs:
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0,c_6/2,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        RemoveHeads
+    + Details:
+        Consider the dependency graph
+        
+        1:S:goal#(xs,ys) -> c_1(overlap#(xs,ys))
+           -->_1 overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys)
+                                               ,member#(x,ys)):4
+           -->_1 overlap#(Nil(),ys) -> c_7():5
+        
+        2:S:member#(x,Nil()) -> c_2()
+           
+        
+        3:S:member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+           -->_1 member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs)):6
+        
+        4:S:overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+           -->_1 overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys)):7
+           -->_2 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs))):3
+           -->_2 member#(x,Nil()) -> c_2():2
+        
+        5:S:overlap#(Nil(),ys) -> c_7()
+           
+        
+        6:W:member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+           -->_1 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs))):3
+           -->_1 member#(x,Nil()) -> c_2():2
+        
+        7:W:overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+           -->_1 overlap#(Nil(),ys) -> c_7():5
+           -->_1 overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys)):4
+        
+        
+        Following roots of the dependency graph are removed, as the considered set of starting terms is closed under reduction with respect to these rules (modulo compound contexts).
+        
+        [(1,goal#(xs,ys) -> c_1(overlap#(xs,ys)))]
+* Step 7: DecomposeDG WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+            overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+            overlap#(Nil(),ys) -> c_7()
+        - Weak DPs:
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0,c_6/2,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        DecomposeDG {onSelection = all below first cut in WDG, onUpper = Nothing, onLower = Nothing}
+    + Details:
+        We decompose the input problem according to the dependency graph into the upper component
+          overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+          overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+        and a lower component
+          member#(x,Nil()) -> c_2()
+          member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+          member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+          overlap#(Nil(),ys) -> c_7()
+        Further, following extension rules are added to the lower component.
+          overlap#(Cons(x,xs),ys) -> member#(x,ys)
+          overlap#(Cons(x,xs),ys) -> overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys)
+          overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> overlap#(xs,ys)
+** Step 7.a:1: SimplifyRHS WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0,c_6/2,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        SimplifyRHS
+    + Details:
+        Consider the dependency graph
+          1:S:overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys),member#(x,ys))
+             -->_1 overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys)):2
+          
+          2:S:overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+             -->_1 overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys)
+                                                 ,member#(x,ys)):1
+          
+        Due to missing edges in the depndency graph, the right-hand sides of following rules could be simplified:
+          overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys))
+** Step 7.a:2: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys))
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0,c_6/1,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(member[Ite][True][Ite]) = {1},
+            uargs(overlap[Ite][True][Ite]#) = {1},
+            uargs(c_6) = {1},
+            uargs(c_14) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                                 p(!EQ) = [2]         
+                                   p(0) = [0]         
+                                p(Cons) = [0]         
+                               p(False) = [2]         
+                                 p(Nil) = [0]         
+                                   p(S) = [1] x1 + [0]
+                                p(True) = [0]         
+                                p(goal) = [0]         
+                              p(member) = [7]         
+              p(member[Ite][True][Ite]) = [1] x1 + [5]
+                            p(notEmpty) = [0]         
+                             p(overlap) = [0]         
+             p(overlap[Ite][True][Ite]) = [0]         
+                                p(!EQ#) = [0]         
+                               p(goal#) = [0]         
+                             p(member#) = [0]         
+             p(member[Ite][True][Ite]#) = [1] x1 + [2]
+                           p(notEmpty#) = [4] x1 + [1]
+                            p(overlap#) = [0]         
+            p(overlap[Ite][True][Ite]#) = [1] x1 + [0]
+                                 p(c_1) = [0]         
+                                 p(c_2) = [0]         
+                                 p(c_3) = [0]         
+                                 p(c_4) = [0]         
+                                 p(c_5) = [0]         
+                                 p(c_6) = [1] x1 + [0]
+                                 p(c_7) = [0]         
+                                 p(c_8) = [0]         
+                                 p(c_9) = [0]         
+                                p(c_10) = [0]         
+                                p(c_11) = [0]         
+                                p(c_12) = [0]         
+                                p(c_13) = [0]         
+                                p(c_14) = [1] x1 + [0]
+                                p(c_15) = [4]         
+          
+          Following rules are strictly oriented:
+          overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) = [2]                  
+                                                          > [0]                  
+                                                          = c_14(overlap#(xs,ys))
+          
+          
+          Following rules are (at-least) weakly oriented:
+                                overlap#(Cons(x,xs),ys) =  [0]                                                      
+                                                        >= [7]                                                      
+                                                        =  c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys))
+          
+                                           !EQ(0(),0()) =  [2]                                                      
+                                                        >= [0]                                                      
+                                                        =  True()                                                   
+          
+                                          !EQ(0(),S(y)) =  [2]                                                      
+                                                        >= [2]                                                      
+                                                        =  False()                                                  
+          
+                                          !EQ(S(x),0()) =  [2]                                                      
+                                                        >= [2]                                                      
+                                                        =  False()                                                  
+          
+                                         !EQ(S(x),S(y)) =  [2]                                                      
+                                                        >= [2]                                                      
+                                                        =  !EQ(x,y)                                                 
+          
+                                        member(x,Nil()) =  [7]                                                      
+                                                        >= [2]                                                      
+                                                        =  False()                                                  
+          
+                                  member(x',Cons(x,xs)) =  [7]                                                      
+                                                        >= [7]                                                      
+                                                        =  member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))          
+          
+          member[Ite][True][Ite](False(),x',Cons(x,xs)) =  [7]                                                      
+                                                        >= [7]                                                      
+                                                        =  member(x',xs)                                            
+          
+                    member[Ite][True][Ite](True(),x,xs) =  [5]                                                      
+                                                        >= [0]                                                      
+                                                        =  True()                                                   
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 7.a:3: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys))
+        - Weak DPs:
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0,c_6/1,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(member[Ite][True][Ite]) = {1},
+            uargs(overlap[Ite][True][Ite]#) = {1},
+            uargs(c_6) = {1},
+            uargs(c_14) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                                 p(!EQ) = [0]                           
+                                   p(0) = [1]                           
+                                p(Cons) = [1] x1 + [1] x2 + [4]         
+                               p(False) = [0]                           
+                                 p(Nil) = [0]                           
+                                   p(S) = [0]                           
+                                p(True) = [0]                           
+                                p(goal) = [1] x2 + [2]                  
+                              p(member) = [0]                           
+              p(member[Ite][True][Ite]) = [1] x1 + [0]                  
+                            p(notEmpty) = [1]                           
+                             p(overlap) = [4] x2 + [2]                  
+             p(overlap[Ite][True][Ite]) = [1] x1 + [4] x2 + [2]         
+                                p(!EQ#) = [2]                           
+                               p(goal#) = [1] x1 + [0]                  
+                             p(member#) = [4] x2 + [1]                  
+             p(member[Ite][True][Ite]#) = [2] x2 + [2]                  
+                           p(notEmpty#) = [1] x1 + [1]                  
+                            p(overlap#) = [3] x1 + [4] x2 + [3]         
+            p(overlap[Ite][True][Ite]#) = [1] x1 + [3] x2 + [4] x3 + [1]
+                                 p(c_1) = [1] x1 + [1]                  
+                                 p(c_2) = [0]                           
+                                 p(c_3) = [1]                           
+                                 p(c_4) = [0]                           
+                                 p(c_5) = [0]                           
+                                 p(c_6) = [1] x1 + [1]                  
+                                 p(c_7) = [1]                           
+                                 p(c_8) = [0]                           
+                                 p(c_9) = [0]                           
+                                p(c_10) = [0]                           
+                                p(c_11) = [1] x1 + [0]                  
+                                p(c_12) = [1]                           
+                                p(c_13) = [0]                           
+                                p(c_14) = [1] x1 + [1]                  
+                                p(c_15) = [1]                           
+          
+          Following rules are strictly oriented:
+          overlap#(Cons(x,xs),ys) = [3] x + [3] xs + [4] ys + [15]                           
+                                  > [3] x + [3] xs + [4] ys + [14]                           
+                                  = c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys))
+          
+          
+          Following rules are (at-least) weakly oriented:
+          overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) =  [3] x + [3] xs + [4] ys + [13]                 
+                                                          >= [3] xs + [4] ys + [4]                          
+                                                          =  c_14(overlap#(xs,ys))                          
+          
+                                             !EQ(0(),0()) =  [0]                                            
+                                                          >= [0]                                            
+                                                          =  True()                                         
+          
+                                            !EQ(0(),S(y)) =  [0]                                            
+                                                          >= [0]                                            
+                                                          =  False()                                        
+          
+                                            !EQ(S(x),0()) =  [0]                                            
+                                                          >= [0]                                            
+                                                          =  False()                                        
+          
+                                           !EQ(S(x),S(y)) =  [0]                                            
+                                                          >= [0]                                            
+                                                          =  !EQ(x,y)                                       
+          
+                                          member(x,Nil()) =  [0]                                            
+                                                          >= [0]                                            
+                                                          =  False()                                        
+          
+                                    member(x',Cons(x,xs)) =  [0]                                            
+                                                          >= [0]                                            
+                                                          =  member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+          
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) =  [0]                                            
+                                                          >= [0]                                            
+                                                          =  member(x',xs)                                  
+          
+                      member[Ite][True][Ite](True(),x,xs) =  [0]                                            
+                                                          >= [0]                                            
+                                                          =  True()                                         
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 7.a:4: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            overlap#(Cons(x,xs),ys) -> c_6(overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys))
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> c_14(overlap#(xs,ys))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0,c_6/1,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+** Step 7.b:1: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+            overlap#(Nil(),ys) -> c_7()
+        - Weak DPs:
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+            overlap#(Cons(x,xs),ys) -> member#(x,ys)
+            overlap#(Cons(x,xs),ys) -> overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys)
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> overlap#(xs,ys)
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0,c_6/2,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(member[Ite][True][Ite]) = {1},
+            uargs(member[Ite][True][Ite]#) = {1},
+            uargs(overlap[Ite][True][Ite]#) = {1},
+            uargs(c_3) = {1},
+            uargs(c_12) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                                 p(!EQ) = [3]                  
+                                   p(0) = [0]                  
+                                p(Cons) = [1]                  
+                               p(False) = [3]                  
+                                 p(Nil) = [0]                  
+                                   p(S) = [0]                  
+                                p(True) = [0]                  
+                                p(goal) = [0]                  
+                              p(member) = [3]                  
+              p(member[Ite][True][Ite]) = [1] x1 + [0]         
+                            p(notEmpty) = [0]                  
+                             p(overlap) = [0]                  
+             p(overlap[Ite][True][Ite]) = [0]                  
+                                p(!EQ#) = [0]                  
+                               p(goal#) = [0]                  
+                             p(member#) = [7]                  
+             p(member[Ite][True][Ite]#) = [1] x1 + [4]         
+                           p(notEmpty#) = [0]                  
+                            p(overlap#) = [7]                  
+            p(overlap[Ite][True][Ite]#) = [1] x1 + [4] x2 + [0]
+                                 p(c_1) = [0]                  
+                                 p(c_2) = [0]                  
+                                 p(c_3) = [1] x1 + [0]         
+                                 p(c_4) = [0]                  
+                                 p(c_5) = [0]                  
+                                 p(c_6) = [0]                  
+                                 p(c_7) = [0]                  
+                                 p(c_8) = [0]                  
+                                 p(c_9) = [0]                  
+                                p(c_10) = [0]                  
+                                p(c_11) = [0]                  
+                                p(c_12) = [1] x1 + [0]         
+                                p(c_13) = [0]                  
+                                p(c_14) = [0]                  
+                                p(c_15) = [0]                  
+          
+          Following rules are strictly oriented:
+            member#(x,Nil()) = [7]  
+                             > [0]  
+                             = c_2()
+          
+          overlap#(Nil(),ys) = [7]  
+                             > [0]  
+                             = c_7()
+          
+          
+          Following rules are (at-least) weakly oriented:
+                                   member#(x',Cons(x,xs)) =  [7]                                                  
+                                                          >= [7]                                                  
+                                                          =  c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+          
+           member[Ite][True][Ite]#(False(),x',Cons(x,xs)) =  [7]                                                  
+                                                          >= [7]                                                  
+                                                          =  c_12(member#(x',xs))                                 
+          
+                                  overlap#(Cons(x,xs),ys) =  [7]                                                  
+                                                          >= [7]                                                  
+                                                          =  member#(x,ys)                                        
+          
+                                  overlap#(Cons(x,xs),ys) =  [7]                                                  
+                                                          >= [7]                                                  
+                                                          =  overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys) 
+          
+          overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) =  [7]                                                  
+                                                          >= [7]                                                  
+                                                          =  overlap#(xs,ys)                                      
+          
+                                             !EQ(0(),0()) =  [3]                                                  
+                                                          >= [0]                                                  
+                                                          =  True()                                               
+          
+                                            !EQ(0(),S(y)) =  [3]                                                  
+                                                          >= [3]                                                  
+                                                          =  False()                                              
+          
+                                            !EQ(S(x),0()) =  [3]                                                  
+                                                          >= [3]                                                  
+                                                          =  False()                                              
+          
+                                           !EQ(S(x),S(y)) =  [3]                                                  
+                                                          >= [3]                                                  
+                                                          =  !EQ(x,y)                                             
+          
+                                          member(x,Nil()) =  [3]                                                  
+                                                          >= [3]                                                  
+                                                          =  False()                                              
+          
+                                    member(x',Cons(x,xs)) =  [3]                                                  
+                                                          >= [3]                                                  
+                                                          =  member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))      
+          
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) =  [3]                                                  
+                                                          >= [3]                                                  
+                                                          =  member(x',xs)                                        
+          
+                      member[Ite][True][Ite](True(),x,xs) =  [0]                                                  
+                                                          >= [0]                                                  
+                                                          =  True()                                               
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 7.b:2: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+        - Weak DPs:
+            member#(x,Nil()) -> c_2()
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+            overlap#(Cons(x,xs),ys) -> member#(x,ys)
+            overlap#(Cons(x,xs),ys) -> overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys)
+            overlap#(Nil(),ys) -> c_7()
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> overlap#(xs,ys)
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0,c_6/2,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(member[Ite][True][Ite]) = {1},
+            uargs(member[Ite][True][Ite]#) = {1},
+            uargs(overlap[Ite][True][Ite]#) = {1},
+            uargs(c_3) = {1},
+            uargs(c_12) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                                 p(!EQ) = [0]                           
+                                   p(0) = [0]                           
+                                p(Cons) = [1] x2 + [3]                  
+                               p(False) = [0]                           
+                                 p(Nil) = [2]                           
+                                   p(S) = [1] x1 + [0]                  
+                                p(True) = [0]                           
+                                p(goal) = [1] x1 + [0]                  
+                              p(member) = [3]                           
+              p(member[Ite][True][Ite]) = [1] x1 + [3]                  
+                            p(notEmpty) = [2] x1 + [2]                  
+                             p(overlap) = [1] x2 + [0]                  
+             p(overlap[Ite][True][Ite]) = [2] x1 + [4] x3 + [4]         
+                                p(!EQ#) = [2]                           
+                               p(goal#) = [2] x1 + [1] x2 + [1]         
+                             p(member#) = [4] x2 + [2]                  
+             p(member[Ite][True][Ite]#) = [1] x1 + [4] x3 + [0]         
+                           p(notEmpty#) = [1]                           
+                            p(overlap#) = [4] x1 + [4] x2 + [3]         
+            p(overlap[Ite][True][Ite]#) = [1] x1 + [4] x2 + [4] x3 + [0]
+                                 p(c_1) = [1] x1 + [1]                  
+                                 p(c_2) = [0]                           
+                                 p(c_3) = [1] x1 + [1]                  
+                                 p(c_4) = [0]                           
+                                 p(c_5) = [2]                           
+                                 p(c_6) = [1] x1 + [1] x2 + [0]         
+                                 p(c_7) = [1]                           
+                                 p(c_8) = [1]                           
+                                 p(c_9) = [0]                           
+                                p(c_10) = [1]                           
+                                p(c_11) = [4] x1 + [4]                  
+                                p(c_12) = [1] x1 + [4]                  
+                                p(c_13) = [1]                           
+                                p(c_14) = [1]                           
+                                p(c_15) = [1]                           
+          
+          Following rules are strictly oriented:
+          member#(x',Cons(x,xs)) = [4] xs + [14]                                        
+                                 > [4] xs + [13]                                        
+                                 = c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+          
+          
+          Following rules are (at-least) weakly oriented:
+                                         member#(x,Nil()) =  [10]                                                
+                                                          >= [0]                                                 
+                                                          =  c_2()                                               
+          
+           member[Ite][True][Ite]#(False(),x',Cons(x,xs)) =  [4] xs + [12]                                       
+                                                          >= [4] xs + [6]                                        
+                                                          =  c_12(member#(x',xs))                                
+          
+                                  overlap#(Cons(x,xs),ys) =  [4] xs + [4] ys + [15]                              
+                                                          >= [4] ys + [2]                                        
+                                                          =  member#(x,ys)                                       
+          
+                                  overlap#(Cons(x,xs),ys) =  [4] xs + [4] ys + [15]                              
+                                                          >= [4] xs + [4] ys + [15]                              
+                                                          =  overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys)
+          
+                                       overlap#(Nil(),ys) =  [4] ys + [11]                                       
+                                                          >= [1]                                                 
+                                                          =  c_7()                                               
+          
+          overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) =  [4] xs + [4] ys + [12]                              
+                                                          >= [4] xs + [4] ys + [3]                               
+                                                          =  overlap#(xs,ys)                                     
+          
+                                             !EQ(0(),0()) =  [0]                                                 
+                                                          >= [0]                                                 
+                                                          =  True()                                              
+          
+                                            !EQ(0(),S(y)) =  [0]                                                 
+                                                          >= [0]                                                 
+                                                          =  False()                                             
+          
+                                            !EQ(S(x),0()) =  [0]                                                 
+                                                          >= [0]                                                 
+                                                          =  False()                                             
+          
+                                           !EQ(S(x),S(y)) =  [0]                                                 
+                                                          >= [0]                                                 
+                                                          =  !EQ(x,y)                                            
+          
+                                          member(x,Nil()) =  [3]                                                 
+                                                          >= [0]                                                 
+                                                          =  False()                                             
+          
+                                    member(x',Cons(x,xs)) =  [3]                                                 
+                                                          >= [3]                                                 
+                                                          =  member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))     
+          
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) =  [3]                                                 
+                                                          >= [3]                                                 
+                                                          =  member(x',xs)                                       
+          
+                      member[Ite][True][Ite](True(),x,xs) =  [3]                                                 
+                                                          >= [0]                                                 
+                                                          =  True()                                              
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+** Step 7.b:3: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x,x'),x',Cons(x,xs)))
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_12(member#(x',xs))
+            overlap#(Cons(x,xs),ys) -> member#(x,ys)
+            overlap#(Cons(x,xs),ys) -> overlap[Ite][True][Ite]#(member(x,ys),Cons(x,xs),ys)
+            overlap#(Nil(),ys) -> c_7()
+            overlap[Ite][True][Ite]#(False(),Cons(x,xs),ys) -> overlap#(xs,ys)
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x,x'),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,overlap/2,overlap[Ite][True][Ite]/3,!EQ#/2
+            ,goal#/2,member#/2,member[Ite][True][Ite]#/3,notEmpty#/1,overlap#/2,overlap[Ite][True][Ite]#/3} / {0/0
+            ,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0,c_6/2,c_7/0,c_8/0,c_9/0,c_10/0,c_11/1,c_12/1
+            ,c_13/0,c_14/1,c_15/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#,notEmpty#
+            ,overlap#,overlap[Ite][True][Ite]#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^2))

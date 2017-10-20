@@ -1,0 +1,335 @@
+WORST_CASE(?,O(n^1))
+* Step 1: DependencyPairs WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            decrease(Cons(x,xs)) -> decrease(xs)
+            decrease(Nil()) -> number42(Nil())
+            goal(x) -> decrease(x)
+            number42(x) -> Cons(Nil()
+                               ,Cons(Nil()
+                                    ,Cons(Nil()
+                                         ,Cons(Nil()
+                                              ,Cons(Nil()
+                                                   ,Cons(Nil()
+                                                        ,Cons(Nil()
+                                                             ,Cons(Nil()
+                                                                  ,Cons(Nil()
+                                                                       ,Cons(Nil()
+                                                                            ,Cons(Nil()
+                                                                                 ,Cons(Nil()
+                                                                                      ,Cons(Nil()
+                                                                                           ,Cons(Nil()
+                                                                                                ,Cons(Nil()
+                                                                                                     ,Cons(Nil()
+                                                                                                          ,Cons(Nil()
+                                                                                                               ,Cons(Nil()
+                                                                                                                    ,Cons(Nil()
+                                                                                                                         ,Cons(Nil()
+                                                                                                                              ,Cons(Nil()
+                                                                                                                                   ,Cons(Nil()
+                                                                                                                                        ,Cons(Nil()
+                                                                                                                                             ,Cons(Nil()
+                                                                                                                                                  ,Cons(Nil()
+                                                                                                                                                       ,Cons(Nil()
+                                                                                                                                                            ,Cons(Nil()
+                                                                                                                                                                 ,Cons(Nil()
+                                                                                                                                                                      ,Cons(Nil()
+                                                                                                                                                                           ,Cons(Nil()
+                                                                                                                                                                                ,Cons(Nil()
+                                                                                                                                                                                     ,Cons(Nil()
+                                                                                                                                                                                          ,Cons(Nil()
+                                                                                                                                                                                               ,Cons(Nil()
+                                                                                                                                                                                                    ,Cons(Nil()
+                                                                                                                                                                                                         ,Cons(Nil()
+                                                                                                                                                                                                              ,Cons(Nil()
+                                                                                                                                                                                                                   ,Cons(Nil()
+                                                                                                                                                                                                                        ,Cons(Nil()
+                                                                                                                                                                                                                             ,Cons(Nil()
+                                                                                                                                                                                                                                  ,Cons(Nil()
+                                                                                                                                                                                                                                       ,Cons(Nil()
+                                                                                                                                                                                                                                            ,Nil()))))))))))))))))))))))))))))))))))))))))))
+        - Signature:
+            {decrease/1,goal/1,number42/1} / {Cons/2,Nil/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {decrease,goal,number42} and constructors {Cons,Nil}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = WIDP}
+    + Details:
+        We add the following weak innermost dependency pairs:
+        
+        Strict DPs
+          decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+          decrease#(Nil()) -> c_2(number42#(Nil()))
+          goal#(x) -> c_3(decrease#(x))
+          number42#(x) -> c_4()
+        Weak DPs
+          
+        
+        and mark the set of starting terms.
+* Step 2: UsableRules WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+            decrease#(Nil()) -> c_2(number42#(Nil()))
+            goal#(x) -> c_3(decrease#(x))
+            number42#(x) -> c_4()
+        - Strict TRS:
+            decrease(Cons(x,xs)) -> decrease(xs)
+            decrease(Nil()) -> number42(Nil())
+            goal(x) -> decrease(x)
+            number42(x) -> Cons(Nil()
+                               ,Cons(Nil()
+                                    ,Cons(Nil()
+                                         ,Cons(Nil()
+                                              ,Cons(Nil()
+                                                   ,Cons(Nil()
+                                                        ,Cons(Nil()
+                                                             ,Cons(Nil()
+                                                                  ,Cons(Nil()
+                                                                       ,Cons(Nil()
+                                                                            ,Cons(Nil()
+                                                                                 ,Cons(Nil()
+                                                                                      ,Cons(Nil()
+                                                                                           ,Cons(Nil()
+                                                                                                ,Cons(Nil()
+                                                                                                     ,Cons(Nil()
+                                                                                                          ,Cons(Nil()
+                                                                                                               ,Cons(Nil()
+                                                                                                                    ,Cons(Nil()
+                                                                                                                         ,Cons(Nil()
+                                                                                                                              ,Cons(Nil()
+                                                                                                                                   ,Cons(Nil()
+                                                                                                                                        ,Cons(Nil()
+                                                                                                                                             ,Cons(Nil()
+                                                                                                                                                  ,Cons(Nil()
+                                                                                                                                                       ,Cons(Nil()
+                                                                                                                                                            ,Cons(Nil()
+                                                                                                                                                                 ,Cons(Nil()
+                                                                                                                                                                      ,Cons(Nil()
+                                                                                                                                                                           ,Cons(Nil()
+                                                                                                                                                                                ,Cons(Nil()
+                                                                                                                                                                                     ,Cons(Nil()
+                                                                                                                                                                                          ,Cons(Nil()
+                                                                                                                                                                                               ,Cons(Nil()
+                                                                                                                                                                                                    ,Cons(Nil()
+                                                                                                                                                                                                         ,Cons(Nil()
+                                                                                                                                                                                                              ,Cons(Nil()
+                                                                                                                                                                                                                   ,Cons(Nil()
+                                                                                                                                                                                                                        ,Cons(Nil()
+                                                                                                                                                                                                                             ,Cons(Nil()
+                                                                                                                                                                                                                                  ,Cons(Nil()
+                                                                                                                                                                                                                                       ,Cons(Nil()
+                                                                                                                                                                                                                                            ,Nil()))))))))))))))))))))))))))))))))))))))))))
+        - Signature:
+            {decrease/1,goal/1,number42/1,decrease#/1,goal#/1,number42#/1} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/1,c_4/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {decrease#,goal#,number42#} and constructors {Cons,Nil}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+          decrease#(Nil()) -> c_2(number42#(Nil()))
+          goal#(x) -> c_3(decrease#(x))
+          number42#(x) -> c_4()
+* Step 3: PredecessorEstimation WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+            decrease#(Nil()) -> c_2(number42#(Nil()))
+            goal#(x) -> c_3(decrease#(x))
+            number42#(x) -> c_4()
+        - Signature:
+            {decrease/1,goal/1,number42/1,decrease#/1,goal#/1,number42#/1} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/1,c_4/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {decrease#,goal#,number42#} and constructors {Cons,Nil}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {4}
+        by application of
+          Pre({4}) = {2}.
+        Here rules are labelled as follows:
+          1: decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+          2: decrease#(Nil()) -> c_2(number42#(Nil()))
+          3: goal#(x) -> c_3(decrease#(x))
+          4: number42#(x) -> c_4()
+* Step 4: PredecessorEstimation WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+            decrease#(Nil()) -> c_2(number42#(Nil()))
+            goal#(x) -> c_3(decrease#(x))
+        - Weak DPs:
+            number42#(x) -> c_4()
+        - Signature:
+            {decrease/1,goal/1,number42/1,decrease#/1,goal#/1,number42#/1} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/1,c_4/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {decrease#,goal#,number42#} and constructors {Cons,Nil}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {2}
+        by application of
+          Pre({2}) = {1,3}.
+        Here rules are labelled as follows:
+          1: decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+          2: decrease#(Nil()) -> c_2(number42#(Nil()))
+          3: goal#(x) -> c_3(decrease#(x))
+          4: number42#(x) -> c_4()
+* Step 5: RemoveWeakSuffixes WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+            goal#(x) -> c_3(decrease#(x))
+        - Weak DPs:
+            decrease#(Nil()) -> c_2(number42#(Nil()))
+            number42#(x) -> c_4()
+        - Signature:
+            {decrease/1,goal/1,number42/1,decrease#/1,goal#/1,number42#/1} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/1,c_4/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {decrease#,goal#,number42#} and constructors {Cons,Nil}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+             -->_1 decrease#(Nil()) -> c_2(number42#(Nil())):3
+             -->_1 decrease#(Cons(x,xs)) -> c_1(decrease#(xs)):1
+          
+          2:S:goal#(x) -> c_3(decrease#(x))
+             -->_1 decrease#(Nil()) -> c_2(number42#(Nil())):3
+             -->_1 decrease#(Cons(x,xs)) -> c_1(decrease#(xs)):1
+          
+          3:W:decrease#(Nil()) -> c_2(number42#(Nil()))
+             -->_1 number42#(x) -> c_4():4
+          
+          4:W:number42#(x) -> c_4()
+             
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          3: decrease#(Nil()) -> c_2(number42#(Nil()))
+          4: number42#(x) -> c_4()
+* Step 6: RemoveHeads WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+            goal#(x) -> c_3(decrease#(x))
+        - Signature:
+            {decrease/1,goal/1,number42/1,decrease#/1,goal#/1,number42#/1} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/1,c_4/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {decrease#,goal#,number42#} and constructors {Cons,Nil}
+    + Applied Processor:
+        RemoveHeads
+    + Details:
+        Consider the dependency graph
+        
+        1:S:decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+           -->_1 decrease#(Cons(x,xs)) -> c_1(decrease#(xs)):1
+        
+        2:S:goal#(x) -> c_3(decrease#(x))
+           -->_1 decrease#(Cons(x,xs)) -> c_1(decrease#(xs)):1
+        
+        
+        Following roots of the dependency graph are removed, as the considered set of starting terms is closed under reduction with respect to these rules (modulo compound contexts).
+        
+        [(2,goal#(x) -> c_3(decrease#(x)))]
+* Step 7: PredecessorEstimationCP WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+        - Signature:
+            {decrease/1,goal/1,number42/1,decrease#/1,goal#/1,number42#/1} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/1,c_4/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {decrease#,goal#,number42#} and constructors {Cons,Nil}
+    + Applied Processor:
+        PredecessorEstimationCP {onSelectionCP = any intersect of rules of CDG leaf and strict-rules, withComplexityPair = NaturalMI {miDimension = 1, miDegree = 1, miKind = Algebraic, uargs = UArgs, urules = URules, selector = Nothing}}
+    + Details:
+        We first use the processor NaturalMI {miDimension = 1, miDegree = 1, miKind = Algebraic, uargs = UArgs, urules = URules, selector = Nothing} to orient following rules strictly:
+          1: decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+          
+        The strictly oriented rules are moved into the weak component.
+** Step 7.a:1: NaturalMI WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+        - Signature:
+            {decrease/1,goal/1,number42/1,decrease#/1,goal#/1,number42#/1} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/1,c_4/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {decrease#,goal#,number42#} and constructors {Cons,Nil}
+    + Applied Processor:
+        NaturalMI {miDimension = 1, miDegree = 1, miKind = Algebraic, uargs = UArgs, urules = URules, selector = Just first alternative for predecessorEstimation on any intersect of rules of CDG leaf and strict-rules}
+    + Details:
+        We apply a matrix interpretation of kind constructor based matrix interpretation:
+        The following argument positions are considered usable:
+          uargs(c_1) = {1}
+        
+        Following symbols are considered usable:
+          {decrease#,goal#,number42#}
+        TcT has computed the following interpretation:
+               p(Cons) = [1] x1 + [1] x2 + [8]
+                p(Nil) = [0]                  
+           p(decrease) = [8] x1 + [1]         
+               p(goal) = [1] x1 + [1]         
+           p(number42) = [1] x1 + [2]         
+          p(decrease#) = [1] x1 + [9]         
+              p(goal#) = [4] x1 + [8]         
+          p(number42#) = [1] x1 + [0]         
+                p(c_1) = [1] x1 + [6]         
+                p(c_2) = [0]                  
+                p(c_3) = [1] x1 + [0]         
+                p(c_4) = [0]                  
+        
+        Following rules are strictly oriented:
+        decrease#(Cons(x,xs)) = [1] x + [1] xs + [17]
+                              > [1] xs + [15]        
+                              = c_1(decrease#(xs))   
+        
+        
+        Following rules are (at-least) weakly oriented:
+        
+** Step 7.a:2: Assumption WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+        - Signature:
+            {decrease/1,goal/1,number42/1,decrease#/1,goal#/1,number42#/1} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/1,c_4/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {decrease#,goal#,number42#} and constructors {Cons,Nil}
+    + Applied Processor:
+        Assumption {assumed = Certificate {spaceUB = Unknown, spaceLB = Unknown, timeUB = Poly (Just 0), timeLB = Unknown}}
+    + Details:
+        ()
+
+** Step 7.b:1: RemoveWeakSuffixes WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+        - Signature:
+            {decrease/1,goal/1,number42/1,decrease#/1,goal#/1,number42#/1} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/1,c_4/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {decrease#,goal#,number42#} and constructors {Cons,Nil}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:W:decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+             -->_1 decrease#(Cons(x,xs)) -> c_1(decrease#(xs)):1
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          1: decrease#(Cons(x,xs)) -> c_1(decrease#(xs))
+** Step 7.b:2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        
+        - Signature:
+            {decrease/1,goal/1,number42/1,decrease#/1,goal#/1,number42#/1} / {Cons/2,Nil/0,c_1/1,c_2/1,c_3/1,c_4/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {decrease#,goal#,number42#} and constructors {Cons,Nil}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

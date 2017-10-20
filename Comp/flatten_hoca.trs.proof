@@ -1,0 +1,96 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            comp_f_g#1(comp_f_g(x4,x5),comp_f_g(x2,x3),x1) -> comp_f_g#1(x4,x5,comp_f_g#1(x2,x3,x1))
+            comp_f_g#1(comp_f_g(x7,x9),cons_x(x2),x4) -> comp_f_g#1(x7,x9,Cons(x2,x4))
+            comp_f_g#1(cons_x(x2),comp_f_g(x5,x7),x3) -> Cons(x2,comp_f_g#1(x5,x7,x3))
+            comp_f_g#1(cons_x(x5),cons_x(x2),x4) -> Cons(x5,Cons(x2,x4))
+            main(Leaf(x4)) -> Cons(x4,Nil())
+            main(Node(x9,x5)) -> comp_f_g#1(walk#1(x9),walk#1(x5),Nil())
+            walk#1(Leaf(x2)) -> cons_x(x2)
+            walk#1(Node(x5,x3)) -> comp_f_g(walk#1(x5),walk#1(x3))
+        - Signature:
+            {comp_f_g#1/3,main/1,walk#1/1} / {Cons/2,Leaf/1,Nil/0,Node/2,comp_f_g/2,cons_x/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {comp_f_g#1,main,walk#1} and constructors {Cons,Leaf,Nil
+            ,Node,comp_f_g,cons_x}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 2.
+        The enriched problem is compatible with follwoing automaton.
+          Cons_0(2,2) -> 2
+          Cons_1(2,2) -> 2
+          Cons_1(2,2) -> 3
+          Cons_1(2,2) -> 4
+          Cons_1(2,3) -> 1
+          Cons_1(2,3) -> 3
+          Cons_1(2,3) -> 4
+          Cons_1(2,3) -> 5
+          Cons_1(2,4) -> 2
+          Cons_1(2,5) -> 3
+          Cons_1(2,5) -> 5
+          Cons_2(2,2) -> 4
+          Cons_2(2,3) -> 5
+          Cons_2(2,4) -> 2
+          Cons_2(2,4) -> 3
+          Cons_2(2,4) -> 4
+          Cons_2(2,5) -> 1
+          Cons_2(2,5) -> 3
+          Cons_2(2,5) -> 4
+          Cons_2(2,5) -> 5
+          Leaf_0(2) -> 2
+          Nil_0() -> 2
+          Nil_1() -> 3
+          Node_0(2,2) -> 2
+          comp_f_g_0(2,2) -> 2
+          comp_f_g_1(2,2) -> 1
+          comp_f_g_1(2,2) -> 2
+          comp_f_g#1_0(2,2,2) -> 1
+          comp_f_g#1_1(2,2,2) -> 2
+          comp_f_g#1_1(2,2,2) -> 3
+          comp_f_g#1_1(2,2,2) -> 4
+          comp_f_g#1_1(2,2,3) -> 1
+          comp_f_g#1_1(2,2,3) -> 3
+          comp_f_g#1_1(2,2,3) -> 4
+          comp_f_g#1_1(2,2,3) -> 5
+          comp_f_g#1_1(2,2,4) -> 2
+          comp_f_g#1_1(2,2,5) -> 3
+          comp_f_g#1_2(2,2,2) -> 4
+          comp_f_g#1_2(2,2,3) -> 5
+          comp_f_g#1_2(2,2,4) -> 2
+          comp_f_g#1_2(2,2,4) -> 3
+          comp_f_g#1_2(2,2,4) -> 4
+          comp_f_g#1_2(2,2,5) -> 1
+          comp_f_g#1_2(2,2,5) -> 3
+          comp_f_g#1_2(2,2,5) -> 4
+          comp_f_g#1_2(2,2,5) -> 5
+          cons_x_0(2) -> 2
+          cons_x_1(2) -> 1
+          cons_x_1(2) -> 2
+          main_0(2) -> 1
+          walk#1_0(2) -> 1
+          walk#1_1(2) -> 2
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            comp_f_g#1(comp_f_g(x4,x5),comp_f_g(x2,x3),x1) -> comp_f_g#1(x4,x5,comp_f_g#1(x2,x3,x1))
+            comp_f_g#1(comp_f_g(x7,x9),cons_x(x2),x4) -> comp_f_g#1(x7,x9,Cons(x2,x4))
+            comp_f_g#1(cons_x(x2),comp_f_g(x5,x7),x3) -> Cons(x2,comp_f_g#1(x5,x7,x3))
+            comp_f_g#1(cons_x(x5),cons_x(x2),x4) -> Cons(x5,Cons(x2,x4))
+            main(Leaf(x4)) -> Cons(x4,Nil())
+            main(Node(x9,x5)) -> comp_f_g#1(walk#1(x9),walk#1(x5),Nil())
+            walk#1(Leaf(x2)) -> cons_x(x2)
+            walk#1(Node(x5,x3)) -> comp_f_g(walk#1(x5),walk#1(x3))
+        - Signature:
+            {comp_f_g#1/3,main/1,walk#1/1} / {Cons/2,Leaf/1,Nil/0,Node/2,comp_f_g/2,cons_x/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {comp_f_g#1,main,walk#1} and constructors {Cons,Leaf,Nil
+            ,Node,comp_f_g,cons_x}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

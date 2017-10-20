@@ -1,0 +1,428 @@
+WORST_CASE(?,O(n^1))
+* Step 1: DependencyPairs WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            goal(x,xs) -> member(x,xs)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x',x),x',Cons(x,xs))
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ,goal,member,member[Ite][True][Ite]
+            ,notEmpty} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = DT}
+    + Details:
+        We add the following dependency tuples:
+        
+        Strict DPs
+          goal#(x,xs) -> c_1(member#(x,xs))
+          member#(x,Nil()) -> c_2()
+          member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)),!EQ#(x',x))
+          notEmpty#(Cons(x,xs)) -> c_4()
+          notEmpty#(Nil()) -> c_5()
+        Weak DPs
+          !EQ#(0(),0()) -> c_6()
+          !EQ#(0(),S(y)) -> c_7()
+          !EQ#(S(x),0()) -> c_8()
+          !EQ#(S(x),S(y)) -> c_9(!EQ#(x,y))
+          member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+          member[Ite][True][Ite]#(True(),x,xs) -> c_11()
+        
+        and mark the set of starting terms.
+* Step 2: PredecessorEstimation WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            goal#(x,xs) -> c_1(member#(x,xs))
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)),!EQ#(x',x))
+            notEmpty#(Cons(x,xs)) -> c_4()
+            notEmpty#(Nil()) -> c_5()
+        - Weak DPs:
+            !EQ#(0(),0()) -> c_6()
+            !EQ#(0(),S(y)) -> c_7()
+            !EQ#(S(x),0()) -> c_8()
+            !EQ#(S(x),S(y)) -> c_9(!EQ#(x,y))
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+            member[Ite][True][Ite]#(True(),x,xs) -> c_11()
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            goal(x,xs) -> member(x,xs)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x',x),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,!EQ#/2,goal#/2,member#/2
+            ,member[Ite][True][Ite]#/3,notEmpty#/1} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/2,c_4/0,c_5/0
+            ,c_6/0,c_7/0,c_8/0,c_9/1,c_10/1,c_11/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#
+            ,notEmpty#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {4,5}
+        by application of
+          Pre({4,5}) = {}.
+        Here rules are labelled as follows:
+          1: goal#(x,xs) -> c_1(member#(x,xs))
+          2: member#(x,Nil()) -> c_2()
+          3: member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)),!EQ#(x',x))
+          4: notEmpty#(Cons(x,xs)) -> c_4()
+          5: notEmpty#(Nil()) -> c_5()
+          6: !EQ#(0(),0()) -> c_6()
+          7: !EQ#(0(),S(y)) -> c_7()
+          8: !EQ#(S(x),0()) -> c_8()
+          9: !EQ#(S(x),S(y)) -> c_9(!EQ#(x,y))
+          10: member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+          11: member[Ite][True][Ite]#(True(),x,xs) -> c_11()
+* Step 3: RemoveWeakSuffixes WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            goal#(x,xs) -> c_1(member#(x,xs))
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)),!EQ#(x',x))
+        - Weak DPs:
+            !EQ#(0(),0()) -> c_6()
+            !EQ#(0(),S(y)) -> c_7()
+            !EQ#(S(x),0()) -> c_8()
+            !EQ#(S(x),S(y)) -> c_9(!EQ#(x,y))
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+            member[Ite][True][Ite]#(True(),x,xs) -> c_11()
+            notEmpty#(Cons(x,xs)) -> c_4()
+            notEmpty#(Nil()) -> c_5()
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            goal(x,xs) -> member(x,xs)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x',x),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,!EQ#/2,goal#/2,member#/2
+            ,member[Ite][True][Ite]#/3,notEmpty#/1} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/2,c_4/0,c_5/0
+            ,c_6/0,c_7/0,c_8/0,c_9/1,c_10/1,c_11/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#
+            ,notEmpty#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:goal#(x,xs) -> c_1(member#(x,xs))
+             -->_1 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)),!EQ#(x',x)):3
+             -->_1 member#(x,Nil()) -> c_2():2
+          
+          2:S:member#(x,Nil()) -> c_2()
+             
+          
+          3:S:member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)),!EQ#(x',x))
+             -->_1 member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs)):8
+             -->_2 !EQ#(S(x),S(y)) -> c_9(!EQ#(x,y)):7
+             -->_1 member[Ite][True][Ite]#(True(),x,xs) -> c_11():9
+             -->_2 !EQ#(S(x),0()) -> c_8():6
+             -->_2 !EQ#(0(),S(y)) -> c_7():5
+             -->_2 !EQ#(0(),0()) -> c_6():4
+          
+          4:W:!EQ#(0(),0()) -> c_6()
+             
+          
+          5:W:!EQ#(0(),S(y)) -> c_7()
+             
+          
+          6:W:!EQ#(S(x),0()) -> c_8()
+             
+          
+          7:W:!EQ#(S(x),S(y)) -> c_9(!EQ#(x,y))
+             -->_1 !EQ#(S(x),S(y)) -> c_9(!EQ#(x,y)):7
+             -->_1 !EQ#(S(x),0()) -> c_8():6
+             -->_1 !EQ#(0(),S(y)) -> c_7():5
+             -->_1 !EQ#(0(),0()) -> c_6():4
+          
+          8:W:member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+             -->_1 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)),!EQ#(x',x)):3
+             -->_1 member#(x,Nil()) -> c_2():2
+          
+          9:W:member[Ite][True][Ite]#(True(),x,xs) -> c_11()
+             
+          
+          10:W:notEmpty#(Cons(x,xs)) -> c_4()
+             
+          
+          11:W:notEmpty#(Nil()) -> c_5()
+             
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          11: notEmpty#(Nil()) -> c_5()
+          10: notEmpty#(Cons(x,xs)) -> c_4()
+          9: member[Ite][True][Ite]#(True(),x,xs) -> c_11()
+          7: !EQ#(S(x),S(y)) -> c_9(!EQ#(x,y))
+          4: !EQ#(0(),0()) -> c_6()
+          5: !EQ#(0(),S(y)) -> c_7()
+          6: !EQ#(S(x),0()) -> c_8()
+* Step 4: SimplifyRHS WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            goal#(x,xs) -> c_1(member#(x,xs))
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)),!EQ#(x',x))
+        - Weak DPs:
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            goal(x,xs) -> member(x,xs)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x',x),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,!EQ#/2,goal#/2,member#/2
+            ,member[Ite][True][Ite]#/3,notEmpty#/1} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/2,c_4/0,c_5/0
+            ,c_6/0,c_7/0,c_8/0,c_9/1,c_10/1,c_11/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#
+            ,notEmpty#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        SimplifyRHS
+    + Details:
+        Consider the dependency graph
+          1:S:goal#(x,xs) -> c_1(member#(x,xs))
+             -->_1 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)),!EQ#(x',x)):3
+             -->_1 member#(x,Nil()) -> c_2():2
+          
+          2:S:member#(x,Nil()) -> c_2()
+             
+          
+          3:S:member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)),!EQ#(x',x))
+             -->_1 member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs)):8
+          
+          8:W:member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+             -->_1 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)),!EQ#(x',x)):3
+             -->_1 member#(x,Nil()) -> c_2():2
+          
+        Due to missing edges in the depndency graph, the right-hand sides of following rules could be simplified:
+          member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)))
+* Step 5: UsableRules WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            goal#(x,xs) -> c_1(member#(x,xs))
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)))
+        - Weak DPs:
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+            goal(x,xs) -> member(x,xs)
+            member(x,Nil()) -> False()
+            member(x',Cons(x,xs)) -> member[Ite][True][Ite](!EQ(x',x),x',Cons(x,xs))
+            member[Ite][True][Ite](False(),x',Cons(x,xs)) -> member(x',xs)
+            member[Ite][True][Ite](True(),x,xs) -> True()
+            notEmpty(Cons(x,xs)) -> True()
+            notEmpty(Nil()) -> False()
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,!EQ#/2,goal#/2,member#/2
+            ,member[Ite][True][Ite]#/3,notEmpty#/1} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0
+            ,c_6/0,c_7/0,c_8/0,c_9/1,c_10/1,c_11/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#
+            ,notEmpty#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          !EQ(0(),0()) -> True()
+          !EQ(0(),S(y)) -> False()
+          !EQ(S(x),0()) -> False()
+          !EQ(S(x),S(y)) -> !EQ(x,y)
+          goal#(x,xs) -> c_1(member#(x,xs))
+          member#(x,Nil()) -> c_2()
+          member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)))
+          member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+* Step 6: RemoveHeads WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            goal#(x,xs) -> c_1(member#(x,xs))
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)))
+        - Weak DPs:
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,!EQ#/2,goal#/2,member#/2
+            ,member[Ite][True][Ite]#/3,notEmpty#/1} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0
+            ,c_6/0,c_7/0,c_8/0,c_9/1,c_10/1,c_11/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#
+            ,notEmpty#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        RemoveHeads
+    + Details:
+        Consider the dependency graph
+        
+        1:S:goal#(x,xs) -> c_1(member#(x,xs))
+           -->_1 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs))):3
+           -->_1 member#(x,Nil()) -> c_2():2
+        
+        2:S:member#(x,Nil()) -> c_2()
+           
+        
+        3:S:member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)))
+           -->_1 member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs)):4
+        
+        4:W:member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+           -->_1 member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs))):3
+           -->_1 member#(x,Nil()) -> c_2():2
+        
+        
+        Following roots of the dependency graph are removed, as the considered set of starting terms is closed under reduction with respect to these rules (modulo compound contexts).
+        
+        [(1,goal#(x,xs) -> c_1(member#(x,xs)))]
+* Step 7: WeightGap WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)))
+        - Weak DPs:
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,!EQ#/2,goal#/2,member#/2
+            ,member[Ite][True][Ite]#/3,notEmpty#/1} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0
+            ,c_6/0,c_7/0,c_8/0,c_9/1,c_10/1,c_11/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#
+            ,notEmpty#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        WeightGap {wgDimension = 1, wgDegree = 1, wgKind = Algebraic, wgUArgs = UArgs, wgOn = WgOnAny}
+    + Details:
+        The weightgap principle applies using the following constant growth matrix-interpretation:
+          We apply a matrix interpretation of kind constructor based matrix interpretation:
+          The following argument positions are considered usable:
+            uargs(member[Ite][True][Ite]#) = {1},
+            uargs(c_3) = {1},
+            uargs(c_10) = {1}
+          
+          Following symbols are considered usable:
+            all
+          TcT has computed the following interpretation:
+                                p(!EQ) = [2]                           
+                                  p(0) = [0]                           
+                               p(Cons) = [1] x2 + [2]                  
+                              p(False) = [1]                           
+                                p(Nil) = [0]                           
+                                  p(S) = [1] x1 + [0]                  
+                               p(True) = [2]                           
+                               p(goal) = [1] x1 + [0]                  
+                             p(member) = [1] x1 + [1] x2 + [0]         
+             p(member[Ite][True][Ite]) = [8] x1 + [1] x2 + [4] x3 + [0]
+                           p(notEmpty) = [2]                           
+                               p(!EQ#) = [8]                           
+                              p(goal#) = [1] x2 + [2]                  
+                            p(member#) = [4] x1 + [1] x2 + [9]         
+            p(member[Ite][True][Ite]#) = [1] x1 + [4] x2 + [1] x3 + [6]
+                          p(notEmpty#) = [2] x1 + [2]                  
+                                p(c_1) = [1] x1 + [1]                  
+                                p(c_2) = [8]                           
+                                p(c_3) = [1] x1 + [0]                  
+                                p(c_4) = [4]                           
+                                p(c_5) = [1]                           
+                                p(c_6) = [1]                           
+                                p(c_7) = [0]                           
+                                p(c_8) = [0]                           
+                                p(c_9) = [1] x1 + [0]                  
+                               p(c_10) = [1] x1 + [0]                  
+                               p(c_11) = [0]                           
+          
+          Following rules are strictly oriented:
+                member#(x,Nil()) = [4] x + [9]                                          
+                                 > [8]                                                  
+                                 = c_2()                                                
+          
+          member#(x',Cons(x,xs)) = [4] x' + [1] xs + [11]                               
+                                 > [4] x' + [1] xs + [10]                               
+                                 = c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)))
+          
+          
+          Following rules are (at-least) weakly oriented:
+          member[Ite][True][Ite]#(False(),x',Cons(x,xs)) =  [4] x' + [1] xs + [9]
+                                                         >= [4] x' + [1] xs + [9]
+                                                         =  c_10(member#(x',xs)) 
+          
+                                            !EQ(0(),0()) =  [2]                  
+                                                         >= [2]                  
+                                                         =  True()               
+          
+                                           !EQ(0(),S(y)) =  [2]                  
+                                                         >= [1]                  
+                                                         =  False()              
+          
+                                           !EQ(S(x),0()) =  [2]                  
+                                                         >= [1]                  
+                                                         =  False()              
+          
+                                          !EQ(S(x),S(y)) =  [2]                  
+                                                         >= [2]                  
+                                                         =  !EQ(x,y)             
+          
+        Further, it can be verified that all rules not oriented are covered by the weightgap condition.
+* Step 8: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            member#(x,Nil()) -> c_2()
+            member#(x',Cons(x,xs)) -> c_3(member[Ite][True][Ite]#(!EQ(x',x),x',Cons(x,xs)))
+            member[Ite][True][Ite]#(False(),x',Cons(x,xs)) -> c_10(member#(x',xs))
+        - Weak TRS:
+            !EQ(0(),0()) -> True()
+            !EQ(0(),S(y)) -> False()
+            !EQ(S(x),0()) -> False()
+            !EQ(S(x),S(y)) -> !EQ(x,y)
+        - Signature:
+            {!EQ/2,goal/2,member/2,member[Ite][True][Ite]/3,notEmpty/1,!EQ#/2,goal#/2,member#/2
+            ,member[Ite][True][Ite]#/3,notEmpty#/1} / {0/0,Cons/2,False/0,Nil/0,S/1,True/0,c_1/1,c_2/0,c_3/1,c_4/0,c_5/0
+            ,c_6/0,c_7/0,c_8/0,c_9/1,c_10/1,c_11/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {!EQ#,goal#,member#,member[Ite][True][Ite]#
+            ,notEmpty#} and constructors {0,Cons,False,Nil,S,True}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

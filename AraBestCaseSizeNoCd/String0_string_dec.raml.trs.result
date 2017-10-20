@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"String0_string_dec.raml","rTime":0.308679,"rTool":{"tProcessor":[],"tName":"AraBestCaseSizeNoCd","tArguments":["-t 60","-v1","--lowerbound","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

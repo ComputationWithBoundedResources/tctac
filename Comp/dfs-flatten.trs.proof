@@ -1,0 +1,73 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            dfsAcc#3(Leaf(x8),x16) -> Cons(x8,x16)
+            dfsAcc#3(Node(x6,x4),x2) -> dfsAcc#3(x4,dfsAcc#3(x6,x2))
+            main(x1) -> revApp#2(dfsAcc#3(x1,Nil()),Nil())
+            revApp#2(Cons(x6,x4),x2) -> revApp#2(x4,Cons(x6,x2))
+            revApp#2(Nil(),x16) -> x16
+        - Signature:
+            {dfsAcc#3/2,main/1,revApp#2/2} / {Cons/2,Leaf/1,Nil/0,Node/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {dfsAcc#3,main,revApp#2} and constructors {Cons,Leaf,Nil
+            ,Node}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 2.
+        The enriched problem is compatible with follwoing automaton.
+          Cons_0(2,2) -> 1
+          Cons_0(2,2) -> 2
+          Cons_1(2,1) -> 1
+          Cons_1(2,2) -> 1
+          Cons_1(2,2) -> 3
+          Cons_1(2,3) -> 1
+          Cons_1(2,3) -> 3
+          Cons_1(2,4) -> 4
+          Cons_1(2,6) -> 4
+          Cons_2(2,5) -> 1
+          Cons_2(2,5) -> 7
+          Cons_2(2,7) -> 1
+          Cons_2(2,7) -> 7
+          Leaf_0(2) -> 1
+          Leaf_0(2) -> 2
+          Nil_0() -> 1
+          Nil_0() -> 2
+          Nil_1() -> 5
+          Nil_1() -> 6
+          Node_0(2,2) -> 1
+          Node_0(2,2) -> 2
+          dfsAcc#3_0(2,2) -> 1
+          dfsAcc#3_1(2,2) -> 3
+          dfsAcc#3_1(2,3) -> 1
+          dfsAcc#3_1(2,3) -> 3
+          dfsAcc#3_1(2,4) -> 4
+          dfsAcc#3_1(2,6) -> 4
+          main_0(2) -> 1
+          revApp#2_0(2,2) -> 1
+          revApp#2_1(2,1) -> 1
+          revApp#2_1(4,5) -> 1
+          revApp#2_2(4,7) -> 1
+          revApp#2_2(6,7) -> 1
+          2 -> 1
+          7 -> 1
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            dfsAcc#3(Leaf(x8),x16) -> Cons(x8,x16)
+            dfsAcc#3(Node(x6,x4),x2) -> dfsAcc#3(x4,dfsAcc#3(x6,x2))
+            main(x1) -> revApp#2(dfsAcc#3(x1,Nil()),Nil())
+            revApp#2(Cons(x6,x4),x2) -> revApp#2(x4,Cons(x6,x2))
+            revApp#2(Nil(),x16) -> x16
+        - Signature:
+            {dfsAcc#3/2,main/1,revApp#2/2} / {Cons/2,Leaf/1,Nil/0,Node/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {dfsAcc#3,main,revApp#2} and constructors {Cons,Leaf,Nil
+            ,Node}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

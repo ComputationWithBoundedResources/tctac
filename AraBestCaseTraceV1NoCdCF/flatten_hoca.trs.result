@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"flatten_hoca","rTime":0.70027,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV1NoCdCF","tArguments":["-t 60","-v1","-l","-a","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

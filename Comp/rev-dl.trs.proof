@@ -1,0 +1,69 @@
+WORST_CASE(?,O(n^1))
+* Step 1: Bounds WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            comp_f_g#1(comp_f_g(x7,x9),walk_xs_3(x8),x12) -> comp_f_g#1(x7,x9,Cons(x8,x12))
+            comp_f_g#1(walk_xs(),walk_xs_3(x8),x12) -> Cons(x8,x12)
+            main(Cons(x4,x5)) -> comp_f_g#1(walk#1(x5),walk_xs_3(x4),Nil())
+            main(Nil()) -> Nil()
+            walk#1(Cons(x4,x3)) -> comp_f_g(walk#1(x3),walk_xs_3(x4))
+            walk#1(Nil()) -> walk_xs()
+        - Signature:
+            {comp_f_g#1/3,main/1,walk#1/1} / {Cons/2,Nil/0,comp_f_g/2,walk_xs/0,walk_xs_3/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {comp_f_g#1,main,walk#1} and constructors {Cons,Nil
+            ,comp_f_g,walk_xs,walk_xs_3}
+    + Applied Processor:
+        Bounds {initialAutomaton = minimal, enrichment = match}
+    + Details:
+        The problem is match-bounded by 2.
+        The enriched problem is compatible with follwoing automaton.
+          Cons_0(2,2) -> 2
+          Cons_1(2,1) -> 1
+          Cons_1(2,2) -> 1
+          Cons_1(2,2) -> 3
+          Cons_1(2,3) -> 1
+          Cons_1(2,4) -> 1
+          Cons_2(2,1) -> 1
+          Cons_2(2,3) -> 1
+          Cons_2(2,3) -> 4
+          Cons_2(2,4) -> 1
+          Nil_0() -> 2
+          Nil_1() -> 1
+          Nil_1() -> 3
+          comp_f_g_0(2,2) -> 2
+          comp_f_g_1(2,2) -> 1
+          comp_f_g_1(2,2) -> 2
+          comp_f_g#1_0(2,2,2) -> 1
+          comp_f_g#1_1(2,2,1) -> 1
+          comp_f_g#1_1(2,2,3) -> 1
+          comp_f_g#1_2(2,2,1) -> 1
+          comp_f_g#1_2(2,2,4) -> 1
+          main_0(2) -> 1
+          walk#1_0(2) -> 1
+          walk#1_1(2) -> 2
+          walk_xs_0() -> 2
+          walk_xs_1() -> 1
+          walk_xs_1() -> 2
+          walk_xs_3_0(2) -> 2
+          walk_xs_3_1(2) -> 2
+* Step 2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak TRS:
+            comp_f_g#1(comp_f_g(x7,x9),walk_xs_3(x8),x12) -> comp_f_g#1(x7,x9,Cons(x8,x12))
+            comp_f_g#1(walk_xs(),walk_xs_3(x8),x12) -> Cons(x8,x12)
+            main(Cons(x4,x5)) -> comp_f_g#1(walk#1(x5),walk_xs_3(x4),Nil())
+            main(Nil()) -> Nil()
+            walk#1(Cons(x4,x3)) -> comp_f_g(walk#1(x3),walk_xs_3(x4))
+            walk#1(Nil()) -> walk_xs()
+        - Signature:
+            {comp_f_g#1/3,main/1,walk#1/1} / {Cons/2,Nil/0,comp_f_g/2,walk_xs/0,walk_xs_3/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {comp_f_g#1,main,walk#1} and constructors {Cons,Nil
+            ,comp_f_g,walk_xs,walk_xs_3}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^1))

@@ -1,0 +1,121 @@
+WORST_CASE(?,O(n^1))
+* Step 1: NaturalMI WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            conv(0()) -> snoc(nil(),0())
+            conv(s(x)) -> snoc(conv(half(s(x))),lastbit(s(x)))
+            half(0()) -> 0()
+            half(s(0())) -> 0()
+            half(s(s(x))) -> s(half(x))
+            lastbit(0()) -> 0()
+            lastbit(s(0())) -> s(0())
+            lastbit(s(s(x))) -> lastbit(x)
+        - Signature:
+            {conv/1,half/1,lastbit/1} / {0/0,nil/0,s/1,snoc/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {conv,half,lastbit} and constructors {0,nil,s,snoc}
+    + Applied Processor:
+        NaturalMI {miDimension = 1, miDegree = 1, miKind = Algebraic, uargs = UArgs, urules = URules, selector = Just any strict-rules}
+    + Details:
+        We apply a matrix interpretation of kind constructor based matrix interpretation:
+        The following argument positions are considered usable:
+          uargs(conv) = {1},
+          uargs(s) = {1},
+          uargs(snoc) = {1,2}
+        
+        Following symbols are considered usable:
+          {conv,half,lastbit}
+        TcT has computed the following interpretation:
+                p(0) = [0]                  
+             p(conv) = [1] x1 + [1]         
+             p(half) = [1] x1 + [0]         
+          p(lastbit) = [0]                  
+              p(nil) = [0]                  
+                p(s) = [1] x1 + [0]         
+             p(snoc) = [1] x1 + [1] x2 + [0]
+        
+        Following rules are strictly oriented:
+        conv(0()) = [1]            
+                  > [0]            
+                  = snoc(nil(),0())
+        
+        
+        Following rules are (at-least) weakly oriented:
+              conv(s(x)) =  [1] x + [1]                         
+                         >= [1] x + [1]                         
+                         =  snoc(conv(half(s(x))),lastbit(s(x)))
+        
+               half(0()) =  [0]                                 
+                         >= [0]                                 
+                         =  0()                                 
+        
+            half(s(0())) =  [0]                                 
+                         >= [0]                                 
+                         =  0()                                 
+        
+           half(s(s(x))) =  [1] x + [0]                         
+                         >= [1] x + [0]                         
+                         =  s(half(x))                          
+        
+            lastbit(0()) =  [0]                                 
+                         >= [0]                                 
+                         =  0()                                 
+        
+         lastbit(s(0())) =  [0]                                 
+                         >= [0]                                 
+                         =  s(0())                              
+        
+        lastbit(s(s(x))) =  [0]                                 
+                         >= [0]                                 
+                         =  lastbit(x)                          
+        
+* Step 2: Ara WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict TRS:
+            conv(s(x)) -> snoc(conv(half(s(x))),lastbit(s(x)))
+            half(0()) -> 0()
+            half(s(0())) -> 0()
+            half(s(s(x))) -> s(half(x))
+            lastbit(0()) -> 0()
+            lastbit(s(0())) -> s(0())
+            lastbit(s(s(x))) -> lastbit(x)
+        - Weak TRS:
+            conv(0()) -> snoc(nil(),0())
+        - Signature:
+            {conv/1,half/1,lastbit/1} / {0/0,nil/0,s/1,snoc/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {conv,half,lastbit} and constructors {0,nil,s,snoc}
+    + Applied Processor:
+        Ara {araHeuristics = Heuristics, minDegree = 1, maxDegree = 3, araTimeout = 3, araRuleShifting = Nothing}
+    + Details:
+        Signatures used:
+        ----------------
+          0 :: [] -(0)-> "A"(5)
+          0 :: [] -(0)-> "A"(1)
+          0 :: [] -(0)-> "A"(9)
+          0 :: [] -(0)-> "A"(0)
+          conv :: ["A"(9)] -(0)-> "A"(0)
+          half :: ["A"(5)] -(1)-> "A"(9)
+          lastbit :: ["A"(1)] -(1)-> "A"(0)
+          nil :: [] -(0)-> "A"(0)
+          s :: ["A"(9)] -(9)-> "A"(9)
+          s :: ["A"(5)] -(5)-> "A"(5)
+          s :: ["A"(1)] -(1)-> "A"(1)
+          s :: ["A"(0)] -(0)-> "A"(0)
+          snoc :: ["A"(0) x "A"(0)] -(0)-> "A"(0)
+        
+        
+        Cost-free Signatures used:
+        --------------------------
+        
+        
+        
+        Base Constructor Signatures used:
+        ---------------------------------
+          "0_A" :: [] -(0)-> "A"(0)
+          "nil_A" :: [] -(0)-> "A"(0)
+          "s_A" :: ["A"(0)] -(0)-> "A"(0)
+          "snoc_A" :: ["A"(0) x "A"(0)] -(0)-> "A"(0)
+        
+
+WORST_CASE(?,O(n^1))

@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"TRS is not left-linear"},"rProblem":"eq","rTime":3.106e-3,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV2NoCdCF","tArguments":["-t 60","-v2","-l","-a","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

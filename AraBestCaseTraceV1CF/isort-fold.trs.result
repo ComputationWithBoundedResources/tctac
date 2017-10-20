@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"isort-fold","rTime":0.550704,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV1CF","tArguments":["-t 60","-v1","-l","-a"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

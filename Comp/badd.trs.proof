@@ -1,0 +1,147 @@
+MAYBE
+* Step 1: DependencyPairs MAYBE
+    + Considered Problem:
+        - Strict TRS:
+            badd(x,Nil()) -> x
+            badd(x',Cons(x,xs)) -> badd(Cons(Nil(),Nil()),badd(x',xs))
+            goal(x,y) -> badd(x,y)
+        - Signature:
+            {badd/2,goal/2} / {Cons/2,Nil/0}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {badd,goal} and constructors {Cons,Nil}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = DT}
+    + Details:
+        We add the following dependency tuples:
+        
+        Strict DPs
+          badd#(x,Nil()) -> c_1()
+          badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs))
+          goal#(x,y) -> c_3(badd#(x,y))
+        Weak DPs
+          
+        
+        and mark the set of starting terms.
+* Step 2: PredecessorEstimation MAYBE
+    + Considered Problem:
+        - Strict DPs:
+            badd#(x,Nil()) -> c_1()
+            badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs))
+            goal#(x,y) -> c_3(badd#(x,y))
+        - Weak TRS:
+            badd(x,Nil()) -> x
+            badd(x',Cons(x,xs)) -> badd(Cons(Nil(),Nil()),badd(x',xs))
+            goal(x,y) -> badd(x,y)
+        - Signature:
+            {badd/2,goal/2,badd#/2,goal#/2} / {Cons/2,Nil/0,c_1/0,c_2/2,c_3/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {badd#,goal#} and constructors {Cons,Nil}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {1}
+        by application of
+          Pre({1}) = {2,3}.
+        Here rules are labelled as follows:
+          1: badd#(x,Nil()) -> c_1()
+          2: badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs))
+          3: goal#(x,y) -> c_3(badd#(x,y))
+* Step 3: RemoveWeakSuffixes MAYBE
+    + Considered Problem:
+        - Strict DPs:
+            badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs))
+            goal#(x,y) -> c_3(badd#(x,y))
+        - Weak DPs:
+            badd#(x,Nil()) -> c_1()
+        - Weak TRS:
+            badd(x,Nil()) -> x
+            badd(x',Cons(x,xs)) -> badd(Cons(Nil(),Nil()),badd(x',xs))
+            goal(x,y) -> badd(x,y)
+        - Signature:
+            {badd/2,goal/2,badd#/2,goal#/2} / {Cons/2,Nil/0,c_1/0,c_2/2,c_3/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {badd#,goal#} and constructors {Cons,Nil}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs))
+             -->_2 badd#(x,Nil()) -> c_1():3
+             -->_1 badd#(x,Nil()) -> c_1():3
+             -->_2 badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs)):1
+             -->_1 badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs)):1
+          
+          2:S:goal#(x,y) -> c_3(badd#(x,y))
+             -->_1 badd#(x,Nil()) -> c_1():3
+             -->_1 badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs)):1
+          
+          3:W:badd#(x,Nil()) -> c_1()
+             
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          3: badd#(x,Nil()) -> c_1()
+* Step 4: RemoveHeads MAYBE
+    + Considered Problem:
+        - Strict DPs:
+            badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs))
+            goal#(x,y) -> c_3(badd#(x,y))
+        - Weak TRS:
+            badd(x,Nil()) -> x
+            badd(x',Cons(x,xs)) -> badd(Cons(Nil(),Nil()),badd(x',xs))
+            goal(x,y) -> badd(x,y)
+        - Signature:
+            {badd/2,goal/2,badd#/2,goal#/2} / {Cons/2,Nil/0,c_1/0,c_2/2,c_3/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {badd#,goal#} and constructors {Cons,Nil}
+    + Applied Processor:
+        RemoveHeads
+    + Details:
+        Consider the dependency graph
+        
+        1:S:badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs))
+           -->_2 badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs)):1
+           -->_1 badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs)):1
+        
+        2:S:goal#(x,y) -> c_3(badd#(x,y))
+           -->_1 badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs)):1
+        
+        
+        Following roots of the dependency graph are removed, as the considered set of starting terms is closed under reduction with respect to these rules (modulo compound contexts).
+        
+        [(2,goal#(x,y) -> c_3(badd#(x,y)))]
+* Step 5: UsableRules MAYBE
+    + Considered Problem:
+        - Strict DPs:
+            badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs))
+        - Weak TRS:
+            badd(x,Nil()) -> x
+            badd(x',Cons(x,xs)) -> badd(Cons(Nil(),Nil()),badd(x',xs))
+            goal(x,y) -> badd(x,y)
+        - Signature:
+            {badd/2,goal/2,badd#/2,goal#/2} / {Cons/2,Nil/0,c_1/0,c_2/2,c_3/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {badd#,goal#} and constructors {Cons,Nil}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          badd(x,Nil()) -> x
+          badd(x',Cons(x,xs)) -> badd(Cons(Nil(),Nil()),badd(x',xs))
+          badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs))
+* Step 6: Failure MAYBE
+  + Considered Problem:
+      - Strict DPs:
+          badd#(x',Cons(x,xs)) -> c_2(badd#(Cons(Nil(),Nil()),badd(x',xs)),badd#(x',xs))
+      - Weak TRS:
+          badd(x,Nil()) -> x
+          badd(x',Cons(x,xs)) -> badd(Cons(Nil(),Nil()),badd(x',xs))
+      - Signature:
+          {badd/2,goal/2,badd#/2,goal#/2} / {Cons/2,Nil/0,c_1/0,c_2/2,c_3/1}
+      - Obligation:
+          innermost runtime complexity wrt. defined symbols {badd#,goal#} and constructors {Cons,Nil}
+  + Applied Processor:
+      EmptyProcessor
+  + Details:
+      The problem is still open.
+MAYBE

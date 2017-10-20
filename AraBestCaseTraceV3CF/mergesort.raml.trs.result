@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"mergesort.raml","rTime":58.293166,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3CF","tArguments":["-t 60","-v3","-l","-a"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

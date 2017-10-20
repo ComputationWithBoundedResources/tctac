@@ -1,0 +1,281 @@
+WORST_CASE(?,O(n^2))
+* Step 1: DependencyPairs WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mult(0(),y) -> 0()
+            mult(s(x),y) -> add(y,mult(x,y))
+        - Signature:
+            {add/2,mult/2} / {0/0,s/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add,mult} and constructors {0,s}
+    + Applied Processor:
+        DependencyPairs {dpKind_ = DT}
+    + Details:
+        We add the following dependency tuples:
+        
+        Strict DPs
+          add#(0(),y) -> c_1()
+          add#(s(x),y) -> c_2(add#(x,y))
+          mult#(0(),y) -> c_3()
+          mult#(s(x),y) -> c_4(add#(y,mult(x,y)),mult#(x,y))
+        Weak DPs
+          
+        
+        and mark the set of starting terms.
+* Step 2: PredecessorEstimation WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            add#(0(),y) -> c_1()
+            add#(s(x),y) -> c_2(add#(x,y))
+            mult#(0(),y) -> c_3()
+            mult#(s(x),y) -> c_4(add#(y,mult(x,y)),mult#(x,y))
+        - Weak TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mult(0(),y) -> 0()
+            mult(s(x),y) -> add(y,mult(x,y))
+        - Signature:
+            {add/2,mult/2,add#/2,mult#/2} / {0/0,s/1,c_1/0,c_2/1,c_3/0,c_4/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mult#} and constructors {0,s}
+    + Applied Processor:
+        PredecessorEstimation {onSelection = all simple predecessor estimation selector}
+    + Details:
+        We estimate the number of application of
+          {1,3}
+        by application of
+          Pre({1,3}) = {2,4}.
+        Here rules are labelled as follows:
+          1: add#(0(),y) -> c_1()
+          2: add#(s(x),y) -> c_2(add#(x,y))
+          3: mult#(0(),y) -> c_3()
+          4: mult#(s(x),y) -> c_4(add#(y,mult(x,y)),mult#(x,y))
+* Step 3: RemoveWeakSuffixes WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            add#(s(x),y) -> c_2(add#(x,y))
+            mult#(s(x),y) -> c_4(add#(y,mult(x,y)),mult#(x,y))
+        - Weak DPs:
+            add#(0(),y) -> c_1()
+            mult#(0(),y) -> c_3()
+        - Weak TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mult(0(),y) -> 0()
+            mult(s(x),y) -> add(y,mult(x,y))
+        - Signature:
+            {add/2,mult/2,add#/2,mult#/2} / {0/0,s/1,c_1/0,c_2/1,c_3/0,c_4/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mult#} and constructors {0,s}
+    + Applied Processor:
+        RemoveWeakSuffixes
+    + Details:
+        Consider the dependency graph
+          1:S:add#(s(x),y) -> c_2(add#(x,y))
+             -->_1 add#(0(),y) -> c_1():3
+             -->_1 add#(s(x),y) -> c_2(add#(x,y)):1
+          
+          2:S:mult#(s(x),y) -> c_4(add#(y,mult(x,y)),mult#(x,y))
+             -->_2 mult#(0(),y) -> c_3():4
+             -->_1 add#(0(),y) -> c_1():3
+             -->_2 mult#(s(x),y) -> c_4(add#(y,mult(x,y)),mult#(x,y)):2
+             -->_1 add#(s(x),y) -> c_2(add#(x,y)):1
+          
+          3:W:add#(0(),y) -> c_1()
+             
+          
+          4:W:mult#(0(),y) -> c_3()
+             
+          
+        The following weak DPs constitute a sub-graph of the DG that is closed under successors. The DPs are removed.
+          4: mult#(0(),y) -> c_3()
+          3: add#(0(),y) -> c_1()
+* Step 4: DecomposeDG WORST_CASE(?,O(n^2))
+    + Considered Problem:
+        - Strict DPs:
+            add#(s(x),y) -> c_2(add#(x,y))
+            mult#(s(x),y) -> c_4(add#(y,mult(x,y)),mult#(x,y))
+        - Weak TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mult(0(),y) -> 0()
+            mult(s(x),y) -> add(y,mult(x,y))
+        - Signature:
+            {add/2,mult/2,add#/2,mult#/2} / {0/0,s/1,c_1/0,c_2/1,c_3/0,c_4/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mult#} and constructors {0,s}
+    + Applied Processor:
+        DecomposeDG {onSelection = all below first cut in WDG, onUpper = Nothing, onLower = Nothing}
+    + Details:
+        We decompose the input problem according to the dependency graph into the upper component
+          mult#(s(x),y) -> c_4(add#(y,mult(x,y)),mult#(x,y))
+        and a lower component
+          add#(s(x),y) -> c_2(add#(x,y))
+        Further, following extension rules are added to the lower component.
+          mult#(s(x),y) -> add#(y,mult(x,y))
+          mult#(s(x),y) -> mult#(x,y)
+** Step 4.a:1: SimplifyRHS WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            mult#(s(x),y) -> c_4(add#(y,mult(x,y)),mult#(x,y))
+        - Weak TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mult(0(),y) -> 0()
+            mult(s(x),y) -> add(y,mult(x,y))
+        - Signature:
+            {add/2,mult/2,add#/2,mult#/2} / {0/0,s/1,c_1/0,c_2/1,c_3/0,c_4/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mult#} and constructors {0,s}
+    + Applied Processor:
+        SimplifyRHS
+    + Details:
+        Consider the dependency graph
+          1:S:mult#(s(x),y) -> c_4(add#(y,mult(x,y)),mult#(x,y))
+             -->_2 mult#(s(x),y) -> c_4(add#(y,mult(x,y)),mult#(x,y)):1
+          
+        Due to missing edges in the depndency graph, the right-hand sides of following rules could be simplified:
+          mult#(s(x),y) -> c_4(mult#(x,y))
+** Step 4.a:2: UsableRules WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            mult#(s(x),y) -> c_4(mult#(x,y))
+        - Weak TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mult(0(),y) -> 0()
+            mult(s(x),y) -> add(y,mult(x,y))
+        - Signature:
+            {add/2,mult/2,add#/2,mult#/2} / {0/0,s/1,c_1/0,c_2/1,c_3/0,c_4/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mult#} and constructors {0,s}
+    + Applied Processor:
+        UsableRules
+    + Details:
+        We replace rewrite rules by usable rules:
+          mult#(s(x),y) -> c_4(mult#(x,y))
+** Step 4.a:3: NaturalMI WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            mult#(s(x),y) -> c_4(mult#(x,y))
+        - Signature:
+            {add/2,mult/2,add#/2,mult#/2} / {0/0,s/1,c_1/0,c_2/1,c_3/0,c_4/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mult#} and constructors {0,s}
+    + Applied Processor:
+        NaturalMI {miDimension = 1, miDegree = 1, miKind = Algebraic, uargs = UArgs, urules = URules, selector = Just any strict-rules}
+    + Details:
+        We apply a matrix interpretation of kind constructor based matrix interpretation:
+        The following argument positions are considered usable:
+          uargs(c_4) = {1}
+        
+        Following symbols are considered usable:
+          {add#,mult#}
+        TcT has computed the following interpretation:
+              p(0) = [2]         
+            p(add) = [2] x2 + [2]
+           p(mult) = [1] x1 + [4]
+              p(s) = [1] x1 + [7]
+           p(add#) = [8] x2 + [1]
+          p(mult#) = [1] x1 + [0]
+            p(c_1) = [0]         
+            p(c_2) = [0]         
+            p(c_3) = [0]         
+            p(c_4) = [1] x1 + [6]
+        
+        Following rules are strictly oriented:
+        mult#(s(x),y) = [1] x + [7]    
+                      > [1] x + [6]    
+                      = c_4(mult#(x,y))
+        
+        
+        Following rules are (at-least) weakly oriented:
+        
+** Step 4.a:4: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            mult#(s(x),y) -> c_4(mult#(x,y))
+        - Signature:
+            {add/2,mult/2,add#/2,mult#/2} / {0/0,s/1,c_1/0,c_2/1,c_3/0,c_4/1}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mult#} and constructors {0,s}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+** Step 4.b:1: NaturalMI WORST_CASE(?,O(n^1))
+    + Considered Problem:
+        - Strict DPs:
+            add#(s(x),y) -> c_2(add#(x,y))
+        - Weak DPs:
+            mult#(s(x),y) -> add#(y,mult(x,y))
+            mult#(s(x),y) -> mult#(x,y)
+        - Weak TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mult(0(),y) -> 0()
+            mult(s(x),y) -> add(y,mult(x,y))
+        - Signature:
+            {add/2,mult/2,add#/2,mult#/2} / {0/0,s/1,c_1/0,c_2/1,c_3/0,c_4/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mult#} and constructors {0,s}
+    + Applied Processor:
+        NaturalMI {miDimension = 1, miDegree = 1, miKind = Algebraic, uargs = UArgs, urules = URules, selector = Just any strict-rules}
+    + Details:
+        We apply a matrix interpretation of kind constructor based matrix interpretation:
+        The following argument positions are considered usable:
+          uargs(c_2) = {1}
+        
+        Following symbols are considered usable:
+          {add#,mult#}
+        TcT has computed the following interpretation:
+              p(0) = [8]                  
+            p(add) = [2] x1 + [4] x2 + [8]
+           p(mult) = [5] x2 + [0]         
+              p(s) = [1] x1 + [8]         
+           p(add#) = [2] x1 + [0]         
+          p(mult#) = [2] x1 + [4] x2 + [2]
+            p(c_1) = [0]                  
+            p(c_2) = [1] x1 + [8]         
+            p(c_3) = [0]                  
+            p(c_4) = [2] x2 + [2]         
+        
+        Following rules are strictly oriented:
+        add#(s(x),y) = [2] x + [16]  
+                     > [2] x + [8]   
+                     = c_2(add#(x,y))
+        
+        
+        Following rules are (at-least) weakly oriented:
+        mult#(s(x),y) =  [2] x + [4] y + [18]
+                      >= [2] y + [0]         
+                      =  add#(y,mult(x,y))   
+        
+        mult#(s(x),y) =  [2] x + [4] y + [18]
+                      >= [2] x + [4] y + [2] 
+                      =  mult#(x,y)          
+        
+** Step 4.b:2: EmptyProcessor WORST_CASE(?,O(1))
+    + Considered Problem:
+        - Weak DPs:
+            add#(s(x),y) -> c_2(add#(x,y))
+            mult#(s(x),y) -> add#(y,mult(x,y))
+            mult#(s(x),y) -> mult#(x,y)
+        - Weak TRS:
+            add(0(),y) -> y
+            add(s(x),y) -> s(add(x,y))
+            mult(0(),y) -> 0()
+            mult(s(x),y) -> add(y,mult(x,y))
+        - Signature:
+            {add/2,mult/2,add#/2,mult#/2} / {0/0,s/1,c_1/0,c_2/1,c_3/0,c_4/2}
+        - Obligation:
+            innermost runtime complexity wrt. defined symbols {add#,mult#} and constructors {0,s}
+    + Applied Processor:
+        EmptyProcessor
+    + Details:
+        The problem is already closed. The intended complexity is O(1).
+
+WORST_CASE(?,O(n^2))

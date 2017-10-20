@@ -1,0 +1,1 @@
+{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"bitvectors.raml","rTime":60.052791,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3NoCdCFHeur","tArguments":["-t 60","-v3","-l","-b","-a","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

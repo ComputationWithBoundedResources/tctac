@@ -55,12 +55,13 @@ e =  Experiment
                  , mkToolAra "AraBestCaseTraceV2NoCdHeur" ["-v2", "-l", "-b", "-n"]
                  , mkToolAra "AraBestCaseTraceV1NoCdHeur" ["-v1", "-l", "-b", "-n"]
 
-                 , mkToolAra "AraBestCaseTraceV3NoCd" ["-v3", "-l"]
-                 , mkToolAra "AraBestCaseTraceV2NoCd" ["-v2", "-l"]
-                 , mkToolAra "AraBestCaseTraceV1NoCd" ["-v1", "-l"]
+                 , mkToolAra "AraBestCaseTraceV3NoCd" ["-v3", "-l", "-n"]
+                 , mkToolAra "AraBestCaseTraceV2NoCd" ["-v2", "-l", "-n"]
+                 , mkToolAra "AraBestCaseTraceV1NoCd" ["-v1", "-l", "-n"]
 
 
                  , mkToolAra "AraBestCaseSize" ["-v1", "--lowerbound"]
+                 , mkToolAra "AraBestCaseSizeNoCd" ["-v1", "--lowerbound", "-n"]
 
                   -- mkToolAra "CompletelyDefined" ["-l"]
 
@@ -128,6 +129,7 @@ main = do
     , "AraBestCaseTraceV2NoCdCFHeur"
     , "AraBestCaseTraceV1NoCdCFHeur"
     , "AraBestCaseSize"
+    , "AraBestCaseSizeNoCd"
     , "CompletelyDefined"
                -- "TctAraZ3" -- sum
           --   "AraZ3" -- sum

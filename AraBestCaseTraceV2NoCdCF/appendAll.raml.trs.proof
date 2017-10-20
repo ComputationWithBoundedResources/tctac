@@ -1,0 +1,41 @@
+BEST_CASE(Omega(n^1),?)
+
+Solution:
+---------
+
+  "append" :: ["a"(0) x "a"(0)] -(2)-> "a"(0)
+  "append#1" :: ["a"(0) x "a"(0)] -(1)-> "a"(0)
+  "appendAll" :: ["a"(1)] -(2)-> "a"(0)
+  "appendAll#1" :: ["a"(1)] -(1)-> "a"(0)
+  "appendAll2" :: ["a"(0)] -(2)-> "a"(0)
+  "appendAll2#1" :: ["a"(0)] -(1)-> "a"(0)
+  "appendAll3" :: ["a"(3)] -(1)-> "a"(0)
+  "appendAll3#1" :: ["a"(3)] -(1)-> "a"(0)
+  "cons" :: ["a"(0) x "a"(0)] -(0)-> "a"(0)
+  "cons" :: ["a"(0) x "a"(1)] -(1)-> "a"(1)
+  "cons" :: ["a"(0) x "a"(3)] -(3)-> "a"(3)
+  "nil" :: [] -(0)-> "a"(0)
+  "nil" :: [] -(0)-> "a"(1)
+  "nil" :: [] -(0)-> "a"(3)
+
+
+Cost Free Signatures:
+---------------------
+
+  "append" :: ["a"_cf(0) x "a"_cf(0)] -(0)-> "a"_cf(0)
+  "append#1" :: ["a"_cf(0) x "a"_cf(0)] -(0)-> "a"_cf(0)
+  "appendAll" :: ["a"_cf(0)] -(0)-> "a"_cf(0)
+  "appendAll#1" :: ["a"_cf(0)] -(0)-> "a"_cf(0)
+  "appendAll2" :: ["a"_cf(0)] -(0)-> "a"_cf(0)
+  "appendAll2#1" :: ["a"_cf(0)] -(0)-> "a"_cf(0)
+  "appendAll3" :: ["a"_cf(0)] -(0)-> "a"_cf(0)
+  "appendAll3#1" :: ["a"_cf(0)] -(0)-> "a"_cf(0)
+  "cons" :: ["a"_cf(0) x "a"_cf(0)] -(0)-> "a"_cf(0)
+  "nil" :: [] -(0)-> "a"_cf(0)
+
+
+Base Constructors:
+------------------
+  "\"cons\"_a" :: ["a"(0) x "a"(1)] -(1)-> "a"(1)
+  "\"nil\"_a" :: [] -(0)-> "a"(1)
+
