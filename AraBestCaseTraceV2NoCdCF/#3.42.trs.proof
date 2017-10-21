@@ -11,7 +11,7 @@ Solution:
   "nil" :: [] -(0)-> "L"(0)
   "s" :: ["Nat"(1)] -(1)-> "Nat"(1)
   "s" :: ["Nat"(0)] -(0)-> "Nat"(0)
-  "snoc" :: ["L"(0) x "Nat"(0)] -(0)-> "L"(0)
+  "cons" :: ["L"(0) x "Nat"(0)] -(0)-> "L"(0)
 
 
 Cost Free Signatures:
@@ -23,7 +23,7 @@ Cost Free Signatures:
   "lastbit" :: ["Nat"_cf(0)] -(0)-> "Nat"_cf(0)
   "nil" :: [] -(0)-> "L"_cf(0)
   "s" :: ["Nat"_cf(0)] -(0)-> "Nat"_cf(0)
-  "snoc" :: ["L"_cf(0) x "Nat"_cf(0)] -(0)-> "L"_cf(0)
+  "cons" :: ["L"_cf(0) x "Nat"_cf(0)] -(0)-> "L"_cf(0)
 
 
 Base Constructors:
@@ -31,5 +31,5 @@ Base Constructors:
   "\"0\"_Nat" :: [] -(1)-> "Nat"(1)
   "\"nil\"_L" :: [] -(0)-> "L"(1)
   "\"s\"_Nat" :: ["Nat"(1)] -(1)-> "Nat"(1)
-  "\"snoc\"_L" :: ["L"(10) x "Nat"(0)] -(1)-> "L"(1)
+  "\"cons\"_L" :: ["L"(10) x "Nat"(0)] -(1)-> "L"(1)
 

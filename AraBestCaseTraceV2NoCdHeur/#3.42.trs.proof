@@ -12,7 +12,7 @@ Solution:
   "nil" :: [] -(0)-> "L"(0)
   "s" :: ["Nat"(1)] -(1)-> "Nat"(1)
   "s" :: ["Nat"(0)] -(0)-> "Nat"(0)
-  "snoc" :: ["L"(0) x "Nat"(0)] -(0)-> "L"(0)
+  "cons" :: ["L"(0) x "Nat"(0)] -(0)-> "L"(0)
 
 
 Cost Free Signatures:
