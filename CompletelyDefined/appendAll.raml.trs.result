@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"YES"},"rProblem":"appendAll.raml","rTime":0.128924,"rTool":{"tProcessor":[],"tName":"CompletelyDefined","tArguments":["-t 60","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

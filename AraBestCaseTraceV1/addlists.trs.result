@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"addlists","rTime":60.04297,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV1","tArguments":["-t 60","-v1","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

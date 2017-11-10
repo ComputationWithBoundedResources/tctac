@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"queue.raml","rTime":60.030752,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3CF","tArguments":["-t 60","-v3","-l","-a"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"eratosthenes","rTime":10.966214,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV1NoCdCFHeur","tArguments":["-t 60","-v1","-l","-b","-a","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

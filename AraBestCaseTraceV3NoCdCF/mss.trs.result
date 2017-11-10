@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"mss","rTime":60.060191,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3NoCdCF","tArguments":["-t 60","-v3","-l","-a","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

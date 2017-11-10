@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(n^2),?)"},"rProblem":"shuffle","rTime":16.226654,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3NoCdCF","tArguments":["-t 60","-v3","-l","-a","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

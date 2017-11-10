@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"mergesort-dc","rTime":60.002401,"rTool":{"tProcessor":[],"tName":"AraBestCaseSize","tArguments":["-t 60","-v1","--lowerbound"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

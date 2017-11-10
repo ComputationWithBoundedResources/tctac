@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"MAYBE"},"rProblem":"intlookup","rTime":36.767899,"rTool":{"tProcessor":[],"tName":"Comp","tArguments":["--complexity","rci","-s","competition","-t","60"],"tExtension":"trs","tCommand":"tct-trs"}}

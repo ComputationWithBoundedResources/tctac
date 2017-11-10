@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(n^3),?)"},"rProblem":"dcquad","rTime":0.308759,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3NoCdHeur","tArguments":["-t 60","-v3","-l","-b","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

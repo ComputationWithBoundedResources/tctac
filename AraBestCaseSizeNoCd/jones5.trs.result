@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"jones5","rTime":7.5523e-2,"rTool":{"tProcessor":[],"tName":"AraBestCaseSizeNoCd","tArguments":["-t 60","-v1","--lowerbound","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

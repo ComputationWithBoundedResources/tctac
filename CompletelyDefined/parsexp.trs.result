@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"NO"},"rProblem":"parsexp","rTime":0.358125,"rTool":{"tProcessor":[],"tName":"CompletelyDefined","tArguments":["-t 60","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

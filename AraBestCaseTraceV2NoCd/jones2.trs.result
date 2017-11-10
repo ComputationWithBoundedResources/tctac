@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(n^1),?)"},"rProblem":"jones2","rTime":0.443461,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV2NoCd","tArguments":["-t 60","-v2","-l","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

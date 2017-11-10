@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"WORST_CASE(?,O(n^3))"},"rProblem":"bubblesort-nat","rTime":10.842973,"rTool":{"tProcessor":[],"tName":"Comp","tArguments":["--complexity","rci","-s","competition","-t","60"],"tExtension":"trs","tCommand":"tct-trs"}}

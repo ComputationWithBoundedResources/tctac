@@ -22,17 +22,9 @@ src/Main.hs,125
 module Main Main2,3
 timeout timeout8,9
 e e11,12
-mkToolTct mkToolTct76,77
-mkToolAra mkToolAra85,86
-main main94,95
-
-src/flycheck_Main.hs,125
-module Main Main2,3
-timeout timeout8,9
-e e11,12
-mkToolTct mkToolTct76,77
-mkToolAra mkToolAra85,86
-main main94,95
+mkToolTct mkToolTct77,78
+mkToolAra mkToolAra86,87
+main main95,96
 
 src/Summer.hs,688
 module Summer Summer2,3
@@ -127,17 +119,9 @@ printError printError78,79
 module Main Main2,3
 timeout timeout8,9
 e e11,12
-mkToolTct mkToolTct76,77
-mkToolAra mkToolAra85,86
-main main94,95
-
-./src/flycheck_Main.hs,125
-module Main Main2,3
-timeout timeout8,9
-e e11,12
-mkToolTct mkToolTct76,77
-mkToolAra mkToolAra85,86
-main main94,95
+mkToolTct mkToolTct77,78
+mkToolAra mkToolAra86,87
+main main95,96
 
 ./src/Summer.hs,688
 module Summer Summer2,3

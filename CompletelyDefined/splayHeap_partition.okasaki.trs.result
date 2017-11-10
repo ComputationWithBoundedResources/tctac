@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"NO"},"rProblem":"splayHeap_partition.okasaki","rTime":0.408779,"rTool":{"tProcessor":[],"tName":"CompletelyDefined","tArguments":["-t 60","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

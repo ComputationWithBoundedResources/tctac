@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"TRS is not left-linear"},"rProblem":"rpm-lazy","rTime":2.5383e-2,"rTool":{"tProcessor":[],"tName":"AraBestCaseSizeNoCd","tArguments":["-t 60","-v1","--lowerbound","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

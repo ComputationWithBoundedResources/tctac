@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"MAYBE"},"rProblem":"splayHeap_partition.okasaki","rTime":18.783537,"rTool":{"tProcessor":[],"tName":"AraWorstCaseV3","tArguments":["-t 60","-v3","-s z3"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

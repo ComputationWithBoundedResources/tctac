@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"NO"},"rProblem":"sum_sqs3","rTime":0.104335,"rTool":{"tProcessor":[],"tName":"CompletelyDefined","tArguments":["-t 60","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

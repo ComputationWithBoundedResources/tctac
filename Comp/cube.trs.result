@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"WORST_CASE(?,O(n^4))"},"rProblem":"cube","rTime":14.481032,"rTool":{"tProcessor":[],"tName":"Comp","tArguments":["--complexity","rci","-s","competition","-t","60"],"tExtension":"trs","tCommand":"tct-trs"}}

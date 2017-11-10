@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"flatten.raml","rTime":0.267239,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV2Heur","tArguments":["-t 60","-v2","-l","-b"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

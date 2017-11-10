@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(n^3),?)"},"rProblem":"subtrees.raml","rTime":0.293806,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3CFHeur","tArguments":["-t 60","-v3","-l","-b","-a"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

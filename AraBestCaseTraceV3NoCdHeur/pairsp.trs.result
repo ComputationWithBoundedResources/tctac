@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(n^2),?)"},"rProblem":"pairsp","rTime":0.255389,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3NoCdHeur","tArguments":["-t 60","-v3","-l","-b","-n"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"MAYBE"},"rProblem":"disjconj","rTime":8.297017,"rTool":{"tProcessor":[],"tName":"AraWorstCaseV3","tArguments":["-t 60","-v3","-s z3"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

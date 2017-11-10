@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Timeout","contents":[]},"rProblem":"binomialHeaps_merge.okasaki","rTime":60.029466,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3","tArguments":["-t 60","-v3","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

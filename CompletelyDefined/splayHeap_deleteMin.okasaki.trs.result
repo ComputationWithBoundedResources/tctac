@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"NO"},"rProblem":"splayHeap_deleteMin.okasaki","rTime":6.7591e-2,"rTool":{"tProcessor":[],"tName":"CompletelyDefined","tArguments":["-t 60","-l"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

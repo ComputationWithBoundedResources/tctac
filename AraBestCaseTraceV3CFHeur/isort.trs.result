@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"BEST_CASE(Omega(1),?)"},"rProblem":"isort","rTime":0.772366,"rTool":{"tProcessor":[],"tName":"AraBestCaseTraceV3CFHeur","tArguments":["-t 60","-v3","-l","-b","-a"],"tExtension":"trs","tCommand":"ara-inference-exe"}}

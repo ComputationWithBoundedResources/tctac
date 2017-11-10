@@ -1,1 +1,0 @@
-{"rOutcome":{"tag":"Success","contents":"MAYBE"},"rProblem":"sparseByWeight.okasaki","rTime":59.382283,"rTool":{"tProcessor":[],"tName":"Comp","tArguments":["--complexity","rci","-s","competition","-t","60"],"tExtension":"trs","tCommand":"tct-trs"}}
