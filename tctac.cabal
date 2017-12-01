@@ -46,6 +46,7 @@ executable tctac-exe
                 shakespeare,
                 text,
                 unix,
+                split,
                 timeout
 
 
@@ -75,6 +76,7 @@ library
                 shakespeare,
                 text,
                 unix,
+                split,
                 timeout
     -- turtle
   ghc-options:
