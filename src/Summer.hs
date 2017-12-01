@@ -4,7 +4,8 @@ module Summer (summarise) where
 
 import           Control.Arrow                 ((&&&))
 import           Control.Monad                 (filterM, forM_, join)
-import qualified Data.List                     as L (find)
+import qualified Data.List                     as L (find, intercalate)
+import           Data.List.Split               as L (splitOn)
 import qualified Data.Map.Strict               as M
 import           Data.Maybe                    (catMaybes, isJust)
 import           Data.Monoid
@@ -77,8 +78,10 @@ queryOutcomes = S.toList . S.unions . fmap k
   where k = S.fromList . fmap rOutcome . catMaybes . M.elems . cRows
 
 toEntry :: Result -> (String, Outcome String, String)
-toEntry Result{rTool=t,rProblem=p,rTime=z,rOutcome=out} = (fp,out, showDouble z)
+toEntry Result{rTool=t,rProblem=p,rTime=z,rOutcome=out} =
+  (replace "#" "%23" fp,out, showDouble z)
   where fp = tName t </> p <.> tExtension t
+        replace old new = L.intercalate new . L.splitOn old
 
 queryResult :: DB -> TId -> PId -> Maybe Result
 queryResult db t p = do
