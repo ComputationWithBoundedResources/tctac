@@ -28,36 +28,34 @@ summarise :: [TId] -> IO ()
 summarise [] = Dir.getCurrentDirectory >>= Dir.getDirectoryContents >>= summarise
 summarise xs = filterM Dir.doesDirectoryExist xs >>= gather >>= writeExperiments "table.html"
 
-data ANSI = ANSI | NoANSI
-
 -- compares the 'Outcome's of two tools -- for "Golden Tests"
 -- for each problem
 --   * ignores it if the Outcome is equal
 --   * prints the results in green if the first tool is "better"
 --   * prints the results in red if the first tool is "worse"
-diffBy :: ANSI -> (Outcome String -> Outcome String -> Ordering) -> TId -> TId -> IO ()
+diffBy :: (Outcome String -> Outcome String -> Ordering) -> TId -> TId -> IO ()
 diffBy cmp t1 t2 = do
   unlessM (Dir.doesDirectoryExist t1) $ die (t1 ++ " show does not exist.")
   unlessM (Dir.doesDirectoryExist t2) $ die (t2 ++ " show does not exist.")
   db <- gather [t1,t2]
   let 
     ps  = queryProblems db
-    len  = maximum $ length`fmap` ps
-    row p code r1 r2 fill len p ++ code (fill len (show r1) ++ fill len (show r2))
+    len = succ $ maximum $ length`fmap` ps
 
   forM_ ps $ \p -> do
     let 
-      r1 = Failure "DoesNotExist" `fromMaybe` (snd' <$> queryEntry db t1 p)
-      r2 = Failure "DoesNotExist" `fromMaybe` (snd' <$> queryEntry db t2 p)
+      r1 = queryOutcome db t1 p
+      r2 = queryOutcome db t2 p
     case cmp r1 r2 of
       EQ -> pure ()
-      LT -> putStrLn $ row p green r1 r2
-      GT -> putStrLn $ row p red   r1 r2
+      LT -> putStrLn $ row len green p r1 r2
+      GT -> putStrLn $ row len red   p r1 r2
   where
-  snd' (_,a,_) = a
-  fill n x     = x ++ take (n - length x) (repeat ' ')
-  red   xs   = "\ESC[31m" ++ xs ++ "\ESC[m"
-  green xs   = "\ESC[32m" ++ xs ++ "\ESC[m"
+  queryOutcome db t p = Failure "DoesNotExist" `fromMaybe` ( (\(_,r,_) -> r) <$> queryEntry db t p)
+  fill n x            = x ++ take (n - length x) (repeat ' ')
+  row len code p r1 r2 = fill len p ++ code (fill len (show r1) ++ fill len (show r2))
+  red   xs = "\ESC[31m" ++ xs ++ "\ESC[m"
+  green xs = "\ESC[32m" ++ xs ++ "\ESC[m"
 
 type PId = String
 type TId = String
