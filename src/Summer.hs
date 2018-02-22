@@ -1,17 +1,18 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# OPTIONS_GHC -fno-warn-unused-matches #-}
-module Summer (summarise) where
+module Summer (summarise, diffBy) where
 
 import           Control.Arrow                 ((&&&))
 import           Control.Monad                 (filterM, forM_, join)
 import qualified Data.List                     as L (find)
 import qualified Data.Map.Strict               as M
-import           Data.Maybe                    (catMaybes, isJust)
+import           Data.Maybe                    (catMaybes, isJust, fromMaybe)
 import           Data.Monoid
 import qualified Data.Set                      as S
 import qualified System.Directory              as Dir
 import           System.FilePath.Posix         ((<.>), (</>))
 import           System.Process
+import           System.Exit (die)
 import           Text.Printf
 
 import qualified Data.Text.Lazy.IO             as T (writeFile)
@@ -26,6 +27,37 @@ import           Util
 summarise :: [TId] -> IO ()
 summarise [] = Dir.getCurrentDirectory >>= Dir.getDirectoryContents >>= summarise
 summarise xs = filterM Dir.doesDirectoryExist xs >>= gather >>= writeExperiments "table.html"
+
+data ANSI = ANSI | NoANSI
+
+-- compares the 'Outcome's of two tools -- for "Golden Tests"
+-- for each problem
+--   * ignores it if the Outcome is equal
+--   * prints the results in green if the first tool is "better"
+--   * prints the results in red if the first tool is "worse"
+diffBy :: ANSI -> (Outcome String -> Outcome String -> Ordering) -> TId -> TId -> IO ()
+diffBy cmp t1 t2 = do
+  unlessM (Dir.doesDirectoryExist t1) $ die (t1 ++ " show does not exist.")
+  unlessM (Dir.doesDirectoryExist t2) $ die (t2 ++ " show does not exist.")
+  db <- gather [t1,t2]
+  let 
+    ps  = queryProblems db
+    len  = maximum $ length`fmap` ps
+    row p code r1 r2 fill len p ++ code (fill len (show r1) ++ fill len (show r2))
+
+  forM_ ps $ \p -> do
+    let 
+      r1 = Failure "DoesNotExist" `fromMaybe` (snd' <$> queryEntry db t1 p)
+      r2 = Failure "DoesNotExist" `fromMaybe` (snd' <$> queryEntry db t2 p)
+    case cmp r1 r2 of
+      EQ -> pure ()
+      LT -> putStrLn $ row p green r1 r2
+      GT -> putStrLn $ row p red   r1 r2
+  where
+  snd' (_,a,_) = a
+  fill n x     = x ++ take (n - length x) (repeat ' ')
+  red   xs   = "\ESC[31m" ++ xs ++ "\ESC[m"
+  green xs   = "\ESC[32m" ++ xs ++ "\ESC[m"
 
 type PId = String
 type TId = String
