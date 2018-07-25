@@ -18,138 +18,42 @@ e6 e662,63
 timeItT timeItT66,67
 printError printError78,79
 
-src/Main.hs,125
+src/Main.hs,166
 module Main Main2,3
 timeout timeout8,9
 e e11,12
-mkToolTct mkToolTct77,78
-mkToolAra mkToolAra86,87
-main main95,96
+mkToolTct mkToolTct91,92
+mkToolAra mkToolAra100,101
+mkToolAraHoca mkToolAraHoca109,110
+main main118,119
 
 src/Summer.hs,688
 module Summer Summer2,3
-summarise summarise51,52
-type PId PId55,56
-type TId TId56,57
-data Column Column58,59
-data Column = Column { cHead cHead58,59
-data Column = Column { cHead :: TId, cRows cRows58,59
-type DB DB59,60
-gather gather61,62
-queryTools queryTools68,69
-queryProblems queryProblems71,72
-queryOutcomes queryOutcomes74,75
-toEntry toEntry78,79
-queryResult queryResult82,83
-queryEntry queryEntry87,88
-queryNum queryNum90,91
-queryTime queryTime94,95
-header header104,105
-<html><html>108,109
-table table116,117
-<div <div119,120
-summary summary163,164
-renderExperiments renderExperiments203,204
-writeExperiments writeExperiments216,217
+summarise summarise52,53
+type PId PId56,57
+type TId TId57,58
+data Column Column59,60
+data Column = Column { cHead cHead59,60
+data Column = Column { cHead :: TId, cRows cRows59,60
+type DB DB60,61
+gather gather62,63
+queryTools queryTools69,70
+queryProblems queryProblems72,73
+queryOutcomes queryOutcomes75,76
+toEntry toEntry79,80
+queryResult queryResult85,86
+queryEntry queryEntry90,91
+queryNum queryNum93,94
+queryTime queryTime97,98
+header header107,108
+<html><html>111,112
+table table119,120
+<div <div122,123
+summary summary166,167
+renderExperiments renderExperiments206,207
+writeExperiments writeExperiments219,220
 
 src/Runner.hs,1301
-module RunnerRunner4,5
-data Experiment Experiment31,32
-  { eTestbed eTestbed32,33
-  , eIgnore eIgnore33,34
-  , eProcesses eProcesses34,35
-  , eTimeout eTimeout35,36
-  , eTools eTools36,37
-  , eRepeat eRepeat37,38
-type Process Process41,42
-allLines, firstLine, termcomp, termcomp', tttac tttac44,45
-allLines, firstLine, termcomp, termcomp',termcomp'44,45
-allLines, firstLine, termcomp,termcomp44,45
-allLines, firstLine,firstLine44,45
-allLines,allLines44,45
-tttac tttac54,55
-termcomp' termcomp'61,62
-process process66,67
-data Tool Tool72,73
-  { tName tName73,74
-  , tExtension tExtension74,75
-  , tCommand tCommand75,76
-  , tArguments tArguments76,77
-  , tProcessor tProcessor77,78
-type Test Test80,81
-type Out Out82,83
-type Err Err83,84
-data Outcome Outcome86,87
-data Outcome a = Success Success86,87
-data Outcome a = Success a | Maybe Maybe86,87
-data Outcome a = Success a | Maybe | Failure Failure86,87
-data Outcome a = Success a | Maybe | Failure Err | TimeoutTimeout86,87
-data Result Result91,92
-  { rTool rTool92,93
-  , rProblem rProblem93,94
-  , rOutcome rOutcome94,95
-  , rTime rTime95,96
-ppResult ppResult98,99
-run run130,131
-runTests runTests151,152
-runTest runTest159,160
-eval eval180,181
-spawn spawn212,213
-
-./src/Util.hs,463
-module Util Util1,2
-(<<)<<18,19
-(<(19,20
-for for21,22
-serialise serialise24,25
-deserialise deserialise27,28
-showDouble showDouble31,32
-unlessM unlessM34,35
-hasExtension hasExtension39,40
-removeDirectoryForcefully removeDirectoryForcefully43,44
-withCurrentDirectory withCurrentDirectory46,47
-copyFileIfMissing copyFileIfMissing52,53
-shout shout56,57
-shoutLn shoutLn59,60
-e6 e662,63
-timeItT timeItT66,67
-printError printError78,79
-
-./src/Main.hs,125
-module Main Main2,3
-timeout timeout8,9
-e e11,12
-mkToolTct mkToolTct77,78
-mkToolAra mkToolAra86,87
-main main95,96
-
-./src/Summer.hs,688
-module Summer Summer2,3
-summarise summarise51,52
-type PId PId55,56
-type TId TId56,57
-data Column Column58,59
-data Column = Column { cHead cHead58,59
-data Column = Column { cHead :: TId, cRows cRows58,59
-type DB DB59,60
-gather gather61,62
-queryTools queryTools68,69
-queryProblems queryProblems71,72
-queryOutcomes queryOutcomes74,75
-toEntry toEntry78,79
-queryResult queryResult82,83
-queryEntry queryEntry87,88
-queryNum queryNum90,91
-queryTime queryTime94,95
-header header104,105
-<html><html>108,109
-table table116,117
-<div <div119,120
-summary summary163,164
-renderExperiments renderExperiments203,204
-writeExperiments writeExperiments216,217
-
-./src/Runner.hs,1301
 module RunnerRunner4,5
 data Experiment Experiment31,32
   { eTestbed eTestbed32,33

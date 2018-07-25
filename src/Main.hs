@@ -14,11 +14,11 @@ e =  Experiment
   {
   --   eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_full/"
   -- , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_full/"
-    eTestbed   = "../ara-inference/doc/testbed/"
-  , eIgnore    = "../ara-inference/doc/testbed/"
+    eTestbed   = "/home/schnecki/Documents/projects/ara/hoca/examples/ocaml/"
+  , eIgnore    = "/home/schnecki/Documents/projects/ara/hoca/examples/ocaml/"
   --   eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
   -- , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
-  , eProcesses = 2
+  , eProcesses = 1
   , eTimeout   = timeout
   , eTools     = [--  mkToolTct "Mat" "Cmatrices"
                  -- , mkToolTct "Poly" "Cpolys"
@@ -26,8 +26,22 @@ e =  Experiment
                  -- mkToolTct "CompAraParallel" "competition"
                  -- mkToolTct "CompAra" "competition"
 
+                   mkToolAraHoca "AraHocaV1" ["-v1", "-m1"]
+                 , mkToolAraHoca "AraHocaV2" ["-v2", "-m2"]
+                 , mkToolAraHoca "AraHocaV3" ["-v3", "-m3"]
+                 , mkToolAraHoca "AraHocaV1Heur" ["-v1", "-m1", "-b"]
+                 , mkToolAraHoca "AraHocaV2Heur" ["-v2", "-m2", "-b"]
+                 , mkToolAraHoca "AraHocaV3Heur" ["-v3", "-m3", "-b"]
 
-                   mkToolTct "TcT" "competition"
+                 , mkToolAraHoca "AraHocaV1BestCase" ["-v1", "-m1", "-l", "-n"]
+                 , mkToolAraHoca "AraHocaV2BestCase" ["-v2", "-m2", "-l", "-n"]
+                 , mkToolAraHoca "AraHocaV3BestCase" ["-v3", "-m3", "-l", "-n"]
+                 , mkToolAraHoca "AraHocaV1HeurBestCase" ["-v1", "-m1", "-b", "-l", "-n"]
+                 , mkToolAraHoca "AraHocaV2HeurBestCase" ["-v2", "-m2", "-b", "-l", "-n"]
+                 , mkToolAraHoca "AraHocaV3HeurBestCase" ["-v3", "-m3", "-b", "-l", "-n"]
+
+
+                   -- mkToolTct "TcT" "competition"
 
                  -- , mkToolAra "AraWorstCaseV3" ["-v3", "-s z3"]
 
@@ -93,51 +107,18 @@ mkToolAra t s = Tool
   , tProcessor     = firstLine
   }
 
+mkToolAraHoca :: String -> [String] -> Tool Process
+mkToolAraHoca t s = Tool
+  { tName          = t
+  , tExtension     = "fp"
+  , tCommand       = "ara-hoca"
+  , tArguments     = ("-t " ++ show timeout) : s
+  , tProcessor     = firstLine
+  }
+
 main :: IO ()
 main = do
   run e
-  summarise [ -- "Mat" -- sum
-            -- , "Poly" -- sum
-            -- , "Ints" -- sum
-    "TcT" -- sum
-    -- "CompAra" -- sum
-    -- "CompAraParallel" -- sum
-            -- , "Ara" -- sum
-            -- , "AraHeur" -- sum
-    -- , "AraWorstCaseV3"
-    -- , "AraBestCaseTraceV3"
-    -- , "AraBestCaseTraceV2"
-    -- , "AraBestCaseTraceV1"
-    -- , "AraBestCaseTraceV3CF"
-    -- , "AraBestCaseTraceV2CF"
-    -- , "AraBestCaseTraceV1CF"
-    -- , "AraBestCaseTraceV3Heur"
-    -- , "AraBestCaseTraceV2Heur"
-    -- , "AraBestCaseTraceV1Heur"
-    -- , "AraBestCaseTraceV3CFHeur"
-    -- , "AraBestCaseTraceV2CFHeur"
-    -- , "AraBestCaseTraceV1CFHeur"
-    -- , "AraBestCaseTraceV3NoCd"
-    -- , "AraBestCaseTraceV2NoCd"
-    -- , "AraBestCaseTraceV1NoCd"
-    -- , "AraBestCaseTraceV3NoCdHeur"
-    -- , "AraBestCaseTraceV2NoCdHeur"
-    -- , "AraBestCaseTraceV1NoCdHeur"
-    -- , "AraBestCaseTraceV3NoCdCF"
-    -- , "AraBestCaseTraceV2NoCdCF"
-    -- , "AraBestCaseTraceV1NoCdCF"
-    -- , "AraBestCaseTraceV3NoCdCFHeur"
-    -- , "AraBestCaseTraceV2NoCdCFHeur"
-    -- , "AraBestCaseTraceV1NoCdCFHeur"
-    -- , "AraBestCaseSize"
-    -- , "AraBestCaseSizeNoCd"
-    -- , "CompletelyDefined"
-               -- "TctAraZ3" -- sum
-          --   "AraZ3" -- sum
-          -- , "AraMinismt" -- sum
-          -- , "AraHeurZ3" -- sum
-          -- , "AraHeurMinismt" -- sum
-            -- , "AraSCC" -- sum
-            -- , "AraSCCHeur" -- sum
-            ]
+  summarise $ map tName (eTools e) -- summarise all registered tools
+           -- ++ [ "AraSCCHeur" ]  -- plus possibility some others
   return ()

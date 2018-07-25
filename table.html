@@ -6,13 +6,29 @@
 <body></body>
 </html>
 <div class="experiments"><table class="table-autofilter table-autosort table-filtered-rowcount:cnt"><thead><tr><th></th>
-<th colspan="3"><div class="toolname">Hoca</div>
+<th colspan="3"><div class="toolname">AraHocaV1</div>
 </th>
-<th colspan="3"><div class="toolname">HocaBest</div>
+<th colspan="3"><div class="toolname">AraHocaV2</div>
 </th>
-<th colspan="3"><div class="toolname">HocaAra</div>
+<th colspan="3"><div class="toolname">AraHocaV3</div>
 </th>
-<th colspan="3"><div class="toolname">pcf2trs_TcT</div>
+<th colspan="3"><div class="toolname">AraHocaV1Heur</div>
+</th>
+<th colspan="3"><div class="toolname">AraHocaV2Heur</div>
+</th>
+<th colspan="3"><div class="toolname">AraHocaV3Heur</div>
+</th>
+<th colspan="3"><div class="toolname">AraHocaV1BestCase</div>
+</th>
+<th colspan="3"><div class="toolname">AraHocaV2BestCase</div>
+</th>
+<th colspan="3"><div class="toolname">AraHocaV3BestCase</div>
+</th>
+<th colspan="3"><div class="toolname">AraHocaV1HeurBestCase</div>
+</th>
+<th colspan="3"><div class="toolname">AraHocaV2HeurBestCase</div>
+</th>
+<th colspan="3"><div class="toolname">AraHocaV3HeurBestCase</div>
 </th>
 </tr>
 <tr><th class="table-sortable:default table-sortable"><div class="lhd">Problem (<span id="cnt">all</span> selected)</div>
@@ -29,303 +45,1898 @@
 <th> *</th>
 <th class="table-filterable">answer</th>
 <th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
 </tr>
 </thead>
-<tbody><tr><td><div class="lhd">append</div>
+<tbody><tr><td><div class="lhd">dfs-flatten</div>
 </td>
-<td><a href="Hoca/append.fp">*</a>
+<td><a href="AraHocaV1/dfs-flatten.fp">*</a>
 </td>
-<td><a href="Hoca/append.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV1/dfs-flatten.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
 </a>
 </td>
-<td>0.24</td>
-<td><a href="HocaBest/append.fp">*</a>
+<td>0.12</td>
+<td><a href="AraHocaV2/dfs-flatten.fp">*</a>
 </td>
-<td><a href="HocaBest/append.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV2/dfs-flatten.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
 </a>
 </td>
-<td>0.52</td>
-<td><a href="HocaAra/append.fp">*</a>
+<td>0.18</td>
+<td><a href="AraHocaV3/dfs-flatten.fp">*</a>
 </td>
-<td><a href="HocaAra/append.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV3/dfs-flatten.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
 </a>
 </td>
-<td>0.17</td>
-<td><a href="pcf2trs_TcT/append.trs">*</a>
+<td>0.28</td>
+<td><a href="AraHocaV1Heur/dfs-flatten.fp">*</a>
 </td>
-<td><a href="pcf2trs_TcT/append.trs.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV1Heur/dfs-flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
 </a>
 </td>
-<td>0.22</td>
+<td>0.08</td>
+<td><a href="AraHocaV2Heur/dfs-flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/dfs-flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
+</a>
+</td>
+<td>0.09</td>
+<td><a href="AraHocaV3Heur/dfs-flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/dfs-flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
+</a>
+</td>
+<td>0.08</td>
+<td><a href="AraHocaV1BestCase/dfs-flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/dfs-flatten.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.14</td>
+<td><a href="AraHocaV2BestCase/dfs-flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/dfs-flatten.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.43</td>
+<td><a href="AraHocaV3BestCase/dfs-flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/dfs-flatten.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>1.24</td>
+<td><a href="AraHocaV1HeurBestCase/dfs-flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/dfs-flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV2HeurBestCase/dfs-flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/dfs-flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV3HeurBestCase/dfs-flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/dfs-flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
+</a>
+</td>
+<td>0.06</td>
 </tr>
-<tr><td><div class="lhd">appendtwice</div>
+<tr><td><div class="lhd">evenodd</div>
 </td>
-<td><a href="Hoca/appendtwice.fp">*</a>
+<td><a href="AraHocaV1/evenodd.fp">*</a>
 </td>
-<td><a href="Hoca/appendtwice.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV1/evenodd.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
 </a>
 </td>
-<td>0.64</td>
-<td><a href="HocaBest/appendtwice.fp">*</a>
+<td>0.05</td>
+<td><a href="AraHocaV2/evenodd.fp">*</a>
 </td>
-<td><a href="HocaBest/appendtwice.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV2/evenodd.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
 </a>
 </td>
-<td>0.79</td>
-<td><a href="HocaAra/appendtwice.fp">*</a>
+<td>0.07</td>
+<td><a href="AraHocaV3/evenodd.fp">*</a>
 </td>
-<td><a href="HocaAra/appendtwice.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV3/evenodd.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
 </a>
 </td>
-<td>0.61</td>
-<td><a href="pcf2trs_TcT/appendtwice.trs">*</a>
+<td>0.10</td>
+<td><a href="AraHocaV1Heur/evenodd.fp">*</a>
 </td>
-<td><a href="pcf2trs_TcT/appendtwice.trs.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV1Heur/evenodd.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
 </a>
 </td>
-<td>0.60</td>
+<td>0.04</td>
+<td><a href="AraHocaV2Heur/evenodd.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/evenodd.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV3Heur/evenodd.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/evenodd.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV1BestCase/evenodd.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/evenodd.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV2BestCase/evenodd.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/evenodd.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.15</td>
+<td><a href="AraHocaV3BestCase/evenodd.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/evenodd.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.20</td>
+<td><a href="AraHocaV1HeurBestCase/evenodd.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/evenodd.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV2HeurBestCase/evenodd.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/evenodd.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV3HeurBestCase/evenodd.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/evenodd.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.05</td>
 </tr>
-<tr><td><div class="lhd">dfs-flatten</div>
+<tr><td><div class="lhd">fib_llist</div>
 </td>
-<td><a href="Hoca/dfs-flatten.fp">*</a>
+<td><a href="AraHocaV1/fib_llist.fp">*</a>
 </td>
-<td><a href="Hoca/dfs-flatten.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV1/fib_llist.fp.proof"><div class="yes">MAYBE</div>
 </a>
 </td>
-<td>1.03</td>
-<td><a href="HocaBest/dfs-flatten.fp">*</a>
+<td>1.16</td>
+<td><a href="AraHocaV2/fib_llist.fp">*</a>
 </td>
-<td><a href="HocaBest/dfs-flatten.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV2/fib_llist.fp.proof"><div class="yes">MAYBE</div>
 </a>
 </td>
-<td>1.19</td>
-<td><a href="HocaAra/dfs-flatten.fp">*</a>
-</td>
-<td><a href="HocaAra/dfs-flatten.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.91</td>
-<td><a href="pcf2trs_TcT/dfs-flatten.trs">*</a>
-</td>
-<td><a href="pcf2trs_TcT/dfs-flatten.trs.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.48</td>
-</tr>
-<tr><td><div class="lhd">fmap_tree</div>
-</td>
-<td><a href="Hoca/fmap_tree.fp">*</a>
-</td>
-<td><a href="Hoca/fmap_tree.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.19</td>
-<td><a href="HocaBest/fmap_tree.fp">*</a>
-</td>
-<td><a href="HocaBest/fmap_tree.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.53</td>
-<td><a href="HocaAra/fmap_tree.fp">*</a>
-</td>
-<td><a href="HocaAra/fmap_tree.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.24</td>
-<td><a href="pcf2trs_TcT/fmap_tree.trs">*</a>
-</td>
-<td><a href="pcf2trs_TcT/fmap_tree.trs.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.51</td>
-</tr>
-<tr><td><div class="lhd">insertsort</div>
-</td>
-<td><a href="Hoca/insertsort.fp">*</a>
-</td>
-<td><a href="Hoca/insertsort.fp.proof"><div class="yes">MAYBE</div>
-</a>
-</td>
-<td>44.18</td>
-<td><a href="HocaBest/insertsort.fp">*</a>
-</td>
-<td><a href="HocaBest/insertsort.fp.proof"><div class="yes">MAYBE</div>
-</a>
-</td>
-<td>45.54</td>
-<td><a href="HocaAra/insertsort.fp">*</a>
-</td>
-<td><a href="HocaAra/insertsort.fp.proof"><div class="yes">MAYBE</div>
-</a>
-</td>
-<td>11.06</td>
-<td><a href="pcf2trs_TcT/insertsort.trs">*</a>
-</td>
-<td><a href="pcf2trs_TcT/insertsort.trs.proof"><div class="yes">MAYBE</div>
-</a>
-</td>
-<td>47.16</td>
-</tr>
-<tr><td><div class="lhd">prependall</div>
-</td>
-<td><a href="Hoca/prependall.fp">*</a>
-</td>
-<td><a href="Hoca/prependall.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
-</a>
-</td>
-<td>5.55</td>
-<td><a href="HocaBest/prependall.fp">*</a>
-</td>
-<td><a href="HocaBest/prependall.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
-</a>
-</td>
-<td>5.22</td>
-<td><a href="HocaAra/prependall.fp">*</a>
+<td>27.72</td>
+<td><a href="AraHocaV3/fib_llist.fp">*</a>
 </td>
 <td><div class="timeout">TIMEOUT</div>
 </td>
-<td>60.00</td>
-<td><a href="pcf2trs_TcT/prependall.trs">*</a>
+<td>60.03</td>
+<td><a href="AraHocaV1Heur/fib_llist.fp">*</a>
 </td>
-<td><a href="pcf2trs_TcT/prependall.trs.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
-</a>
-</td>
-<td>7.16</td>
-</tr>
-<tr><td><div class="lhd">product</div>
-</td>
-<td><a href="Hoca/product.fp">*</a>
-</td>
-<td><a href="Hoca/product.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
-</a>
-</td>
-<td>2.96</td>
-<td><a href="HocaBest/product.fp">*</a>
-</td>
-<td><a href="HocaBest/product.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
-</a>
-</td>
-<td>3.97</td>
-<td><a href="HocaAra/product.fp">*</a>
-</td>
-<td><a href="HocaAra/product.fp.proof"><div class="yes">MAYBE</div>
-</a>
-</td>
-<td>2.02</td>
-<td><a href="pcf2trs_TcT/product.trs">*</a>
-</td>
-<td><a href="pcf2trs_TcT/product.trs.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
-</a>
-</td>
-<td>2.36</td>
-</tr>
-<tr><td><div class="lhd">recscheme</div>
-</td>
-<td><a href="Hoca/recscheme.fp">*</a>
-</td>
-<td><a href="Hoca/recscheme.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.40</td>
-<td><a href="HocaBest/recscheme.fp">*</a>
-</td>
-<td><a href="HocaBest/recscheme.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.51</td>
-<td><a href="HocaAra/recscheme.fp">*</a>
-</td>
-<td><a href="HocaAra/recscheme.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.37</td>
-<td><a href="pcf2trs_TcT/recscheme.trs">*</a>
-</td>
-<td><a href="pcf2trs_TcT/recscheme.trs.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.41</td>
-</tr>
-<tr><td><div class="lhd">rev-dl</div>
-</td>
-<td><a href="Hoca/rev-dl.fp">*</a>
-</td>
-<td><a href="Hoca/rev-dl.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.44</td>
-<td><a href="HocaBest/rev-dl.fp">*</a>
-</td>
-<td><a href="HocaBest/rev-dl.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.52</td>
-<td><a href="HocaAra/rev-dl.fp">*</a>
-</td>
-<td><a href="HocaAra/rev-dl.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.22</td>
-<td><a href="pcf2trs_TcT/rev-dl.trs">*</a>
-</td>
-<td><a href="pcf2trs_TcT/rev-dl.trs.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.35</td>
-</tr>
-<tr><td><div class="lhd">rev-dl-contrived</div>
-</td>
-<td><a href="Hoca/rev-dl-contrived.fp">*</a>
-</td>
-<td><a href="Hoca/rev-dl-contrived.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.59</td>
-<td><a href="HocaBest/rev-dl-contrived.fp">*</a>
-</td>
-<td><a href="HocaBest/rev-dl-contrived.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
-</a>
-</td>
-<td>0.76</td>
-<td><a href="HocaAra/rev-dl-contrived.fp">*</a>
-</td>
-<td><a href="HocaAra/rev-dl-contrived.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV1Heur/fib_llist.fp.proof"><div class="yes">MAYBE</div>
 </a>
 </td>
 <td>0.32</td>
-<td><a href="pcf2trs_TcT/rev-dl-contrived.trs">*</a>
+<td><a href="AraHocaV2Heur/fib_llist.fp">*</a>
 </td>
-<td><a href="pcf2trs_TcT/rev-dl-contrived.trs.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV2Heur/fib_llist.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.29</td>
+<td><a href="AraHocaV3Heur/fib_llist.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/fib_llist.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.30</td>
+<td><a href="AraHocaV1BestCase/fib_llist.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/fib_llist.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>1.97</td>
+<td><a href="AraHocaV2BestCase/fib_llist.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/fib_llist.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>3.90</td>
+<td><a href="AraHocaV3BestCase/fib_llist.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/fib_llist.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>4.97</td>
+<td><a href="AraHocaV1HeurBestCase/fib_llist.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/fib_llist.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.29</td>
+<td><a href="AraHocaV2HeurBestCase/fib_llist.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/fib_llist.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.29</td>
+<td><a href="AraHocaV3HeurBestCase/fib_llist.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/fib_llist.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.30</td>
+</tr>
+<tr><td><div class="lhd">fib_memo</div>
+</td>
+<td><a href="AraHocaV1/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV1/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.02</td>
+<td><a href="AraHocaV2/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV2/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.02</td>
+<td><a href="AraHocaV3/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV3/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.02</td>
+<td><a href="AraHocaV1Heur/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.02</td>
+<td><a href="AraHocaV2Heur/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.02</td>
+<td><a href="AraHocaV3Heur/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.02</td>
+<td><a href="AraHocaV1BestCase/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.02</td>
+<td><a href="AraHocaV2BestCase/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV3BestCase/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV1HeurBestCase/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV2HeurBestCase/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV3HeurBestCase/fib_memo.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/fib_memo.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.03</td>
+</tr>
+<tr><td><div class="lhd">flatten</div>
+</td>
+<td><a href="AraHocaV1/flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV1/flatten.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
 </a>
 </td>
 <td>0.17</td>
-</tr>
-<tr><td><div class="lhd">reverse</div>
+<td><a href="AraHocaV2/flatten.fp">*</a>
 </td>
-<td><a href="Hoca/reverse.fp">*</a>
-</td>
-<td><a href="Hoca/reverse.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV2/flatten.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
 </a>
 </td>
 <td>0.35</td>
-<td><a href="HocaBest/reverse.fp">*</a>
+<td><a href="AraHocaV3/flatten.fp">*</a>
 </td>
-<td><a href="HocaBest/reverse.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV3/flatten.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
 </a>
 </td>
-<td>0.38</td>
-<td><a href="HocaAra/reverse.fp">*</a>
+<td>0.67</td>
+<td><a href="AraHocaV1Heur/flatten.fp">*</a>
 </td>
-<td><a href="HocaAra/reverse.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV1Heur/flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV2Heur/flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV3Heur/flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV1BestCase/flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/flatten.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.34</td>
+<td><a href="AraHocaV2BestCase/flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/flatten.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.47</td>
+<td><a href="AraHocaV3BestCase/flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/flatten.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.65</td>
+<td><a href="AraHocaV1HeurBestCase/flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
+</a>
+</td>
+<td>0.10</td>
+<td><a href="AraHocaV2HeurBestCase/flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
+</a>
+</td>
+<td>0.10</td>
+<td><a href="AraHocaV3HeurBestCase/flatten.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/flatten.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;Leaf&quot;</div>
+</a>
+</td>
+<td>0.09</td>
+</tr>
+<tr><td><div class="lhd">flip</div>
+</td>
+<td><a href="AraHocaV1/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV1/flip.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV2/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV2/flip.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.06</td>
+<td><a href="AraHocaV3/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV3/flip.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.11</td>
+<td><a href="AraHocaV1Heur/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/flip.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV2Heur/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/flip.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV3Heur/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/flip.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV1BestCase/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/flip.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.06</td>
+<td><a href="AraHocaV2BestCase/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/flip.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.10</td>
+<td><a href="AraHocaV3BestCase/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/flip.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.09</td>
+<td><a href="AraHocaV1HeurBestCase/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/flip.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV2HeurBestCase/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/flip.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV3HeurBestCase/flip.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/flip.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.04</td>
+</tr>
+<tr><td><div class="lhd">foldsum</div>
+</td>
+<td><a href="AraHocaV1/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV1/foldsum.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.26</td>
+<td><a href="AraHocaV2/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV2/foldsum.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.44</td>
+<td><a href="AraHocaV3/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV3/foldsum.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.69</td>
+<td><a href="AraHocaV1Heur/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/foldsum.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.20</td>
+<td><a href="AraHocaV2Heur/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/foldsum.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.23</td>
+<td><a href="AraHocaV3Heur/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/foldsum.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.24</td>
+<td><a href="AraHocaV1BestCase/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/foldsum.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.94</td>
+<td><a href="AraHocaV2BestCase/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/foldsum.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>2.19</td>
+<td><a href="AraHocaV3BestCase/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/foldsum.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>4.88</td>
+<td><a href="AraHocaV1HeurBestCase/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/foldsum.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.17</td>
+<td><a href="AraHocaV2HeurBestCase/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/foldsum.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.18</td>
+<td><a href="AraHocaV3HeurBestCase/foldsum.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/foldsum.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.18</td>
+</tr>
+<tr><td><div class="lhd">id</div>
+</td>
+<td><a href="AraHocaV1/id.fp">*</a>
+</td>
+<td><a href="AraHocaV1/id.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV2/id.fp">*</a>
+</td>
+<td><a href="AraHocaV2/id.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.11</td>
+<td><a href="AraHocaV3/id.fp">*</a>
+</td>
+<td><a href="AraHocaV3/id.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.16</td>
+<td><a href="AraHocaV1Heur/id.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/id.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.06</td>
+<td><a href="AraHocaV2Heur/id.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/id.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV3Heur/id.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/id.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV1BestCase/id.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/id.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
 </a>
 </td>
 <td>0.13</td>
-<td><a href="pcf2trs_TcT/reverse.trs">*</a>
+<td><a href="AraHocaV2BestCase/id.fp">*</a>
 </td>
-<td><a href="pcf2trs_TcT/reverse.trs.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraHocaV2BestCase/id.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.21</td>
+<td><a href="AraHocaV3BestCase/id.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/id.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.15</td>
+<td><a href="AraHocaV1HeurBestCase/id.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/id.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.06</td>
+<td><a href="AraHocaV2HeurBestCase/id.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/id.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.06</td>
+<td><a href="AraHocaV3HeurBestCase/id.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/id.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.06</td>
+</tr>
+<tr><td><div class="lhd">isort</div>
+</td>
+<td><a href="AraHocaV1/isort.fp">*</a>
+</td>
+<td><a href="AraHocaV1/isort.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.15</td>
+<td><a href="AraHocaV2/isort.fp">*</a>
+</td>
+<td><div class="timeout">TIMEOUT</div>
+</td>
+<td>60.06</td>
+<td><a href="AraHocaV3/isort.fp">*</a>
+</td>
+<td><a href="AraHocaV3/isort.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>11.67</td>
+<td><a href="AraHocaV1Heur/isort.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/isort.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.11</td>
+<td><a href="AraHocaV2Heur/isort.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/isort.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.11</td>
+<td><a href="AraHocaV3Heur/isort.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/isort.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.11</td>
+<td><a href="AraHocaV1BestCase/isort.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/isort.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.25</td>
+<td><a href="AraHocaV2BestCase/isort.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/isort.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.29</td>
+<td><a href="AraHocaV3BestCase/isort.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/isort.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.39</td>
+<td><a href="AraHocaV1HeurBestCase/isort.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/isort.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.11</td>
+<td><a href="AraHocaV2HeurBestCase/isort.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/isort.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.13</td>
+<td><a href="AraHocaV3HeurBestCase/isort.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/isort.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.13</td>
+</tr>
+<tr><td><div class="lhd">isort-fold</div>
+</td>
+<td><a href="AraHocaV1/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHocaV1/isort-fold.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.17</td>
+<td><a href="AraHocaV2/isort-fold.fp">*</a>
+</td>
+<td><div class="timeout">TIMEOUT</div>
+</td>
+<td>60.06</td>
+<td><a href="AraHocaV3/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHocaV3/isort-fold.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>11.53</td>
+<td><a href="AraHocaV1Heur/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/isort-fold.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.12</td>
+<td><a href="AraHocaV2Heur/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/isort-fold.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.12</td>
+<td><a href="AraHocaV3Heur/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/isort-fold.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.13</td>
+<td><a href="AraHocaV1BestCase/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/isort-fold.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.26</td>
+<td><a href="AraHocaV2BestCase/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/isort-fold.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.29</td>
+<td><a href="AraHocaV3BestCase/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/isort-fold.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.36</td>
+<td><a href="AraHocaV1HeurBestCase/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/isort-fold.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.13</td>
+<td><a href="AraHocaV2HeurBestCase/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/isort-fold.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.13</td>
+<td><a href="AraHocaV3HeurBestCase/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/isort-fold.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.13</td>
+</tr>
+<tr><td><div class="lhd">mappplus</div>
+</td>
+<td><a href="AraHocaV1/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV1/mappplus.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.18</td>
+<td><a href="AraHocaV2/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV2/mappplus.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.79</td>
+<td><a href="AraHocaV3/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV3/mappplus.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>1.51</td>
+<td><a href="AraHocaV1Heur/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/mappplus.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.11</td>
+<td><a href="AraHocaV2Heur/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/mappplus.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.08</td>
+<td><a href="AraHocaV3Heur/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/mappplus.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.12</td>
+<td><a href="AraHocaV1BestCase/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/mappplus.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.16</td>
+<td><a href="AraHocaV2BestCase/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/mappplus.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.33</td>
+<td><a href="AraHocaV3BestCase/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/mappplus.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.66</td>
+<td><a href="AraHocaV1HeurBestCase/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/mappplus.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV2HeurBestCase/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/mappplus.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.08</td>
+<td><a href="AraHocaV3HeurBestCase/mappplus.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/mappplus.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.08</td>
+</tr>
+<tr><td><div class="lhd">mergesort-dc</div>
+</td>
+<td><a href="AraHocaV1/mergesort-dc.fp">*</a>
+</td>
+<td><a href="AraHocaV1/mergesort-dc.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>4.55</td>
+<td><a href="AraHocaV2/mergesort-dc.fp">*</a>
+</td>
+<td><div class="timeout">TIMEOUT</div>
+</td>
+<td>60.06</td>
+<td><a href="AraHocaV3/mergesort-dc.fp">*</a>
+</td>
+<td><div class="timeout">TIMEOUT</div>
+</td>
+<td>60.06</td>
+<td><a href="AraHocaV1Heur/mergesort-dc.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/mergesort-dc.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>8.27</td>
+<td><a href="AraHocaV2Heur/mergesort-dc.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/mergesort-dc.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>7.39</td>
+<td><a href="AraHocaV3Heur/mergesort-dc.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/mergesort-dc.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>4.26</td>
+<td><a href="AraHocaV1BestCase/mergesort-dc.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/mergesort-dc.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>15.09</td>
+<td><a href="AraHocaV2BestCase/mergesort-dc.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/mergesort-dc.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>25.66</td>
+<td><a href="AraHocaV3BestCase/mergesort-dc.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/mergesort-dc.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>34.08</td>
+<td><a href="AraHocaV1HeurBestCase/mergesort-dc.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/mergesort-dc.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>4.72</td>
+<td><a href="AraHocaV2HeurBestCase/mergesort-dc.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/mergesort-dc.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>3.60</td>
+<td><a href="AraHocaV3HeurBestCase/mergesort-dc.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/mergesort-dc.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>3.44</td>
+</tr>
+<tr><td><div class="lhd">mss</div>
+</td>
+<td><a href="AraHocaV1/mss.fp">*</a>
+</td>
+<td><a href="AraHocaV1/mss.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>1.86</td>
+<td><a href="AraHocaV2/mss.fp">*</a>
+</td>
+<td><div class="timeout">TIMEOUT</div>
+</td>
+<td>60.06</td>
+<td><a href="AraHocaV3/mss.fp">*</a>
+</td>
+<td><div class="timeout">TIMEOUT</div>
+</td>
+<td>60.06</td>
+<td><a href="AraHocaV1Heur/mss.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/mss.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.96</td>
+<td><a href="AraHocaV2Heur/mss.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/mss.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.86</td>
+<td><a href="AraHocaV3Heur/mss.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/mss.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.94</td>
+<td><a href="AraHocaV1BestCase/mss.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/mss.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>8.14</td>
+<td><a href="AraHocaV2BestCase/mss.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/mss.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>10.52</td>
+<td><a href="AraHocaV3BestCase/mss.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/mss.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>14.02</td>
+<td><a href="AraHocaV1HeurBestCase/mss.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/mss.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.85</td>
+<td><a href="AraHocaV2HeurBestCase/mss.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/mss.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.88</td>
+<td><a href="AraHocaV3HeurBestCase/mss.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/mss.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.91</td>
+</tr>
+<tr><td><div class="lhd">okasaki-parser-ab</div>
+</td>
+<td><a href="AraHocaV1/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV1/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV2/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV2/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.02</td>
+<td><a href="AraHocaV3/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV3/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV1Heur/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV2Heur/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV3Heur/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV1BestCase/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV2BestCase/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV3BestCase/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV1HeurBestCase/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV2HeurBestCase/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.02</td>
+<td><a href="AraHocaV3HeurBestCase/okasaki-parser-ab.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/okasaki-parser-ab.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+</tr>
+<tr><td><div class="lhd">okasaki-parser-anbn</div>
+</td>
+<td><a href="AraHocaV1/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV1/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.02</td>
+<td><a href="AraHocaV2/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV2/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV3/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV3/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV1Heur/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV2Heur/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV3Heur/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV1BestCase/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV2BestCase/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV3BestCase/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV1HeurBestCase/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV2HeurBestCase/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHocaV3HeurBestCase/okasaki-parser-anbn.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/okasaki-parser-anbn.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.01</td>
+</tr>
+<tr><td><div class="lhd">okasaki-parser-string</div>
+</td>
+<td><a href="AraHocaV1/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV1/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV2/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV2/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV3/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV3/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV1Heur/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV2Heur/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV3Heur/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV1BestCase/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV2BestCase/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV3BestCase/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV1HeurBestCase/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV2HeurBestCase/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV3HeurBestCase/okasaki-parser-string.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/okasaki-parser-string.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.03</td>
+</tr>
+<tr><td><div class="lhd">pred</div>
+</td>
+<td><a href="AraHocaV1/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV1/pred.fp.proof"><div class="yes">WORST_CASE(?,O(n^0))</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV2/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV2/pred.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV3/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV3/pred.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV1Heur/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/pred.fp.proof"><div class="yes">WORST_CASE(?,O(n^0))</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV2Heur/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/pred.fp.proof"><div class="yes">WORST_CASE(?,O(n^0))</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV3Heur/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/pred.fp.proof"><div class="yes">WORST_CASE(?,O(n^0))</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV1BestCase/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/pred.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV2BestCase/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/pred.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV3BestCase/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/pred.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV1HeurBestCase/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/pred.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.02</td>
+<td><a href="AraHocaV2HeurBestCase/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/pred.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV3HeurBestCase/pred.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/pred.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.03</td>
+</tr>
+<tr><td><div class="lhd">rev</div>
+</td>
+<td><a href="AraHocaV1/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV1/rev.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.16</td>
+<td><a href="AraHocaV2/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV2/rev.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.64</td>
+<td><a href="AraHocaV3/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV3/rev.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>2.25</td>
+<td><a href="AraHocaV1Heur/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/rev.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV2Heur/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/rev.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV3Heur/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/rev.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV1BestCase/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/rev.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.21</td>
+<td><a href="AraHocaV2BestCase/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/rev.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>1.04</td>
+<td><a href="AraHocaV3BestCase/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/rev.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>1.99</td>
+<td><a href="AraHocaV1HeurBestCase/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/rev.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV2HeurBestCase/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/rev.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.06</td>
+<td><a href="AraHocaV3HeurBestCase/rev.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/rev.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.06</td>
+</tr>
+<tr><td><div class="lhd">rev-dl</div>
+</td>
+<td><a href="AraHocaV1/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV1/rev-dl.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.10</td>
+<td><a href="AraHocaV2/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV2/rev-dl.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.18</td>
+<td><a href="AraHocaV3/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV3/rev-dl.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
 </a>
 </td>
 <td>0.35</td>
+<td><a href="AraHocaV1Heur/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/rev-dl.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;walk_xs_3&quot;</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV2Heur/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/rev-dl.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;walk_xs_3&quot;</div>
+</a>
+</td>
+<td>0.03</td>
+<td><a href="AraHocaV3Heur/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/rev-dl.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;walk_xs_3&quot;</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV1BestCase/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/rev-dl.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.27</td>
+<td><a href="AraHocaV2BestCase/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/rev-dl.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>1.04</td>
+<td><a href="AraHocaV3BestCase/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/rev-dl.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>2.20</td>
+<td><a href="AraHocaV1HeurBestCase/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/rev-dl.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;walk_xs_3&quot;</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV2HeurBestCase/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/rev-dl.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;walk_xs_3&quot;</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV3HeurBestCase/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/rev-dl.fp.proof"><div class="yes">Not enough parameter types for interleaving! Constructor: &quot;walk_xs_3&quot;</div>
+</a>
+</td>
+<td>0.03</td>
+</tr>
+<tr><td><div class="lhd">rev-fletf</div>
+</td>
+<td><a href="AraHocaV1/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV1/rev-fletf.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.17</td>
+<td><a href="AraHocaV2/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV2/rev-fletf.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.24</td>
+<td><a href="AraHocaV3/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV3/rev-fletf.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.33</td>
+<td><a href="AraHocaV1Heur/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/rev-fletf.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.13</td>
+<td><a href="AraHocaV2Heur/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/rev-fletf.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.20</td>
+<td><a href="AraHocaV3Heur/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/rev-fletf.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.14</td>
+<td><a href="AraHocaV1BestCase/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/rev-fletf.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.24</td>
+<td><a href="AraHocaV2BestCase/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/rev-fletf.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.46</td>
+<td><a href="AraHocaV3BestCase/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/rev-fletf.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>1.47</td>
+<td><a href="AraHocaV1HeurBestCase/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/rev-fletf.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.14</td>
+<td><a href="AraHocaV2HeurBestCase/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/rev-fletf.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.12</td>
+<td><a href="AraHocaV3HeurBestCase/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/rev-fletf.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.14</td>
+</tr>
+<tr><td><div class="lhd">rev-foldl</div>
+</td>
+<td><a href="AraHocaV1/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV1/rev-foldl.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV2/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV2/rev-foldl.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.08</td>
+<td><a href="AraHocaV3/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV3/rev-foldl.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.11</td>
+<td><a href="AraHocaV1Heur/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/rev-foldl.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV2Heur/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/rev-foldl.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV3Heur/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/rev-foldl.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV1BestCase/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/rev-foldl.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.06</td>
+<td><a href="AraHocaV2BestCase/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/rev-foldl.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.10</td>
+<td><a href="AraHocaV3BestCase/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/rev-foldl.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.10</td>
+<td><a href="AraHocaV1HeurBestCase/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/rev-foldl.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV2HeurBestCase/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/rev-foldl.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV3HeurBestCase/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/rev-foldl.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.04</td>
+</tr>
+<tr><td><div class="lhd">rpm-lazy</div>
+</td>
+<td><a href="AraHocaV1/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV1/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.60</td>
+<td><a href="AraHocaV2/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV2/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.61</td>
+<td><a href="AraHocaV3/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV3/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.59</td>
+<td><a href="AraHocaV1Heur/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.60</td>
+<td><a href="AraHocaV2Heur/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.55</td>
+<td><a href="AraHocaV3Heur/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.57</td>
+<td><a href="AraHocaV1BestCase/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.63</td>
+<td><a href="AraHocaV2BestCase/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.61</td>
+<td><a href="AraHocaV3BestCase/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.89</td>
+<td><a href="AraHocaV1HeurBestCase/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.92</td>
+<td><a href="AraHocaV2HeurBestCase/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.98</td>
+<td><a href="AraHocaV3HeurBestCase/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/rpm-lazy.fp.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.82</td>
+</tr>
+<tr><td><div class="lhd">sum</div>
+</td>
+<td><a href="AraHocaV1/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV1/sum.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.06</td>
+<td><a href="AraHocaV2/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV2/sum.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.09</td>
+<td><a href="AraHocaV3/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV3/sum.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.14</td>
+<td><a href="AraHocaV1Heur/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/sum.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV2Heur/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/sum.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.06</td>
+<td><a href="AraHocaV3Heur/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/sum.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV1BestCase/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/sum.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.10</td>
+<td><a href="AraHocaV2BestCase/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/sum.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.17</td>
+<td><a href="AraHocaV3BestCase/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/sum.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.33</td>
+<td><a href="AraHocaV1HeurBestCase/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/sum.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.06</td>
+<td><a href="AraHocaV2HeurBestCase/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/sum.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV3HeurBestCase/sum.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/sum.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.06</td>
+</tr>
+<tr><td><div class="lhd">sum_sqs3</div>
+</td>
+<td><a href="AraHocaV1/sum_sqs3.fp">*</a>
+</td>
+<td><a href="AraHocaV1/sum_sqs3.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.74</td>
+<td><a href="AraHocaV2/sum_sqs3.fp">*</a>
+</td>
+<td><a href="AraHocaV2/sum_sqs3.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.82</td>
+<td><a href="AraHocaV3/sum_sqs3.fp">*</a>
+</td>
+<td><a href="AraHocaV3/sum_sqs3.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>1.02</td>
+<td><a href="AraHocaV1Heur/sum_sqs3.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/sum_sqs3.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.61</td>
+<td><a href="AraHocaV2Heur/sum_sqs3.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/sum_sqs3.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.54</td>
+<td><a href="AraHocaV3Heur/sum_sqs3.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/sum_sqs3.fp.proof"><div class="yes">MAYBE</div>
+</a>
+</td>
+<td>0.58</td>
+<td><a href="AraHocaV1BestCase/sum_sqs3.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/sum_sqs3.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>1.00</td>
+<td><a href="AraHocaV2BestCase/sum_sqs3.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/sum_sqs3.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>21.13</td>
+<td><a href="AraHocaV3BestCase/sum_sqs3.fp">*</a>
+</td>
+<td><div class="timeout">TIMEOUT</div>
+</td>
+<td>60.06</td>
+<td><a href="AraHocaV1HeurBestCase/sum_sqs3.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/sum_sqs3.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.58</td>
+<td><a href="AraHocaV2HeurBestCase/sum_sqs3.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/sum_sqs3.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.51</td>
+<td><a href="AraHocaV3HeurBestCase/sum_sqs3.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/sum_sqs3.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.54</td>
+</tr>
+<tr><td><div class="lhd">take_lazy</div>
+</td>
+<td><a href="AraHocaV1/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV1/take_lazy.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV2/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV2/take_lazy.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.07</td>
+<td><a href="AraHocaV3/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV3/take_lazy.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.08</td>
+<td><a href="AraHocaV1Heur/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV1Heur/take_lazy.fp.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV2Heur/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV2Heur/take_lazy.fp.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV3Heur/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV3Heur/take_lazy.fp.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV1BestCase/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV1BestCase/take_lazy.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV2BestCase/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV2BestCase/take_lazy.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.09</td>
+<td><a href="AraHocaV3BestCase/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV3BestCase/take_lazy.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.13</td>
+<td><a href="AraHocaV1HeurBestCase/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV1HeurBestCase/take_lazy.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.05</td>
+<td><a href="AraHocaV2HeurBestCase/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV2HeurBestCase/take_lazy.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.04</td>
+<td><a href="AraHocaV3HeurBestCase/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHocaV3HeurBestCase/take_lazy.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.04</td>
 </tr>
 </tbody>
 </table>
@@ -334,34 +1945,844 @@
 <!DOCTYPE html>
 <br /><h3>Result Summary</h3><br /></br>
 <div class="summary"><table><theadd><tr><th></th>
-<th><div class="toolname">Hoca</th>
-<th><div class="toolname">HocaBest</th>
-<th><div class="toolname">HocaAra</th>
-<th><div class="toolname">pcf2trs_TcT</th>
+<th><div class="toolname">AraHocaV1</th>
+<th><div class="toolname">AraHocaV2</th>
+<th><div class="toolname">AraHocaV3</th>
+<th><div class="toolname">AraHocaV1Heur</th>
+<th><div class="toolname">AraHocaV2Heur</th>
+<th><div class="toolname">AraHocaV3Heur</th>
+<th><div class="toolname">AraHocaV1BestCase</th>
+<th><div class="toolname">AraHocaV2BestCase</th>
+<th><div class="toolname">AraHocaV3BestCase</th>
+<th><div class="toolname">AraHocaV1HeurBestCase</th>
+<th><div class="toolname">AraHocaV2HeurBestCase</th>
+<th><div class="toolname">AraHocaV3HeurBestCase</th>
 </tr>
 </theadd>
-<tbody><tr><td><div class="lhd">Success &quot;MAYBE&quot;</td>
-<td>1</td>
-<td>1</td>
+<tbody><tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(1),?)&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+<td>20</td>
+<td>19</td>
 <td>2</td>
-<td>1</td>
+<td>17</td>
+<td>17</td>
 </tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^1))&quot;</td>
-<td>8</td>
-<td>8</td>
-<td>8</td>
-<td>8</td>
+<tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(n^1),?)&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>15</td>
+<td>0</td>
+<td>0</td>
+<td>15</td>
+<td>0</td>
+<td>0</td>
 </tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^2))&quot;</td>
+<tr><td><div class="lhd">Success &quot;MAYBE&quot;</td>
+<td>8</td>
+<td>4</td>
+<td>5</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Not enough parameter types for interleaving! Constructor: \&quot;Leaf\&quot;&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
 <td>2</td>
 <td>2</td>
 <td>0</td>
+<td>0</td>
+<td>0</td>
 <td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Not enough parameter types for interleaving! Constructor: \&quot;walk_xs_3\&quot;&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;TRS is not left-linear&quot;</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^0))&quot;</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^1))&quot;</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^2))&quot;</td>
+<td>0</td>
+<td>12</td>
+<td>0</td>
+<td>0</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^3))&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>12</td>
+<td>0</td>
+<td>0</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1BestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1BestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1BestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1BestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1Heur/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1Heur/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1Heur/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1Heur/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1HeurBestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1HeurBestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1HeurBestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1HeurBestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2BestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2BestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2BestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2BestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2Heur/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2Heur/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2Heur/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2Heur/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2HeurBestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2HeurBestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2HeurBestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2HeurBestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3BestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3BestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3BestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3BestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3Heur/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3Heur/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3Heur/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3Heur/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3HeurBestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3HeurBestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3HeurBestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3HeurBestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
 </tr>
 <tr><td><div class="lhd">Timeout</td>
 <td>0</td>
+<td>4</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 </tr>
 </tbody>
@@ -370,60 +2791,1578 @@
 <br />
 <h3>Average Times</h3><br /></h3>
 <div class="summary"><table><theadd><tr><th></th>
-<th><div class="toolname">Hoca</th>
-<th><div class="toolname">HocaBest</th>
-<th><div class="toolname">HocaAra</th>
-<th><div class="toolname">pcf2trs_TcT</th>
+<th><div class="toolname">AraHocaV1</th>
+<th><div class="toolname">AraHocaV2</th>
+<th><div class="toolname">AraHocaV3</th>
+<th><div class="toolname">AraHocaV1Heur</th>
+<th><div class="toolname">AraHocaV2Heur</th>
+<th><div class="toolname">AraHocaV3Heur</th>
+<th><div class="toolname">AraHocaV1BestCase</th>
+<th><div class="toolname">AraHocaV2BestCase</th>
+<th><div class="toolname">AraHocaV3BestCase</th>
+<th><div class="toolname">AraHocaV1HeurBestCase</th>
+<th><div class="toolname">AraHocaV2HeurBestCase</th>
+<th><div class="toolname">AraHocaV3HeurBestCase</th>
 </tr>
 </theadd>
-<tbody><tr><td><div class="lhd">Success &quot;MAYBE&quot;</td>
-<td>44.18
-</td>
-<td>45.54
-</td>
-<td>6.54
-</td>
-<td>47.16
-</td>
-</tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^1))&quot;</td>
-<td>0.48
-</td>
-<td>0.65
-</td>
-<td>0.37
-</td>
-<td>0.39
-</td>
-</tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^2))&quot;</td>
-<td>4.26
-</td>
-<td>4.59
+<tbody><tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(1),?)&quot;</td>
+<td>0.00
 </td>
 <td>0.00
 </td>
-<td>4.76
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>3.14
+</td>
+<td>3.43
+</td>
+<td>3.58
+</td>
+<td>0.03
+</td>
+<td>0.37
+</td>
+<td>0.37
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(n^1),?)&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.93
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.50
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;MAYBE&quot;</td>
+<td>1.12
+</td>
+<td>7.50
+</td>
+<td>5.60
+</td>
+<td>1.08
+</td>
+<td>0.98
+</td>
+<td>0.68
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Not enough parameter types for interleaving! Constructor: \&quot;Leaf\&quot;&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.08
+</td>
+<td>0.08
+</td>
+<td>0.08
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.09
+</td>
+<td>0.09
+</td>
+<td>0.08
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Not enough parameter types for interleaving! Constructor: \&quot;walk_xs_3\&quot;&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.04
+</td>
+<td>0.03
+</td>
+<td>0.04
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.04
+</td>
+<td>0.05
+</td>
+<td>0.03
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;TRS is not left-linear&quot;</td>
+<td>0.60
+</td>
+<td>0.61
+</td>
+<td>0.59
+</td>
+<td>0.60
+</td>
+<td>0.55
+</td>
+<td>0.57
+</td>
+<td>0.63
+</td>
+<td>0.61
+</td>
+<td>0.89
+</td>
+<td>0.92
+</td>
+<td>0.98
+</td>
+<td>0.82
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^0))&quot;</td>
+<td>0.03
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.03
+</td>
+<td>0.03
+</td>
+<td>0.03
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^1))&quot;</td>
+<td>0.11
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.06
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^2))&quot;</td>
+<td>0.00
+</td>
+<td>0.16
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.08
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^3))&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.26
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.07
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.02
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.02
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.03
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1BestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.02
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1BestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1BestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1BestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.03
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1Heur/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.02
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1Heur/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1Heur/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1Heur/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.04
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1HeurBestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1HeurBestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1HeurBestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV1HeurBestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.03
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.02
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.02
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.03
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2BestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2BestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2BestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2BestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.03
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2Heur/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.02
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2Heur/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2Heur/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2Heur/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.03
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2HeurBestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2HeurBestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.02
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2HeurBestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV2HeurBestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.03
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.02
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.03
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3BestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3BestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3BestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3BestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.03
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3Heur/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.02
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3Heur/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3Heur/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3Heur/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.04
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3HeurBestCase/fib_memo.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.03
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3HeurBestCase/okasaki-parser-ab.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;t\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3HeurBestCase/okasaki-parser-anbn.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;An error occured:1:ara-hoca: user error (SomeParseError \&quot;&lt;file AraHocaV3HeurBestCase/okasaki-parser-string.fp&gt;\&quot; (line 1, column 1):\nunexpected \&quot;l\&quot;\nexpecting white space or \&quot;(\&quot;)\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.03
 </td>
 </tr>
 <tr><td><div class="lhd">Timeout</td>
 <td>0.00
 </td>
+<td>60.06
+</td>
+<td>60.05
+</td>
 <td>0.00
 </td>
-<td>60.00
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>60.06
+</td>
+<td>0.00
+</td>
+<td>0.00
 </td>
 <td>0.00
 </td>
 </tr>
 <tr><td><div class="lhd">Overall</td>
-<td>5.14
+<td>0.44
 </td>
-<td>5.45
+<td>10.91
 </td>
-<td>6.91
+<td>8.48
 </td>
-<td>5.43
+<td>0.49
+</td>
+<td>0.44
+</td>
+<td>0.33
+</td>
+<td>1.21
+</td>
+<td>2.77
+</td>
+<td>5.16
+</td>
+<td>0.35
+</td>
+<td>0.31
+</td>
+<td>0.30
 </td>
 </tr>
 </tbody>
