@@ -3,7 +3,7 @@ module Util where
 
 
 import           Control.Exception     (bracket)
-import           Control.Monad         (replicateM, when)
+import           Control.Monad         (when)
 import           Control.Monad.Except  (unless)
 import qualified Data.Aeson            as A
 import qualified Data.ByteString       as BS (readFile, writeFile)
@@ -40,10 +40,12 @@ unlessM b m = b >>= flip unless m
 hasExtension :: String -> FilePath -> Bool
 hasExtension _ [] = False
 hasExtension _ [_] = False
-hasExtension s fp = not (null ex) && (s == ex || s == tail ex)
-  where ex = concat $ sequenceA (replicate times FP.takeExtension) fp
-        times | head s == '.' = length (filter (== '.') s)
-              | otherwise = 1+length (filter (== '.') s)
+hasExtension s fp =
+  trace ("ex: " ++ show ex)
+  not (null ex) && (s == ex || s == tail ex)
+  where ex = drop (length (iterate FP.dropExtension fp !! dots)) fp
+        dots | head s == '.' = length (filter (== '.') s)
+             | otherwise = 1+length (filter (== '.') s)
 
 removeDirectoryForcefully :: FilePath -> IO ()
 removeDirectoryForcefully fp = Dir.doesDirectoryExist fp >>= \b -> when b (Dir.removeDirectoryRecursive fp)
