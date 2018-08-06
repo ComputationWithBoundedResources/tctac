@@ -14,8 +14,8 @@ e =  Experiment
   {
   --   eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_full/"
   -- , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/tpdb_full/"
-    eTestbed   = "/home/schnecki/Documents/projects/ara/hoca/examples/ocaml/"
-  , eIgnore    = "/home/schnecki/Documents/projects/ara/hoca/examples/ocaml/"
+    eTestbed   = "/home/schnecki/Documents/projects/ara/ara/doc/fp"
+  , eIgnore    = "/home/schnecki/Documents/projects/ara/ara/doc/fp"
   --   eTestbed   = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
   -- , eIgnore    = "/home/schnecki/Documents/Jobs/UIBK/CL/amortized-resource-analysis/inference/doc/examples/"
   , eProcesses = 1
@@ -26,22 +26,24 @@ e =  Experiment
                  -- mkToolTct "CompAraParallel" "competition"
                  -- mkToolTct "CompAra" "competition"
 
-                   mkToolAraHoca "AraHocaV1" ["-v1", "-m1"]
-                 , mkToolAraHoca "AraHocaV2" ["-v2", "-m2"]
-                 , mkToolAraHoca "AraHocaV3" ["-v3", "-m3"]
-                 , mkToolAraHoca "AraHocaV1Heur" ["-v1", "-m1", "-b"]
-                 , mkToolAraHoca "AraHocaV2Heur" ["-v2", "-m2", "-b"]
-                 , mkToolAraHoca "AraHocaV3Heur" ["-v3", "-m3", "-b"]
 
-                 , mkToolAraHoca "AraHocaV1BestCase" ["-v1", "-m1", "-l", "-n"]
-                 , mkToolAraHoca "AraHocaV2BestCase" ["-v2", "-m2", "-l", "-n"]
-                 , mkToolAraHoca "AraHocaV3BestCase" ["-v3", "-m3", "-l", "-n"]
-                 , mkToolAraHoca "AraHocaV1HeurBestCase" ["-v1", "-m1", "-b", "-l", "-n"]
-                 , mkToolAraHoca "AraHocaV2HeurBestCase" ["-v2", "-m2", "-b", "-l", "-n"]
-                 , mkToolAraHoca "AraHocaV3HeurBestCase" ["-v3", "-m3", "-b", "-l", "-n"]
+                 --   mkToolAraHoca "AraHocaV1" ["-v1", "-m1"]
+                 -- , mkToolAraHoca "AraHocaV2" ["-v2", "-m2"]
+                 -- , mkToolAraHoca "AraHocaV3" ["-v3", "-m3"]
+                 -- , mkToolAraHoca "AraHocaV1Heur" ["-v1", "-m1", "-b"]
+                 -- , mkToolAraHoca "AraHocaV2Heur" ["-v2", "-m2", "-b"]
+                 -- , mkToolAraHoca "AraHocaV3Heur" ["-v3", "-m3", "-b"]
 
+                 -- , mkToolAraHoca "AraHocaV1BestCase" ["-v1", "-m1", "-l", "-n"]
+                 -- , mkToolAraHoca "AraHocaV2BestCase" ["-v2", "-m2", "-l", "-n"]
+                 -- , mkToolAraHoca "AraHocaV1HeurBestCase" ["-v1", "-m1", "-b", "-l", "-n"]
+                 -- , mkToolAraHoca "AraHocaV2HeurBestCase" ["-v2", "-m2", "-b", "-l", "-n"]
+                 -- , mkToolAraHoca "AraHocaV3HeurBestCase" ["-v3", "-m3", "-b", "-l", "-n"]
 
-                   -- mkToolTct "TcT" "competition"
+                   mkToolTct "TcT" "competition"
+                 , mkToolAra "AraTRSV3BestCase" ["-v3", "-m1", "-l", "-n"]
+                 , mkToolAraHoca "AraHocaV3BestCase" ["-v3", "-m1", "-l", "-n"]
+                 , mkToolRamlLower "Raml 1.4.1 (Juli 2018)" []
 
                  -- , mkToolAra "AraWorstCaseV3" ["-v3", "-s z3"]
 
@@ -101,7 +103,7 @@ mkToolTct t s = Tool
 mkToolAra :: String -> [String] -> Tool Process
 mkToolAra t s = Tool
   { tName          = t
-  , tExtension     = "trs"
+  , tExtension     = "raml.trs"
   , tCommand       = "ara-inference-exe"
   , tArguments     = ("-t " ++ show timeout) : s
   , tProcessor     = firstLine
@@ -110,11 +112,21 @@ mkToolAra t s = Tool
 mkToolAraHoca :: String -> [String] -> Tool Process
 mkToolAraHoca t s = Tool
   { tName          = t
-  , tExtension     = "fp"
+  , tExtension     = "raml.fp"
   , tCommand       = "ara-hoca"
   , tArguments     = ("-t " ++ show timeout) : s
   , tProcessor     = firstLine
   }
+
+mkToolRamlLower :: String -> [String] -> Tool Process
+mkToolRamlLower t s = Tool
+  { tName          = t
+  , tExtension     = "raml.raml"
+  , tCommand       = "raml"
+  , tArguments     = ["analyze", "lower", "steps", "1", "3" ] ++ s
+  , tProcessor     = allLines
+  }
+
 
 main :: IO ()
 main = do

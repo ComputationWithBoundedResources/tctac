@@ -63,9 +63,10 @@ type DB     = [Column]
 gather :: [FilePath] -> IO DB
 gather = traverse gatherOne where
   gatherOne t = do
-    fs <- lines <$> readCreateProcess (shell $ "find " <> t <> " -type f -name '*.result'") mempty
+    fs <- lines <$> readCreateProcess (shell $ "find " <> (concatMap (\x -> if x `elem` escapes then ['\\',x] else [x]) t) <> " -type f -name '*.result'") mempty
     rs <- (M.fromList . fmap (rProblem &&& Just)) <$> traverse deserialise fs
     return Column{cHead = t, cRows = rs}
+      where escapes = " ()"
 
 queryTools :: DB -> [TId]
 queryTools = fmap cHead

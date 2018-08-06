@@ -3,18 +3,18 @@ module Util where
 
 
 import           Control.Exception     (bracket)
-import           Control.Monad         (when)
+import           Control.Monad         (replicateM, when)
 import           Control.Monad.Except  (unless)
 import qualified Data.Aeson            as A
-import           Data.Maybe            (fromMaybe)
 import qualified Data.ByteString       as BS (readFile, writeFile)
 import qualified Data.ByteString.Lazy  as BS (fromStrict, toStrict)
+import           Data.Maybe            (fromMaybe)
+import           Debug.Trace
 import qualified System.Directory      as Dir
 import qualified System.FilePath.Posix as FP
 import           System.IO             (hPutStr, stderr)
 import           System.Time           (ClockTime (TOD), getClockTime)
 import           Text.Printf           (printf)
-
 
 (<<) :: IO b -> IO a -> IO b
 (<<) = flip (>>)
@@ -38,8 +38,12 @@ unlessM b m = b >>= flip unless m
 -- | > hasExtension "trs" "problem.trs = True
 -- | > hasExtension ".trs" "problem.trs = True
 hasExtension :: String -> FilePath -> Bool
-hasExtension s fp = s == ex || s == tail ex
-  where ex = FP.takeExtension fp
+hasExtension _ [] = False
+hasExtension _ [_] = False
+hasExtension s fp = not (null ex) && (s == ex || s == tail ex)
+  where ex = concat $ sequenceA (replicate times FP.takeExtension) fp
+        times | head s == '.' = length (filter (== '.') s)
+              | otherwise = 1+length (filter (== '.') s)
 
 removeDirectoryForcefully :: FilePath -> IO ()
 removeDirectoryForcefully fp = Dir.doesDirectoryExist fp >>= \b -> when b (Dir.removeDirectoryRecursive fp)

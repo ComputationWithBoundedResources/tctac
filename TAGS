@@ -9,23 +9,24 @@ deserialise deserialise27,28
 showDouble showDouble31,32
 unlessM unlessM34,35
 hasExtension hasExtension39,40
-removeDirectoryForcefully removeDirectoryForcefully43,44
-withCurrentDirectory withCurrentDirectory46,47
-copyFileIfMissing copyFileIfMissing52,53
-shout shout56,57
-shoutLn shoutLn59,60
-e6 e662,63
-timeItT timeItT66,67
-printError printError78,79
+removeDirectoryForcefully removeDirectoryForcefully47,48
+withCurrentDirectory withCurrentDirectory50,51
+copyFileIfMissing copyFileIfMissing56,57
+shout shout60,61
+shoutLn shoutLn63,64
+e6 e666,67
+timeItT timeItT70,71
+printError printError82,83
 
-src/Main.hs,166
+src/Main.hs,207
 module Main Main2,3
 timeout timeout8,9
 e e11,12
-mkToolTct mkToolTct91,92
-mkToolAra mkToolAra100,101
-mkToolAraHoca mkToolAraHoca109,110
-main main118,119
+mkToolTct mkToolTct93,94
+mkToolAra mkToolAra102,103
+mkToolAraHoca mkToolAraHoca111,112
+mkToolRamlLower mkToolRamlLower120,121
+main main130,131
 
 src/Summer.hs,688
 module Summer Summer2,3
@@ -37,21 +38,21 @@ data Column = Column { cHead cHead59,60
 data Column = Column { cHead :: TId, cRows cRows59,60
 type DB DB60,61
 gather gather62,63
-queryTools queryTools69,70
-queryProblems queryProblems72,73
-queryOutcomes queryOutcomes75,76
-toEntry toEntry79,80
-queryResult queryResult85,86
-queryEntry queryEntry90,91
-queryNum queryNum93,94
-queryTime queryTime97,98
-header header107,108
-<html><html>111,112
-table table119,120
-<div <div122,123
-summary summary166,167
-renderExperiments renderExperiments206,207
-writeExperiments writeExperiments219,220
+queryTools queryTools70,71
+queryProblems queryProblems73,74
+queryOutcomes queryOutcomes76,77
+toEntry toEntry80,81
+queryResult queryResult86,87
+queryEntry queryEntry91,92
+queryNum queryNum94,95
+queryTime queryTime98,99
+header header108,109
+<html><html>112,113
+table table120,121
+<div <div123,124
+summary summary167,168
+renderExperiments renderExperiments207,208
+writeExperiments writeExperiments220,221
 
 src/Runner.hs,1301
 module RunnerRunner4,5
@@ -92,7 +93,7 @@ data Result Result91,92
   , rTime rTime95,96
 ppResult ppResult98,99
 run run130,131
-runTests runTests151,152
-runTest runTest159,160
-eval eval180,181
-spawn spawn212,213
+runTests runTests156,157
+runTest runTest164,165
+eval eval185,186
+spawn spawn217,218

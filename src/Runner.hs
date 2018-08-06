@@ -131,15 +131,20 @@ ppResult Result{rTool=t, rProblem=p, rOutcome=o, rTime=z } =
 run :: Experiment -> IO ()
 run e = do
   when (eRepeat e) deleteTests
-  ps <- findProblems << shoutLn "find ..." << shoutLn ">>>START"
-  ts <- initTests ps << shoutLn "init ..."
+  ps <- findProblems << shout "find ..." << shoutLn ">>>START"
+  shoutLn $ "found " <> show (length ps) <> " files"
+  ts <- initTests ps << shout "init ..."
+  shoutLn $ "with which I can use run " <> show (length ts) <> " tests according to the specification"
   runTests e ts      << shoutLn "run ..." <* shoutLn "<<<END"
 
   `catchError` handler
   where
     deleteTests = forM_ (eTools e) $ \t -> removeDirectoryForcefully (tName t)
     -- FIXME: url encode? files with # make anchors
-    findProblems = lines <$> readCreateProcess (shell $ "find " <> eTestbed e <> " -type f") mempty -- TODO: built in function
+    findProblems = do
+      let cmd = "find " <> eTestbed e <> " -type f"
+      -- putStrLn $ "cmd: " <> cmd
+      lines <$> readCreateProcess (shell cmd) mempty -- TODO: built in function
     initTests ps =
       sequence
         [ copyFileIfMissing p fp >> return (fp,t)
