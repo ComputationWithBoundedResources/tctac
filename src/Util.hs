@@ -40,9 +40,7 @@ unlessM b m = b >>= flip unless m
 hasExtension :: String -> FilePath -> Bool
 hasExtension _ [] = False
 hasExtension _ [_] = False
-hasExtension s fp =
-  trace ("ex: " ++ show ex)
-  not (null ex) && (s == ex || s == tail ex)
+hasExtension s fp = not (null ex) && (s == ex || s == tail ex)
   where ex = drop (length (iterate FP.dropExtension fp !! dots)) fp
         dots | head s == '.' = length (filter (== '.') s)
              | otherwise = 1+length (filter (== '.') s)
