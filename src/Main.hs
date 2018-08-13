@@ -41,9 +41,9 @@ e =  Experiment
                  -- , mkToolAraHoca "AraHocaV3HeurBestCase" ["-v3", "-m3", "-b", "-l", "-n"]
 
                    mkToolTct "TcT" "competition"
-                 , mkToolAra "AraTRSV3BestCase" ["-v3", "-m1", "-l", "-n"]
-                 , mkToolAraHoca "AraHocaV3BestCase" ["-v3", "-m1", "-l", "-n"]
-                 , mkToolRamlLower "Raml 1.4.1 (Juli 2018)" []
+                 , mkToolAra "AraTRSV3BestCase" ["-v3", "-l", "-n"]
+                 , mkToolAraHoca "AraHocaV3BestCase" ["-v3", "-l", "-n"]
+                 , mkToolRamlLower "Raml-1.4.1" []
 
                  -- , mkToolAra "AraWorstCaseV3" ["-v3", "-s z3"]
 
@@ -94,7 +94,7 @@ e =  Experiment
 mkToolTct :: String -> String -> Tool Process
 mkToolTct t s = Tool
   { tName          = t
-  , tExtension     = "trs"
+  , tExtension     = "raml.trs"
   , tCommand       = "tct-trs"
   , tArguments     = ["--complexity", "rci","-s", s, "-t", show timeout]
   , tProcessor     = firstLine
@@ -104,7 +104,7 @@ mkToolAra :: String -> [String] -> Tool Process
 mkToolAra t s = Tool
   { tName          = t
   , tExtension     = "raml.trs"
-  , tCommand       = "ara-inference-exe"
+  , tCommand       = "ara-trs"
   , tArguments     = ("-t " ++ show timeout) : s
   , tProcessor     = firstLine
   }
@@ -123,7 +123,7 @@ mkToolRamlLower t s = Tool
   { tName          = t
   , tExtension     = "raml.raml"
   , tCommand       = "raml"
-  , tArguments     = ["analyze", "lower", "steps", "1", "3" ] ++ s
+  , tArguments     = ["analyze", "lower", "steps", "1", "3", "-print", "level", "2" ] ++ s
   , tProcessor     = allLines
   }
 

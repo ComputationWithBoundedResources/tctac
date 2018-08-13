@@ -129,29 +129,20 @@ ppResult Result{rTool=t, rProblem=p, rOutcome=o, rTime=z } =
 
 
 run :: Experiment -> IO ()
-run e = do
-  when (eRepeat e) deleteTests
-  ps <- findProblems << shout "find ..." << shoutLn ">>>START"
-  shoutLn $ "found " <> show (length ps) <> " files"
-  ts <- initTests ps << shout "init ..."
-  shoutLn $ "with which I can use run " <> show (length ts) <> " tests according to the specification"
-  runTests e ts      << shoutLn "run ..." <* shoutLn "<<<END"
-
-  `catchError` handler
+run e =
+  do when (eRepeat e) deleteTests
+     ps <- findProblems << shout "find ..." << shoutLn ">>>START"
+     shoutLn $ "found " <> show (length ps) <> " files"
+     ts <- initTests ps << shout "init ..."
+     shoutLn $ "with which I can use run " <> show (length ts) <> " tests according to the specification"
+     runTests e ts << shoutLn "run ..." <* shoutLn "<<<END"
+     `catchError` handler
   where
     deleteTests = forM_ (eTools e) $ \t -> removeDirectoryForcefully (tName t)
-    -- FIXME: url encode? files with # make anchors
     findProblems = do
       let cmd = "find " <> eTestbed e <> " -type f"
-      -- putStrLn $ "cmd: " <> cmd
       lines <$> readCreateProcess (shell cmd) mempty -- TODO: built in function
-    initTests ps =
-      sequence
-        [ copyFileIfMissing p fp >> return (fp,t)
-          | p <- ps
-          , t <- eTools e
-          , hasExtension (tExtension t) p
-          , let fp = tName t </> FP.makeRelative (eIgnore e) p ]
+    initTests ps = sequence [copyFileIfMissing p fp >> return (fp, t) | p <- ps, t <- eTools e, hasExtension (tExtension t) p, let fp = tName t </> FP.makeRelative (eIgnore e) p]
     handler err = printError ("An error occured: " ++ show err ++ "\n") >> exitFailure
 
 runTests :: Experiment -> [Test] -> IO ()
@@ -163,13 +154,14 @@ runTests e mx = runLimited (eProcesses e) (runTest e `fmap` mx)
 --   where (mx1,mx2) = splitAt (eProcesses e) mx
 
 runTest :: Experiment -> Test -> IO ()
-runTest e (p,t) =
+runTest e (p,t) = flip catchError errorH $
   unlessM done $ do
     f <- eval e (p,t)
     writeProof f
     -- FIXME: thread safe shoutLn
     process t f & (\g -> shoutLn (ppResult g) >> serialise resfile g)
   where
+    errorH _ = undefined
     resfile = p <.> "result"
     errfile = p <.> "err"
     outfile = p <.> "proof"
@@ -187,7 +179,7 @@ eval :: Experiment -> Test -> IO Result
 eval e (p,t) = do
   (z,r) <- timeItT $ spawn e (p,t)
   return Result{ rProblem = p', rTool = void t, rOutcome = r , rTime = z }
-  where p' = FP.makeRelative (tName t) (FP.dropExtension p)
+  where p' = FP.makeRelative (tName t) (mkPathWoExtension (tExtension t) p)
 
 -- use bash 'timeout' command; behaves nices
 -- spawn :: Experiment -> Test -> IO (Outcome Out)
@@ -221,7 +213,7 @@ spawn e (p,t) = do
   return $! case resM of
     Nothing             -> Timeout
     Just (ex, out, err) -> case ex of
-      ExitFailure i -> Failure ("An error occured:" ++ show i ++ ':':err)
+      ExitFailure i -> Failure out -- ("An error occured:" ++ show i ++ ':':err)
       ExitSuccess
         | null out  -> Failure "empty output"
         | otherwise -> Success out

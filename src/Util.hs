@@ -41,9 +41,14 @@ hasExtension :: String -> FilePath -> Bool
 hasExtension _ [] = False
 hasExtension _ [_] = False
 hasExtension s fp = not (null ex) && (s == ex || s == tail ex)
-  where ex = drop (length (iterate FP.dropExtension fp !! dots)) fp
-        dots | head s == '.' = length (filter (== '.') s)
-             | otherwise = 1+length (filter (== '.') s)
+  where ex = drop (length (mkPathWoExtension s fp)) fp
+
+
+mkPathWoExtension :: String -> FilePath -> String
+mkPathWoExtension ext fp = iterate FP.dropExtension fp !! dots
+  where dots | head ext == '.' = length (filter (== '.') ext)
+             | otherwise = 1+length (filter (== '.') ext)
+
 
 removeDirectoryForcefully :: FilePath -> IO ()
 removeDirectoryForcefully fp = Dir.doesDirectoryExist fp >>= \b -> when b (Dir.removeDirectoryRecursive fp)
