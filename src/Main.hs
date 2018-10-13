@@ -41,8 +41,8 @@ e =  Experiment
                  -- , mkToolAraHoca "AraHocaV3HeurBestCase" ["-v3", "-m3", "-b", "-l", "-n"]
 
                    mkToolTct "TcT" "competition"
-                 , mkToolAra "AraTRSV3BestCase" ["-v3", "-l", "-n"]
-                 , mkToolAraHoca "AraHocaV3BestCase" ["-v3", "-l", "-n"]
+                 , mkToolAra "AraTRSV3BestCase" ["-v3"]
+                 , mkToolAraHoca "AraHocaV3BestCase" ["-v3"]
                  , mkToolRamlLower "Raml-1.4.1" []
 
                  -- , mkToolAra "AraWorstCaseV3" ["-v3", "-s z3"]
@@ -123,7 +123,7 @@ mkToolRamlLower t s = Tool
   { tName          = t
   , tExtension     = "raml.raml"
   , tCommand       = "raml"
-  , tArguments     = ["analyze", "lower", "steps", "1", "3", "-print", "level", "2" ] ++ s
+  , tArguments     = ["analyze", "upper", "steps", "1", "3", "-m", "-print", "level", "2" ] ++ s
   , tProcessor     = allLines
   }
 
