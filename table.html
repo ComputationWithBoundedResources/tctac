@@ -6,7 +6,15 @@
 <body></body>
 </html>
 <div class="experiments"><table class="table-autofilter table-autosort table-filtered-rowcount:cnt"><thead><tr><th></th>
-<th colspan="3"><div class="toolname">TcT</div>
+<th colspan="3"><div class="toolname">TcT WorstCase</div>
+</th>
+<th colspan="3"><div class="toolname">AraTRS-Cor29</div>
+</th>
+<th colspan="3"><div class="toolname">AraHOCA-Cor29</div>
+</th>
+<th colspan="3"><div class="toolname">Costabs-CoFloCo-TermDepth</div>
+</th>
+<th colspan="3"><div class="toolname">Costabs-CoFloCo-TypedNorms</div>
 </th>
 </tr>
 <tr><th class="table-sortable:default table-sortable"><div class="lhd">Problem (<span id="cnt">all</span> selected)</div>
@@ -14,141 +22,1601 @@
 <th> *</th>
 <th class="table-filterable">answer</th>
 <th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
+<th> *</th>
+<th class="table-filterable">answer</th>
+<th class="table-sortable:numeric table-sortable"></th>
 </tr>
 </thead>
-<tbody><tr><td><div class="lhd">LogicAndCodes.raml</div>
+<tbody><tr><td><div class="lhd">LogicAndCodes1</div>
 </td>
-<td><a href="TcT/LogicAndCodes.raml.trs">*</a>
+<td><a href="TcT WorstCase/LogicAndCodes1.trs">*</a>
 </td>
-<td><a href="TcT/LogicAndCodes.raml.trs.proof"><div class="yes">MAYBE</div>
+<td><a href="TcT WorstCase/LogicAndCodes1.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
 </a>
 </td>
-<td>58.18</td>
-</tr>
-<tr><td><div class="lhd">avanzini.raml</div>
+<td>57.13</td>
+<td><a href="AraTRS-Cor29/LogicAndCodes1.trs">*</a>
 </td>
-<td><a href="TcT/avanzini.raml.trs">*</a>
-</td>
-<td><a href="TcT/avanzini.raml.trs.proof"><div class="yes">MAYBE</div>
+<td><a href="AraTRS-Cor29/LogicAndCodes1.trs.proof"><div class="yes">BEST_CASE(Omega(n^3),?)</div>
 </a>
 </td>
-<td>58.97</td>
-</tr>
-<tr><td><div class="lhd">aws_avarage.raml</div>
+<td>2.28</td>
+<td><a href="AraHOCA-Cor29/LogicAndCodes1.fp">*</a>
 </td>
-<td><a href="TcT/aws_avarage.raml.trs">*</a>
-</td>
-<td><a href="TcT/aws_avarage.raml.trs.proof"><div class="yes">MAYBE</div>
+<td><a href="AraHOCA-Cor29/LogicAndCodes1.fp.proof"><div class="yes">BEST_CASE(Omega(n^3),?)</div>
 </a>
 </td>
-<td>58.55</td>
-</tr>
-<tr><td><div class="lhd">bigints.raml</div>
+<td>3.22</td>
+<td><a href="Costabs-CoFloCo-TermDepth/LogicAndCodes1.abs">*</a>
 </td>
-<td><a href="TcT/bigints.raml.trs">*</a>
-</td>
-<td><a href="TcT/bigints.raml.trs.proof"><div class="yes">MAYBE</div>
+<td><a href="Costabs-CoFloCo-TermDepth/LogicAndCodes1.abs.proof"><div class="yes">Possible lower bounds : [10,13,16,35,47]</div>
 </a>
 </td>
-<td>58.10</td>
-</tr>
-<tr><td><div class="lhd">calculator.raml</div>
+<td>1.65</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/LogicAndCodes1.abs">*</a>
 </td>
-<td><a href="TcT/calculator.raml.trs">*</a>
-</td>
-<td><a href="TcT/calculator.raml.trs.proof"><div class="yes">WORST_CASE(?,O(n^2))</div>
+<td><a href="Costabs-CoFloCo-TypedNorms/LogicAndCodes1.abs.proof"><div class="yes">Possible lower bounds : [13,16,20,23,51,55,5*C+15,5*C+18,10*C+55,13*C+3]</div>
 </a>
 </td>
-<td>22.26</td>
+<td>2.36</td>
 </tr>
-<tr><td><div class="lhd">hello_world.raml</div>
+<tr><td><div class="lhd">LogicAndCodes2</div>
 </td>
-<td><a href="TcT/hello_world.raml.trs">*</a>
+<td><a href="TcT WorstCase/LogicAndCodes2.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/LogicAndCodes2.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.10</td>
+<td><a href="AraTRS-Cor29/LogicAndCodes2.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/LogicAndCodes2.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.95</td>
+<td><a href="AraHOCA-Cor29/LogicAndCodes2.fp">*</a>
+</td>
+<td><div class="timeout">TIMEOUT</div>
+</td>
+<td>60.06</td>
+<td><a href="Costabs-CoFloCo-TermDepth/LogicAndCodes2.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/LogicAndCodes2.abs.proof"><div class="yes">Possible lower bounds : [3,5,6]</div>
+</a>
+</td>
+<td>4.41</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/LogicAndCodes2.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/LogicAndCodes2.abs.proof"><div class="yes">Possible lower bounds : [3,5,6,9,11,12,4*F+1]</div>
+</a>
+</td>
+<td>2.10</td>
+</tr>
+<tr><td><div class="lhd">avanzini</div>
+</td>
+<td><a href="TcT WorstCase/avanzini.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/avanzini.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.10</td>
+<td><a href="AraTRS-Cor29/avanzini.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/avanzini.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>5.51</td>
+<td><a href="AraHOCA-Cor29/avanzini.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/avanzini.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>6.07</td>
+<td><a href="Costabs-CoFloCo-TermDepth/avanzini.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/avanzini.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.43</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/avanzini.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/avanzini.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.75</td>
+</tr>
+<tr><td><div class="lhd">avanzini_original</div>
+</td>
+<td><a href="TcT WorstCase/avanzini_original.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/avanzini_original.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.02</td>
+<td><a href="AraTRS-Cor29/avanzini_original.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/avanzini_original.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.72</td>
+<td><a href="AraHOCA-Cor29/avanzini_original.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/avanzini_original.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.58</td>
+<td><a href="Costabs-CoFloCo-TermDepth/avanzini_original.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/avanzini_original.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.39</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/avanzini_original.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/avanzini_original.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.73</td>
+</tr>
+<tr><td><div class="lhd">aws_avarage</div>
+</td>
+<td><a href="TcT WorstCase/aws_avarage.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/aws_avarage.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.21</td>
+<td><a href="AraTRS-Cor29/aws_avarage.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/aws_avarage.trs.proof"><div class="yes">BEST_CASE(Omega(n^2),?)</div>
+</a>
+</td>
+<td>41.98</td>
+<td><a href="AraHOCA-Cor29/aws_avarage.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/aws_avarage.fp.proof"><div class="yes">BEST_CASE(Omega(n^2),?)</div>
+</a>
+</td>
+<td>55.80</td>
+<td><a href="Costabs-CoFloCo-TermDepth/aws_avarage.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/aws_avarage.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.41</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/aws_avarage.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/aws_avarage.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.79</td>
+</tr>
+<tr><td><div class="lhd">bigints_add</div>
+</td>
+<td><a href="TcT WorstCase/bigints_add.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/bigints_add.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.54</td>
+<td><a href="AraTRS-Cor29/bigints_add.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/bigints_add.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>11.22</td>
+<td><a href="AraHOCA-Cor29/bigints_add.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/bigints_add.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>58.15</td>
+<td><a href="Costabs-CoFloCo-TermDepth/bigints_add.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/bigints_add.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.50</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/bigints_add.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/bigints_add.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.85</td>
+</tr>
+<tr><td><div class="lhd">bigints_mult</div>
+</td>
+<td><a href="TcT WorstCase/bigints_mult.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/bigints_mult.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.53</td>
+<td><a href="AraTRS-Cor29/bigints_mult.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/bigints_mult.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>33.45</td>
+<td><a href="AraHOCA-Cor29/bigints_mult.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/bigints_mult.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>43.11</td>
+<td><a href="Costabs-CoFloCo-TermDepth/bigints_mult.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/bigints_mult.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.51</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/bigints_mult.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/bigints_mult.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.83</td>
+</tr>
+<tr><td><div class="lhd">btree_lookup</div>
+</td>
+<td><a href="TcT WorstCase/btree_lookup.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/btree_lookup.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.09</td>
+<td><a href="AraTRS-Cor29/btree_lookup.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/btree_lookup.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>1.49</td>
+<td><a href="AraHOCA-Cor29/btree_lookup.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/btree_lookup.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>2.13</td>
+<td><a href="Costabs-CoFloCo-TermDepth/btree_lookup.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/btree_lookup.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.99</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/btree_lookup.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/btree_lookup.abs.proof"><div class="yes">Possible lower bounds : [2,3,8,9,11,6*F+2]</div>
+</a>
+</td>
+<td>1.21</td>
+</tr>
+<tr><td><div class="lhd">calculator</div>
+</td>
+<td><a href="TcT WorstCase/calculator.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/calculator.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.06</td>
+<td><a href="AraTRS-Cor29/calculator.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/calculator.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.34</td>
+<td><a href="AraHOCA-Cor29/calculator.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/calculator.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.25</td>
+<td><a href="Costabs-CoFloCo-TermDepth/calculator.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/calculator.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.42</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/calculator.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/calculator.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.90</td>
+</tr>
+<tr><td><div class="lhd">calculator_simple</div>
+</td>
+<td><a href="TcT WorstCase/calculator_simple.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/calculator_simple.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.05</td>
+<td><a href="AraTRS-Cor29/calculator_simple.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/calculator_simple.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.26</td>
+<td><a href="AraHOCA-Cor29/calculator_simple.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/calculator_simple.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.29</td>
+<td><a href="Costabs-CoFloCo-TermDepth/calculator_simple.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/calculator_simple.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.54</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/calculator_simple.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/calculator_simple.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.83</td>
+</tr>
+<tr><td><div class="lhd">dfs-flatten</div>
+</td>
+<td><a href="TcT WorstCase/dfs-flatten.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/dfs-flatten.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.02</td>
+<td><a href="AraTRS-Cor29/dfs-flatten.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/dfs-flatten.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.50</td>
+<td><a href="AraHOCA-Cor29/dfs-flatten.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/dfs-flatten.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.50</td>
+<td><a href="Costabs-CoFloCo-TermDepth/dfs-flatten.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/dfs-flatten.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.43</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/dfs-flatten.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/dfs-flatten.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.77</td>
+</tr>
+<tr><td><div class="lhd">eval1</div>
+</td>
+<td><a href="TcT WorstCase/eval1.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/eval1.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.09</td>
+<td><a href="AraTRS-Cor29/eval1.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/eval1.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.76</td>
+<td><a href="AraHOCA-Cor29/eval1.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/eval1.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>1.12</td>
+<td><a href="Costabs-CoFloCo-TermDepth/eval1.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/eval1.abs.proof"><div class="yes">Possible lower bounds : [4]</div>
+</a>
+</td>
+<td>0.94</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/eval1.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/eval1.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.90</td>
+</tr>
+<tr><td><div class="lhd">eval2</div>
+</td>
+<td><a href="TcT WorstCase/eval2.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/eval2.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.13</td>
+<td><a href="AraTRS-Cor29/eval2.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/eval2.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>1.28</td>
+<td><a href="AraHOCA-Cor29/eval2.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/eval2.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>2.21</td>
+<td><a href="Costabs-CoFloCo-TermDepth/eval2.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/eval2.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.40</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/eval2.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/eval2.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.83</td>
+</tr>
+<tr><td><div class="lhd">evenodd</div>
+</td>
+<td><a href="TcT WorstCase/evenodd.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/evenodd.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.02</td>
+<td><a href="AraTRS-Cor29/evenodd.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/evenodd.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.15</td>
+<td><a href="AraHOCA-Cor29/evenodd.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/evenodd.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.17</td>
+<td><a href="Costabs-CoFloCo-TermDepth/evenodd.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/evenodd.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.82</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/evenodd.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/evenodd.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.87</td>
+</tr>
+<tr><td><div class="lhd">fib_llist</div>
+</td>
+<td><a href="TcT WorstCase/fib_llist.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/fib_llist.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.09</td>
+<td><a href="AraTRS-Cor29/fib_llist.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/fib_llist.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>1.79</td>
+<td><a href="AraHOCA-Cor29/fib_llist.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/fib_llist.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>1.90</td>
+<td><a href="Costabs-CoFloCo-TermDepth/fib_llist.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/fib_llist.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.39</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/fib_llist.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/fib_llist.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.73</td>
+</tr>
+<tr><td><div class="lhd">flatten</div>
+</td>
+<td><a href="TcT WorstCase/flatten.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/flatten.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.02</td>
+<td><a href="AraTRS-Cor29/flatten.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/flatten.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.61</td>
+<td><a href="AraHOCA-Cor29/flatten.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/flatten.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.46</td>
+<td><a href="Costabs-CoFloCo-TermDepth/flatten.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/flatten.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.38</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/flatten.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/flatten.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.71</td>
+</tr>
+<tr><td><div class="lhd">flip</div>
+</td>
+<td><a href="TcT WorstCase/flip.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/flip.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.03</td>
+<td><a href="AraTRS-Cor29/flip.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/flip.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.16</td>
+<td><a href="AraHOCA-Cor29/flip.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/flip.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.13</td>
+<td><a href="Costabs-CoFloCo-TermDepth/flip.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/flip.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.89</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/flip.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/flip.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.86</td>
+</tr>
+<tr><td><div class="lhd">flip_ho</div>
+</td>
+<td><a href="TcT WorstCase/flip_ho.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/flip_ho.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.01</td>
+<td><a href="AraTRS-Cor29/flip_ho.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/flip_ho.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.14</td>
+<td><a href="AraHOCA-Cor29/flip_ho.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/flip_ho.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.16</td>
+<td><a href="Costabs-CoFloCo-TermDepth/flip_ho.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/flip_ho.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.91</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/flip_ho.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/flip_ho.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.90</td>
+</tr>
+<tr><td><div class="lhd">foldsum</div>
+</td>
+<td><a href="TcT WorstCase/foldsum.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/foldsum.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.02</td>
+<td><a href="AraTRS-Cor29/foldsum.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/foldsum.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>1.39</td>
+<td><a href="AraHOCA-Cor29/foldsum.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/foldsum.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>1.51</td>
+<td><a href="Costabs-CoFloCo-TermDepth/foldsum.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/foldsum.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.38</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/foldsum.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/foldsum.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.74</td>
+</tr>
+<tr><td><div class="lhd">id</div>
+</td>
+<td><a href="TcT WorstCase/id.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/id.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.02</td>
+<td><a href="AraTRS-Cor29/id.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/id.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.22</td>
+<td><a href="AraHOCA-Cor29/id.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/id.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.19</td>
+<td><a href="Costabs-CoFloCo-TermDepth/id.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/id.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.42</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/id.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/id.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.73</td>
+</tr>
+<tr><td><div class="lhd">isort</div>
+</td>
+<td><a href="TcT WorstCase/isort.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/isort.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.07</td>
+<td><a href="AraTRS-Cor29/isort.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/isort.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>1.71</td>
+<td><a href="AraHOCA-Cor29/isort.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/isort.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>2.59</td>
+<td><a href="Costabs-CoFloCo-TermDepth/isort.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/isort.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.37</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/isort.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/isort.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.75</td>
+</tr>
+<tr><td><div class="lhd">isort-fold</div>
+</td>
+<td><a href="TcT WorstCase/isort-fold.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/isort-fold.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.07</td>
+<td><a href="AraTRS-Cor29/isort-fold.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/isort-fold.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.32</td>
+<td><a href="AraHOCA-Cor29/isort-fold.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/isort-fold.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.43</td>
+<td><a href="Costabs-CoFloCo-TermDepth/isort-fold.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/isort-fold.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.40</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/isort-fold.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/isort-fold.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.74</td>
+</tr>
+<tr><td><div class="lhd">isort_ho</div>
+</td>
+<td><a href="TcT WorstCase/isort_ho.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/isort_ho.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.09</td>
+<td><a href="AraTRS-Cor29/isort_ho.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/isort_ho.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.32</td>
+<td><a href="AraHOCA-Cor29/isort_ho.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/isort_ho.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.36</td>
+<td><a href="Costabs-CoFloCo-TermDepth/isort_ho.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/isort_ho.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.44</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/isort_ho.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/isort_ho.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.80</td>
+</tr>
+<tr><td><div class="lhd">list_map</div>
+</td>
+<td><a href="TcT WorstCase/list_map.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/list_map.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.07</td>
+<td><a href="AraTRS-Cor29/list_map.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/list_map.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.28</td>
+<td><a href="AraHOCA-Cor29/list_map.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/list_map.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.31</td>
+<td><a href="Costabs-CoFloCo-TermDepth/list_map.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/list_map.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.41</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/list_map.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/list_map.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.72</td>
+</tr>
+<tr><td><div class="lhd">list_map_rev</div>
+</td>
+<td><a href="TcT WorstCase/list_map_rev.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/list_map_rev.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.02</td>
+<td><a href="AraTRS-Cor29/list_map_rev.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/list_map_rev.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.37</td>
+<td><a href="AraHOCA-Cor29/list_map_rev.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/list_map_rev.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.47</td>
+<td><a href="Costabs-CoFloCo-TermDepth/list_map_rev.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/list_map_rev.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.46</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/list_map_rev.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/list_map_rev.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.75</td>
+</tr>
+<tr><td><div class="lhd">list_map_rev2</div>
+</td>
+<td><a href="TcT WorstCase/list_map_rev2.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/list_map_rev2.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.07</td>
+<td><a href="AraTRS-Cor29/list_map_rev2.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/list_map_rev2.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.98</td>
+<td><a href="AraHOCA-Cor29/list_map_rev2.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/list_map_rev2.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>1.85</td>
+<td><a href="Costabs-CoFloCo-TermDepth/list_map_rev2.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/list_map_rev2.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.43</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/list_map_rev2.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/list_map_rev2.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.77</td>
+</tr>
+<tr><td><div class="lhd">list_rev1</div>
+</td>
+<td><a href="TcT WorstCase/list_rev1.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/list_rev1.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.03</td>
+<td><a href="AraTRS-Cor29/list_rev1.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/list_rev1.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>42.62</td>
+<td><a href="AraHOCA-Cor29/list_rev1.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/list_rev1.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.11</td>
+<td><a href="Costabs-CoFloCo-TermDepth/list_rev1.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/list_rev1.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.39</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/list_rev1.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/list_rev1.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.75</td>
+</tr>
+<tr><td><div class="lhd">list_rev2</div>
+</td>
+<td><a href="TcT WorstCase/list_rev2.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/list_rev2.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.03</td>
+<td><a href="AraTRS-Cor29/list_rev2.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/list_rev2.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.24</td>
+<td><a href="AraHOCA-Cor29/list_rev2.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/list_rev2.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>10.94</td>
+<td><a href="Costabs-CoFloCo-TermDepth/list_rev2.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/list_rev2.abs.proof"><div class="yes">Possible lower bounds : [6]</div>
+</a>
+</td>
+<td>0.96</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/list_rev2.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/list_rev2.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.86</td>
+</tr>
+<tr><td><div class="lhd">mappplus</div>
+</td>
+<td><a href="TcT WorstCase/mappplus.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/mappplus.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.07</td>
+<td><a href="AraTRS-Cor29/mappplus.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/mappplus.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.21</td>
+<td><a href="AraHOCA-Cor29/mappplus.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/mappplus.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.29</td>
+<td><a href="Costabs-CoFloCo-TermDepth/mappplus.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/mappplus.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.41</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/mappplus.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/mappplus.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.98</td>
+</tr>
+<tr><td><div class="lhd">mergesort</div>
+</td>
+<td><a href="TcT WorstCase/mergesort.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/mergesort.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.10</td>
+<td><a href="AraTRS-Cor29/mergesort.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/mergesort.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>7.32</td>
+<td><a href="AraHOCA-Cor29/mergesort.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/mergesort.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>22.47</td>
+<td><a href="Costabs-CoFloCo-TermDepth/mergesort.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/mergesort.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.39</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/mergesort.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/mergesort.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.78</td>
+</tr>
+<tr><td><div class="lhd">mergesort-dc</div>
+</td>
+<td><a href="TcT WorstCase/mergesort-dc.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/mergesort-dc.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.22</td>
+<td><a href="AraTRS-Cor29/mergesort-dc.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/mergesort-dc.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>5.89</td>
+<td><a href="AraHOCA-Cor29/mergesort-dc.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/mergesort-dc.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>8.80</td>
+<td><a href="Costabs-CoFloCo-TermDepth/mergesort-dc.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/mergesort-dc.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.39</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/mergesort-dc.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/mergesort-dc.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.74</td>
+</tr>
+<tr><td><div class="lhd">mss</div>
+</td>
+<td><a href="TcT WorstCase/mss.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/mss.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.07</td>
+<td><a href="AraTRS-Cor29/mss.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/mss.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>5.04</td>
+<td><a href="AraHOCA-Cor29/mss.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/mss.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>5.34</td>
+<td><a href="Costabs-CoFloCo-TermDepth/mss.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/mss.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.39</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/mss.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/mss.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.74</td>
+</tr>
+<tr><td><div class="lhd">pred</div>
+</td>
+<td><a href="TcT WorstCase/pred.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/pred.trs.proof"><div class="yes">WORST_CASE(?,O(1))</div>
+</a>
+</td>
+<td>7.03</td>
+<td><a href="AraTRS-Cor29/pred.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/pred.trs.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.10</td>
+<td><a href="AraHOCA-Cor29/pred.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/pred.fp.proof"><div class="yes">BEST_CASE(Omega(1),?)</div>
+</a>
+</td>
+<td>0.11</td>
+<td><a href="Costabs-CoFloCo-TermDepth/pred.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/pred.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.87</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/pred.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/pred.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.83</td>
+</tr>
+<tr><td><div class="lhd">prependAll</div>
+</td>
+<td><a href="TcT WorstCase/prependAll.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/prependAll.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.05</td>
+<td><a href="AraTRS-Cor29/prependAll.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/prependAll.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.34</td>
+<td><a href="AraHOCA-Cor29/prependAll.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/prependAll.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.31</td>
+<td><a href="Costabs-CoFloCo-TermDepth/prependAll.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/prependAll.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.41</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/prependAll.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/prependAll.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.80</td>
+</tr>
+<tr><td><div class="lhd">product</div>
+</td>
+<td><a href="TcT WorstCase/product.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/product.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.07</td>
+<td><a href="AraTRS-Cor29/product.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/product.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.24</td>
+<td><a href="AraHOCA-Cor29/product.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/product.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.20</td>
+<td><a href="Costabs-CoFloCo-TermDepth/product.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/product.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.40</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/product.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/product.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.76</td>
+</tr>
+<tr><td><div class="lhd">quicksort</div>
+</td>
+<td><a href="TcT WorstCase/quicksort.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/quicksort.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.07</td>
+<td><a href="AraTRS-Cor29/quicksort.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/quicksort.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>3.96</td>
+<td><a href="AraHOCA-Cor29/quicksort.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/quicksort.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>3.85</td>
+<td><a href="Costabs-CoFloCo-TermDepth/quicksort.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/quicksort.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.39</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/quicksort.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/quicksort.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.75</td>
+</tr>
+<tr><td><div class="lhd">quicksort_list</div>
+</td>
+<td><a href="TcT WorstCase/quicksort_list.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/quicksort_list.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.09</td>
+<td><a href="AraTRS-Cor29/quicksort_list.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/quicksort_list.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>5.29</td>
+<td><a href="AraHOCA-Cor29/quicksort_list.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/quicksort_list.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>6.13</td>
+<td><a href="Costabs-CoFloCo-TermDepth/quicksort_list.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/quicksort_list.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.43</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/quicksort_list.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/quicksort_list.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.75</td>
+</tr>
+<tr><td><div class="lhd">quicksort_pairs</div>
+</td>
+<td><a href="TcT WorstCase/quicksort_pairs.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/quicksort_pairs.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.22</td>
+<td><a href="AraTRS-Cor29/quicksort_pairs.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/quicksort_pairs.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>12.30</td>
+<td><a href="AraHOCA-Cor29/quicksort_pairs.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/quicksort_pairs.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>13.70</td>
+<td><a href="Costabs-CoFloCo-TermDepth/quicksort_pairs.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/quicksort_pairs.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.42</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/quicksort_pairs.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/quicksort_pairs.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.75</td>
+</tr>
+<tr><td><div class="lhd">rev-dl</div>
+</td>
+<td><a href="TcT WorstCase/rev-dl.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/rev-dl.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.02</td>
+<td><a href="AraTRS-Cor29/rev-dl.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/rev-dl.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.69</td>
+<td><a href="AraHOCA-Cor29/rev-dl.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/rev-dl.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.59</td>
+<td><a href="Costabs-CoFloCo-TermDepth/rev-dl.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/rev-dl.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.40</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/rev-dl.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/rev-dl.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.74</td>
+</tr>
+<tr><td><div class="lhd">rev-fletf</div>
+</td>
+<td><a href="TcT WorstCase/rev-fletf.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/rev-fletf.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.02</td>
+<td><a href="AraTRS-Cor29/rev-fletf.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/rev-fletf.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.51</td>
+<td><a href="AraHOCA-Cor29/rev-fletf.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/rev-fletf.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.52</td>
+<td><a href="Costabs-CoFloCo-TermDepth/rev-fletf.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/rev-fletf.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.43</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/rev-fletf.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/rev-fletf.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.71</td>
+</tr>
+<tr><td><div class="lhd">rev-foldl</div>
+</td>
+<td><a href="TcT WorstCase/rev-foldl.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/rev-foldl.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.01</td>
+<td><a href="AraTRS-Cor29/rev-foldl.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/rev-foldl.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.14</td>
+<td><a href="AraHOCA-Cor29/rev-foldl.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/rev-foldl.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.21</td>
+<td><a href="Costabs-CoFloCo-TermDepth/rev-foldl.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/rev-foldl.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.41</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/rev-foldl.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/rev-foldl.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.76</td>
+</tr>
+<tr><td><div class="lhd">rev_ho</div>
+</td>
+<td><a href="TcT WorstCase/rev_ho.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/rev_ho.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.05</td>
+<td><a href="AraTRS-Cor29/rev_ho.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/rev_ho.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.64</td>
+<td><a href="AraHOCA-Cor29/rev_ho.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/rev_ho.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.65</td>
+<td><a href="Costabs-CoFloCo-TermDepth/rev_ho.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/rev_ho.abs.proof"><div class="yes">Possible lower bounds : [2,11]</div>
+</a>
+</td>
+<td>0.94</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/rev_ho.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/rev_ho.abs.proof"><div class="yes">Possible lower bounds : [2,11,25,33/2*A-49/2+(5/2*A-15/2)*(A-3)]</div>
+</a>
+</td>
+<td>0.95</td>
+</tr>
+<tr><td><div class="lhd">rpm-lazy</div>
+</td>
+<td><a href="TcT WorstCase/rpm-lazy.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/rpm-lazy.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.13</td>
+<td><a href="AraTRS-Cor29/rpm-lazy.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/rpm-lazy.trs.proof"><div class="yes">TRS is not left-linear</div>
+</a>
+</td>
+<td>0.01</td>
+<td><a href="AraHOCA-Cor29/rpm-lazy.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/rpm-lazy.fp.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.40</td>
+<td><a href="Costabs-CoFloCo-TermDepth/rpm-lazy.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/rpm-lazy.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.41</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/rpm-lazy.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/rpm-lazy.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.74</td>
+</tr>
+<tr><td><div class="lhd">running</div>
+</td>
+<td><a href="TcT WorstCase/running.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/running.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.07</td>
+<td><a href="AraTRS-Cor29/running.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/running.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.29</td>
+<td><a href="AraHOCA-Cor29/running.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/running.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.62</td>
+<td><a href="Costabs-CoFloCo-TermDepth/running.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/running.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.43</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/running.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/running.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.76</td>
+</tr>
+<tr><td><div class="lhd">subsequence</div>
+</td>
+<td><a href="TcT WorstCase/subsequence.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/subsequence.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>57.08</td>
+<td><a href="AraTRS-Cor29/subsequence.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/subsequence.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>3.93</td>
+<td><a href="AraHOCA-Cor29/subsequence.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/subsequence.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>13.22</td>
+<td><a href="Costabs-CoFloCo-TermDepth/subsequence.abs">*</a>
 </td>
 <td><div class="timeout">TIMEOUT</div>
 </td>
 <td>60.00</td>
-</tr>
-<tr><td><div class="lhd">isort.raml</div>
+<td><a href="Costabs-CoFloCo-TypedNorms/subsequence.abs">*</a>
 </td>
-<td><a href="TcT/isort.raml.trs">*</a>
-</td>
-<td><a href="TcT/isort.raml.trs.proof"><div class="yes">MAYBE</div>
+<td><a href="Costabs-CoFloCo-TypedNorms/subsequence.abs.proof"><div class="yes">Possible lower bounds : [17,6*D+11,15*B+2,15*B+6*D-4]</div>
 </a>
 </td>
-<td>58.16</td>
+<td>1.74</td>
 </tr>
-<tr><td><div class="lhd">list_map.raml</div>
+<tr><td><div class="lhd">sum</div>
 </td>
-<td><a href="TcT/list_map.raml.trs">*</a>
+<td><a href="TcT WorstCase/sum.trs">*</a>
 </td>
-<td><a href="TcT/list_map.raml.trs.proof"><div class="yes">WORST_CASE(?,O(n^4))</div>
+<td><a href="TcT WorstCase/sum.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
 </a>
 </td>
-<td>17.27</td>
-</tr>
-<tr><td><div class="lhd">list_rev.raml</div>
+<td>7.02</td>
+<td><a href="AraTRS-Cor29/sum.trs">*</a>
 </td>
-<td><a href="TcT/list_rev.raml.trs">*</a>
-</td>
-<td><a href="TcT/list_rev.raml.trs.proof"><div class="yes">WORST_CASE(?,O(n^1))</div>
+<td><a href="AraTRS-Cor29/sum.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
 </a>
 </td>
-<td>1.03</td>
-</tr>
-<tr><td><div class="lhd">mergesort.raml</div>
+<td>0.17</td>
+<td><a href="AraHOCA-Cor29/sum.fp">*</a>
 </td>
-<td><a href="TcT/mergesort.raml.trs">*</a>
-</td>
-<td><a href="TcT/mergesort.raml.trs.proof"><div class="yes">MAYBE</div>
+<td><a href="AraHOCA-Cor29/sum.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
 </a>
 </td>
-<td>58.19</td>
-</tr>
-<tr><td><div class="lhd">quicksort.raml</div>
+<td>0.20</td>
+<td><a href="Costabs-CoFloCo-TermDepth/sum.abs">*</a>
 </td>
-<td><a href="TcT/quicksort.raml.trs">*</a>
-</td>
-<td><a href="TcT/quicksort.raml.trs.proof"><div class="yes">MAYBE</div>
+<td><a href="Costabs-CoFloCo-TermDepth/sum.abs.err"><div class="error">ERROR</div>
 </a>
 </td>
-<td>58.08</td>
-</tr>
-<tr><td><div class="lhd">quicksort_list.raml</div>
+<td>0.40</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/sum.abs">*</a>
 </td>
-<td><a href="TcT/quicksort_list.raml.trs">*</a>
-</td>
-<td><a href="TcT/quicksort_list.raml.trs.proof"><div class="yes">MAYBE</div>
+<td><a href="Costabs-CoFloCo-TypedNorms/sum.abs.err"><div class="error">ERROR</div>
 </a>
 </td>
-<td>58.13</td>
+<td>0.79</td>
 </tr>
-<tr><td><div class="lhd">quicksort_pairs.raml</div>
+<tr><td><div class="lhd">sum_sqs3</div>
 </td>
-<td><a href="TcT/quicksort_pairs.raml.trs">*</a>
+<td><a href="TcT WorstCase/sum_sqs3.trs">*</a>
 </td>
-<td><a href="TcT/quicksort_pairs.raml.trs.proof"><div class="yes">MAYBE</div>
+<td><a href="TcT WorstCase/sum_sqs3.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),?)</div>
 </a>
 </td>
-<td>58.27</td>
-</tr>
-<tr><td><div class="lhd">running.raml</div>
+<td>57.07</td>
+<td><a href="AraTRS-Cor29/sum_sqs3.trs">*</a>
 </td>
-<td><a href="TcT/running.raml.trs">*</a>
-</td>
-<td><a href="TcT/running.raml.trs.proof"><div class="yes">WORST_CASE(?,O(n^3))</div>
+<td><a href="AraTRS-Cor29/sum_sqs3.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
 </a>
 </td>
-<td>13.02</td>
-</tr>
-<tr><td><div class="lhd">subsequence.raml</div>
+<td>24.78</td>
+<td><a href="AraHOCA-Cor29/sum_sqs3.fp">*</a>
 </td>
-<td><a href="TcT/subsequence.raml.trs">*</a>
-</td>
-<td><a href="TcT/subsequence.raml.trs.proof"><div class="yes">MAYBE</div>
+<td><a href="AraHOCA-Cor29/sum_sqs3.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
 </a>
 </td>
-<td>58.12</td>
+<td>38.61</td>
+<td><a href="Costabs-CoFloCo-TermDepth/sum_sqs3.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/sum_sqs3.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.39</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/sum_sqs3.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/sum_sqs3.abs.err"><div class="error">ERROR</div>
+</a>
+</td>
+<td>0.75</td>
+</tr>
+<tr><td><div class="lhd">take_lazy</div>
+</td>
+<td><a href="TcT WorstCase/take_lazy.trs">*</a>
+</td>
+<td><a href="TcT WorstCase/take_lazy.trs.proof"><div class="yes">WORST_CASE(Omega(n^1),O(n^1))</div>
+</a>
+</td>
+<td>7.02</td>
+<td><a href="AraTRS-Cor29/take_lazy.trs">*</a>
+</td>
+<td><a href="AraTRS-Cor29/take_lazy.trs.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.14</td>
+<td><a href="AraHOCA-Cor29/take_lazy.fp">*</a>
+</td>
+<td><a href="AraHOCA-Cor29/take_lazy.fp.proof"><div class="yes">BEST_CASE(Omega(n^1),?)</div>
+</a>
+</td>
+<td>0.13</td>
+<td><a href="Costabs-CoFloCo-TermDepth/take_lazy.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TermDepth/take_lazy.abs.proof"><div class="yes">Possible lower bounds : [1]</div>
+</a>
+</td>
+<td>0.87</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/take_lazy.abs">*</a>
+</td>
+<td><a href="Costabs-CoFloCo-TypedNorms/take_lazy.abs.proof"><div class="yes">Possible lower bounds : [5]</div>
+</a>
+</td>
+<td>0.96</td>
 </tr>
 </tbody>
 </table>
@@ -157,26 +1625,173 @@
 <!DOCTYPE html>
 <br /><h3>Result Summary</h3><br /></br>
 <div class="summary"><table><theadd><tr><th></th>
-<th><div class="toolname">TcT</th>
+<th><div class="toolname">TcT WorstCase</th>
+<th><div class="toolname">AraTRS-Cor29</th>
+<th><div class="toolname">AraHOCA-Cor29</th>
+<th><div class="toolname">Costabs-CoFloCo-TermDepth</th>
+<th><div class="toolname">Costabs-CoFloCo-TypedNorms</th>
 </tr>
 </theadd>
-<tbody><tr><td><div class="lhd">Success &quot;MAYBE&quot;</td>
-<td>10</td>
+<tbody><tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(1),?)&quot;</td>
+<td>0</td>
+<td>12</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
 </tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^1))&quot;</td>
+<tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(n^1),?)&quot;</td>
+<td>0</td>
+<td>33</td>
+<td>33</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(n^2),?)&quot;</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(n^3),?)&quot;</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [10,13,16,35,47]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [13,16,20,23,51,55,5*C+15,5*C+18,10*C+55,13*C+3]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 </tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^2))&quot;</td>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [17,6*D+11,15*B+2,15*B+6*D-4]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 </tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^3))&quot;</td>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [1]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>6</td>
+<td>8</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [2,11,25,33/2*A-49/2+(5/2*A-15/2)*(A-3)]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 </tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^4))&quot;</td>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [2,11]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [2,3,8,9,11,6*F+2]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [3,5,6,9,11,12,4*F+1]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [3,5,6]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [4]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [5]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [6]&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;TRS is not left-linear&quot;</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(1))&quot;</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(Omega(n^1),?)&quot;</td>
+<td>31</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(Omega(n^1),O(n^1))&quot;</td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;FATAL\nTRS is not left-linear\n&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;empty output&quot;</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>36</td>
+<td>34</td>
 </tr>
 <tr><td><div class="lhd">Timeout</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
+<td>1</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
@@ -184,35 +1799,299 @@
 <br />
 <h3>Average Times</h3><br /></h3>
 <div class="summary"><table><theadd><tr><th></th>
-<th><div class="toolname">TcT</th>
+<th><div class="toolname">TcT WorstCase</th>
+<th><div class="toolname">AraTRS-Cor29</th>
+<th><div class="toolname">AraHOCA-Cor29</th>
+<th><div class="toolname">Costabs-CoFloCo-TermDepth</th>
+<th><div class="toolname">Costabs-CoFloCo-TypedNorms</th>
 </tr>
 </theadd>
-<tbody><tr><td><div class="lhd">Success &quot;MAYBE&quot;</td>
-<td>58.27
+<tbody><tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(1),?)&quot;</td>
+<td>0.00
+</td>
+<td>1.64
+</td>
+<td>3.50
+</td>
+<td>0.00
+</td>
+<td>0.00
 </td>
 </tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^1))&quot;</td>
-<td>1.03
+<tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(n^1),?)&quot;</td>
+<td>0.00
+</td>
+<td>6.58
+</td>
+<td>8.20
+</td>
+<td>0.00
+</td>
+<td>0.00
 </td>
 </tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^2))&quot;</td>
-<td>22.26
+<tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(n^2),?)&quot;</td>
+<td>0.00
+</td>
+<td>41.98
+</td>
+<td>55.80
+</td>
+<td>0.00
+</td>
+<td>0.00
 </td>
 </tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^3))&quot;</td>
-<td>13.02
+<tr><td><div class="lhd">Success &quot;BEST_CASE(Omega(n^3),?)&quot;</td>
+<td>0.00
+</td>
+<td>2.28
+</td>
+<td>3.22
+</td>
+<td>0.00
+</td>
+<td>0.00
 </td>
 </tr>
-<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(n^4))&quot;</td>
-<td>17.27
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [10,13,16,35,47]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>1.65
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [13,16,20,23,51,55,5*C+15,5*C+18,10*C+55,13*C+3]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>2.36
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [17,6*D+11,15*B+2,15*B+6*D-4]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>1.74
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [1]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.89
+</td>
+<td>0.87
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [2,11,25,33/2*A-49/2+(5/2*A-15/2)*(A-3)]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.95
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [2,11]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.94
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [2,3,8,9,11,6*F+2]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>1.21
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [3,5,6,9,11,12,4*F+1]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>2.10
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [3,5,6]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>4.41
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [4]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.94
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [5]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.96
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;Possible lower bounds : [6]&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.96
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;TRS is not left-linear&quot;</td>
+<td>0.00
+</td>
+<td>0.01
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(?,O(1))&quot;</td>
+<td>7.03
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(Omega(n^1),?)&quot;</td>
+<td>57.12
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Success &quot;WORST_CASE(Omega(n^1),O(n^1))&quot;</td>
+<td>7.02
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;FATAL\nTRS is not left-linear\n&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.40
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+</tr>
+<tr><td><div class="lhd">Failure &quot;empty output&quot;</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>0.42
+</td>
+<td>0.77
 </td>
 </tr>
 <tr><td><div class="lhd">Timeout</td>
+<td>0.00
+</td>
+<td>0.00
+</td>
+<td>60.06
+</td>
 <td>60.00
+</td>
+<td>0.00
 </td>
 </tr>
 <tr><td><div class="lhd">Overall</td>
-<td>46.42
+<td>39.38
+</td>
+<td>5.86
+</td>
+<td>8.93
+</td>
+<td>1.86
+</td>
+<td>0.88
 </td>
 </tr>
 </tbody>

@@ -5,7 +5,7 @@
 module Runner
   ( Experiment (..), Tool (..), Outcome (..) , Result (..), Process
   , run
-  , allLines, firstLine, termcomp, tttac, termcomp'
+  , allLines, firstLine, termcomp, tttac, termcomp', findLine
   ) where
 
 
@@ -47,6 +47,13 @@ allLines out  = out
 
 firstLine (Success out) = let ls = lines out in if null ls then Maybe else Success (head ls)
 firstLine out           = out
+
+findLine :: (String -> Bool) -> Process
+findLine pred (Success out) = foldl (\acc line -> if pred line
+                                        then Success line
+                                        else acc
+                          ) (Failure "unknown outcome")  (lines out)
+findLine _ x = x
 
 termcomp out = case firstLine out of
   Success ('W':'O':'R':'S':'T':'_':'C':'A':'S':'E':'(':xs) -> Success . init . tail $ dropWhile (/= ',') xs
