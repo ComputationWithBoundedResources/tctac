@@ -5,7 +5,7 @@
 module Runner
   ( Experiment (..), Tool (..), Outcome (..) , Result (..), Process
   , run
-  , allLines, firstLine, termcomp, tttac, termcomp', findLine
+  , allLines, firstLine, termcomp, tttac, termcomp', findLine, findLines, processSuccess
   ) where
 
 
@@ -48,12 +48,21 @@ allLines out  = out
 firstLine (Success out) = let ls = lines out in if null ls then Maybe else Success (head ls)
 firstLine out           = out
 
-findLine :: (String -> Bool) -> Process
-findLine pred (Success out) = foldl (\acc line -> if pred line
-                                        then Success line
+findLine :: (String -> String) -> (String -> Bool) -> Process
+findLine process pred (Success out) = foldl (\acc line -> if pred line
+                                        then Success $ process line
                                         else acc
                           ) (Failure "unknown outcome")  (lines out)
-findLine _ x = x
+findLine _  _ x = x
+
+findLines :: ([String] -> String) -> (String -> Bool) -> Process
+findLines process pred (Success out) = Success $ process $ filter pred (lines out)
+findLines _  _ x                     = x
+
+processSuccess :: ([String] -> String) -> Process
+processSuccess process (Success out) = Success $ process (lines out)
+processSuccess _  x                  = x
+
 
 termcomp out = case firstLine out of
   Success ('W':'O':'R':'S':'T':'_':'C':'A':'S':'E':'(':xs) -> Success . init . tail $ dropWhile (/= ',') xs
@@ -92,7 +101,21 @@ type Err     = String
 
 -- | The outcome of applying a tool on a problem.
 data Outcome a = Success a | Maybe | Failure Err | Timeout
-  deriving (Eq, Ord, Show, Functor, Generic, A.ToJSON, A.FromJSON)
+  deriving (Ord, Functor, Generic, A.ToJSON, A.FromJSON)
+
+instance Eq a => Eq (Outcome a) where
+  Success a == Success b = a == b
+  Failure _ == Failure _ = True
+  Maybe == Maybe = True
+  Timeout == Timeout = True
+  _ == _ = False
+
+instance Show a => Show (Outcome a) where
+  show (Success a) = show a
+  show Maybe       = "Maybe"
+  show (Failure _) = "Error"
+  show Timeout     = "Timeout"
+
 
 -- TODO we don't need result; create serialisable value immediatelly
 -- | The result of a test.

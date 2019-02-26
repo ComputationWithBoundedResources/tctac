@@ -4,7 +4,9 @@ module Summer (summarise) where
 
 import           Control.Arrow                 ((&&&))
 import           Control.Monad                 (filterM, forM_, join)
-import qualified Data.List                     as L (find, intercalate)
+import           Data.Function                 (on)
+import qualified Data.List                     as L (find, groupBy, intercalate, nub,
+                                                     sortBy)
 import           Data.List.Split               as L (splitOn)
 import qualified Data.Map.Strict               as M
 import           Data.Maybe                    (catMaybes, isJust)
@@ -178,7 +180,7 @@ $doctype 5
         $forall t <- ts
           <th><div class="toolname">#{t}
     <tbody>
-      $forall o <- os
+      $forall o <- os'
         <tr>
           <td><div class="lhd">#{show o}
           $forall t <- ts
@@ -193,7 +195,7 @@ $doctype 5
         $forall t <- ts
           <th><div class="toolname">#{t}
     <tbody>
-      $forall o <- os
+      $forall o <- os'
         <tr>
           <td><div class="lhd">#{show o}
           $forall t <- ts
@@ -204,6 +206,7 @@ $doctype 5
           <td>#{queryTime db t Nothing}
 
   |]
+    where os' = map head $ L.groupBy ((==) `on` show) $ L.sortBy (compare `on` show) os
 
 renderExperiments :: DB -> Html
 renderExperiments db =
